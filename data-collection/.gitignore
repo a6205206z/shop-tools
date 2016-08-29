@@ -1,2 +1,4 @@
 *.pyc
-output/*
+xmmspider/*.pyc
+xmmspider/spiders/*.pyc
+xmmspider/output/*
