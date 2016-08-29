@@ -14,8 +14,14 @@ BOT_NAME = 'xmmspider'
 SPIDER_MODULES = ['xmmspider.spiders']
 NEWSPIDER_MODULE = 'xmmspider.spiders'
 
+FILE_OUTPUT_BASE_PATH = "/Users/cean/workspace/Java/workspace/xmm-shop-tools/data-collection/xmmspider/xmmspider/output/"
+
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+#ROBOTSTXT_OBEY = True
+
+#cookies
+COOKIES_ENABLED = True
+COOKIES_DEBUG = True
 
 DOWNLOAD_DELAY = 3
 
@@ -39,12 +45,16 @@ USER_AGENTS = [
 ]
 
 PROXY_LIST = [
-	"192.168.103.98 8050 HTTP",
+	"120.193.146.97 843 HTTP",
 ]
+
+ITEM_PIPELINES = {
+	'xmmspider.pipelines.SaveDataAsFilePipeline':300,
+}
 
 
 DOWNLOADER_MIDDLEWARES = {
-    'xmmspider.middlewares.RandomUserAgent': 1,
+    #'xmmspider.middlewares.RandomUserAgent': 1,
     #'xmmspider.middlewares.ProxyMiddleware': 100,
     'scrapy.downloadermiddlewares.cookies.CookiesMiddleware': 700,
     'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware': 810,
