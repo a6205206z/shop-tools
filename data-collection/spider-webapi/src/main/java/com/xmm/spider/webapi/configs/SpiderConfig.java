@@ -48,9 +48,6 @@ public class SpiderConfig {
         this.name = name;
     }
 
-    private String name;
-    private String path;
-
     /**
      * Gets result path.
      *
@@ -69,6 +66,27 @@ public class SpiderConfig {
         this.resultPath = resultPath;
     }
 
+    /**
+     * Gets log path.
+     *
+     * @return the log path
+     */
+    public String getLogPath() {
+        return logPath;
+    }
+
+    /**
+     * Sets log path.
+     *
+     * @param logPath the log path
+     */
+    public void setLogPath(String logPath) {
+        this.logPath = logPath;
+    }
+
+    private String name;
+    private String path;
     private String resultPath;
+    private String logPath;
 
 }

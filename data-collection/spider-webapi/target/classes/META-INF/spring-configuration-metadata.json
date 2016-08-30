@@ -6,6 +6,11 @@
   }],
   "properties": [
     {
+      "name": "spider.log-path",
+      "type": "java.lang.String",
+      "sourceType": "com.xmm.spider.webapi.configs.SpiderConfig"
+    },
+    {
       "name": "spider.name",
       "type": "java.lang.String",
       "sourceType": "com.xmm.spider.webapi.configs.SpiderConfig"

@@ -49,7 +49,7 @@ public class CommandController {
      */
     @Deprecated
     @RequestMapping(value = "/spider/config", method = RequestMethod.GET)
-    public List<String> GetSpiderConfig(){
+    public String GetSpiderConfig(){
         return Spider.load(spiderConfig).getSpiderConfig();
     }
 
@@ -57,11 +57,25 @@ public class CommandController {
     /**
      * Start crawl.
      *
+     * @param name the name
      * @return result dir path
      */
     @Deprecated
     @RequestMapping(value = "/spider/crawl/start", method = RequestMethod.GET)
     public String StartCrawl(String name){
         return Spider.load(spiderConfig).runCrawl(name,"tmp-" + UUID.randomUUID().toString());
+    }
+
+
+    /**
+     * Get log string.
+     *
+     * @param name the name
+     * @return log content
+     */
+    @Deprecated
+    @RequestMapping(value = "/spider/log", method = RequestMethod.GET)
+    public String GetLog(String name){
+        return Spider.load(spiderConfig).getSpiderLog(name);
     }
 }
