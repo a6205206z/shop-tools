@@ -10,7 +10,7 @@ import com.xingmima.dpfx.inter.DPFXParserImpl;
  * @version ShopInfo, v 0.1
  * @date 2016/8/30 13:58
  */
-public class ShopInfo extends DPFXParserImpl{
+public class ShopInfo extends DPFXParserImpl {
     public ShopInfo(String resource) {
         super(resource);
     }
