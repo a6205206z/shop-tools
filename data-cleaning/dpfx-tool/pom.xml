@@ -14,4 +14,18 @@
         <module>dpfx-parser</module>
     </modules>
 
+    <!-- 本地仓库 -->
+    <repositories>
+        <repository>
+            <id>nexus</id>
+            <url>http://192.168.105.252:8088/nexus/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
 </project>
