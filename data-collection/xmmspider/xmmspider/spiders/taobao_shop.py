@@ -10,8 +10,9 @@ class TaobaoShopSpider(Spider):
 	name = "TaobaoShopSpider"
 	shop_urls = []
 
-	def __init__(self, *args, **kwargs):
+	def __init__(self,ri = None ,*args, **kwargs):
 		super(TaobaoShopSpider, self).__init__(*args, **kwargs)
+		self.run_id = ri
 		self.load_shop_urls()
 
 	def load_shop_urls(self):
@@ -21,6 +22,7 @@ class TaobaoShopSpider(Spider):
 		for url in self.shop_urls:
 			item = TaobaoShopInfoItem()
 			item["shop_domain"] = url["shop_domain"]
+			item["run_id"] = self.run_id
 			request = Request(url["url"],
 				callback = self.find_shop_rate_page,
 				meta = {'cookiejar' : 1, 'item' : item},

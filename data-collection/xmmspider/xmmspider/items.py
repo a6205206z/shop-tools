@@ -9,6 +9,7 @@ import scrapy
 
 
 class TaobaoShopInfoItem(scrapy.Item):
+	run_id = scrapy.Field()
 	shop_domain = scrapy.Field()
 	shop_info_page = scrapy.Field()
 	pass

@@ -14,11 +14,11 @@ class SaveDataAsFilePipeline(object):
 		return cls(dir_path=crawler.settings.get('FILE_OUTPUT_BASE_PATH'))
 
 	def process_item(self, item, spider):
-		date_path = self.base_path + time.strftime("%Y-%m-%d-%H%M%S",time.localtime(time.time()))
+		date_path = self.base_path + item['run_id']
 		if not os.path.exists(date_path):
 			os.mkdir(date_path)
 
-		domain_dir_path = date_path + "/" + item["shop_domain"]
+		domain_dir_path = date_path + '/' + item['shop_domain']
 		if not os.path.exists(domain_dir_path):
 			os.mkdir(domain_dir_path)
 
