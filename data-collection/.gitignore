@@ -1,0 +1,4 @@
+*.pyc
+*/xmmspider/xmmspider/*.pyc
+*/xmmspider/xmmspider/spiders/*.pyc
+*/xmmspider/xmmspider/output/*
