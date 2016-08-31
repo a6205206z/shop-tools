@@ -9,14 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>dfpx-consumer</artifactId>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.apache.kafka</groupId>
-            <artifactId>kafka_2.10</artifactId>
-        </dependency>
-    </dependencies>
+    <artifactId>dpfx-dbutil</artifactId>
 
 
 </project>
