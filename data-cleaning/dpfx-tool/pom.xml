@@ -10,8 +10,61 @@
 
     <packaging>pom</packaging>
 
+    <properties>
+        <lang_version>2.6</lang_version>
+
+        <slf4j_version>1.7.14</slf4j_version>
+        <logback_version>1.1.7</logback_version>
+
+        <htmlparser_version>2.1</htmlparser_version>
+        <fastjson_version>1.2.11</fastjson_version>
+        <kafka_version>0.8.2.1</kafka_version>
+
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j_version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>${logback_version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-core</artifactId>
+                <version>${logback_version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-lang</groupId>
+                <artifactId>commons-lang</artifactId>
+                <version>${lang_version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.htmlparser</groupId>
+                <artifactId>htmlparser</artifactId>
+                <version>${htmlparser_version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson_version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.kafka</groupId>
+                <artifactId>kafka_2.10</artifactId>
+                <version>${kafka_version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <modules>
         <module>dpfx-parser</module>
+        <module>dfpx-consumer</module>
     </modules>
 
     <!-- 本地仓库 -->
