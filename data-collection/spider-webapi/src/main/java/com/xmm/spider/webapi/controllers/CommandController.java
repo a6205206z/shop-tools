@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+
 import java.util.List;
-import java.util.UUID;
 
 /**
  * Xingmima.com Inc.
@@ -63,7 +63,7 @@ public class CommandController {
     @Deprecated
     @RequestMapping(value = "/spider/crawl/start", method = RequestMethod.GET)
     public String StartCrawl(String name){
-        return Spider.load(spiderConfig).runCrawl(name,"tmp-" + UUID.randomUUID().toString());
+        return Spider.load(spiderConfig).runCrawl(name);
     }
 
 

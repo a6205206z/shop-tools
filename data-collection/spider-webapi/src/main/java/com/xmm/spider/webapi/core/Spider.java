@@ -8,7 +8,12 @@ import java.io.*;
 
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 
@@ -86,13 +91,12 @@ public class Spider {
      * Run crawl string.
      *
      * @param name       the name
-     * @param resultName the result name
      * @return the string
      */
-    public String runCrawl(String name, String resultName) {
-
-        exec(String.format("scrapy crawl %s --logfile=%s/%s.log -a ri=%s", name, config.getLogPath(), resultName, resultName));
-        return resultName + ".log";
+    public String runCrawl(String name) {
+        String runID = getTimeHourString();
+        exec(String.format("scrapy crawl %s --logfile=%s/%s-%s.log -a ri=%s", name, config.getLogPath(),name, runID, runID));
+        return name + "-" + runID + ".log";
     }
 
     private List<String> exec(String cmd) {
@@ -117,6 +121,20 @@ public class Spider {
             result.add(e.toString());
         }
 
+        return result;
+    }
+
+    private static String getTimeHourString() {
+        String result = "0";
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar calendar = Calendar.getInstance();
+        try {
+            Date date = df.parse(df.format(calendar.getTime()));
+            calendar.setTime(date);
+            result = Long.toString(calendar.getTimeInMillis());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         return result;
     }
 }

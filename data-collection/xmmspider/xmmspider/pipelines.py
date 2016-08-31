@@ -4,6 +4,7 @@ import os
 import time
 
 from xmmspider.items import TaobaoShopInfoItem
+from pykafka import KafkaClient
 
 class SaveDataAsFilePipeline(object):
 	def __init__(self, dir_path):
@@ -18,7 +19,7 @@ class SaveDataAsFilePipeline(object):
 		if not os.path.exists(date_path):
 			os.mkdir(date_path)
 
-		domain_dir_path = date_path + '/' + item['shop_domain']
+		domain_dir_path = date_path + '/' + item['shop_id']
 		if not os.path.exists(domain_dir_path):
 			os.mkdir(domain_dir_path)
 
@@ -27,3 +28,23 @@ class SaveDataAsFilePipeline(object):
 			file = open(file_path, 'w')
 			file.write(item['shop_info_page'].encode('utf8'))
 			file.close()
+
+
+
+#on pykafka
+#https://github.com/Parsely/pykafka
+#pip install pykafka
+class PushDataToKafka(object):
+	def __init__(self, hosts):
+		self.kafka_hosts = hosts
+
+	@classmethod
+	def from_crawler(cls, crawler):
+		return cls(hosts=crawler.settings.get('KAFKA_HOSTS'))
+
+	def process_item(self, item, spider):
+		if isinstance(item, TaobaoShopInfoItem):
+			client = KafkaClient(hosts=self.kafka_hosts)
+			topic = client.topics['taobao.shop.info']
+			with topic.get_sync_producer() as producer:
+				producer.produce("%s|%s|%s" % (item["run_id"],item["shop_id"],item["shop_info_page"].encode('utf8')))

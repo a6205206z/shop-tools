@@ -14,7 +14,9 @@ BOT_NAME = 'xmmspider'
 SPIDER_MODULES = ['xmmspider.spiders']
 NEWSPIDER_MODULE = 'xmmspider.spiders'
 
+#for item pipeline
 FILE_OUTPUT_BASE_PATH = "/Users/cean/workspace/Java/workspace/xmm-shop-tools/data-collection/xmmspider/xmmspider/output/"
+KAFKA_HOSTS = "192.168.103.245:9092" #for example:127.0.0.1:9092,127.0.0.1:9093,...
 
 # Obey robots.txt rules
 #ROBOTSTXT_OBEY = True
@@ -49,7 +51,7 @@ PROXY_LIST = [
 ]
 
 ITEM_PIPELINES = {
-	'xmmspider.pipelines.SaveDataAsFilePipeline':300,
+	'xmmspider.pipelines.PushDataToKafka':300,
 }
 
 

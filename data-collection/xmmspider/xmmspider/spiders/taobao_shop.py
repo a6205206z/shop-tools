@@ -16,12 +16,12 @@ class TaobaoShopSpider(Spider):
 		self.load_shop_urls()
 
 	def load_shop_urls(self):
-		self.shop_urls.append({'shop_domain':'shop34685656.taobao.com','url':'https://shop34685656.taobao.com/'})
+		self.shop_urls.append({'shop_id':'34685656','url':'https://shop34685656.taobao.com/'})
 
 	def start_requests(self):
 		for url in self.shop_urls:
 			item = TaobaoShopInfoItem()
-			item["shop_domain"] = url["shop_domain"]
+			item["shop_id"] = url["shop_id"]
 			item["run_id"] = self.run_id
 			request = Request(url["url"],
 				callback = self.find_shop_rate_page,
