@@ -42,9 +42,17 @@ class PushDataToKafka(object):
 	def from_crawler(cls, crawler):
 		return cls(hosts=crawler.settings.get('KAFKA_HOSTS'))
 
+	def open_spider(self, spider):
+		self.client = KafkaClient(hosts=self.kafka_hosts)
+
+	#def close_spider(self, spider):
+		#should not close
+
 	def process_item(self, item, spider):
 		if isinstance(item, TaobaoShopInfoItem):
-			client = KafkaClient(hosts=self.kafka_hosts)
-			topic = client.topics['taobao.shop.info']
+			topic = self.client.topics['taobao.shop.info']
 			with topic.get_sync_producer() as producer:
 				producer.produce("%s|%s|%s" % (item["run_id"],item["shop_id"],item["shop_info_page"].encode('utf8')))
+
+
+

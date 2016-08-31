@@ -29,6 +29,9 @@ class TaobaoShopSpider(Spider):
 				)
 			yield request
 
+	def closed(self, reason):
+		print reason
+
 	def find_shop_rate_page(self, response):
 		pattern = re.compile('//rate.taobao.com/(.*?).htm',re.S)
 		match = re.search(pattern,response.body_as_unicode())
