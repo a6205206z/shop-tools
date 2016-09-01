@@ -50,7 +50,7 @@ public class ShopInfo extends DPFXParserImpl {
     /**
      * 店铺信息处理
      */
-    public DShop handleShopInfo() {
+    public DShop handleShopInfo() throws UnsupportedEncodingException, ParserException {
         DShop info = new DShop();
         info.setId(GuidUtils.getGuid32());
         info.setDate(this.getRunid());
@@ -64,14 +64,14 @@ public class ShopInfo extends DPFXParserImpl {
         try {
             info.setTitle(URLDecoder.decode(obj.getString("shopname"), "UTF-8"));
         } catch (UnsupportedEncodingException e) {
-            log.error(e.getMessage());
+            throw e;
         }
 
         /*卖家信用*/
         try {
             list = this.extractAllNodesThatMatch(FILTER_CLASS, "sep");
         } catch (ParserException e) {
-            log.error(e.getMessage());
+            throw e;
         }
         if (null != list && list.size() > 0) {
             NodeList sell = list.elementAt(0).getChildren();
@@ -79,7 +79,7 @@ public class ShopInfo extends DPFXParserImpl {
                 if (sell.elementAt(j).toPlainTextString().indexOf("卖家") >= 0) {
                     info.setCreditScore(Long.parseLong(RegexUtils.getNumbers(sell.elementAt(j).toPlainTextString())));
 
-                        /*信用图标*/
+                    /*信用图标*/
                     NodeList tmp = new NodeList();
                     sell.elementAt(j).collectInto(tmp, new NodeClassFilter(ImageTag.class));
                     if (null != tmp && tmp.size() > 0) {
@@ -93,30 +93,19 @@ public class ShopInfo extends DPFXParserImpl {
         } else {
             log.info("not found seller {} credit info!", this.getShopid());
         }
-        /*评价数量*/
-        Integer a = 0, b = 0, c = 0, e = 0, f = 0, g = 0;
+
         try {
             //好评
-            list = this.extractAllNodesThatMatch(FILTER_CLASS, "rateok");
-            if (null != list && list.size() > 0) {
-                a = Integer.parseInt(list.elementAt(2).toPlainTextString().trim());
-                e = Integer.parseInt(list.elementAt(3).toPlainTextString().trim());
-            }
-            list = this.extractAllNodesThatMatch(FILTER_CLASS, "ratenormal");
-            if (null != list && list.size() > 0) {
-                b = Integer.parseInt(list.elementAt(2).toPlainTextString().trim());
-                f = Integer.parseInt(list.elementAt(3).toPlainTextString().trim());
-            }
-            list = this.extractAllNodesThatMatch(FILTER_CLASS, "ratebad");
-            if (null != list && list.size() > 0) {
-                c = Integer.parseInt(list.elementAt(2).toPlainTextString().trim());
-                g = Integer.parseInt(list.elementAt(3).toPlainTextString().trim());
-            }
+            Integer[] rateok = this.getRating("rateok");
+            //中评
+            Integer[] ratenormal = this.getRating("ratenormal");
+            //差评
+            Integer[] ratebad = this.getRating("ratebad");
+            info.setCreditTotalNum(rateok[0] + ratenormal[0] + ratebad[0] + rateok[1] + ratenormal[1] + ratebad[1]);
+            info.setCreditGoodNum(rateok[0] + rateok[1]);
         } catch (ParserException e1) {
-            log.error(e1.getMessage());
+            throw e1;
         }
-        info.setCreditTotalNum(a + b + c + e + f + g);
-        info.setCreditGoodNum(a + e);
 
         /*好评率*/
         try {
@@ -125,7 +114,7 @@ public class ShopInfo extends DPFXParserImpl {
                 info.setRating(new BigDecimal(RegexUtils.getNumbers(list.elementAt(0).toPlainTextString().trim())));
             }
         } catch (ParserException e2) {
-            log.error(e2.getMessage());
+            throw e2;
         }
         list = null;
         this.reset();
@@ -134,15 +123,33 @@ public class ShopInfo extends DPFXParserImpl {
         return info;
     }
 
+    /**
+     * 获得中差评数量
+     *
+     * @param val
+     * @return
+     * @throws ParserException
+     */
+    private Integer[] getRating(String val) throws ParserException {
+        Integer[] back = new Integer[]{0, 0};
+        NodeList list = this.extractAllNodesThatMatch(FILTER_CLASS, val);
+        if (null != list && list.size() > 0) {
+            back[0] = Integer.parseInt(list.elementAt(2).toPlainTextString().trim());
+            back[1] = Integer.parseInt(list.elementAt(3).toPlainTextString().trim());
+        }
+        list = null;
+        return back;
+    }
+
     public static void main(String[] args) {
 //        try {
 //            String res = HttpUtil.get4("https://rate.taobao.com/user-rate-f07ef4944ee3876030f6f5b4186767b6.htm?spm=2013.1.1000126.2.pUZ5CK", "GBK");
 //            res = "11111111111|20027371|西红柿|bbb|" + res;
         String res = readHtmlFile("d://file//shopinfo.html", "GBK");
-        DShop obj = new ShopInfo(res).call().handleShopInfo();
         try {
-        new ShopDao().insert(obj);
-        } catch (SQLException e) {
+            DShop obj = new ShopInfo(res).call().handleShopInfo();
+            new ShopDao().insert(obj);
+        } catch (Exception e) {
             e.printStackTrace();
         }
 //        } catch (IOException e) {

@@ -21,13 +21,14 @@ import java.sql.SQLException;
  */
 public class ShopInfoThread implements Runnable {
     private static final Logger log = LoggerFactory.getLogger(ShopInfoThread.class);
-
+    //消息流
     private KafkaStream stream;
-    private ShopDao dao = null;
+    //数据库操作
+    private ShopDao db = null;
 
     public ShopInfoThread(KafkaStream stream) {
         this.stream = stream;
-        this.dao = new ShopDao();
+        this.db = new ShopDao();
     }
 
     @Override
@@ -35,13 +36,12 @@ public class ShopInfoThread implements Runnable {
         ConsumerIterator<String, String> it = stream.iterator();
         while (it.hasNext()) {
             MessageAndMetadata<String, String> c = it.next();
-            System.out.println(c.message());
-
-            ShopInfo info = new ShopInfo(c.message()).call();
-            DShop obj = info.handleShopInfo();
             try {
-                dao.insert(obj);
-            } catch (SQLException e) {
+                /*错误数据，不退出，继续处理*/
+                ShopInfo info = new ShopInfo(c.message()).call();
+                DShop obj = info.handleShopInfo();
+                db.insert(obj);
+            } catch (Exception e) {
                 log.error(e.getMessage());
             }
         }

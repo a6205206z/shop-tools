@@ -37,17 +37,17 @@ public class DShop {
     /**
      * 收到的评价总条数。取值范围:大于零的整数
      */
-    private Integer creditTotalNum;
+    private Integer creditTotalNum = 0;
 
     /**
      * 收到的好评总条数。取值范围:大于零的整数
      */
-    private Integer creditGoodNum;
+    private Integer creditGoodNum = 0;
 
     /**
      * 好评率
      */
-    private BigDecimal rating;
+    private BigDecimal rating = BigDecimal.ZERO;
 
     /**
      * 最后修改时间。格式：yyyy-MM-dd HH:mm:ss
@@ -56,6 +56,7 @@ public class DShop {
 
     /**
      * 标识列
+     *
      * @return id 标识列
      */
     public String getId() {
@@ -64,6 +65,7 @@ public class DShop {
 
     /**
      * 标识列
+     *
      * @param id 标识列
      */
     public void setId(String id) {
@@ -72,6 +74,7 @@ public class DShop {
 
     /**
      * 数据抓取日期：YYYYMMDDHH
+     *
      * @return date 数据抓取日期：YYYYMMDDHH
      */
     public Long getDate() {
@@ -80,6 +83,7 @@ public class DShop {
 
     /**
      * 数据抓取日期：YYYYMMDDHH
+     *
      * @param date 数据抓取日期：YYYYMMDDHH
      */
     public void setDate(Long date) {
@@ -88,6 +92,7 @@ public class DShop {
 
     /**
      * 店铺ID
+     *
      * @return shopid 店铺ID
      */
     public Long getShopid() {
@@ -96,6 +101,7 @@ public class DShop {
 
     /**
      * 店铺ID
+     *
      * @param shopid 店铺ID
      */
     public void setShopid(Long shopid) {
@@ -104,6 +110,7 @@ public class DShop {
 
     /**
      * 店铺名称
+     *
      * @return title 店铺名称
      */
     public String getTitle() {
@@ -112,6 +119,7 @@ public class DShop {
 
     /**
      * 店铺名称
+     *
      * @param title 店铺名称
      */
     public void setTitle(String title) {
@@ -120,6 +128,7 @@ public class DShop {
 
     /**
      * 信用总分（“好评”加一分，“中评”不加分，“差评”扣一分。分越高，等级越高）
+     *
      * @return credit_score 信用总分（“好评”加一分，“中评”不加分，“差评”扣一分。分越高，等级越高）
      */
     public Long getCreditScore() {
@@ -128,6 +137,7 @@ public class DShop {
 
     /**
      * 信用总分（“好评”加一分，“中评”不加分，“差评”扣一分。分越高，等级越高）
+     *
      * @param creditScore 信用总分（“好评”加一分，“中评”不加分，“差评”扣一分。分越高，等级越高）
      */
     public void setCreditScore(Long creditScore) {
@@ -136,6 +146,7 @@ public class DShop {
 
     /**
      * 信用等级（是根据score生成的），信用等级：淘宝会员在淘宝网上的信用度，分为20个级别，级别如：level = 1 时，表示一心；level = 2 时，表示二心
+     *
      * @return credit_level 信用等级（是根据score生成的），信用等级：淘宝会员在淘宝网上的信用度，分为20个级别，级别如：level = 1 时，表示一心；level = 2 时，表示二心
      */
     public String getCreditLevel() {
@@ -144,6 +155,7 @@ public class DShop {
 
     /**
      * 信用等级（是根据score生成的），信用等级：淘宝会员在淘宝网上的信用度，分为20个级别，级别如：level = 1 时，表示一心；level = 2 时，表示二心
+     *
      * @param creditLevel 信用等级（是根据score生成的），信用等级：淘宝会员在淘宝网上的信用度，分为20个级别，级别如：level = 1 时，表示一心；level = 2 时，表示二心
      */
     public void setCreditLevel(String creditLevel) {
@@ -152,6 +164,7 @@ public class DShop {
 
     /**
      * 收到的评价总条数。取值范围:大于零的整数
+     *
      * @return credit_total_num 收到的评价总条数。取值范围:大于零的整数
      */
     public Integer getCreditTotalNum() {
@@ -160,6 +173,7 @@ public class DShop {
 
     /**
      * 收到的评价总条数。取值范围:大于零的整数
+     *
      * @param creditTotalNum 收到的评价总条数。取值范围:大于零的整数
      */
     public void setCreditTotalNum(Integer creditTotalNum) {
@@ -168,6 +182,7 @@ public class DShop {
 
     /**
      * 收到的好评总条数。取值范围:大于零的整数
+     *
      * @return credit_good_num 收到的好评总条数。取值范围:大于零的整数
      */
     public Integer getCreditGoodNum() {
@@ -176,6 +191,7 @@ public class DShop {
 
     /**
      * 收到的好评总条数。取值范围:大于零的整数
+     *
      * @param creditGoodNum 收到的好评总条数。取值范围:大于零的整数
      */
     public void setCreditGoodNum(Integer creditGoodNum) {
@@ -184,6 +200,7 @@ public class DShop {
 
     /**
      * 好评率
+     *
      * @return rating 好评率
      */
     public BigDecimal getRating() {
@@ -192,6 +209,7 @@ public class DShop {
 
     /**
      * 好评率
+     *
      * @param rating 好评率
      */
     public void setRating(BigDecimal rating) {
@@ -200,6 +218,7 @@ public class DShop {
 
     /**
      * 最后修改时间。格式：yyyy-MM-dd HH:mm:ss
+     *
      * @return updated 最后修改时间。格式：yyyy-MM-dd HH:mm:ss
      */
     public Date getUpdated() {
@@ -208,6 +227,7 @@ public class DShop {
 
     /**
      * 最后修改时间。格式：yyyy-MM-dd HH:mm:ss
+     *
      * @param updated 最后修改时间。格式：yyyy-MM-dd HH:mm:ss
      */
     public void setUpdated(Date updated) {
