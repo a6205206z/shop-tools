@@ -14,7 +14,6 @@
         <lang_version>2.6</lang_version>
         <slf4j_version>1.7.14</slf4j_version>
         <logback_version>1.1.7</logback_version>
-        <lang_version>2.6</lang_version>
         <dbutils_version>1.5</dbutils_version>
         <dbcp_version>1.4</dbcp_version>
         <htmlparser_version>2.1</htmlparser_version>
@@ -55,11 +54,6 @@
                 <groupId>commons-dbcp</groupId>
                 <artifactId>commons-dbcp</artifactId>
                 <version>${dbcp_version}</version>
-            </dependency>
-            <dependency>
-                <groupId>commons-lang</groupId>
-                <artifactId>commons-lang</artifactId>
-                <version>${lang_version}</version>
             </dependency>
             <dependency>
                 <groupId>org.htmlparser</groupId>

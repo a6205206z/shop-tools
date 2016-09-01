@@ -2,6 +2,7 @@ package com.xingmima.dpfx.thread;
 
 import com.xingmima.dpfx.dao.ShopDao;
 import com.xingmima.dpfx.entity.DShop;
+import com.xingmima.dpfx.kafka.KafkaProperties;
 import com.xingmima.dpfx.parser.ShopInfo;
 import kafka.consumer.ConsumerIterator;
 import kafka.consumer.KafkaStream;
@@ -37,12 +38,12 @@ public class ShopInfoThread implements Runnable {
         while (it.hasNext()) {
             MessageAndMetadata<String, String> c = it.next();
             try {
-                /*错误数据，不退出，继续处理*/
+                /*捕获异常，继续处理*/
                 ShopInfo info = new ShopInfo(c.message()).call();
                 DShop obj = info.handleShopInfo();
                 db.insert(obj);
             } catch (Exception e) {
-                log.error(e.getMessage());
+                log.error(KafkaProperties.TOPIC_SHOP_INFO + ":" + e.getMessage());
             }
         }
     }

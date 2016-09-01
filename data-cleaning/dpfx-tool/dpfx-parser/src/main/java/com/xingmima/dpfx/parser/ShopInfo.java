@@ -101,6 +101,7 @@ public class ShopInfo extends DPFXParserImpl {
             Integer[] ratenormal = this.getRating("ratenormal");
             //差评
             Integer[] ratebad = this.getRating("ratebad");
+
             info.setCreditTotalNum(rateok[0] + ratenormal[0] + ratebad[0] + rateok[1] + ratenormal[1] + ratebad[1]);
             info.setCreditGoodNum(rateok[0] + rateok[1]);
         } catch (ParserException e1) {
@@ -116,6 +117,7 @@ public class ShopInfo extends DPFXParserImpl {
         } catch (ParserException e2) {
             throw e2;
         }
+
         list = null;
         this.reset();
 
@@ -142,18 +144,14 @@ public class ShopInfo extends DPFXParserImpl {
     }
 
     public static void main(String[] args) {
-//        try {
+        try {
 //            String res = HttpUtil.get4("https://rate.taobao.com/user-rate-f07ef4944ee3876030f6f5b4186767b6.htm?spm=2013.1.1000126.2.pUZ5CK", "GBK");
 //            res = "11111111111|20027371|西红柿|bbb|" + res;
-        String res = readHtmlFile("d://file//shopinfo.html", "GBK");
-        try {
+            String res = readHtmlFile("d://file//shopinfo.html", "GBK");
             DShop obj = new ShopInfo(res).call().handleShopInfo();
             new ShopDao().insert(obj);
         } catch (Exception e) {
             e.printStackTrace();
         }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
     }
 }
