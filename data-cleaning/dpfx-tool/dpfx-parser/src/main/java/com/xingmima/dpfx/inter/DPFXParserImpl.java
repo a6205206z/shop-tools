@@ -1,5 +1,8 @@
 package com.xingmima.dpfx.inter;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.xingmima.dpfx.util.Tool;
 import org.apache.commons.lang.StringUtils;
 import org.htmlparser.Node;
 import org.htmlparser.Parser;
@@ -9,8 +12,12 @@ import org.htmlparser.tags.LinkTag;
 import org.htmlparser.util.NodeList;
 import org.htmlparser.util.ParserException;
 
+import java.io.*;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.StringTokenizer;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * html源码解析工具
@@ -23,6 +30,14 @@ import java.util.Set;
  * @date 2016/8/30 13:56
  */
 public class DPFXParserImpl implements DPFXParser {
+    /**
+     * 按id页面过滤参数
+     */
+    protected static final String FILTER_ID = "id";
+    /**
+     * 按class页面过滤参数
+     */
+    protected static final String FILTER_CLASS = "class";
 
     /**
      * 待分析源码临时储存对象
@@ -47,11 +62,44 @@ public class DPFXParserImpl implements DPFXParser {
     }
 
     /**
+     * 重置对象内部参数
+     */
+    public void reset() {
+        this.resource = null;
+        this.parser = null;
+    }
+
+    /**
+     * 自定义参数
+     */
+    private String param = null;
+    /**
+     * 轮次
+     **/
+    private Long runid = null;
+    /**
+     * 店铺ID
+     */
+    private Long shopid = null;
+
+    public String getParam() {
+        return param;
+    }
+
+    public Long getRunid() {
+        return runid;
+    }
+
+    public Long getShopid() {
+        return shopid;
+    }
+
+    /**
      * 初始化html解析工具
      *
      * @throws ParserException
      */
-    public void initParser() throws ParserException {
+    private void initParser() throws ParserException {
         if (!StringUtils.isEmpty(this.resource)) {
             parser = new Parser(this.resource);
             parser.setEncoding(parser.getEncoding());
@@ -155,4 +203,73 @@ public class DPFXParserImpl implements DPFXParser {
         }
     }
 
+    /**
+     * 添加url前缀
+     *
+     * @param url
+     * @return
+     */
+    public String httpPrefix(String url) {
+        if (url != null && !url.startsWith("http:")) {
+            return "http:" + url;
+        }
+        return url;
+    }
+
+    /**
+     * 初始化原始数据
+     *
+     * @return
+     */
+    public boolean initSpiderShop() {
+        StringTokenizer st = new StringTokenizer(this.resource, "|");
+        try {
+            while (st.hasMoreTokens()) {
+                this.param = st.nextToken();
+                break;
+            }
+        } finally {
+        }
+        if (StringUtils.isEmpty(this.param)) {
+            return false;
+        }
+        JSONObject obj = (JSONObject) JSON.parse(this.getParam());
+        this.runid = obj.getLong("runid");
+        this.shopid = obj.getLong("shopid");
+        if (null == runid || null == shopid) {
+            return false;
+        }
+
+        /*整理html数据*/
+        int s = (this.param + "|").length();
+        this.resource = this.resource.substring(s);
+        return true;
+    }
+
+    /**
+     * Read html file string.
+     *
+     * @param filePath    the file path
+     * @param charsetName the charset name
+     * @return the string
+     */
+    public static String readHtmlFile(String filePath, String charsetName) {
+        StringBuffer str = new StringBuffer();
+        try {
+            File file = new File(filePath);
+            if (file.isFile() && file.exists()) { //判断文件是否存在
+                InputStreamReader read = new InputStreamReader(
+                        new FileInputStream(file), charsetName);//考虑到编码格式
+                BufferedReader br = new BufferedReader(read);
+                String line = null;
+                while ((line = br.readLine()) != null) {
+                    str.append(line);
+                }
+                read.close();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return str.toString();
+    }
 }
