@@ -806,3 +806,318 @@ None
  'start_time': datetime.datetime(2016, 8, 31, 9, 31, 40, 464987)}
 2016-08-31 17:31:46 [scrapy] INFO: Spider closed (finished)
 2016-08-31 17:31:46 [pykafka.handlers] INFO: RequestHandler worker: exiting cleanly
+2016-08-31 19:48:41 [scrapy] INFO: Scrapy 1.1.2 started (bot: xmmspider)
+2016-08-31 19:48:41 [scrapy] INFO: Overridden settings: {'COOKIES_DEBUG': True, 'NEWSPIDER_MODULE': 'xmmspider.spiders', 'SPIDER_MODULES': ['xmmspider.spiders'], 'BOT_NAME': 'xmmspider', 'LOG_FILE': '/Users/cean/workspace/Java/workspace/xmm-shop-tools/data-collection/xmmspider/xmmspider/logs/TaobaoShopSpider-1472572800000.log', 'DOWNLOAD_DELAY': 3}
+2016-08-31 19:48:41 [scrapy] INFO: Enabled extensions:
+['scrapy.extensions.logstats.LogStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.corestats.CoreStats']
+2016-08-31 19:48:41 [scrapy] INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.chunked.ChunkedTransferMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2016-08-31 19:48:41 [scrapy] INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2016-08-31 19:48:41 [pykafka.topic] INFO: Could not load pykafka.rdkafka extension.
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/pykafka/topic.py", line 39, in <module>
+    from . import rdkafka
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/pykafka/rdkafka/__init__.py", line 1, in <module>
+    from .producer import RdKafkaProducer
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/pykafka/rdkafka/producer.py", line 6, in <module>
+    from . import _rd_kafka
+ImportError: cannot import name _rd_kafka
+2016-08-31 19:48:41 [scrapy] INFO: Enabled item pipelines:
+['xmmspider.pipelines.PushDataToKafka']
+2016-08-31 19:48:41 [scrapy] INFO: Spider opened
+2016-08-31 19:48:41 [scrapy] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2016-08-31 19:48:41 [scrapy] DEBUG: Telnet console listening on 127.0.0.1:6023
+2016-08-31 19:48:42 [scrapy] DEBUG: Received cookies from: <200 https://shop34685656.taobao.com/>
+Set-Cookie: thw=cn; Path=/; Domain=.taobao.com; Expires=Thu, 31-Aug-17 11:48:43 GMT;
+
+2016-08-31 19:48:42 [scrapy] DEBUG: Crawled (200) <GET https://shop34685656.taobao.com/> (referer: None)
+2016-08-31 19:48:42 [scrapy] DEBUG: Sending cookies to: <GET https://rate.taobao.com/user-rate-UMF8YvGkWvGIT.htm>
+Cookie: cna=4RdLEIipQlECAWXM93goJEgl; thw=cn
+
+2016-08-31 19:48:42 [scrapy] DEBUG: Received cookies from: <200 https://rate.taobao.com/user-rate-UMF8YvGkWvGIT.htm>
+Set-Cookie: uc1=cookie14=UoWwJr1jeAMc%2BQ%3D%3D; Domain=.taobao.com; Path=/
+
+Set-Cookie: v=0; Domain=.taobao.com; Path=/
+
+Set-Cookie: cookie2=1c3bd2ae7022616fdd7b808f3c3cd86f;Domain=.taobao.com;Path=/;HttpOnly
+
+Set-Cookie: t=f2fc2bb1e5c2d0026bd915fbd637eb6b; Domain=.taobao.com; Expires=Tue, 29-Nov-2016 11:48:43 GMT; Path=/
+
+2016-08-31 19:48:42 [scrapy] DEBUG: Crawled (200) <GET https://rate.taobao.com/user-rate-UMF8YvGkWvGIT.htm> (referer: https://shop34685656.taobao.com/)
+2016-08-31 19:48:42 [pykafka.cluster] DEBUG: Updating cluster, attempt 1/3
+2016-08-31 19:48:42 [pykafka.connection] DEBUG: Connecting to 192.168.103.245:9092
+2016-08-31 19:48:42 [pykafka.connection] DEBUG: Successfully connected to 192.168.103.245:9092
+2016-08-31 19:48:42 [pykafka.handlers] INFO: RequestHandler.stop: about to flush requests queue
+2016-08-31 19:48:42 [pykafka.cluster] INFO: Discovered 1 brokers
+2016-08-31 19:48:42 [pykafka.cluster] DEBUG: Discovered broker id 0: 192.168.103.245:9092
+2016-08-31 19:48:42 [pykafka.connection] DEBUG: Connecting to 192.168.103.245:9092
+2016-08-31 19:48:42 [pykafka.connection] DEBUG: Successfully connected to 192.168.103.245:9092
+2016-08-31 19:48:42 [pykafka.cluster] INFO: Discovered 2 topics
+2016-08-31 19:48:42 [pykafka.cluster] DEBUG: Discovered topic 'shop_info'
+2016-08-31 19:48:42 [pykafka.cluster] DEBUG: Discovered topic 'taobao.shop.info'
+2016-08-31 19:48:42 [pykafka.connection] DEBUG: Connecting to 192.168.103.245:9092
+2016-08-31 19:48:42 [pykafka.connection] DEBUG: Successfully connected to 192.168.103.245:9092
+2016-08-31 19:48:42 [pykafka.handlers] INFO: RequestHandler.stop: about to flush requests queue
+2016-08-31 19:48:42 [pykafka.topic] INFO: Adding 3 partitions
+2016-08-31 19:48:42 [pykafka.topic] DEBUG: Adding partition taobao.shop.info/0
+2016-08-31 19:48:42 [pykafka.topic] DEBUG: Adding partition taobao.shop.info/1
+2016-08-31 19:48:42 [pykafka.topic] DEBUG: Adding partition taobao.shop.info/2
+2016-08-31 19:48:42 [pykafka.producer] INFO: Starting new produce worker for broker 0
+2016-08-31 19:48:42 [pykafka.producer] DEBUG: Sending 1 messages to broker 0
+2016-08-31 19:48:42 [pykafka.producer] DEBUG: Successfully sent 1/1 messages to broker 0
+2016-08-31 19:48:42 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-08-31 19:48:43 [pykafka.handlers] INFO: RequestHandler worker: exiting cleanly
+2016-08-31 19:48:43 [pykafka.handlers] INFO: RequestHandler worker: exiting cleanly
+2016-08-31 19:48:47 [pykafka.producer] INFO: Worker exited for broker 192.168.103.245:9092
+2016-08-31 19:48:47 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-08-31 19:48:47 [pykafka.producer] DEBUG: Finalising <pykafka.producer.Producer at 0x105f74490>
+2016-08-31 19:48:47 [pykafka.handlers] INFO: RequestHandler.stop: about to flush requests queue
+2016-08-31 19:48:47 [scrapy] DEBUG: Scraped from <200 https://rate.taobao.com/user-rate-UMF8YvGkWvGIT.htm>
+None
+2016-08-31 19:48:47 [scrapy] INFO: Closing spider (finished)
+2016-08-31 19:48:47 [scrapy] INFO: Dumping Scrapy stats:
+{'downloader/request_bytes': 550,
+ 'downloader/request_count': 2,
+ 'downloader/request_method_count/GET': 2,
+ 'downloader/response_bytes': 23626,
+ 'downloader/response_count': 2,
+ 'downloader/response_status_count/200': 2,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2016, 8, 31, 11, 48, 47, 539567),
+ 'item_scraped_count': 1,
+ 'log_count/DEBUG': 23,
+ 'log_count/INFO': 20,
+ 'request_depth_max': 1,
+ 'response_received_count': 2,
+ 'scheduler/dequeued': 2,
+ 'scheduler/dequeued/memory': 2,
+ 'scheduler/enqueued': 2,
+ 'scheduler/enqueued/memory': 2,
+ 'start_time': datetime.datetime(2016, 8, 31, 11, 48, 41, 728265)}
+2016-08-31 19:48:47 [scrapy] INFO: Spider closed (finished)
+2016-08-31 19:48:47 [pykafka.handlers] INFO: RequestHandler worker: exiting cleanly
+2016-08-31 20:45:46 [scrapy] INFO: Scrapy 1.1.2 started (bot: xmmspider)
+2016-08-31 20:45:46 [scrapy] INFO: Overridden settings: {'COOKIES_DEBUG': True, 'NEWSPIDER_MODULE': 'xmmspider.spiders', 'SPIDER_MODULES': ['xmmspider.spiders'], 'BOT_NAME': 'xmmspider', 'LOG_FILE': '/Users/cean/workspace/Java/workspace/xmm-shop-tools/data-collection/xmmspider/xmmspider/logs/TaobaoShopSpider-1472572800000.log', 'DOWNLOAD_DELAY': 3}
+2016-08-31 20:45:46 [scrapy] INFO: Enabled extensions:
+['scrapy.extensions.logstats.LogStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.corestats.CoreStats']
+2016-08-31 20:45:46 [scrapy] INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.chunked.ChunkedTransferMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2016-08-31 20:45:46 [scrapy] INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2016-08-31 20:45:46 [twisted] CRITICAL: Unhandled error in Deferred:
+2016-08-31 20:45:46 [twisted] CRITICAL: 
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/twisted/internet/defer.py", line 1128, in _inlineCallbacks
+    result = g.send(result)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/scrapy/crawler.py", line 90, in crawl
+    six.reraise(*exc_info)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/scrapy/crawler.py", line 72, in crawl
+    self.engine = self._create_engine()
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/scrapy/crawler.py", line 97, in _create_engine
+    return ExecutionEngine(self, lambda _: self.stop())
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/scrapy/core/engine.py", line 69, in __init__
+    self.scraper = Scraper(crawler)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/scrapy/core/scraper.py", line 71, in __init__
+    self.itemproc = itemproc_cls.from_crawler(crawler)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/scrapy/middleware.py", line 58, in from_crawler
+    return cls.from_settings(crawler.settings, crawler)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/scrapy/middleware.py", line 34, in from_settings
+    mwcls = load_object(clspath)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/scrapy/utils/misc.py", line 44, in load_object
+    mod = import_module(module)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/Users/cean/workspace/Java/workspace/xmm-shop-tools/data-collection/xmmspider/xmmspider/pipelines.py", line 51
+    def process_item(self, item, spider):
+      ^
+IndentationError: expected an indented block
+2016-08-31 20:46:39 [scrapy] INFO: Scrapy 1.1.2 started (bot: xmmspider)
+2016-08-31 20:46:39 [scrapy] INFO: Overridden settings: {'COOKIES_DEBUG': True, 'NEWSPIDER_MODULE': 'xmmspider.spiders', 'SPIDER_MODULES': ['xmmspider.spiders'], 'BOT_NAME': 'xmmspider', 'LOG_FILE': '/Users/cean/workspace/Java/workspace/xmm-shop-tools/data-collection/xmmspider/xmmspider/logs/TaobaoShopSpider-1472572800000.log', 'DOWNLOAD_DELAY': 3}
+2016-08-31 20:46:39 [scrapy] INFO: Enabled extensions:
+['scrapy.extensions.logstats.LogStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.corestats.CoreStats']
+2016-08-31 20:46:39 [scrapy] INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.chunked.ChunkedTransferMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2016-08-31 20:46:39 [scrapy] INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2016-08-31 20:46:39 [twisted] CRITICAL: Unhandled error in Deferred:
+2016-08-31 20:46:39 [twisted] CRITICAL: 
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/twisted/internet/defer.py", line 1128, in _inlineCallbacks
+    result = g.send(result)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/scrapy/crawler.py", line 90, in crawl
+    six.reraise(*exc_info)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/scrapy/crawler.py", line 72, in crawl
+    self.engine = self._create_engine()
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/scrapy/crawler.py", line 97, in _create_engine
+    return ExecutionEngine(self, lambda _: self.stop())
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/scrapy/core/engine.py", line 69, in __init__
+    self.scraper = Scraper(crawler)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/scrapy/core/scraper.py", line 71, in __init__
+    self.itemproc = itemproc_cls.from_crawler(crawler)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/scrapy/middleware.py", line 58, in from_crawler
+    return cls.from_settings(crawler.settings, crawler)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/scrapy/middleware.py", line 34, in from_settings
+    mwcls = load_object(clspath)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/scrapy/utils/misc.py", line 44, in load_object
+    mod = import_module(module)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/Users/cean/workspace/Java/workspace/xmm-shop-tools/data-collection/xmmspider/xmmspider/pipelines.py", line 51
+    def process_item(self, item, spider):
+      ^
+IndentationError: expected an indented block
+2016-08-31 20:47:16 [scrapy] INFO: Scrapy 1.1.2 started (bot: xmmspider)
+2016-08-31 20:47:16 [scrapy] INFO: Overridden settings: {'COOKIES_DEBUG': True, 'NEWSPIDER_MODULE': 'xmmspider.spiders', 'SPIDER_MODULES': ['xmmspider.spiders'], 'BOT_NAME': 'xmmspider', 'LOG_FILE': '/Users/cean/workspace/Java/workspace/xmm-shop-tools/data-collection/xmmspider/xmmspider/logs/TaobaoShopSpider-1472572800000.log', 'DOWNLOAD_DELAY': 3}
+2016-08-31 20:47:16 [scrapy] INFO: Enabled extensions:
+['scrapy.extensions.logstats.LogStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.corestats.CoreStats']
+2016-08-31 20:47:16 [scrapy] INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.chunked.ChunkedTransferMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2016-08-31 20:47:16 [scrapy] INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2016-08-31 20:47:16 [pykafka.topic] INFO: Could not load pykafka.rdkafka extension.
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/pykafka/topic.py", line 39, in <module>
+    from . import rdkafka
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/pykafka/rdkafka/__init__.py", line 1, in <module>
+    from .producer import RdKafkaProducer
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/pykafka/rdkafka/producer.py", line 6, in <module>
+    from . import _rd_kafka
+ImportError: cannot import name _rd_kafka
+2016-08-31 20:47:16 [scrapy] INFO: Enabled item pipelines:
+['xmmspider.pipelines.PushDataToKafka']
+2016-08-31 20:47:16 [scrapy] INFO: Spider opened
+2016-08-31 20:47:16 [pykafka.cluster] DEBUG: Updating cluster, attempt 1/3
+2016-08-31 20:47:16 [pykafka.connection] DEBUG: Connecting to 192.168.103.245:9092
+2016-08-31 20:47:16 [pykafka.connection] DEBUG: Successfully connected to 192.168.103.245:9092
+2016-08-31 20:47:16 [pykafka.handlers] INFO: RequestHandler.stop: about to flush requests queue
+2016-08-31 20:47:16 [pykafka.cluster] INFO: Discovered 1 brokers
+2016-08-31 20:47:16 [pykafka.cluster] DEBUG: Discovered broker id 0: 192.168.103.245:9092
+2016-08-31 20:47:16 [pykafka.connection] DEBUG: Connecting to 192.168.103.245:9092
+2016-08-31 20:47:16 [pykafka.connection] DEBUG: Successfully connected to 192.168.103.245:9092
+2016-08-31 20:47:16 [pykafka.cluster] INFO: Discovered 2 topics
+2016-08-31 20:47:16 [pykafka.cluster] DEBUG: Discovered topic 'shop_info'
+2016-08-31 20:47:16 [pykafka.cluster] DEBUG: Discovered topic 'taobao.shop.info'
+2016-08-31 20:47:16 [scrapy] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2016-08-31 20:47:16 [scrapy] DEBUG: Telnet console listening on 127.0.0.1:6023
+2016-08-31 20:47:16 [scrapy] DEBUG: Received cookies from: <200 https://shop34685656.taobao.com/>
+Set-Cookie: thw=cn; Path=/; Domain=.taobao.com; Expires=Thu, 31-Aug-17 12:47:18 GMT;
+
+2016-08-31 20:47:16 [scrapy] DEBUG: Crawled (200) <GET https://shop34685656.taobao.com/> (referer: None)
+2016-08-31 20:47:16 [scrapy] DEBUG: Sending cookies to: <GET https://rate.taobao.com/user-rate-UMF8YvGkWvGIT.htm>
+Cookie: cna=4RdLEIipQlECAWXM93goJEgl; thw=cn
+
+2016-08-31 20:47:17 [scrapy] DEBUG: Received cookies from: <200 https://rate.taobao.com/user-rate-UMF8YvGkWvGIT.htm>
+Set-Cookie: uc1=cookie14=UoWwJr1je%2FmvOQ%3D%3D; Domain=.taobao.com; Path=/
+
+Set-Cookie: v=0; Domain=.taobao.com; Path=/
+
+Set-Cookie: cookie2=1cc7b90d8a1faddef5e41c1f6b70eb85;Domain=.taobao.com;Path=/;HttpOnly
+
+Set-Cookie: t=becd537bace8956cf70b1e3ee6d12f2c; Domain=.taobao.com; Expires=Tue, 29-Nov-2016 12:47:18 GMT; Path=/
+
+2016-08-31 20:47:17 [scrapy] DEBUG: Crawled (200) <GET https://rate.taobao.com/user-rate-UMF8YvGkWvGIT.htm> (referer: https://shop34685656.taobao.com/)
+2016-08-31 20:47:17 [pykafka.connection] DEBUG: Connecting to 192.168.103.245:9092
+2016-08-31 20:47:17 [pykafka.connection] DEBUG: Successfully connected to 192.168.103.245:9092
+2016-08-31 20:47:17 [pykafka.handlers] INFO: RequestHandler.stop: about to flush requests queue
+2016-08-31 20:47:17 [pykafka.topic] INFO: Adding 3 partitions
+2016-08-31 20:47:17 [pykafka.topic] DEBUG: Adding partition taobao.shop.info/0
+2016-08-31 20:47:17 [pykafka.topic] DEBUG: Adding partition taobao.shop.info/1
+2016-08-31 20:47:17 [pykafka.topic] DEBUG: Adding partition taobao.shop.info/2
+2016-08-31 20:47:17 [pykafka.producer] INFO: Starting new produce worker for broker 0
+2016-08-31 20:47:17 [pykafka.producer] DEBUG: Sending 1 messages to broker 0
+2016-08-31 20:47:17 [pykafka.producer] DEBUG: Successfully sent 1/1 messages to broker 0
+2016-08-31 20:47:17 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-08-31 20:47:17 [pykafka.handlers] INFO: RequestHandler worker: exiting cleanly
+2016-08-31 20:47:18 [pykafka.handlers] INFO: RequestHandler worker: exiting cleanly
+2016-08-31 20:47:22 [pykafka.producer] INFO: Worker exited for broker 192.168.103.245:9092
+2016-08-31 20:47:22 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-08-31 20:47:22 [pykafka.producer] DEBUG: Finalising <pykafka.producer.Producer at 0x109197490>
+2016-08-31 20:47:22 [scrapy] DEBUG: Scraped from <200 https://rate.taobao.com/user-rate-UMF8YvGkWvGIT.htm>
+None
+2016-08-31 20:47:22 [scrapy] INFO: Closing spider (finished)
+2016-08-31 20:47:22 [scrapy] INFO: Dumping Scrapy stats:
+{'downloader/request_bytes': 550,
+ 'downloader/request_count': 2,
+ 'downloader/request_method_count/GET': 2,
+ 'downloader/response_bytes': 23651,
+ 'downloader/response_count': 2,
+ 'downloader/response_status_count/200': 2,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2016, 8, 31, 12, 47, 22, 284601),
+ 'item_scraped_count': 1,
+ 'log_count/DEBUG': 23,
+ 'log_count/INFO': 19,
+ 'request_depth_max': 1,
+ 'response_received_count': 2,
+ 'scheduler/dequeued': 2,
+ 'scheduler/dequeued/memory': 2,
+ 'scheduler/enqueued': 2,
+ 'scheduler/enqueued/memory': 2,
+ 'start_time': datetime.datetime(2016, 8, 31, 12, 47, 16, 459926)}
+2016-08-31 20:47:22 [scrapy] INFO: Spider closed (finished)
+2016-08-31 20:47:22 [pykafka.handlers] INFO: RequestHandler.stop: about to flush requests queue
