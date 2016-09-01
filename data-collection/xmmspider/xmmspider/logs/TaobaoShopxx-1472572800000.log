@@ -1,2 +1,0 @@
-2016-08-31 20:26:26 [scrapy] INFO: Scrapy 1.1.2 started (bot: xmmspider)
-2016-08-31 20:26:26 [scrapy] INFO: Overridden settings: {'COOKIES_DEBUG': True, 'NEWSPIDER_MODULE': 'xmmspider.spiders', 'SPIDER_MODULES': ['xmmspider.spiders'], 'BOT_NAME': 'xmmspider', 'LOG_FILE': '/Users/cean/workspace/Java/workspace/xmm-shop-tools/data-collection/xmmspider/xmmspider/logs/TaobaoShopxx-1472572800000.log', 'DOWNLOAD_DELAY': 3}

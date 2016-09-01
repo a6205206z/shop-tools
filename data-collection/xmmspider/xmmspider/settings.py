@@ -14,6 +14,13 @@ BOT_NAME = 'xmmspider'
 SPIDER_MODULES = ['xmmspider.spiders']
 NEWSPIDER_MODULE = 'xmmspider.spiders'
 
+#db
+DB_HOST = "192.168.105.252"
+DB_PORT = 3306
+DB_USER = "ams"
+DB_PASSWD = "ams_admin"
+DB_NAME = "xmm_shop_tools"
+
 #for item pipeline
 FILE_OUTPUT_BASE_PATH = "/Users/cean/workspace/Java/workspace/xmm-shop-tools/data-collection/xmmspider/xmmspider/output/"
 KAFKA_HOSTS = "192.168.103.245:9092" #for example:127.0.0.1:9092,127.0.0.1:9093,...
@@ -62,4 +69,7 @@ DOWNLOADER_MIDDLEWARES = {
     'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware': 810,
 }
 
+EXTENSIONS = {
+    'xmmspider.extensions.TaobaoShopDataMySQLLoader': 500,
+}
 

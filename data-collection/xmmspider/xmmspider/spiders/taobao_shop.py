@@ -13,37 +13,31 @@ class TaobaoShopSpider(Spider):
 	def __init__(self,ri = None ,*args, **kwargs):
 		super(TaobaoShopSpider, self).__init__(*args, **kwargs)
 		self.run_id = ri
-		self.load_shop_urls()
-
-	def load_shop_urls(self):
-		self.shop_urls.append({'shop_id':'34685656','url':'https://shop34685656.taobao.com/'})
 
 	def start_requests(self):
-		for url in self.shop_urls:
-			item = TaobaoShopInfoItem()
-			item["shop_id"] = url["shop_id"]
-			item["run_id"] = self.run_id
-			request = Request(url["url"],
-				callback = self.find_shop_rate_page,
-				meta = {'cookiejar' : 1, 'item' : item},
-				)
-			yield request
-
-	def closed(self, reason):
-		print reason
+		if self.shop_urls != None:
+		    for url in self.shop_urls:
+	                item = TaobaoShopInfoItem()
+	                item["shop_id"] = url["shop_id"]
+	                item["run_id"] = self.run_id
+	                request = Request(url["url"],
+	                                  callback = self.find_shop_rate_page,
+	                                  meta = {'cookiejar' : 1, 'item' : item},
+	                                  )
+	                yield request
 
 	def find_shop_rate_page(self, response):
-		pattern = re.compile('//rate.taobao.com/(.*?).htm',re.S)
-		match = re.search(pattern,response.body_as_unicode())
-		if(match):
-			rate_page_url = 'https://rate.taobao.com/%s.htm' % match.group(1)
-			request =  Request(rate_page_url,
-				callback = self.extract_shop_rate_data,
-				meta = {'cookiejar' : response.meta['cookiejar'], 'item' : response.meta['item']},
-				#cna from https://log.mmstat.com/eg.js
-				cookies={'cna':'4RdLEIipQlECAWXM93goJEgl'},
-				)
-			return request
+	    pattern = re.compile('//rate.taobao.com/(.*?).htm',re.S)
+	    match = re.search(pattern,response.body_as_unicode())
+	    if(match):
+                rate_page_url = 'https://rate.taobao.com/%s.htm' % match.group(1)
+		request =  Request(rate_page_url,
+                                   callback = self.extract_shop_rate_data,
+                                   meta = {'cookiejar' : response.meta['cookiejar'], 'item' : response.meta['item']},
+                                    #cna from https://log.mmstat.com/eg.js
+                                   cookies={'cna':'4RdLEIipQlECAWXM93goJEgl'},
+                                   )
+		return request
 
 	def extract_shop_rate_data(self, response):
 		item = response.meta['item']
