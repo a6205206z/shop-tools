@@ -14,21 +14,22 @@ BOT_NAME = 'xmmspider'
 SPIDER_MODULES = ['xmmspider.spiders']
 NEWSPIDER_MODULE = 'xmmspider.spiders'
 
-#db
+# db
 DB_HOST = "192.168.105.252"
 DB_PORT = 3306
 DB_USER = "ams"
 DB_PASSWD = "ams_admin"
 DB_NAME = "xmm_shop_tools"
 
-#for item pipeline
+# for item pipeline
 FILE_OUTPUT_BASE_PATH = "/Users/cean/workspace/Java/workspace/xmm-shop-tools/data-collection/xmmspider/xmmspider/output/"
-KAFKA_HOSTS = "192.168.103.245:9092" #for example:127.0.0.1:9092,127.0.0.1:9093,...
+# for example:127.0.0.1:9092,127.0.0.1:9093,...
+KAFKA_HOSTS = "192.168.103.245:9092"
 
 # Obey robots.txt rules
 #ROBOTSTXT_OBEY = True
 
-#cookies
+# cookies
 COOKIES_ENABLED = True
 COOKIES_DEBUG = True
 
@@ -54,11 +55,11 @@ USER_AGENTS = [
 ]
 
 PROXY_LIST = [
-	"120.193.146.97 843 HTTP",
+    "120.193.146.97 843 HTTP",
 ]
 
 ITEM_PIPELINES = {
-	'xmmspider.pipelines.PushDataToKafka':300,
+    'xmmspider.pipelines.PushDataToKafka': 300,
 }
 
 
@@ -72,4 +73,3 @@ DOWNLOADER_MIDDLEWARES = {
 EXTENSIONS = {
     'xmmspider.extensions.TaobaoShopDataMySQLLoader': 500,
 }
-
