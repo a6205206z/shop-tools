@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<!--配置官方文档-->
+<!--http://www.mybatis.org/generator/index.html-->
+<!--maven 运行命令-->
+<!--mybatis-generator:generate -Dmybatis.generator.overwrite=true-->
+<generatorConfiguration>
+    <!-- 数据库的JDBC驱动的jar包地址 通过maven指定
+        <classPathEntry location="/Program Files/IBM/SQLLIB/java/db2java.zip" />
+    -->
+
+    <context id="AMSTables" targetRuntime="MyBatis3">
+        <!--<plugin type="org.mybatis.generator.plugins.SerializablePlugin" />-->
+        <!--<plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin" />-->
+        <!--生成toString方法 -->
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+
+        <!--<plugin type="com.xingmima.tools.mybatis.plugins.MySQLLimitPlugin"></plugin>-->
+
+        <commentGenerator type="com.xingmima.tools.mybatis.plugins.DbCommentGeneratorPlugin">
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+            <!--<property name="suppressAllComments" value="true"/>-->
+            <property name="suppressDate" value="true"/>
+            <!-- 生成的Java文件的编码 -->
+            <property name="javaFileEncoding" value="UTF-8"/>
+            <!-- 格式化java代码 -->
+            <property name="javaFormatter" value="org.mybatis.generator.api.dom.DefaultJavaFormatter"/>
+            <!-- 格式化XML代码 -->
+            <property name="xmlFormatter" value="org.mybatis.generator.api.dom.DefaultXmlFormatter"/>
+
+        </commentGenerator>
+
+        <!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://192.168.105.252:3306/xmm_shop_tools"
+                        userId="ams"
+                        password="ams_admin"/>
+
+        <!--  默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer true，把JDBC DECIMAL 和 NUMERIC 类型解析为java.math.BigDecimal -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="com.xingmima.dpfx.entity" targetProject="src\main\java">
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="true"/>
+            <!-- 从数据库返回的值被清理前后的空格  -->
+            <property name="trimStrings" value="true"/>
+            <!-- 继承类-->
+            <!--<property name="rootClass" value="com.xingmima.commons.dao.bean.StringIdEntity"/>-->
+
+            <!--<property name="rootInterface" value=""/>-->
+
+            <!-- 如果设置为true，生成的model类会直接使用column本身的名字，而不会再使用驼峰命名方法，比如BORN_DATE，生成的属性名字就是BORN_DATE,而不会是bornDate -->
+            <property name="useActualColumnNames" value="false"/>
+
+        </javaModelGenerator>
+
+        <!--schema      即为数据库名, -->
+        <!--tableName   为对应的数据库表, -->
+        <!--domainObjectName  是要生成的实体类,-->
+        <!--enableCountByExample等设为true, mapper配置文件加入sql的where条件查询, -->
+        <!--enableCountByExample等设为false时,  就不会生成对应的Example类了.-->
+        <!-- domainObjectName="AdminLogs" -->
+        <table schema="ams" tableName="d_dsr"
+               delimitIdentifiers="true" delimitAllColumns="true"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="false"/>
+
+            <!--<generatedKey column="ID" sqlStatement="mysql" identity="true" />
+
+            <columnOverride column="BEG_DATE" property="startDate"/>
+
+            忽略字段
+            <ignoreColumn column="FRED" />
+
+            无论该字段是什么类型，生成的类属性都是
+            <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />-->
+        </table>
+        <table schema="ams" tableName="d_fans"
+                   enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+                   enableSelectByExample="false" selectByExampleQueryId="false">
+        <property name="useActualColumnNames" value="false"/>
+    </table>
+        <table schema="ams" tableName="d_item_num"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+        <table schema="ams" tableName="d_items"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+        <table schema="ams" tableName="d_rated"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+
+        <table schema="ams" tableName="d_shop"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+        <table schema="ams" tableName="d_services"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+    </context>
+</generatorConfiguration>

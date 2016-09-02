@@ -12,14 +12,15 @@
 
     <properties>
         <lang_version>2.6</lang_version>
-
         <slf4j_version>1.7.14</slf4j_version>
         <logback_version>1.1.7</logback_version>
-
+        <dbutils_version>1.5</dbutils_version>
+        <dbcp_version>1.4</dbcp_version>
         <htmlparser_version>2.1</htmlparser_version>
         <fastjson_version>1.2.11</fastjson_version>
         <kafka_version>0.8.2.1</kafka_version>
-
+        <httpclient_version>4.3.6</httpclient_version>
+        <mysql_connector_version>5.1.38</mysql_connector_version>
     </properties>
 
     <dependencyManagement>
@@ -45,6 +46,16 @@
                 <version>${lang_version}</version>
             </dependency>
             <dependency>
+                <groupId>commons-dbutils</groupId>
+                <artifactId>commons-dbutils</artifactId>
+                <version>${dbutils_version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-dbcp</groupId>
+                <artifactId>commons-dbcp</artifactId>
+                <version>${dbcp_version}</version>
+            </dependency>
+            <dependency>
                 <groupId>org.htmlparser</groupId>
                 <artifactId>htmlparser</artifactId>
                 <version>${htmlparser_version}</version>
@@ -58,6 +69,21 @@
                 <groupId>org.apache.kafka</groupId>
                 <artifactId>kafka_2.10</artifactId>
                 <version>${kafka_version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>${httpclient_version}</version>
+            </dependency>
+            <!--<dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpmime</artifactId>
+                <version>${httpclient_version}</version>
+            </dependency>-->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql_connector_version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
