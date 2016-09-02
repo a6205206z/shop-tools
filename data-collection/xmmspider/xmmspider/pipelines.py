@@ -62,5 +62,5 @@ class PushDataToKafka(object):
         if isinstance(item, TaobaoShopProductItem):
             topic = self.client.topics['taobao.shop.product']
             with topic.get_sync_producer() as producer:
-                producer.produce('{"runid":"%s","shopid":"%s","producturl":"%s"}|%s|%s' % (item["run_id"], item[
-                                 "shop_id"], urllib.quote(item["product_url"]), Helper.encode_utf8(item["counter_page"]), Helper.encode_utf8(item["product_page"])))
+                producer.produce('{"runid":"%s","shopid":"%s","producturl":"%s","counter":"%s"}|%s' % (item["run_id"], item[
+                                 "shop_id"], urllib.quote(item["product_url"]), urllib.quote(Helper.encode_utf8(item["counter_page"])), Helper.encode_utf8(item["product_page"])))
