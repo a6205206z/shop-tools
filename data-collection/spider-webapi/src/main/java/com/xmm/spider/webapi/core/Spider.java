@@ -51,7 +51,7 @@ public class Spider {
      * @return the list
      */
     public List<String> getCrawlList() {
-        return exec("scrapy list");
+        return exec("scrapy list",true);
     }
 
     /**
@@ -95,23 +95,25 @@ public class Spider {
      */
     public String runCrawl(String name) {
         String runID = getTimeHourString();
-        exec(String.format("scrapy crawl %s --logfile=%s/%s-%s.log -a ri=%s", name, config.getLogPath(),name, runID, runID));
+        exec(String.format("scrapy crawl %s --logfile=%s/%s-%s.log -a ri=%s", name, config.getLogPath(),name, runID, runID),false);
         return name + "-" + runID + ".log";
     }
 
-    private List<String> exec(String cmd) {
+    private List<String> exec(String cmd,boolean returnMsg) {
         List<String> result = new ArrayList<>();
         try {
             File spiderPath = new File(this.config.getPath());
             if (spiderPath.exists()) {
                 Process process = Runtime.getRuntime().exec(cmd, null, spiderPath);
 
-                BufferedReader input = new BufferedReader(new InputStreamReader(process.getInputStream()));
-                String line;
-                while ((line = input.readLine()) != null) {
-                    result.add(line);
+                if(returnMsg) {
+                    BufferedReader input = new BufferedReader(new InputStreamReader(process.getInputStream()));
+                    String line;
+                    while ((line = input.readLine()) != null) {
+                        result.add(line);
+                    }
+                    input.close();
                 }
-                input.close();
             } else {
                 result.add("Spider not found!");
             }
