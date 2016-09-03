@@ -51,7 +51,7 @@ public class Spider {
      * @return the list
      */
     public List<String> getCrawlList() {
-        return exec("scrapy list",true);
+        return exec("scrapy list", true);
     }
 
     /**
@@ -90,23 +90,23 @@ public class Spider {
     /**
      * Run crawl string.
      *
-     * @param name       the name
+     * @param name the name
      * @return the string
      */
     public String runCrawl(String name) {
         String runID = getTimeHourString();
-        exec(String.format("scrapy crawl %s --logfile=%s/%s-%s.log -a ri=%s", name, config.getLogPath(),name, runID, runID),false);
+        exec(String.format("scrapy crawl %s --logfile=%s/%s-%s.log -a ri=%s", name, config.getLogPath(), name, runID, runID), false);
         return name + "-" + runID + ".log";
     }
 
-    private List<String> exec(String cmd,boolean returnMsg) {
+    private List<String> exec(String cmd, boolean returnMsg) {
         List<String> result = new ArrayList<>();
         try {
             File spiderPath = new File(this.config.getPath());
             if (spiderPath.exists()) {
                 Process process = Runtime.getRuntime().exec(cmd, null, spiderPath);
 
-                if(returnMsg) {
+                if (returnMsg) {
                     BufferedReader input = new BufferedReader(new InputStreamReader(process.getInputStream()));
                     String line;
                     while ((line = input.readLine()) != null) {
@@ -133,7 +133,7 @@ public class Spider {
         try {
             Date date = df.parse(df.format(calendar.getTime()));
             calendar.setTime(date);
-            result = Long.toString(calendar.getTimeInMillis());
+            result = Long.toString(calendar.getTimeInMillis() / 1000);
         } catch (ParseException e) {
             e.printStackTrace();
         }

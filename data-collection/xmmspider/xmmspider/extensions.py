@@ -38,5 +38,8 @@ class TaobaoShopDataMySQLLoader(object):
         if isinstance(spider, TaobaoShopSpider) or isinstance(spider, TaobaoShopProductSpider):
             spider.shop_urls = self.access.load_shop_urls("C")
 
+        self.access.inster_spider_job(spider.run_id, spider.name, "%s-%s.log" % (spider.name, spider.run_id))
+
     def spider_closed(self, spider):
-        logger.info("close")
+        self.access.update_spider_job(
+            spider.run_id, spider.name, 'finish')
