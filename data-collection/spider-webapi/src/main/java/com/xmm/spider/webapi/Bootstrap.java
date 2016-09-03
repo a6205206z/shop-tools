@@ -4,10 +4,14 @@ import com.xmm.spider.webapi.configs.SpiderConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.context.annotation.ImportResource;
 
 /**
- * Created by cean on 16/8/30.
+ * Xingmima.com Inc.
+ * Copyright (c) 2015-2016 All Rights Reserved.
+ *
+ * @author Huke
+ * @version com.xmm.spider.webapi.Bootstrap.java, v 0.1
+ * @date 2016年8月30日 下午3:26:57
  */
 //@ImportResource(locations={"classpath:META-INF/spring/spring-mvc.xml"})
 @EnableConfigurationProperties({SpiderConfig.class})
