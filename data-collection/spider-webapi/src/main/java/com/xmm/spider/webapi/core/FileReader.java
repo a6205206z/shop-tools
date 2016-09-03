@@ -4,7 +4,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
-import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.RandomAccessFile;
 import java.nio.ByteBuffer;
 import java.nio.CharBuffer;
 import java.nio.channels.FileChannel;
@@ -30,10 +31,12 @@ public class FileReader {
      */
     public static String Read(File file){
         StringBuffer content = null;
+        RandomAccessFile fs = null;
+        FileChannel channel = null;
         if(file.exists()){
             try {
-                FileInputStream fs = new FileInputStream(file);
-                FileChannel channel = fs.getChannel();
+                fs = new RandomAccessFile(file,"r");
+                channel = fs.getChannel();
 
                 ByteBuffer buffer = ByteBuffer.allocate(1024);
                 content = new StringBuffer();
@@ -46,6 +49,17 @@ public class FileReader {
                 LOGGER.error(e.toString());
                 content = new StringBuffer();
                 content.append(e.toString());
+            }finally {
+                if(channel !=null){
+                    try {
+                        channel.close();
+                        fs.close();
+                    } catch (IOException e) {
+                        LOGGER.error(e.toString());
+                        content = new StringBuffer();
+                        content.append(e.toString());
+                    }
+                }
             }
         }
         return content.toString();
