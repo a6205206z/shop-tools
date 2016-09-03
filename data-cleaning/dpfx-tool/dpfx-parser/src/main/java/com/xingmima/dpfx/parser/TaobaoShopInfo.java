@@ -6,10 +6,12 @@ import com.xingmima.dpfx.entity.DDsr;
 import com.xingmima.dpfx.entity.DRated;
 import com.xingmima.dpfx.entity.DShop;
 import com.xingmima.dpfx.inter.DPFXParserImpl;
+import com.xingmima.dpfx.inter.TaobaoParser;
 import com.xingmima.dpfx.parser.tags.StrongTag;
 import com.xingmima.dpfx.util.Constant;
 import com.xingmima.dpfx.util.GuidUtils;
 import com.xingmima.dpfx.util.RegexUtils;
+import org.apache.commons.lang.StringUtils;
 import org.htmlparser.filters.HasAttributeFilter;
 import org.htmlparser.filters.NodeClassFilter;
 import org.htmlparser.nodes.TagNode;
@@ -32,12 +34,14 @@ import java.util.Date;
  * @version ShopInfo, v 0.1
  * @date 2016/8/30 13:58
  */
-public class ShopInfo extends DPFXParserImpl {
-
-    private final static Logger log = LoggerFactory.getLogger(ShopInfo.class);
-
+public class ShopInfo extends TaobaoParser {
     public ShopInfo(String resource) {
         super(resource);
+        if (!StringUtils.isEmpty(resource) && resource.length() > 200) {
+            log.info(resource.substring(0, 100));
+        } else {
+            log.info(resource);
+        }
     }
 
     public ShopInfo call() {

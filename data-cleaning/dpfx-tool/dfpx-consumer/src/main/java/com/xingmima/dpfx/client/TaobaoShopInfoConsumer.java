@@ -31,7 +31,6 @@ public class TaobaoShopInfoConsumer extends KafkaConsumer {
     }
 
     public void consumer() {
-        log.info("{} consumer start!", KafkaProperties.TOPIC_SHOP_INFO);
         Map<String, List<KafkaStream<String, String>>> consumerMap = this.createMessageStreams(KafkaProperties.TOPIC_SHOP_INFO, KafkaProperties.TOPIC_SHOP_INFO_THREADS);
 
         executor = Executors.newFixedThreadPool(KafkaProperties.TOPIC_SHOP_INFO_THREADS);

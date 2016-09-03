@@ -50,20 +50,26 @@ public class ShopInfoThread implements Runnable {
             ShopInfo info = new ShopInfo(c.message()).call();
             if (null != info) {
                 try {
+                    log.info("handle shop info----------");
                     DShop obj = info.handleShopInfo();
-                    sd.insert(obj);
+                    if (null != obj)
+                        sd.insert(obj);
                 } catch (Exception e) {
                     log.error(KafkaProperties.TOPIC_SHOP_INFO + ":", e);
                 }
                 try {
+                    log.info("handle rating----------");
                     DRated obj = info.handleRating();
-                    rd.insert(obj);
+                    if (null != obj)
+                        rd.insert(obj);
                 } catch (Exception e) {
                     log.error(KafkaProperties.TOPIC_SHOP_INFO + ":", e);
                 }
                 try {
+                    log.info("handle dsr----------");
                     DDsr obj = info.handelDsr();
-                    dd.insert(obj);
+                    if (null != obj)
+                        dd.insert(obj);
                 } catch (Exception e) {
                     log.error(KafkaProperties.TOPIC_SHOP_INFO + ":", e);
                 }
