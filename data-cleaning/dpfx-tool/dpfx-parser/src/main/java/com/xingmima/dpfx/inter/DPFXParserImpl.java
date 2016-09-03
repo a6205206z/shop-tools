@@ -4,7 +4,6 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.xingmima.dpfx.parser.tags.EmTag;
 import com.xingmima.dpfx.parser.tags.StrongTag;
-import com.xingmima.dpfx.util.Tool;
 import org.apache.commons.lang.StringUtils;
 import org.htmlparser.Node;
 import org.htmlparser.Parser;
@@ -19,8 +18,6 @@ import java.io.*;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.StringTokenizer;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * html源码解析工具
