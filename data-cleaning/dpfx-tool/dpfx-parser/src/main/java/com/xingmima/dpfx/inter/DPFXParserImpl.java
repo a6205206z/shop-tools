@@ -1,10 +1,7 @@
 package com.xingmima.dpfx.inter;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
-import com.xingmima.dpfx.parser.ShopInfo;
-import com.xingmima.dpfx.parser.tags.EmTag;
-import com.xingmima.dpfx.parser.tags.StrongTag;
+import com.xingmima.dpfx.tags.EmTag;
+import com.xingmima.dpfx.tags.StrongTag;
 import org.apache.commons.lang.StringUtils;
 import org.htmlparser.Node;
 import org.htmlparser.Parser;
@@ -17,10 +14,8 @@ import org.htmlparser.util.ParserException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.*;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.StringTokenizer;
 
 /**
  * html源码解析工具

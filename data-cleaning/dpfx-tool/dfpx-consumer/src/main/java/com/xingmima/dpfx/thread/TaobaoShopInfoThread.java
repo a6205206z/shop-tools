@@ -7,25 +7,23 @@ import com.xingmima.dpfx.entity.DDsr;
 import com.xingmima.dpfx.entity.DRated;
 import com.xingmima.dpfx.entity.DShop;
 import com.xingmima.dpfx.kafka.KafkaProperties;
-import com.xingmima.dpfx.parser.ShopInfo;
+import com.xingmima.dpfx.parser.TaobaoShopInfo;
 import kafka.consumer.ConsumerIterator;
 import kafka.consumer.KafkaStream;
 import kafka.message.MessageAndMetadata;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.sql.SQLException;
-
 /**
  * xingmima.com Inc.
  * Copyright (c) 2004-2016 All Rights Reserved.
  *
  * @author tiaotiaohu
- * @version ShopInfoThread, v 0.1
+ * @version TaobaoShopInfoThread, v 0.1
  * @date 2016/8/31 20:37
  */
-public class ShopInfoThread implements Runnable {
-    private static final Logger log = LoggerFactory.getLogger(ShopInfoThread.class);
+public class TaobaoShopInfoThread implements Runnable {
+    private static final Logger log = LoggerFactory.getLogger(TaobaoShopInfoThread.class);
     //消息流
     private KafkaStream stream;
     //数据库操作
@@ -33,7 +31,7 @@ public class ShopInfoThread implements Runnable {
     private RateDao rd = null;
     private DdsrDao dd = null;
 
-    public ShopInfoThread(KafkaStream stream) {
+    public TaobaoShopInfoThread(KafkaStream stream) {
         this.stream = stream;
         this.sd = new ShopDao();
         this.rd = new RateDao();
@@ -47,7 +45,7 @@ public class ShopInfoThread implements Runnable {
             MessageAndMetadata<String, String> c = it.next();
             log.info("----------{}-----------@startup", KafkaProperties.TOPIC_SHOP_INFO);
             /*捕获异常，继续处理*/
-            ShopInfo info = new ShopInfo(c.message()).call();
+            TaobaoShopInfo info = new TaobaoShopInfo(c.message()).call();
             if (null != info) {
                 try {
                     log.info("handle shop info----------");

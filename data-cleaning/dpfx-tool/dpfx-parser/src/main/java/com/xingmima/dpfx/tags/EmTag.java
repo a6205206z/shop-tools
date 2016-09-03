@@ -1,4 +1,4 @@
-package com.xingmima.dpfx.parser.tags;
+package com.xingmima.dpfx.tags;
 
 import org.htmlparser.tags.CompositeTag;
 

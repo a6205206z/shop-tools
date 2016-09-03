@@ -5,9 +5,8 @@ import com.alibaba.fastjson.JSONObject;
 import com.xingmima.dpfx.entity.DDsr;
 import com.xingmima.dpfx.entity.DRated;
 import com.xingmima.dpfx.entity.DShop;
-import com.xingmima.dpfx.inter.DPFXParserImpl;
 import com.xingmima.dpfx.inter.TaobaoParser;
-import com.xingmima.dpfx.parser.tags.StrongTag;
+import com.xingmima.dpfx.tags.StrongTag;
 import com.xingmima.dpfx.util.Constant;
 import com.xingmima.dpfx.util.GuidUtils;
 import com.xingmima.dpfx.util.RegexUtils;
@@ -18,8 +17,6 @@ import org.htmlparser.nodes.TagNode;
 import org.htmlparser.tags.ImageTag;
 import org.htmlparser.util.NodeList;
 import org.htmlparser.util.ParserException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
@@ -31,11 +28,11 @@ import java.util.Date;
  * Copyright (c) 2004-2016 All Rights Reserved.
  *
  * @author tiaotiaohu
- * @version ShopInfo, v 0.1
+ * @version TaobaoShopInfo, v 0.1
  * @date 2016/8/30 13:58
  */
-public class ShopInfo extends TaobaoParser {
-    public ShopInfo(String resource) {
+public class TaobaoShopInfo extends TaobaoParser {
+    public TaobaoShopInfo(String resource) {
         super(resource);
         if (!StringUtils.isEmpty(resource) && resource.length() > 200) {
             log.info(resource.substring(0, 100));
@@ -44,7 +41,7 @@ public class ShopInfo extends TaobaoParser {
         }
     }
 
-    public ShopInfo call() {
+    public TaobaoShopInfo call() {
         boolean isOk = this.initSpiderShop();
         if (!isOk) {
             log.error("format error==", Constant.HTML_FORMAT_ERROR);
@@ -294,7 +291,7 @@ public class ShopInfo extends TaobaoParser {
 //            String res = HttpUtil.get4("https://rate.taobao.com/user-rate-f07ef4944ee3876030f6f5b4186767b6.htm?spm=2013.1.1000126.2.pUZ5CK", "GBK");
 //            res = "11111111111|20027371|西红柿|bbb|" + res;
             String res = readHtmlFile("d://file//shopinfo.html", "GBK");
-            ShopInfo dox = new ShopInfo(res).call();
+            TaobaoShopInfo dox = new TaobaoShopInfo(res).call();
 
 //            DShop obj = dox.handleShopInfo();
 //            new ShopDao().insert(obj);
