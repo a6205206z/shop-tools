@@ -1,5 +1,6 @@
 package com.xingmima.dpfx.entity;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class DRated {
@@ -79,9 +80,14 @@ public class DRated {
     private Integer agoBad;
 
     /**
-     * 抓取时间
+     * 好评率
      */
-    private Date created;
+    private BigDecimal rating;
+
+    /**
+     * 更新时间
+     */
+    private Date updated;
 
     /**
      * 标识列
@@ -324,19 +330,35 @@ public class DRated {
     }
 
     /**
-     * 抓取时间
-     * @return created 抓取时间
+     * 好评率
+     * @return rating 好评率
      */
-    public Date getCreated() {
-        return created;
+    public BigDecimal getRating() {
+        return rating;
     }
 
     /**
-     * 抓取时间
-     * @param created 抓取时间
+     * 好评率
+     * @param rating 好评率
      */
-    public void setCreated(Date created) {
-        this.created = created;
+    public void setRating(BigDecimal rating) {
+        this.rating = rating;
+    }
+
+    /**
+     * 更新时间
+     * @return updated 更新时间
+     */
+    public Date getUpdated() {
+        return updated;
+    }
+
+    /**
+     * 更新时间
+     * @param updated 更新时间
+     */
+    public void setUpdated(Date updated) {
+        this.updated = updated;
     }
 
     @Override
@@ -360,7 +382,8 @@ public class DRated {
         sb.append(", agoGood=").append(agoGood);
         sb.append(", agoNeutral=").append(agoNeutral);
         sb.append(", agoBad=").append(agoBad);
-        sb.append(", created=").append(created);
+        sb.append(", rating=").append(rating);
+        sb.append(", updated=").append(updated);
         sb.append("]");
         return sb.toString();
     }

@@ -30,13 +30,17 @@ public class RegexUtils {
         return null;
     }
 
+    public static String getInteger(String text) {
+        return findText(text, "\\d+");
+    }
+
     /**
      * Gets numbers.
      *
      * @param text the text
      * @return the numbers
      */
-    public static String getNumbers(String text) {
+    public static String getDecimal(String text) {
         return findText(text, "\\d+.\\d+");
     }
 }

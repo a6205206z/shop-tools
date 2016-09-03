@@ -25,6 +25,11 @@ public class DDsr {
     private BigDecimal detail;
 
     /**
+     * 高、低、持
+     */
+    private String dCss;
+
+    /**
      * 高、低、持平行业评分：计算规则：(店铺得分-同行业平均分)/(同行业店铺最高得分-同行业平均分)
      */
     private BigDecimal dHy;
@@ -40,6 +45,11 @@ public class DDsr {
     private BigDecimal seller;
 
     /**
+     * 高、低、持
+     */
+    private String sCss;
+
+    /**
      * 高、低、持平行业评分：计算规则：(店铺得分-同行业平均分)/(同行业店铺最高得分-同行业平均分)
      */
     private BigDecimal sHy;
@@ -53,6 +63,11 @@ public class DDsr {
      * 卖家发货的速度
      */
     private BigDecimal rating;
+
+    /**
+     * 高、低、持
+     */
+    private String rCss;
 
     /**
      * 高、低、持平行业评分：计算规则：(店铺得分-同行业平均分)/(同行业店铺最高得分-同行业平均分)
@@ -134,6 +149,22 @@ public class DDsr {
     }
 
     /**
+     * 高、低、持
+     * @return d_css 高、低、持
+     */
+    public String getdCss() {
+        return dCss;
+    }
+
+    /**
+     * 高、低、持
+     * @param dCss 高、低、持
+     */
+    public void setdCss(String dCss) {
+        this.dCss = dCss == null ? null : dCss.trim();
+    }
+
+    /**
      * 高、低、持平行业评分：计算规则：(店铺得分-同行业平均分)/(同行业店铺最高得分-同行业平均分)
      * @return d_hy 高、低、持平行业评分：计算规则：(店铺得分-同行业平均分)/(同行业店铺最高得分-同行业平均分)
      */
@@ -182,6 +213,22 @@ public class DDsr {
     }
 
     /**
+     * 高、低、持
+     * @return s_css 高、低、持
+     */
+    public String getsCss() {
+        return sCss;
+    }
+
+    /**
+     * 高、低、持
+     * @param sCss 高、低、持
+     */
+    public void setsCss(String sCss) {
+        this.sCss = sCss == null ? null : sCss.trim();
+    }
+
+    /**
      * 高、低、持平行业评分：计算规则：(店铺得分-同行业平均分)/(同行业店铺最高得分-同行业平均分)
      * @return s_hy 高、低、持平行业评分：计算规则：(店铺得分-同行业平均分)/(同行业店铺最高得分-同行业平均分)
      */
@@ -227,6 +274,22 @@ public class DDsr {
      */
     public void setRating(BigDecimal rating) {
         this.rating = rating;
+    }
+
+    /**
+     * 高、低、持
+     * @return r_css 高、低、持
+     */
+    public String getrCss() {
+        return rCss;
+    }
+
+    /**
+     * 高、低、持
+     * @param rCss 高、低、持
+     */
+    public void setrCss(String rCss) {
+        this.rCss = rCss == null ? null : rCss.trim();
     }
 
     /**
@@ -287,12 +350,15 @@ public class DDsr {
         sb.append(", date=").append(date);
         sb.append(", shopid=").append(shopid);
         sb.append(", detail=").append(detail);
+        sb.append(", dCss=").append(dCss);
         sb.append(", dHy=").append(dHy);
         sb.append(", dJson=").append(dJson);
         sb.append(", seller=").append(seller);
+        sb.append(", sCss=").append(sCss);
         sb.append(", sHy=").append(sHy);
         sb.append(", sJson=").append(sJson);
         sb.append(", rating=").append(rating);
+        sb.append(", rCss=").append(rCss);
         sb.append(", rHy=").append(rHy);
         sb.append(", rJson=").append(rJson);
         sb.append(", created=").append(created);

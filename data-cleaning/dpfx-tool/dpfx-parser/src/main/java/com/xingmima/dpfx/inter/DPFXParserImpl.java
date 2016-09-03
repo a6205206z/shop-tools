@@ -2,10 +2,13 @@ package com.xingmima.dpfx.inter;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.xingmima.dpfx.parser.tags.EmTag;
+import com.xingmima.dpfx.parser.tags.StrongTag;
 import com.xingmima.dpfx.util.Tool;
 import org.apache.commons.lang.StringUtils;
 import org.htmlparser.Node;
 import org.htmlparser.Parser;
+import org.htmlparser.PrototypicalNodeFactory;
 import org.htmlparser.filters.*;
 import org.htmlparser.nodes.TagNode;
 import org.htmlparser.tags.LinkTag;
@@ -103,6 +106,12 @@ public class DPFXParserImpl implements DPFXParser {
         if (!StringUtils.isEmpty(this.resource)) {
             parser = new Parser(this.resource);
             parser.setEncoding(parser.getEncoding());
+
+            /*注册自定义标签*/
+            PrototypicalNodeFactory p = new PrototypicalNodeFactory();
+            p.registerTag(new StrongTag());
+            p.registerTag(new EmTag());
+            parser.setNodeFactory(p);
         } else {
             throw new ParserException("param resource empty");
         }
