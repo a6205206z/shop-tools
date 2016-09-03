@@ -1,23 +1,21 @@
 package com.xingmima.dpfx.inter;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
-import com.xingmima.dpfx.util.Tool;
+import com.xingmima.dpfx.tags.EmTag;
+import com.xingmima.dpfx.tags.StrongTag;
 import org.apache.commons.lang.StringUtils;
 import org.htmlparser.Node;
 import org.htmlparser.Parser;
+import org.htmlparser.PrototypicalNodeFactory;
 import org.htmlparser.filters.*;
 import org.htmlparser.nodes.TagNode;
 import org.htmlparser.tags.LinkTag;
 import org.htmlparser.util.NodeList;
 import org.htmlparser.util.ParserException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import java.io.*;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.StringTokenizer;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * html源码解析工具
@@ -30,6 +28,7 @@ import java.util.regex.Pattern;
  * @date 2016/8/30 13:56
  */
 public class DPFXParserImpl implements DPFXParser {
+    public final static Logger log = LoggerFactory.getLogger(DPFXParserImpl.class);
     /**
      * 按id页面过滤参数
      */
@@ -42,7 +41,7 @@ public class DPFXParserImpl implements DPFXParser {
     /**
      * 待分析源码临时储存对象
      */
-    private String resource = null;
+    protected String resource = null;
 
     /**
      * html解析工具类
@@ -69,30 +68,6 @@ public class DPFXParserImpl implements DPFXParser {
         this.parser = null;
     }
 
-    /**
-     * 自定义参数
-     */
-    private String param = null;
-    /**
-     * 轮次
-     **/
-    private Long runid = null;
-    /**
-     * 店铺ID
-     */
-    private Long shopid = null;
-
-    public String getParam() {
-        return param;
-    }
-
-    public Long getRunid() {
-        return runid;
-    }
-
-    public Long getShopid() {
-        return shopid;
-    }
 
     /**
      * 初始化html解析工具
@@ -103,6 +78,12 @@ public class DPFXParserImpl implements DPFXParser {
         if (!StringUtils.isEmpty(this.resource)) {
             parser = new Parser(this.resource);
             parser.setEncoding(parser.getEncoding());
+
+            /*注册自定义标签*/
+            PrototypicalNodeFactory p = new PrototypicalNodeFactory();
+            p.registerTag(new StrongTag());
+            p.registerTag(new EmTag());
+            parser.setNodeFactory(p);
         } else {
             throw new ParserException("param resource empty");
         }
@@ -201,75 +182,5 @@ public class DPFXParserImpl implements DPFXParser {
         } finally {
             parser = null;
         }
-    }
-
-    /**
-     * 添加url前缀
-     *
-     * @param url
-     * @return
-     */
-    public String httpPrefix(String url) {
-        if (url != null && !url.startsWith("http:")) {
-            return "http:" + url;
-        }
-        return url;
-    }
-
-    /**
-     * 初始化原始数据
-     *
-     * @return
-     */
-    public boolean initSpiderShop() {
-        StringTokenizer st = new StringTokenizer(this.resource, "|");
-        try {
-            while (st.hasMoreTokens()) {
-                this.param = st.nextToken();
-                break;
-            }
-        } finally {
-        }
-        if (StringUtils.isEmpty(this.param)) {
-            return false;
-        }
-        JSONObject obj = (JSONObject) JSON.parse(this.getParam());
-        this.runid = obj.getLong("runid");
-        this.shopid = obj.getLong("shopid");
-        if (null == runid || null == shopid) {
-            return false;
-        }
-
-        /*整理html数据*/
-        int s = (this.param + "|").length();
-        this.resource = this.resource.substring(s);
-        return true;
-    }
-
-    /**
-     * Read html file string.
-     *
-     * @param filePath    the file path
-     * @param charsetName the charset name
-     * @return the string
-     */
-    public static String readHtmlFile(String filePath, String charsetName) {
-        StringBuffer str = new StringBuffer();
-        try {
-            File file = new File(filePath);
-            if (file.isFile() && file.exists()) { //判断文件是否存在
-                InputStreamReader read = new InputStreamReader(
-                        new FileInputStream(file), charsetName);//考虑到编码格式
-                BufferedReader br = new BufferedReader(read);
-                String line = null;
-                while ((line = br.readLine()) != null) {
-                    str.append(line);
-                }
-                read.close();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return str.toString();
     }
 }

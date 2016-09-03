@@ -2,7 +2,7 @@ package com.xingmima.dpfx.client;
 
 import com.xingmima.dpfx.kafka.KafkaConsumer;
 import com.xingmima.dpfx.kafka.KafkaProperties;
-import com.xingmima.dpfx.thread.ShopInfoThread;
+import com.xingmima.dpfx.thread.TaobaoShopInfoThread;
 import kafka.consumer.KafkaStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,14 +31,13 @@ public class TaobaoShopInfoConsumer extends KafkaConsumer {
     }
 
     public void consumer() {
-        log.info("{} consumer start!", KafkaProperties.TOPIC_SHOP_INFO);
         Map<String, List<KafkaStream<String, String>>> consumerMap = this.createMessageStreams(KafkaProperties.TOPIC_SHOP_INFO, KafkaProperties.TOPIC_SHOP_INFO_THREADS);
 
         executor = Executors.newFixedThreadPool(KafkaProperties.TOPIC_SHOP_INFO_THREADS);
 
         List<KafkaStream<String, String>> streams = consumerMap.get(KafkaProperties.TOPIC_SHOP_INFO);
         for (final KafkaStream stream : streams) {
-            executor.submit(new ShopInfoThread(stream));
+            executor.submit(new TaobaoShopInfoThread(stream));
         }
     }
 }
