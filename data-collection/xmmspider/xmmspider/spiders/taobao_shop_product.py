@@ -76,23 +76,63 @@ class TaobaoShopProductSpider(Spider):
         item = response.meta['item']
         item['product_url'] = response.url
         item['product_page'] = response.body_as_unicode()
+        sib_url = None
 
+        # find stock and selled qty.
+        pattern = re.compile(
+            '\'//detailskip.taobao.com/service/(.*?)\'', re.S)
+        match = re.search(pattern, response.body_as_unicode())
+        if match:
+            sib_url = 'https://detailskip.taobao.com/service/%s&callback=onSibRequestSuccess' % match.group(
+                1)
+
+        # find counter
         pattern = re.compile('\'//count.taobao.com/(.*?)\'', re.S)
         match = re.search(pattern, response.body_as_unicode())
         if match:
-            counter_url = 'https://count.taobao.com/%s&callback=jsonp86' % match.group(1)
+            counter_url = 'https://count.taobao.com/%s&callback=jsonp86' % match.group(
+                1)
             return Request(counter_url,
                            callback=self.parse_counter,
+                           meta={'cookiejar': 1,
+                                 'item': item,
+                                 'shop_url': response.meta['shop_url'],
+                                 'sib_url': sib_url,
+                                 'item_url': response.url
+                                 },
+                           )
+        else:
+            item['counter_page'] = "0"
+            if sib_url != None:
+                return Request(sib_url,
+                               callback=self.parse_sib,
+                               headers={"Referer": response.url},
+                               meta={'cookiejar': 1,
+                                     'item': item,
+                                     'shop_url': response.meta['shop_url'],
+                                     },
+                               )
+            else:
+                item['sib_page'] = "0"
+                return item
+
+    def parse_counter(self, response):
+        item = response.meta['item']
+        item['counter_page'] = response.body_as_unicode()
+        if response.meta['sib_url'] != None:
+            return Request(response.meta['sib_url'],
+                           callback=self.parse_sib,
+                           headers={"Referer": response.meta['item_url']},
                            meta={'cookiejar': 1,
                                  'item': item,
                                  'shop_url': response.meta['shop_url'],
                                  },
                            )
         else:
-            item['counter_page'] = "nothing"
+            item['sib_page'] = "0"
             return item
 
-    def parse_counter(self, response):
+    def parse_sib(self, response):
         item = response.meta['item']
-        item['counter_page'] = response.body_as_unicode()
+        item['sib_page'] = response.body_as_unicode()
         return item

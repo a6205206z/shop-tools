@@ -11,6 +11,10 @@
     <properties>
         <spring-boot-starter-web-version>1.3.6.RELEASE</spring-boot-starter-web-version>
         <spring-boot-configuration-processor-version>1.3.6.RELEASE</spring-boot-configuration-processor-version>
+        <dbutils_version>1.5</dbutils_version>
+        <dbcp_version>1.4</dbcp_version>
+        <lang_version>2.6</lang_version>
+        <mysql_connector_version>5.1.38</mysql_connector_version>
     </properties>
     <dependencies>
         <dependency>
@@ -27,6 +31,26 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
             <version>${spring-boot-configuration-processor-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>${lang_version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-dbutils</groupId>
+            <artifactId>commons-dbutils</artifactId>
+            <version>${dbutils_version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-dbcp</groupId>
+            <artifactId>commons-dbcp</artifactId>
+            <version>${dbcp_version}</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql_connector_version}</version>
         </dependency>
     </dependencies>
 </project>

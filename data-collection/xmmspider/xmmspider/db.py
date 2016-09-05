@@ -55,7 +55,7 @@ class TaobaoShopMySQLAccess:
         except MySQLdb.Error, e:
             logger.fatal("%d:%s" % (e.args[0], e.args[1]))
 
-    def update_spider_job(self, runid, spider_name, status):
+    def update_spider_job(self, runid, spider_name, stats):
         conn = MySQLdb.connect(
             host=self.db_host,
             user=self.db_user,
@@ -65,9 +65,9 @@ class TaobaoShopMySQLAccess:
         )
         try:
             cursor = conn.cursor()
-            values = [status, runid, spider_name]
+            values = [stats, runid, spider_name]
             cursor.execute(
-                'update t_job set finishtime=now(),status="%s" where runid=%s and spider_name="%s"', values)
+                'update t_job set finishtime=now(),stats="%s" where runid=%s and spider_name="%s"', values)
             conn.commit()
             cursor.close()
         except MySQLdb.Error, e:
