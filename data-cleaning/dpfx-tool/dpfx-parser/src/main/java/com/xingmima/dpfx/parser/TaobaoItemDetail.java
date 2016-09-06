@@ -221,11 +221,11 @@ public class TaobaoItemDetail extends TaobaoParser {
             try {
                 JSONObject j = JSON.parseObject(sib);
                 if (log.isDebugEnabled()) {
-                    log.debug("data:===" + j.get("data"));
+                    log.debug("data:==={}", j.get("data"));
                 }
                 data = (JSONObject) j.get("data");
                 if (data == null) {
-                    log.error("===item sib->data is null===");
+                    log.error("===item sib->data is null===", producturl);
                     return null;
                 }
             } catch (Exception e) {
@@ -233,7 +233,7 @@ public class TaobaoItemDetail extends TaobaoParser {
             }
             this.handelPrices(item, data);
         } else {
-            log.error("===sib->data is null===", numiid);
+            log.error("===sib->data is null===", producturl);
             return null;  //数据不全，返回
         }
 
@@ -335,7 +335,7 @@ public class TaobaoItemDetail extends TaobaoParser {
      */
     private BigDecimal getPostFee(JSONObject data) {
         BigDecimal postfee = BigDecimal.ZERO;
-        JSONObject deliveryFee = (JSONObject) data.getJSONObject("deliveryFee");
+        JSONObject deliveryFee = data.getJSONObject("deliveryFee");
         if (null != deliveryFee) {
             JSONObject dfdata = deliveryFee.getJSONObject("data");
             if (null != dfdata) {
