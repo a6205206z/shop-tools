@@ -19,14 +19,11 @@ class TaobaoShopProductSpider(Spider):
     def start_requests(self):
         if self.shop_urls != None:
             for url in self.shop_urls:
-                item = TaobaoShopProductItem()
-                item["shop_id"] = url["shop_id"]
-                item["run_id"] = self.run_id
                 request = Request(url["url"] + 'search.htm',
                                   callback=self.find_products_htm,
                                   meta={'cookiejar': 1,
-                                        'item': item,
                                         'shop_url': url["url"],
+                                        'shop_id': url["shop_id"],
                                         },
                                   )
                 yield request
@@ -38,8 +35,8 @@ class TaobaoShopProductSpider(Spider):
             return Request(response.meta['shop_url'] + Helper.encode_utf8(products_htm),
                            callback=self.page_process,
                            meta={'cookiejar': 1,
-                                 'item': response.meta['item'],
                                  'shop_url': response.meta['shop_url'],
+                                 'shop_id': response.meta['shop_id'],
                                  },
                            )
 
@@ -53,8 +50,8 @@ class TaobaoShopProductSpider(Spider):
                 request = Request(p_url,
                                   callback=self.parse_product_item,
                                   meta={'cookiejar': 1,
-                                        'item': response.meta['item'],
                                         'shop_url': response.meta['shop_url'],
+                                        'shop_id': response.meta['shop_id'],
                                         },
                                   )
                 yield request
@@ -66,17 +63,35 @@ class TaobaoShopProductSpider(Spider):
             request = Request(url,
                               callback=self.find_products_htm,
                               meta={'cookiejar': 1,
-                                    'item': response.meta['item'],
                                     'shop_url': response.meta['shop_url'],
+                                    'shop_id': response.meta['shop_id'],
                                     },
                               )
             yield request
 
     def parse_product_item(self, response):
-        item = response.meta['item']
+        item = TaobaoShopProductItem()
+        item["shop_id"] = response.meta['shop_id']
+        item["run_id"] = self.run_id
         item['product_url'] = response.url
         item['product_page'] = response.body_as_unicode()
-        sib_url = None
+
+        # find counter
+        pattern = re.compile('\'//count.taobao.com/(.*?)\'', re.S)
+        match = re.search(pattern, response.body_as_unicode())
+        if match:
+            counter_url = 'https://count.taobao.com/%s&callback=jsonp86' % match.group(
+                1)
+            yield Request(counter_url,
+                          callback=self.parse_counter,
+                          errback=self.errback,
+                          headers={"Referer": response.url},
+                          meta={'cookiejar': 1,
+                                'item': item,
+                                },
+                          )
+        else:
+            item['counter_page'] = "0"
 
         # find stock and selled qty.
         pattern = re.compile(
@@ -85,54 +100,67 @@ class TaobaoShopProductSpider(Spider):
         if match:
             sib_url = 'https://detailskip.taobao.com/service/%s&callback=onSibRequestSuccess' % match.group(
                 1)
+            yield Request(sib_url,
+                          callback=self.parse_sib,
+                          errback=self.errback,
+                          headers={"Referer": response.url},
+                          meta={'cookiejar': 1,
+                                'item': item,
+                                },
+                          )
+        else:
+            item['sib_page'] = "0"
 
-        # find counter
-        pattern = re.compile('\'//count.taobao.com/(.*?)\'', re.S)
+        # find detail counter
+        pattern = re.compile(
+            '\'//rate.taobao.com/detailCount.do\?itemId=(.*?)\'', re.S)
         match = re.search(pattern, response.body_as_unicode())
         if match:
-            counter_url = 'https://count.taobao.com/%s&callback=jsonp86' % match.group(
+            detail_count_url = 'https://rate.taobao.com/detailCount.do?itemId=%s&callback=jsonp100' % match.group(
                 1)
-            return Request(counter_url,
-                           callback=self.parse_counter,
-                           meta={'cookiejar': 1,
-                                 'item': item,
-                                 'shop_url': response.meta['shop_url'],
-                                 'sib_url': sib_url,
-                                 'item_url': response.url
-                                 },
-                           )
+            yield Request(detail_count_url,
+                          callback=self.parse_comment_count,
+                          errback=self.errback,
+                          headers={"Referer": response.url},
+                          meta={'cookiejar': 1,
+                                'item': item,
+                                },
+                          )
+
         else:
-            item['counter_page'] = "0"
-            if sib_url != None:
-                return Request(sib_url,
-                               callback=self.parse_sib,
-                               headers={"Referer": response.url},
-                               meta={'cookiejar': 1,
-                                     'item': item,
-                                     'shop_url': response.meta['shop_url'],
-                                     },
-                               )
-            else:
-                item['sib_page'] = "0"
-                return item
+            item['comment_count'] = "0"
+
+        if self.can_return_item(item):
+            yield item
 
     def parse_counter(self, response):
         item = response.meta['item']
         item['counter_page'] = response.body_as_unicode()
-        if response.meta['sib_url'] != None:
-            return Request(response.meta['sib_url'],
-                           callback=self.parse_sib,
-                           headers={"Referer": response.meta['item_url']},
-                           meta={'cookiejar': 1,
-                                 'item': item,
-                                 'shop_url': response.meta['shop_url'],
-                                 },
-                           )
-        else:
-            item['sib_page'] = "0"
+        if self.can_return_item(item):
             return item
 
     def parse_sib(self, response):
         item = response.meta['item']
         item['sib_page'] = response.body_as_unicode()
+        if self.can_return_item(item):
+            return item
+
+    def parse_comment_count(self, response):
+        item = response.meta['item']
+        item['comment_count'] = response.body_as_unicode()
+        if self.can_return_item(item):
+            return item
+
+    def can_return_item(self, item):
+        return 'sib_page' in item and 'counter_page' in item and 'comment_count' in item
+
+    def errback(self, failure):
+        response = failure.value.response
+        item = response.meta['item']
+        if 'sib_page' not in item:
+            item['sib_page'] = "0"
+        if 'counter_page' not in item:
+            item['counter_page'] = "0"
+        if 'comment_count' not in item:
+            item['comment_count'] = "0"
         return item

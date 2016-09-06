@@ -16,13 +16,19 @@ import java.sql.SQLException;
  *
  * @author cean
  * @version com.xmm.spider.webapi.controllers, v 0.1
- * @date 16/9/5.
+ * @date 16 /9/5.
  */
 @RestController
 @RequestMapping("/job")
 public class JobController {
     private static final Logger LOGGER = LoggerFactory.getLogger(JobController.class);
 
+    /**
+     * Get one job job.
+     *
+     * @param runid the runid
+     * @return the job
+     */
     @Deprecated
     @RequestMapping(value = "/get", method = RequestMethod.GET)
     public Job GetOneJob(int runid){

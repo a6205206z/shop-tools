@@ -35,6 +35,11 @@ COOKIES_DEBUG = True
 
 DOWNLOAD_DELAY = 3
 
+#retry
+RETRY_ENABLED = True
+RETRY_TIMES = 5
+
+
 USER_AGENTS = [
     "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; AcooBrowser; .NET CLR 1.1.4322; .NET CLR 2.0.50727)",
     "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0; Acoo Browser; SLCC1; .NET CLR 2.0.50727; Media Center PC 5.0; .NET CLR 3.0.04506)",
@@ -65,7 +70,7 @@ ITEM_PIPELINES = {
 
 DOWNLOADER_MIDDLEWARES = {
     #'xmmspider.middlewares.RandomUserAgent': 1,
-    'xmmspider.middlewares.ProxyMiddleware': 100,
+    #'xmmspider.middlewares.ProxyMiddleware': 100,
     'scrapy.downloadermiddlewares.cookies.CookiesMiddleware': 700,
     'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware': 810,
 }
@@ -73,5 +78,5 @@ DOWNLOADER_MIDDLEWARES = {
 EXTENSIONS = {
     'xmmspider.extensions.SpiderRequestInterval': 499,
     'xmmspider.extensions.TaobaoShopDataMySQLLoader': 500,
-     'xmmspider.extensions.SpiderMonitor': 501,
+    'xmmspider.extensions.SpiderMonitor': 501,
 }

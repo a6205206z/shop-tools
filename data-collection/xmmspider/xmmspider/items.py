@@ -23,4 +23,5 @@ class TaobaoShopProductItem(scrapy.Item):
     product_page = scrapy.Field()
     counter_page = scrapy.Field()
     sib_page = scrapy.Field()
+    comment_count = scrapy.Field()
     pass
