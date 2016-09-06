@@ -17,6 +17,11 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 @EnableConfigurationProperties({SpiderConfig.class})
 @SpringBootApplication(scanBasePackages={"com.xmm.spider.webapi"})
 public class Bootstrap {
+    /**
+     * Main.
+     *
+     * @param args the args
+     */
     public static void main(String args[]){
         SpringApplication.run(Bootstrap.class, args);
     }
