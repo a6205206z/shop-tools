@@ -65,11 +65,13 @@ ITEM_PIPELINES = {
 
 DOWNLOADER_MIDDLEWARES = {
     #'xmmspider.middlewares.RandomUserAgent': 1,
-    #'xmmspider.middlewares.ProxyMiddleware': 100,
+    'xmmspider.middlewares.ProxyMiddleware': 100,
     'scrapy.downloadermiddlewares.cookies.CookiesMiddleware': 700,
     'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware': 810,
 }
 
 EXTENSIONS = {
+    'xmmspider.extensions.SpiderRequestInterval': 499,
     'xmmspider.extensions.TaobaoShopDataMySQLLoader': 500,
+     'xmmspider.extensions.SpiderMonitor': 501,
 }

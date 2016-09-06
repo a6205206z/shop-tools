@@ -2,6 +2,9 @@
 # -*- coding: utf-8 -*-
 
 import random
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 class RandomUserAgent(object):
@@ -38,6 +41,7 @@ class ProxyMiddleware(object):
         http_method = http_method.lower()
         request.meta['proxy'] = "%s://%s:%s" % (http_method, ip, port)
 
+        logger.info("Use proxy:%s" % request.meta['proxy'])
         # if user_pass is not None:
         #    request.meta['proxy'] = "%s://%s:%s" % (http_method,ip,port)
         #    encoded_user_pass = base64.encodestring(user_pass)

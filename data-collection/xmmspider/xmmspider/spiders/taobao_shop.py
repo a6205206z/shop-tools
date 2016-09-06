@@ -11,7 +11,6 @@ class TaobaoShopSpider(Spider):
     name = "TaobaoShopSpider"
     shop_urls = []
 
-
     def __init__(self, ri=None, *args, **kwargs):
         super(TaobaoShopSpider, self).__init__(*args, **kwargs)
         self.run_id = ri
