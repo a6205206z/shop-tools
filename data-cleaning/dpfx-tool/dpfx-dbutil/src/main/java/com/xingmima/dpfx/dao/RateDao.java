@@ -11,7 +11,7 @@ import java.sql.SQLException;
  * Copyright (c) 2004-2016 All Rights Reserved.
  *
  * @author tiaotiaohu
- * @version ShopDao, v 0.1
+ * @version RateDao, v 0.1
  * @date 2016/9/1 15:22
  */
 public class RateDao {

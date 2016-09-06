@@ -25,39 +25,74 @@ public class DItems {
     private String title;
 
     /**
+     * 商品URL
+     */
+    private String itemUrl;
+
+    /**
      * 图片链接地址
      */
-    private String url;
+    private String picUrl;
 
     /**
-     * 商品价格
+     * 一级类目
      */
-    private String price;
+    private Long rcid;
 
     /**
-     * 销售价格
+     * 二级类目
      */
-    private String salesPrice;
+    private Long cid;
 
     /**
-     * 销售量
+     * 市场价格:1.0~100
      */
-    private Integer salesNum;
+    private String markerPrice;
+
+    /**
+     * 销售价格，优惠后售价
+     */
+    private BigDecimal price;
+
+    /**
+     * 邮费
+     */
+    private BigDecimal postFee;
+
+    /**
+     * 促销优惠信息
+     */
+    private String promoInfo;
+
+    /**
+     * 近30天交易成功数
+     */
+    private Integer soldTotalCount;
+
+    /**
+     * 近30天确认收货数
+     */
+    private Integer confirmGoodsCount;
+
+    /**
+     * 累计评论数
+     */
+    private Integer totalRatedCount;
 
     /**
      * 销售额
      */
-    private Long totalSales;
+    private BigDecimal totalSales;
 
     /**
      * 库存
      */
-    private Integer stockNum;
+    private Integer stock;
 
     /**
-     * 商品评价人数
+     * 可销售库存
      */
-    private Integer ratedNum;
+    private Integer sellablequantity;
 
     /**
      * 自动上架时间
@@ -70,9 +105,9 @@ public class DItems {
     private Date delistTime;
 
     /**
-     * 创建时间
+     * 商品创建时间
      */
-    private Date created;
+    private Date addTime;
 
     /**
      * 是否下架 true 正常 false下架
@@ -80,14 +115,19 @@ public class DItems {
     private Boolean isDelisting;
 
     /**
-     * 商品动态评分
+     * 商品动态评分(天猫)
      */
     private BigDecimal rated;
 
     /**
-     * 维护时间
+     * 更新时间
      */
     private Date updated;
+
+    /**
+     * sku库存明细
+     */
+    private String skuStock;
 
     /**
      * 标识列
@@ -154,74 +194,186 @@ public class DItems {
     }
 
     /**
-     * 图片链接地址
-     * @return url 图片链接地址
+     * 商品URL
+     * @return item_url 商品URL
      */
-    public String getUrl() {
-        return url;
+    public String getItemUrl() {
+        return itemUrl;
+    }
+
+    /**
+     * 商品URL
+     * @param itemUrl 商品URL
+     */
+    public void setItemUrl(String itemUrl) {
+        this.itemUrl = itemUrl == null ? null : itemUrl.trim();
     }
 
     /**
      * 图片链接地址
-     * @param url 图片链接地址
+     * @return pic_url 图片链接地址
      */
-    public void setUrl(String url) {
-        this.url = url == null ? null : url.trim();
+    public String getPicUrl() {
+        return picUrl;
     }
 
     /**
-     * 商品价格
-     * @return price 商品价格
+     * 图片链接地址
+     * @param picUrl 图片链接地址
      */
-    public String getPrice() {
+    public void setPicUrl(String picUrl) {
+        this.picUrl = picUrl == null ? null : picUrl.trim();
+    }
+
+    /**
+     * 一级类目
+     * @return rcid 一级类目
+     */
+    public Long getRcid() {
+        return rcid;
+    }
+
+    /**
+     * 一级类目
+     * @param rcid 一级类目
+     */
+    public void setRcid(Long rcid) {
+        this.rcid = rcid;
+    }
+
+    /**
+     * 二级类目
+     * @return cid 二级类目
+     */
+    public Long getCid() {
+        return cid;
+    }
+
+    /**
+     * 二级类目
+     * @param cid 二级类目
+     */
+    public void setCid(Long cid) {
+        this.cid = cid;
+    }
+
+    /**
+     * 市场价格:1.0~100
+     * @return marker_price 市场价格:1.0~100
+     */
+    public String getMarkerPrice() {
+        return markerPrice;
+    }
+
+    /**
+     * 市场价格:1.0~100
+     * @param markerPrice 市场价格:1.0~100
+     */
+    public void setMarkerPrice(String markerPrice) {
+        this.markerPrice = markerPrice == null ? null : markerPrice.trim();
+    }
+
+    /**
+     * 销售价格，优惠后售价
+     * @return price 销售价格，优惠后售价
+     */
+    public BigDecimal getPrice() {
         return price;
     }
 
     /**
-     * 商品价格
-     * @param price 商品价格
+     * 销售价格，优惠后售价
+     * @param price 销售价格，优惠后售价
      */
-    public void setPrice(String price) {
-        this.price = price == null ? null : price.trim();
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
 
     /**
-     * 销售价格
-     * @return sales_price 销售价格
+     * 邮费
+     * @return post_fee 邮费
      */
-    public String getSalesPrice() {
-        return salesPrice;
+    public BigDecimal getPostFee() {
+        return postFee;
     }
 
     /**
-     * 销售价格
-     * @param salesPrice 销售价格
+     * 邮费
+     * @param postFee 邮费
      */
-    public void setSalesPrice(String salesPrice) {
-        this.salesPrice = salesPrice == null ? null : salesPrice.trim();
+    public void setPostFee(BigDecimal postFee) {
+        this.postFee = postFee;
     }
 
     /**
-     * 销售量
-     * @return sales_num 销售量
+     * 促销优惠信息
+     * @return promo_info 促销优惠信息
      */
-    public Integer getSalesNum() {
-        return salesNum;
+    public String getPromoInfo() {
+        return promoInfo;
     }
 
     /**
-     * 销售量
-     * @param salesNum 销售量
+     * 促销优惠信息
+     * @param promoInfo 促销优惠信息
      */
-    public void setSalesNum(Integer salesNum) {
-        this.salesNum = salesNum;
+    public void setPromoInfo(String promoInfo) {
+        this.promoInfo = promoInfo == null ? null : promoInfo.trim();
+    }
+
+    /**
+     * 近30天交易成功数
+     * @return sold_total_count 近30天交易成功数
+     */
+    public Integer getSoldTotalCount() {
+        return soldTotalCount;
+    }
+
+    /**
+     * 近30天交易成功数
+     * @param soldTotalCount 近30天交易成功数
+     */
+    public void setSoldTotalCount(Integer soldTotalCount) {
+        this.soldTotalCount = soldTotalCount;
+    }
+
+    /**
+     * 近30天确认收货数
+     * @return confirm_goods_count 近30天确认收货数
+     */
+    public Integer getConfirmGoodsCount() {
+        return confirmGoodsCount;
+    }
+
+    /**
+     * 近30天确认收货数
+     * @param confirmGoodsCount 近30天确认收货数
+     */
+    public void setConfirmGoodsCount(Integer confirmGoodsCount) {
+        this.confirmGoodsCount = confirmGoodsCount;
+    }
+
+    /**
+     * 累计评论数
+     * @return total_rated_count 累计评论数
+     */
+    public Integer getTotalRatedCount() {
+        return totalRatedCount;
+    }
+
+    /**
+     * 累计评论数
+     * @param totalRatedCount 累计评论数
+     */
+    public void setTotalRatedCount(Integer totalRatedCount) {
+        this.totalRatedCount = totalRatedCount;
     }
 
     /**
      * 销售额
      * @return total_sales 销售额
      */
-    public Long getTotalSales() {
+    public BigDecimal getTotalSales() {
         return totalSales;
     }
 
@@ -229,40 +381,40 @@ public class DItems {
      * 销售额
      * @param totalSales 销售额
      */
-    public void setTotalSales(Long totalSales) {
+    public void setTotalSales(BigDecimal totalSales) {
         this.totalSales = totalSales;
     }
 
     /**
      * 库存
-     * @return stock_num 库存
+     * @return stock 库存
      */
-    public Integer getStockNum() {
-        return stockNum;
+    public Integer getStock() {
+        return stock;
     }
 
     /**
      * 库存
-     * @param stockNum 库存
+     * @param stock 库存
      */
-    public void setStockNum(Integer stockNum) {
-        this.stockNum = stockNum;
+    public void setStock(Integer stock) {
+        this.stock = stock;
     }
 
     /**
-     * 商品评价人数
-     * @return rated_num 商品评价人数
+     * 可销售库存
+     * @return sellableQuantity 可销售库存
      */
-    public Integer getRatedNum() {
-        return ratedNum;
+    public Integer getSellablequantity() {
+        return sellablequantity;
     }
 
     /**
-     * 商品评价人数
-     * @param ratedNum 商品评价人数
+     * 可销售库存
+     * @param sellablequantity 可销售库存
      */
-    public void setRatedNum(Integer ratedNum) {
-        this.ratedNum = ratedNum;
+    public void setSellablequantity(Integer sellablequantity) {
+        this.sellablequantity = sellablequantity;
     }
 
     /**
@@ -298,19 +450,19 @@ public class DItems {
     }
 
     /**
-     * 创建时间
-     * @return created 创建时间
+     * 商品创建时间
+     * @return add_time 商品创建时间
      */
-    public Date getCreated() {
-        return created;
+    public Date getAddTime() {
+        return addTime;
     }
 
     /**
-     * 创建时间
-     * @param created 创建时间
+     * 商品创建时间
+     * @param addTime 商品创建时间
      */
-    public void setCreated(Date created) {
-        this.created = created;
+    public void setAddTime(Date addTime) {
+        this.addTime = addTime;
     }
 
     /**
@@ -330,35 +482,51 @@ public class DItems {
     }
 
     /**
-     * 商品动态评分
-     * @return rated 商品动态评分
+     * 商品动态评分(天猫)
+     * @return rated 商品动态评分(天猫)
      */
     public BigDecimal getRated() {
         return rated;
     }
 
     /**
-     * 商品动态评分
-     * @param rated 商品动态评分
+     * 商品动态评分(天猫)
+     * @param rated 商品动态评分(天猫)
      */
     public void setRated(BigDecimal rated) {
         this.rated = rated;
     }
 
     /**
-     * 维护时间
-     * @return updated 维护时间
+     * 更新时间
+     * @return updated 更新时间
      */
     public Date getUpdated() {
         return updated;
     }
 
     /**
-     * 维护时间
-     * @param updated 维护时间
+     * 更新时间
+     * @param updated 更新时间
      */
     public void setUpdated(Date updated) {
         this.updated = updated;
+    }
+
+    /**
+     * sku库存明细
+     * @return sku_stock sku库存明细
+     */
+    public String getSkuStock() {
+        return skuStock;
+    }
+
+    /**
+     * sku库存明细
+     * @param skuStock sku库存明细
+     */
+    public void setSkuStock(String skuStock) {
+        this.skuStock = skuStock == null ? null : skuStock.trim();
     }
 
     @Override
@@ -371,19 +539,27 @@ public class DItems {
         sb.append(", date=").append(date);
         sb.append(", numiid=").append(numiid);
         sb.append(", title=").append(title);
-        sb.append(", url=").append(url);
+        sb.append(", itemUrl=").append(itemUrl);
+        sb.append(", picUrl=").append(picUrl);
+        sb.append(", rcid=").append(rcid);
+        sb.append(", cid=").append(cid);
+        sb.append(", markerPrice=").append(markerPrice);
         sb.append(", price=").append(price);
-        sb.append(", salesPrice=").append(salesPrice);
-        sb.append(", salesNum=").append(salesNum);
+        sb.append(", postFee=").append(postFee);
+        sb.append(", promoInfo=").append(promoInfo);
+        sb.append(", soldTotalCount=").append(soldTotalCount);
+        sb.append(", confirmGoodsCount=").append(confirmGoodsCount);
+        sb.append(", totalRatedCount=").append(totalRatedCount);
         sb.append(", totalSales=").append(totalSales);
-        sb.append(", stockNum=").append(stockNum);
-        sb.append(", ratedNum=").append(ratedNum);
+        sb.append(", stock=").append(stock);
+        sb.append(", sellablequantity=").append(sellablequantity);
         sb.append(", listTime=").append(listTime);
         sb.append(", delistTime=").append(delistTime);
-        sb.append(", created=").append(created);
+        sb.append(", addTime=").append(addTime);
         sb.append(", isDelisting=").append(isDelisting);
         sb.append(", rated=").append(rated);
         sb.append(", updated=").append(updated);
+        sb.append(", skuStock=").append(skuStock);
         sb.append("]");
         return sb.toString();
     }

@@ -40,15 +40,14 @@ public class TaobaoShopInfoThread implements Runnable {
 
     @Override
     public void run() {
+        log.info("----------{}-----------@startup", KafkaProperties.TOPIC_SHOP_INFO);
         ConsumerIterator<String, String> it = stream.iterator();
         while (it.hasNext()) {
             MessageAndMetadata<String, String> c = it.next();
-            log.info("----------{}-----------@startup", KafkaProperties.TOPIC_SHOP_INFO);
             /*捕获异常，继续处理*/
             TaobaoShopInfo info = new TaobaoShopInfo(c.message()).call();
             if (null != info) {
                 try {
-                    log.info("handle shop info----------");
                     DShop obj = info.handleShopInfo();
                     if (null != obj)
                         sd.insert(obj);
@@ -56,7 +55,6 @@ public class TaobaoShopInfoThread implements Runnable {
                     log.error(KafkaProperties.TOPIC_SHOP_INFO + ":", e);
                 }
                 try {
-                    log.info("handle rating----------");
                     DRated obj = info.handleRating();
                     if (null != obj)
                         rd.insert(obj);
@@ -64,7 +62,6 @@ public class TaobaoShopInfoThread implements Runnable {
                     log.error(KafkaProperties.TOPIC_SHOP_INFO + ":", e);
                 }
                 try {
-                    log.info("handle dsr----------");
                     DDsr obj = info.handelDsr();
                     if (null != obj)
                         dd.insert(obj);

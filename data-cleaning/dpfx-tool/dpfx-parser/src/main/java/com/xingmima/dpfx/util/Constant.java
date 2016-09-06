@@ -9,5 +9,6 @@ package com.xingmima.dpfx.util;
  * @date 2016/9/1 14:30
  */
 public class Constant {
+    //数据初始化格式错误
     public static final int HTML_FORMAT_ERROR = 101;
 }

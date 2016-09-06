@@ -25,7 +25,7 @@ public class KafkaProperties {
     public static final String TOPIC_SHOP_INFO = "taobao.shop.info";
     public static final Integer TOPIC_SHOP_INFO_THREADS = 1;
 
-    public static final String TOPIC_ITEM_DETAIL = "taobao.item.info";
+    public static final String TOPIC_ITEM_DETAIL = "taobao.shop.product";
     public static final Integer TOPIC_ITEM_DETAIL_THREADS = 1;
 
     private KafkaProperties() {

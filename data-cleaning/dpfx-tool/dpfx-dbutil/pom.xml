@@ -40,7 +40,7 @@
             </resource>
         </resources>
 
-        <!-- <plugins>
+        <plugins>
                  <plugin>
                      <groupId>org.mybatis.generator</groupId>
                      <artifactId>mybatis-generator-maven-plugin</artifactId>
@@ -80,6 +80,6 @@
                          </dependency>
                      </dependencies>
                  </plugin>
-             </plugins>-->
+             </plugins>
     </build>
 </project>

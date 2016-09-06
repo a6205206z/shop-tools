@@ -3,7 +3,6 @@ package com.xingmima.dpfx.client;
 import com.xingmima.dpfx.kafka.KafkaConsumer;
 import com.xingmima.dpfx.kafka.KafkaProperties;
 import com.xingmima.dpfx.thread.TaobaoItemDetailThread;
-import com.xingmima.dpfx.thread.TaobaoShopInfoThread;
 import kafka.consumer.KafkaStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

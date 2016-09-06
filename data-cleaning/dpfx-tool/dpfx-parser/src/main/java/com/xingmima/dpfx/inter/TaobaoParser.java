@@ -30,7 +30,7 @@ public class TaobaoParser extends DPFXJsonParserImpl {
     private Long shopid = null;
 
     public String getParam() {
-        return param;
+        return this.param;
     }
 
     public Long getRunid() {
@@ -62,14 +62,20 @@ public class TaobaoParser extends DPFXJsonParserImpl {
         if (StringUtils.isEmpty(this.param)) {
             return false;
         }
-        JSONObject obj = (JSONObject) JSON.parse(this.getParam());
-        if (null != obj) {
-            try {
-                this.runid = obj.getLong("runid");
-                this.shopid = obj.getLong("shopid");
-            } catch (Exception e) {
-                log.error("init faild----", obj.toJSONString());
+
+        log.error(this.param);
+        try {
+            JSONObject obj = (JSONObject) JSON.parse(this.param);
+            if (null != obj) {
+                try {
+                    this.runid = obj.getLong("runid");
+                    this.shopid = obj.getLong("shopid");
+                } catch (Exception e) {
+                    log.error("{} {}", obj.toJSONString(), e);
+                }
             }
+        } catch (Exception e) {
+            log.error("init spider shop:", e);
         }
         if (null == runid || null == shopid) {
             return false;

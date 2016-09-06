@@ -44,7 +44,7 @@ public class TaobaoShopInfo extends TaobaoParser {
     public TaobaoShopInfo call() {
         boolean isOk = this.initSpiderShop();
         if (!isOk) {
-            log.error("format error==", Constant.HTML_FORMAT_ERROR);
+            log.error("===format error===", Constant.HTML_FORMAT_ERROR);
             return null;
         }
         return this;
@@ -65,7 +65,7 @@ public class TaobaoShopInfo extends TaobaoParser {
         /*店名*/
         JSONObject obj = (JSONObject) JSON.parse(this.getParam());
         try {
-            info.setTitle(URLDecoder.decode(obj.getString("shopname"), "UTF-8"));
+            info.setTitle(URLDecoder.decode(obj.getString("shopname"), UTF8));
         } catch (UnsupportedEncodingException e) {
             throw e;
         }
@@ -80,7 +80,6 @@ public class TaobaoShopInfo extends TaobaoParser {
             NodeList sell = list.elementAt(0).getChildren();
             for (int j = 0; j < sell.size(); j++) {
                 if (sell.elementAt(j).toPlainTextString().indexOf("卖家") >= 0) {
-                    System.out.println(sell.elementAt(j).toPlainTextString());
                     info.setCreditScore(Long.parseLong(RegexUtils.getInteger(sell.elementAt(j).toPlainTextString())));
 
                     /*信用图标*/
@@ -95,7 +94,7 @@ public class TaobaoShopInfo extends TaobaoParser {
                 }
             }
         } else {
-            log.info("not found seller {} credit info!", this.getShopid());
+            log.info("not found seller '{}' credit info!", this.getShopid());
         }
 
         try {

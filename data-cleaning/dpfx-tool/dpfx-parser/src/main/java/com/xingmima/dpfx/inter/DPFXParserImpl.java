@@ -37,6 +37,8 @@ public class DPFXParserImpl implements DPFXParser {
      * 按class页面过滤参数
      */
     protected static final String FILTER_CLASS = "class";
+    /*编码*/
+    protected static final String UTF8 = "UTF-8";
 
     /**
      * 待分析源码临时储存对象

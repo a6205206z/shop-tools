@@ -3,6 +3,8 @@ package com.xingmima.dpfx.dao;
 import com.xingmima.dpfx.db.Dbutils;
 import com.xingmima.dpfx.entity.DDsr;
 import com.xingmima.dpfx.entity.DShop;
+import org.apache.commons.dbutils.handlers.BeanHandler;
+import org.apache.commons.dbutils.handlers.BeanListHandler;
 
 import java.sql.SQLException;
 
@@ -11,7 +13,7 @@ import java.sql.SQLException;
  * Copyright (c) 2004-2016 All Rights Reserved.
  *
  * @author tiaotiaohu
- * @version ShopDao, v 0.1
+ * @version DdsrDao, v 0.1
  * @date 2016/9/1 15:22
  */
 public class DdsrDao {
