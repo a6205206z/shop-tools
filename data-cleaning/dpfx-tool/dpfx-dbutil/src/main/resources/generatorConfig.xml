@@ -65,7 +65,7 @@
         <!--enableCountByExample等设为true, mapper配置文件加入sql的where条件查询, -->
         <!--enableCountByExample等设为false时,  就不会生成对应的Example类了.-->
         <!-- domainObjectName="AdminLogs" -->
-        <table schema="ams" tableName="d_items"
+        <table schema="ams" tableName="d_item_num"
                delimitIdentifiers="true" delimitAllColumns="true"
                enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
                enableSelectByExample="false" selectByExampleQueryId="false">

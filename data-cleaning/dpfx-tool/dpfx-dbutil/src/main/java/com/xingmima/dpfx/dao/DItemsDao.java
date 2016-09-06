@@ -15,11 +15,11 @@ import java.sql.SQLException;
  * @date 2016/9/6 14:22
  */
 public class DItemsDao {
-    private static final String insertSql = "INSERT INTO `d_items` (`id`,`date`,`numiid`,`title`,`item_url`,`pic_url`,`rcid`,`cid`,`marker_price`,`price`,`post_fee`,`promo_info`,`sold_total_count`,`confirm_goods_count`,`total_rated_count`,`total_sales`,`stock`,`sellableQuantity`,`sku_stock`,`list_time`,`delist_time`,`add_time`,`is_delisting`,`rated`,`updated`) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    private static final String insertSql = "INSERT INTO `d_items` (`id`,`date`,`shopid`,`numiid`,`title`,`item_url`,`pic_url`,`rcid`,`cid`,`marker_price`,`price`,`post_fee`,`promo_info`,`sold_total_count`,`confirm_goods_count`,`total_rated_count`,`total_sales`,`stock`,`sellableQuantity`,`sku_stock`,`list_time`,`delist_time`,`add_time`,`is_delisting`,`rated`,`updated`) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
     public void insert(DItems obj) throws SQLException {
         Dbutils.update(insertSql, new Object[]{
-                obj.getId(), obj.getDate(), obj.getNumiid(),
+                obj.getId(), obj.getDate(), obj.getShopid(), obj.getNumiid(),
                 obj.getTitle(), obj.getItemUrl(), obj.getPicUrl(), obj.getRcid(), obj.getCid(),
                 obj.getMarkerPrice(), obj.getPrice(), obj.getPostFee(),
                 obj.getPromoInfo(), obj.getSoldTotalCount(), obj.getConfirmGoodsCount(),

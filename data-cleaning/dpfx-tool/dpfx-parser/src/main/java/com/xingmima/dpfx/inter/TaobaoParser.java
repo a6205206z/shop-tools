@@ -63,7 +63,7 @@ public class TaobaoParser extends DPFXJsonParserImpl {
             return false;
         }
 
-        log.error(this.param);
+        log.info(this.param);
         try {
             JSONObject obj = (JSONObject) JSON.parse(this.param);
             if (null != obj) {

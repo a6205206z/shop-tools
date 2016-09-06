@@ -15,11 +15,11 @@ import java.sql.SQLException;
  * @date 2016/9/6 14:45
  */
 public class DItemsNumDao {
-    private static final String insertSql = "INSERT INTO `d_item_num` (`id`,`date`,`numiid`,`s_favorite`,`i_favorite_num`,`i_share_num`,`i_pv`,`updated`) VALUES(?,?,?,?,?,?,?,?)";
+    private static final String insertSql = "INSERT INTO `d_item_num` (`id`,`date`,`shopid`,`numiid`,`s_favorite`,`i_favorite_num`,`i_share_num`,`i_pv`,`updated`) VALUES(?,?,?,?,?,?,?,?,?)";
 
     public void insert(DItemNum obj) throws SQLException {
         Dbutils.update(insertSql, new Object[]{
-                obj.getId(), obj.getDate(), obj.getNumiid(),
+                obj.getId(), obj.getDate(), obj.getShopid(), obj.getNumiid(),
                 obj.getsFavorite(), obj.getiFavoriteNum(), obj.getiShareNum(), obj.getiPv(),
                 obj.getUpdated()
         });

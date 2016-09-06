@@ -78,11 +78,16 @@ public class TaobaoItemDetail extends TaobaoParser {
         if (StringUtils.isEmpty(counterapi)) {
             log.error("===counter api is null.====");
             return null;
+        } else {
+            if (log.isDebugEnabled()) {
+                log.debug(counterapi);
+            }
         }
 
         DItemNum item = new DItemNum();
         item.setId(GuidUtils.getGuid32());
         item.setDate(this.getRunid());
+        item.setShopid(this.getShopid());
         item.setNumiid(numiid);
         item.setUpdated(new Date());
 
@@ -128,17 +133,26 @@ public class TaobaoItemDetail extends TaobaoParser {
                 producturl = (URLDecoder.decode(obj.getString("producturl"), UTF8));
                 numiid = RegexUtils.getTaobaoId(producturl);
             }
+
             if (null == numiid) {
                 log.error("===not found item id==={}", producturl);
                 return null;
             }
+
             //累计评论量
             if (null != obj.getString("comment_count")) {
                 detailCount = (URLDecoder.decode(obj.getString("comment_count"), UTF8));
+            } else {
+                log.info("===not found item detail count==={}", producturl);
+                return null;
             }
+
             //Json串
             if (null != obj.getString("sib")) {
                 sib = (URLDecoder.decode(obj.getString("sib"), UTF8)).replace("onSibRequestSuccess(", "").replace(");", "");
+            } else {
+                log.info("===not found item sib-api==={}", producturl);
+                return null;
             }
         } catch (UnsupportedEncodingException e) {
             throw e;
@@ -147,6 +161,7 @@ public class TaobaoItemDetail extends TaobaoParser {
         DItems item = new DItems();
         item.setId(GuidUtils.getGuid32());
         item.setDate(this.getRunid());
+        item.setShopid(this.getShopid());
         item.setNumiid(numiid);
         item.setItemUrl(producturl);
         item.setUpdated(new Date());
@@ -156,6 +171,8 @@ public class TaobaoItemDetail extends TaobaoParser {
                 "tb-main-title");
         if (null != list && list.size() > 0) {
             item.setTitle(((HeadingTag) list.elementAt(0)).getAttribute("data-title"));
+        } else {
+            log.info("item title is null:{}", producturl);
         }
 
         /*商品主图*/
@@ -167,6 +184,8 @@ public class TaobaoItemDetail extends TaobaoParser {
             } else {
                 item.setPicUrl(this.httpPrefix(img.getAttribute("src").trim()));
             }
+        } else {
+            log.info("item images is null:{}", producturl);
         }
 
         //上下架时间
@@ -178,6 +197,8 @@ public class TaobaoItemDetail extends TaobaoParser {
             c.add(Calendar.DAY_OF_YEAR, 7);
             item.setListTime(listtime);
             item.setDelistTime(c.getTime());
+        } else {
+            log.info("item dbst is null:{}", producturl);
         }
 
         //类目
@@ -197,93 +218,23 @@ public class TaobaoItemDetail extends TaobaoParser {
             if (log.isDebugEnabled()) {
                 log.debug(sib);
             }
-
-            //HashMap m = JSON.parseObject(sib, LinkedHashMap.class, Feature.OrderedField);
-
             JSONObject data = null;
             try {
                 JSONObject j = JSON.parseObject(sib);
                 if (log.isDebugEnabled()) {
-                    log.debug("data:===" + j.get("data"));
+                    log.debug("data:==={}", j.get("data"));
                 }
                 data = (JSONObject) j.get("data");
                 if (data == null) {
-                    log.error("===item sib data is null===");
+                    log.error("===item sib->data is null===", producturl);
                     return null;
                 }
             } catch (Exception e) {
                 throw e;
             }
-
-            if (null != data.getString("price")) {
-                log.debug("price={}", data.getString("price"));
-                item.setMarkerPrice(data.getString("price").replaceAll("\\r\\s\\n", ""));
-            } else {
-                item.setMarkerPrice(BigDecimal.ZERO.toString());
-            }
-
-            //库存
-            JSONObject dynStock = (JSONObject) data.get("dynStock");
-            if (null != dynStock) {
-                if (log.isDebugEnabled()) {
-                    log.debug(dynStock.toJSONString());
-                    log.debug("stock={}", dynStock.getInteger("stock").toString());
-                    log.debug("sellableQuantity={}", dynStock.getInteger("sellableQuantity").toString());
-                }
-                item.setStock(dynStock.getInteger("stock"));
-                item.setSellablequantity(dynStock.getInteger("sellableQuantity"));
-                //库存明细
-                if (null != dynStock.get("sku")) {
-                    item.setSkuStock(dynStock.get("sku").toString());
-                }
-            }
-
-            //销售量
-            JSONObject soldQuantity = (JSONObject) data.getJSONObject("soldQuantity");
-            if (null != soldQuantity) {
-                if (log.isDebugEnabled()) {
-                    log.debug("soldTotalCount={}", soldQuantity.getInteger("soldTotalCount").toString());
-                    log.debug("confirmGoodsCount={}", soldQuantity.getInteger("confirmGoodsCount").toString());
-                }
-
-                item.setSoldTotalCount(soldQuantity.getInteger("soldTotalCount"));
-                item.setConfirmGoodsCount(soldQuantity.getInteger("confirmGoodsCount"));
-            }
-
-            //获取优惠信息及价格
-            BigDecimal price = null;
-            JSONObject promotion = (JSONObject) data.getJSONObject("promotion");
-            if (null != promotion) {
-                JSONObject promoData = promotion.getJSONObject("promoData");
-                if (null != promoData) {
-                    JSONArray def = promoData.getJSONArray("def");
-                    if (null != def && def.size() > 0) {
-                        JSONObject defObj = (JSONObject) def.get(0);
-                        if (null != defObj && null != defObj.get("price")) {
-                            price = new BigDecimal(defObj.get("price").toString());
-                        }
-                        if (null != defObj && null != defObj.get("type")) {
-                            item.setPromoInfo(defObj.get("type").toString());
-                        }
-                    }
-                }
-            }
-            if (price == null) {
-                //区间价
-                if (item.getMarkerPrice().indexOf("-") > 0) {
-                    price = new BigDecimal(item.getMarkerPrice().split("-")[0].trim());
-                } else {
-                    price = new BigDecimal(item.getMarkerPrice());
-                }
-            }
-            //销售金额
-            item.setPrice(price);
-            item.setTotalSales(item.getPrice().multiply(new BigDecimal(item.getSoldTotalCount())));
-
-            //邮费
-            item.setPostFee(this.getPostFee(data));
+            this.handelPrices(item, data);
         } else {
-            log.error("===sib data is null===", numiid);
+            log.error("===sib->data is null===", producturl);
             return null;  //数据不全，返回
         }
 
@@ -296,8 +247,85 @@ public class TaobaoItemDetail extends TaobaoParser {
                 item.setTotalRatedCount(0);
             }
         }
+
         log.info(item.toString());
         return item;
+    }
+
+    private void handelPrices(DItems item, JSONObject data) {
+        //HashMap m = JSON.parseObject(sib, LinkedHashMap.class, Feature.OrderedField);
+        if (null != data.getString("price")) {
+            log.debug("price={}", data.getString("price"));
+            item.setMarkerPrice(data.getString("price").replaceAll("\\r\\s\\n", ""));
+        } else {
+            item.setMarkerPrice(BigDecimal.ZERO.toString());
+        }
+
+        //库存
+        JSONObject dynStock = (JSONObject) data.get("dynStock");
+        if (null != dynStock) {
+            if (log.isDebugEnabled()) {
+                log.debug(dynStock.toJSONString());
+                log.debug("stock={}", dynStock.getInteger("stock").toString());
+                log.debug("sellableQuantity={}", dynStock.getInteger("sellableQuantity").toString());
+            }
+            item.setStock(dynStock.getInteger("stock"));
+            item.setSellablequantity(dynStock.getInteger("sellableQuantity"));
+            //库存明细
+            if (null != dynStock.get("sku")) {
+                item.setSkuStock(dynStock.get("sku").toString());
+            }
+        }
+
+        //销售量
+        JSONObject soldQuantity = (JSONObject) data.getJSONObject("soldQuantity");
+        if (null != soldQuantity) {
+            if (log.isDebugEnabled()) {
+                log.debug("soldTotalCount={}", soldQuantity.getInteger("soldTotalCount").toString());
+                log.debug("confirmGoodsCount={}", soldQuantity.getInteger("confirmGoodsCount").toString());
+            }
+
+            item.setSoldTotalCount(soldQuantity.getInteger("soldTotalCount"));
+            item.setConfirmGoodsCount(soldQuantity.getInteger("confirmGoodsCount"));
+        }
+
+        //获取优惠信息及价格
+        BigDecimal price = null;
+        JSONObject promotion = (JSONObject) data.getJSONObject("promotion");
+        if (null != promotion) {
+            JSONObject promoData = promotion.getJSONObject("promoData");
+            if (null != promoData) {
+                JSONArray def = promoData.getJSONArray("def");
+                if (null != def && def.size() > 0) {
+                    if (log.isDebugEnabled()) {
+                        log.debug(def.toJSONString());
+                    }
+                    JSONObject defObj = (JSONObject) def.get(0);
+                    if (null != defObj && null != defObj.get("price")) {
+                        price = new BigDecimal(defObj.get("price").toString());
+                    }
+                    if (null != defObj && null != defObj.get("type")) {
+                        item.setPromoInfo(defObj.get("type").toString());
+                    }
+                }
+            }
+        }
+
+        if (price == null) {
+            //区间价
+            if (item.getMarkerPrice().indexOf("-") > 0) {
+                price = new BigDecimal(item.getMarkerPrice().split("-")[0].trim());
+            } else {
+                price = new BigDecimal(item.getMarkerPrice());
+            }
+        }
+
+        //销售金额
+        item.setPrice(price);
+        item.setTotalSales(item.getPrice().multiply(new BigDecimal(item.getSoldTotalCount())));
+
+        //邮费
+        item.setPostFee(this.getPostFee(data));
     }
 
     /**
@@ -308,7 +336,7 @@ public class TaobaoItemDetail extends TaobaoParser {
      */
     private BigDecimal getPostFee(JSONObject data) {
         BigDecimal postfee = BigDecimal.ZERO;
-        JSONObject deliveryFee = (JSONObject) data.getJSONObject("deliveryFee");
+        JSONObject deliveryFee = data.getJSONObject("deliveryFee");
         if (null != deliveryFee) {
             JSONObject dfdata = deliveryFee.getJSONObject("data");
             if (null != dfdata) {

@@ -2,7 +2,7 @@
 <configuration debug="true">
     <property name="app_name" value="dpfx-tool"/>
     <property name="log_home" value="logs"/>
-    <property name="encoder_pattern" value="%d{yyyy/MM/dd-HH:mm:ss.SSS} %level [%thread] %logger{80} - %msg%n"/>
+    <property name="encoder_pattern" value="%d{yyyy/MM/dd-HH:mm:ss.SSS} %level [%thread] %logger{80}[%file:%line] - %msg%n"/>
     <contextName>${app_name}</contextName>
 
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">

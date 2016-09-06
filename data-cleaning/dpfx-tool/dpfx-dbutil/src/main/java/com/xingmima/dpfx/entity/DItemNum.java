@@ -14,6 +14,11 @@ public class DItemNum {
     private Long date;
 
     /**
+     * 店铺ID
+     */
+    private Long shopid;
+
+    /**
      * 商品ID
      */
     private Long numiid;
@@ -73,6 +78,22 @@ public class DItemNum {
      */
     public void setDate(Long date) {
         this.date = date;
+    }
+
+    /**
+     * 店铺ID
+     * @return shopid 店铺ID
+     */
+    public Long getShopid() {
+        return shopid;
+    }
+
+    /**
+     * 店铺ID
+     * @param shopid 店铺ID
+     */
+    public void setShopid(Long shopid) {
+        this.shopid = shopid;
     }
 
     /**
@@ -179,6 +200,7 @@ public class DItemNum {
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
         sb.append(", date=").append(date);
+        sb.append(", shopid=").append(shopid);
         sb.append(", numiid=").append(numiid);
         sb.append(", sFavorite=").append(sFavorite);
         sb.append(", iFavoriteNum=").append(iFavoriteNum);

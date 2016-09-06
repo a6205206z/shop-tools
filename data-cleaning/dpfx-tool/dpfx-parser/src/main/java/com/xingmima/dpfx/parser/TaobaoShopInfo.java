@@ -10,6 +10,7 @@ import com.xingmima.dpfx.tags.StrongTag;
 import com.xingmima.dpfx.util.Constant;
 import com.xingmima.dpfx.util.GuidUtils;
 import com.xingmima.dpfx.util.RegexUtils;
+import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
 import org.htmlparser.filters.HasAttributeFilter;
 import org.htmlparser.filters.NodeClassFilter;
@@ -75,6 +76,9 @@ public class TaobaoShopInfo extends TaobaoParser {
             NodeList sell = list.elementAt(0).getChildren();
             for (int j = 0; j < sell.size(); j++) {
                 if (sell.elementAt(j).toPlainTextString().indexOf("卖家") >= 0) {
+                    if (log.isDebugEnabled()) {
+                        log.debug(sell.toHtml());
+                    }
                     info.setCreditScore(Long.parseLong(RegexUtils.getInteger(sell.elementAt(j).toPlainTextString())));
 
                     /*信用图标*/
@@ -83,9 +87,6 @@ public class TaobaoShopInfo extends TaobaoParser {
                     if (null != tmp && tmp.size() > 0) {
                         info.setCreditLevel(this.httpPrefix(((ImageTag) tmp.elementAt(0)).getAttribute("src")));
                     }
-                }
-                if (log.isDebugEnabled()) {
-                    log.debug(sell.elementAt(j).toHtml());
                 }
             }
         } else {
@@ -128,6 +129,8 @@ public class TaobaoShopInfo extends TaobaoParser {
         NodeList list = this.extractAllNodesThatMatch(FILTER_CLASS, "tb-rate-ico-bg ico-seller");
         if (null != list && list.size() > 0) {
             return new BigDecimal(RegexUtils.getDecimal(list.elementAt(0).toPlainTextString().trim()));
+        } else {
+            log.info("not found seller '{}' rating info!", this.getShopid());
         }
         return BigDecimal.ZERO;
     }
@@ -146,6 +149,9 @@ public class TaobaoShopInfo extends TaobaoParser {
             back[0] = Integer.parseInt(list.elementAt(2).toPlainTextString().trim());
             back[1] = Integer.parseInt(list.elementAt(3).toPlainTextString().trim());
         }
+        if (log.isDebugEnabled()) {
+            log.debug("rating:{}", ArrayUtils.toString(back));
+        }
         list = null;
         return back;
     }
@@ -161,7 +167,7 @@ public class TaobaoShopInfo extends TaobaoParser {
         /*检查模块是否存在*/
         NodeList list = this.extractAllNodesThatMatch(FILTER_CLASS, "rate-box box-his-rate");
         if (list == null || list.size() <= 0) {
-            log.info("not found box-his-rate!==={}", this.getShopid());
+            log.info("===not found box-his-rate!==={}", this.getShopid());
             return null;
         }
 
@@ -226,6 +232,9 @@ public class TaobaoShopInfo extends TaobaoParser {
             back[2] = Integer.parseInt(list.elementAt(2).toPlainTextString().trim());
             back[3] = Integer.parseInt(list.elementAt(3).toPlainTextString().trim());
         }
+        if (log.isDebugEnabled()) {
+            log.debug("rating:{}", ArrayUtils.toString(back));
+        }
         list = null;
         return back;
     }
@@ -240,7 +249,7 @@ public class TaobaoShopInfo extends TaobaoParser {
         /*检查模块是否存在*/
         NodeList list = this.extractAllNodesThatMatch(FILTER_ID, "dsr");
         if (list == null || list.size() <= 0) {
-            log.info("not found dsr!==={}", this.getShopid());
+            log.info("===not found dsr!==={}", this.getShopid());
             return null;
         }
 
@@ -250,19 +259,27 @@ public class TaobaoShopInfo extends TaobaoParser {
         dsr.setShopid(this.getShopid());
         dsr.setCreated(new Date());
 
-        if (list == null || list.size() <= 0) {
-            return null;
-        }
         //店铺评分
         NodeList self = list.extractAllNodesThatMatch(new HasAttributeFilter(FILTER_CLASS, "count"), true);
         if (self != null || self.size() >= 3) {
+            if (log.isDebugEnabled()) {
+                log.debug("count:{}", self.toHtml());
+            }
+
             dsr.setDetail(new BigDecimal(RegexUtils.getDecimal(((TagNode) self.elementAt(0)).getAttribute("title"))));
             dsr.setSeller(new BigDecimal(RegexUtils.getDecimal(((TagNode) self.elementAt(1)).getAttribute("title"))));
             dsr.setRating(new BigDecimal(RegexUtils.getDecimal(((TagNode) self.elementAt(2)).getAttribute("title"))));
+        } else {
+            log.info("===not found dsr count!==={}", this.getShopid());
         }
+
         //行业值
         NodeList percent = list.extractAllNodesThatMatch(new NodeClassFilter(StrongTag.class), true);
         if (percent != null || percent.size() >= 3) {
+            if (log.isDebugEnabled()) {
+                log.debug("percent:{}", percent.toHtml());
+            }
+
             dsr.setdHy(new BigDecimal(RegexUtils.getDecimal(percent.elementAt(0).toPlainTextString())));
             dsr.setdCss(((TagNode) percent.elementAt(0)).getAttribute("class").replace("percent", "").trim());
 
@@ -271,6 +288,9 @@ public class TaobaoShopInfo extends TaobaoParser {
 
             dsr.setrHy(new BigDecimal(RegexUtils.getDecimal(percent.elementAt(2).toPlainTextString())));
             dsr.setrCss(((TagNode) percent.elementAt(2)).getAttribute("class").replace("percent", "").trim());
+
+        } else {
+            log.info("===not found dsr percent!==={}", this.getShopid());
         }
         //店铺评分明细
 //            for (int j = 0; j < percent.size(); j++) {
@@ -287,10 +307,10 @@ public class TaobaoShopInfo extends TaobaoParser {
             String res = readHtmlFile("d://file//shopinfo.html", "GBK");
             TaobaoShopInfo dox = new TaobaoShopInfo(res).call();
 
-//            DShop obj = dox.handleShopInfo();
+            DShop obj = dox.handleShopInfo();
 //            new ShopDao().insert(obj);
 
-//            DRated obj2 = dox.handleRating();
+            DRated obj2 = dox.handleRating();
 //            new RateDao().insert(obj2);
 
             DDsr obj3 = dox.handelDsr();
