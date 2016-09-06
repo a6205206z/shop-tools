@@ -11,10 +11,18 @@ import java.sql.SQLException;
  *
  * @author cean
  * @version com.xmm.spider.webapi.dao, v 0.1
- * @date 16/9/5.
+ * @date 16 /9/5.
  */
 public class JobDao {
     private final String SELECT_ONE_JOB="SELECT runid,spider_name,starttime,finishtime,logfile,stats FROM t_job where runid = ?";
+
+    /**
+     * Get job by run id job.
+     *
+     * @param runid the runid
+     * @return the job
+     * @throws SQLException the sql exception
+     */
     public Job GetJobByRunID(int runid) throws SQLException {
         Job job = Dbutils.read(Job.class,SELECT_ONE_JOB,new Object[]{runid});
         return job;
