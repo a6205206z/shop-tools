@@ -87,6 +87,7 @@ public class TaobaoItemDetail extends TaobaoParser {
         DItemNum item = new DItemNum();
         item.setId(GuidUtils.getGuid32());
         item.setDate(this.getRunid());
+        item.setShopid(this.getShopid());
         item.setNumiid(numiid);
         item.setUpdated(new Date());
 
