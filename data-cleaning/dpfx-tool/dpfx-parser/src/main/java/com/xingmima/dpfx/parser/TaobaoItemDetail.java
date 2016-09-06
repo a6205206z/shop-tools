@@ -39,11 +39,6 @@ public class TaobaoItemDetail extends TaobaoParser {
      */
     public TaobaoItemDetail(String resource) {
         super(resource);
-        if (!StringUtils.isEmpty(resource) && resource.length() > 200) {
-            log.info(resource.substring(0, 100));
-        } else {
-            log.info(resource);
-        }
     }
 
     /**
@@ -90,7 +85,6 @@ public class TaobaoItemDetail extends TaobaoParser {
         item.setDate(this.getRunid());
         item.setNumiid(numiid);
         item.setUpdated(new Date());
-        log.info(counterapi);
 
         String c[] = counterapi.split(",");
         if (null != c && c.length > 0) {
@@ -112,7 +106,7 @@ public class TaobaoItemDetail extends TaobaoParser {
 
     private Integer formatInteger(String tmp) throws NullPointerException {
         String[] c = tmp.split(":");
-        if (tmp != null && tmp.length() > 1) {
+        if (c != null && c.length == 2) {
             return Integer.parseInt(RegexUtils.getInteger(c[1]));
         }
         throw new NullPointerException();
@@ -231,15 +225,17 @@ public class TaobaoItemDetail extends TaobaoParser {
             //库存
             JSONObject dynStock = (JSONObject) data.get("dynStock");
             if (null != dynStock) {
-                log.info(dynStock.toJSONString());
                 if (log.isDebugEnabled()) {
+                    log.debug(dynStock.toJSONString());
                     log.debug("stock={}", dynStock.getInteger("stock").toString());
                     log.debug("sellableQuantity={}", dynStock.getInteger("sellableQuantity").toString());
-                    log.debug("sku={}", dynStock.get("sku").toString());
                 }
                 item.setStock(dynStock.getInteger("stock"));
                 item.setSellablequantity(dynStock.getInteger("sellableQuantity"));
-                item.setSkuStock(dynStock.get("sku").toString());
+                //库存明细
+                if (null != dynStock.get("sku")) {
+                    item.setSkuStock(dynStock.get("sku").toString());
+                }
             }
 
             //销售量

@@ -34,11 +34,6 @@ import java.util.Date;
 public class TaobaoShopInfo extends TaobaoParser {
     public TaobaoShopInfo(String resource) {
         super(resource);
-        if (!StringUtils.isEmpty(resource) && resource.length() > 200) {
-            log.info(resource.substring(0, 100));
-        } else {
-            log.info(resource);
-        }
     }
 
     public TaobaoShopInfo call() {
