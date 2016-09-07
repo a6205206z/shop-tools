@@ -28,6 +28,13 @@ public class KafkaProperties {
     public static final String TOPIC_ITEM_DETAIL = "taobao.shop.product";
     public static final Integer TOPIC_ITEM_DETAIL_THREADS = 1;
 
+
+    public static final String TOPIC_TMALL_SHOP_INFO = "tmall.shop.info";
+    public static final Integer TOPIC_TMALL_SHOP_INFO_THREADS = 1;
+
+    public static final String TOPIC_TMALL_ITEM_DETAIL = "tmall.shop.product";
+    public static final Integer TOPIC_TMALL_ITEM_DETAIL_THREADS = 1;
+
     private KafkaProperties() {
     }
 }

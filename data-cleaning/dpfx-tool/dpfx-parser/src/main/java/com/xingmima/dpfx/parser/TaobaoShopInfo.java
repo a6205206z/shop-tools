@@ -2,19 +2,16 @@ package com.xingmima.dpfx.parser;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.xingmima.dpfx.dao.DdsrDao;
 import com.xingmima.dpfx.entity.DDsr;
 import com.xingmima.dpfx.entity.DRated;
 import com.xingmima.dpfx.entity.DShop;
 import com.xingmima.dpfx.inter.TaobaoParser;
-import com.xingmima.dpfx.tags.StrongTag;
 import com.xingmima.dpfx.util.Constant;
 import com.xingmima.dpfx.util.GuidUtils;
 import com.xingmima.dpfx.util.RegexUtils;
 import org.apache.commons.lang.ArrayUtils;
-import org.apache.commons.lang.StringUtils;
-import org.htmlparser.filters.HasAttributeFilter;
 import org.htmlparser.filters.NodeClassFilter;
-import org.htmlparser.nodes.TagNode;
 import org.htmlparser.tags.ImageTag;
 import org.htmlparser.util.NodeList;
 import org.htmlparser.util.ParserException;
@@ -30,13 +27,23 @@ import java.util.Date;
  *
  * @author tiaotiaohu
  * @version TaobaoShopInfo, v 0.1
- * @date 2016/8/30 13:58
+ * @date 2016 /8/30 13:58
  */
 public class TaobaoShopInfo extends TaobaoParser {
+    /**
+     * Instantiates a new Taobao shop info.
+     *
+     * @param resource the resource
+     */
     public TaobaoShopInfo(String resource) {
         super(resource);
     }
 
+    /**
+     * Call taobao shop info.
+     *
+     * @return the taobao shop info
+     */
     public TaobaoShopInfo call() {
         boolean isOk = this.initSpiderShop();
         if (!isOk) {
@@ -48,14 +55,13 @@ public class TaobaoShopInfo extends TaobaoParser {
 
     /**
      * 店铺信息处理
+     *
+     * @return the d shop
+     * @throws UnsupportedEncodingException the unsupported encoding exception
+     * @throws ParserException              the parser exception
      */
     public DShop handleShopInfo() throws UnsupportedEncodingException, ParserException {
-        DShop info = new DShop();
-        info.setId(GuidUtils.getGuid32());
-        info.setDate(this.getRunid());
-        info.setShopid(this.getShopid());
-        info.setUpdated(new Date());
-
+        DShop info = this.getDefaultShop();
         NodeList list = null;
 
         /*店名*/
@@ -121,8 +127,8 @@ public class TaobaoShopInfo extends TaobaoParser {
     /**
      * 好评率
      *
-     * @return
-     * @throws ParserException
+     * @return rating rating
+     * @throws ParserException the parser exception
      */
     public BigDecimal getRating() throws ParserException {
         /*好评率*/
@@ -138,9 +144,9 @@ public class TaobaoShopInfo extends TaobaoParser {
     /**
      * 获得中差评数量
      *
-     * @param val
-     * @return
-     * @throws ParserException
+     * @param val the val
+     * @return integer [ ]
+     * @throws ParserException the parser exception
      */
     public Integer[] getRating(String val) throws ParserException {
         Integer[] back = new Integer[]{0, 0};
@@ -240,81 +246,26 @@ public class TaobaoShopInfo extends TaobaoParser {
     }
 
     /**
-     * Handel dsr
+     * The entry point of application.
      *
-     * @return the d dsr
-     * @throws ParserException the parser exception
+     * @param args the input arguments
      */
-    public DDsr handelDsr() throws ParserException {
-        /*检查模块是否存在*/
-        NodeList list = this.extractAllNodesThatMatch(FILTER_ID, "dsr");
-        if (list == null || list.size() <= 0) {
-            log.info("===not found dsr!==={}", this.getShopid());
-            return null;
-        }
-
-        DDsr dsr = new DDsr();
-        dsr.setId(GuidUtils.getGuid32());
-        dsr.setDate(this.getRunid());
-        dsr.setShopid(this.getShopid());
-        dsr.setCreated(new Date());
-
-        //店铺评分
-        NodeList self = list.extractAllNodesThatMatch(new HasAttributeFilter(FILTER_CLASS, "count"), true);
-        if (self != null || self.size() >= 3) {
-            if (log.isDebugEnabled()) {
-                log.debug("count:{}", self.toHtml());
-            }
-
-            dsr.setDetail(new BigDecimal(RegexUtils.getDecimal(((TagNode) self.elementAt(0)).getAttribute("title"))));
-            dsr.setSeller(new BigDecimal(RegexUtils.getDecimal(((TagNode) self.elementAt(1)).getAttribute("title"))));
-            dsr.setRating(new BigDecimal(RegexUtils.getDecimal(((TagNode) self.elementAt(2)).getAttribute("title"))));
-        } else {
-            log.info("===not found dsr count!==={}", this.getShopid());
-        }
-
-        //行业值
-        NodeList percent = list.extractAllNodesThatMatch(new NodeClassFilter(StrongTag.class), true);
-        if (percent != null || percent.size() >= 3) {
-            if (log.isDebugEnabled()) {
-                log.debug("percent:{}", percent.toHtml());
-            }
-
-            dsr.setdHy(new BigDecimal(RegexUtils.getDecimal(percent.elementAt(0).toPlainTextString())));
-            dsr.setdCss(((TagNode) percent.elementAt(0)).getAttribute("class").replace("percent", "").trim());
-
-            dsr.setsHy(new BigDecimal(RegexUtils.getDecimal(percent.elementAt(1).toPlainTextString())));
-            dsr.setsCss(((TagNode) percent.elementAt(1)).getAttribute("class").replace("percent", "").trim());
-
-            dsr.setrHy(new BigDecimal(RegexUtils.getDecimal(percent.elementAt(2).toPlainTextString())));
-            dsr.setrCss(((TagNode) percent.elementAt(2)).getAttribute("class").replace("percent", "").trim());
-
-        } else {
-            log.info("===not found dsr percent!==={}", this.getShopid());
-        }
-        //店铺评分明细
-//            for (int j = 0; j < percent.size(); j++) {
-//                System.out.println(percent.elementAt(j).toHtml());
-//            }
-        log.info(dsr.toString());
-        return dsr;
-    }
-
     public static void main(String[] args) {
         try {
 //            String res = HttpUtil.get4("https://rate.taobao.com/user-rate-f07ef4944ee3876030f6f5b4186767b6.htm?spm=2013.1.1000126.2.pUZ5CK", "GBK");
 //            res = "11111111111|20027371|西红柿|bbb|" + res;
-            String res = readHtmlFile("d://file//shopinfo.html", "GBK");
+            String res = readHtmlFile(TaobaoShopInfo.class.getClassLoader().getResource("").getPath() + "/file/shopinfo.html", "GBK");
+
             TaobaoShopInfo dox = new TaobaoShopInfo(res).call();
 
-            DShop obj = dox.handleShopInfo();
+//            DShop obj = dox.handleShopInfo();
 //            new ShopDao().insert(obj);
 
-            DRated obj2 = dox.handleRating();
+//            DRated obj2 = dox.handleRating();
 //            new RateDao().insert(obj2);
 
             DDsr obj3 = dox.handelDsr();
-            //new DdsrDao().insert(obj3);
+            new DdsrDao().insert(obj3);
         } catch (Exception e) {
             e.printStackTrace();
         }
