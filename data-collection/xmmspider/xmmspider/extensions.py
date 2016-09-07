@@ -6,6 +6,8 @@ from scrapy import signals
 from xmmspider.db import TaobaoShopMySQLAccess
 from xmmspider.spiders.taobao_shop import TaobaoShopSpider
 from xmmspider.spiders.taobao_shop_product import TaobaoShopProductSpider
+from xmmspider.spiders.tmall_shop import TmallShopSpider
+from xmmspider.spiders.tmall_shop_product import TmallShopProductSpider
 
 logger = logging.getLogger(__name__)
 
@@ -36,6 +38,8 @@ class TaobaoShopDataMySQLLoader(object):
         logger.info("load shop urls")
         if isinstance(spider, TaobaoShopSpider) or isinstance(spider, TaobaoShopProductSpider):
             spider.shop_urls = self.access.load_shop_urls("C")
+        elif isinstance(spider, TmallShopSpider) or isinstance(spider, TmallShopProductSpider):
+            spider.shop_urls = self.access.load_shop_urls("B")
 
 
 class SpiderMonitor(object):

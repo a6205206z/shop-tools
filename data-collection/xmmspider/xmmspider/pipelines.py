@@ -4,7 +4,7 @@ import os
 import time
 import urllib
 
-from xmmspider.items import TaobaoShopInfoItem, TaobaoShopProductItem
+from xmmspider.items import TaobaoShopInfoItem, TaobaoShopProductItem, TmallShopInfoItem, TmallShopProductItem
 from pykafka import KafkaClient
 from xmmspider.helper import Helper
 
@@ -53,6 +53,7 @@ class PushDataToKafka(object):
         # should not close
 
     def process_item(self, item, spider):
+        # for taobao
         if isinstance(item, TaobaoShopInfoItem):
             topic = self.client.topics['taobao.shop.info']
             with topic.get_sync_producer() as producer:
@@ -61,6 +62,20 @@ class PushDataToKafka(object):
 
         if isinstance(item, TaobaoShopProductItem):
             topic = self.client.topics['taobao.shop.product']
+            with topic.get_sync_producer() as producer:
+                producer.produce('{"runid":"%s","shopid":"%s","producturl":"%s","counter":"%s","sib":"%s","comment_count":"%s"}|%s' % (item["run_id"], item[
+                                 "shop_id"], urllib.quote(item["product_url"]), urllib.quote(Helper.encode_utf8(item["counter_page"])), urllib.quote(Helper.encode_utf8(item["sib_page"])), urllib.quote(Helper.encode_utf8(item["comment_count"])), Helper.encode_utf8(item["product_page"])))
+
+        # for tmall
+        if isinstance(item, TmallShopInfoItem):
+            topic = self.client.topics['tmall.shop.info']
+            with topic.get_sync_producer() as producer:
+                producer.produce('{"runid":"%s","shopid":"%s","shopname":"%s"}|%s' % (item["run_id"], item[
+                                 "shop_id"], urllib.quote(Helper.encode_utf8(item["shop_name"])), Helper.encode_utf8(item["shop_info_page"])))
+
+
+        if isinstance(item, TmallShopProductItem):
+            topic = self.client.topics['tmall.shop.product']
             with topic.get_sync_producer() as producer:
                 producer.produce('{"runid":"%s","shopid":"%s","producturl":"%s","counter":"%s","sib":"%s","comment_count":"%s"}|%s' % (item["run_id"], item[
                                  "shop_id"], urllib.quote(item["product_url"]), urllib.quote(Helper.encode_utf8(item["counter_page"])), urllib.quote(Helper.encode_utf8(item["sib_page"])), urllib.quote(Helper.encode_utf8(item["comment_count"])), Helper.encode_utf8(item["product_page"])))
