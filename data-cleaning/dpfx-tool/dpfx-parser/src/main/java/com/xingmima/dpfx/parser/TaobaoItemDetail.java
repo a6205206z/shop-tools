@@ -3,25 +3,20 @@ package com.xingmima.dpfx.parser;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.xingmima.dpfx.dao.DItemsDao;
-import com.xingmima.dpfx.dao.DItemsNumDao;
-import com.xingmima.dpfx.entity.DItemNum;
 import com.xingmima.dpfx.entity.DItems;
 import com.xingmima.dpfx.inter.TaobaoParser;
 import com.xingmima.dpfx.util.Constant;
-import com.xingmima.dpfx.util.GuidUtils;
 import com.xingmima.dpfx.util.RegexUtils;
 import org.apache.commons.lang.StringUtils;
+import org.htmlparser.Tag;
+import org.htmlparser.tags.Bullet;
 import org.htmlparser.tags.HeadingTag;
-import org.htmlparser.tags.ImageTag;
 import org.htmlparser.util.NodeList;
 import org.htmlparser.util.ParserException;
 
 import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.net.URLDecoder;
-import java.util.Calendar;
-import java.util.Date;
 
 /**
  * xingmima.com Inc.
@@ -56,68 +51,6 @@ public class TaobaoItemDetail extends TaobaoParser {
     }
 
     /**
-     * Handel item num d item num.
-     *
-     * @param numiid the numiid
-     * @return the d item num
-     * @throws NullPointerException         the null pointer exception
-     * @throws UnsupportedEncodingException the unsupported encoding exception
-     */
-    public DItemNum handelItemNum(Long numiid) throws NullPointerException, UnsupportedEncodingException {
-        String counterapi = "";
-        JSONObject obj = (JSONObject) JSON.parse(this.getParam());
-        try {
-            //商品访问详情部分
-            if (null != obj.getString("counter")) {
-                counterapi = (URLDecoder.decode(obj.getString("counter"), UTF8));
-            }
-        } catch (UnsupportedEncodingException e) {
-            throw e;
-        }
-
-        if (StringUtils.isEmpty(counterapi)) {
-            log.error("===counter api is null.====");
-            return null;
-        } else {
-            if (log.isDebugEnabled()) {
-                log.debug(counterapi);
-            }
-        }
-
-        DItemNum item = new DItemNum();
-        item.setId(GuidUtils.getGuid32());
-        item.setDate(this.getRunid());
-        item.setShopid(this.getShopid());
-        item.setNumiid(numiid);
-        item.setUpdated(new Date());
-
-        String c[] = counterapi.split(",");
-        if (null != c && c.length > 0) {
-            for (int i = 0; i < c.length; i++) {
-                if (c[i].indexOf("DFX_") >= 0) { //商品分享数
-                    item.setiShareNum(formatInteger(c[i]));
-                } else if (c[i].indexOf("ICVT_") >= 0) {//商品浏览量
-                    item.setiPv(formatInteger(c[i]));
-                } else if (c[i].indexOf("SCCP_") >= 0) {//店铺收藏数
-                    item.setsFavorite(formatInteger(c[i]));
-                } else if (c[i].indexOf("ICCP_") >= 0) {//商品收藏数
-                    item.setiFavoriteNum(formatInteger(c[i]));
-                }
-            }
-        }
-        log.info(item.toString());
-        return item;
-    }
-
-    private Integer formatInteger(String tmp) throws NullPointerException {
-        String[] c = tmp.split(":");
-        if (c != null && c.length == 2) {
-            return Integer.parseInt(RegexUtils.getInteger(c[1]));
-        }
-        throw new NullPointerException();
-    }
-
-    /**
      * Handel item info.
      *
      * @return the d items
@@ -126,16 +59,16 @@ public class TaobaoItemDetail extends TaobaoParser {
      */
     public DItems handelItemInfo() throws UnsupportedEncodingException, ParserException {
         Long numiid = null;
-        String producturl = "", detailCount = "", sib = "";
+        String detailCount = "", sib = "";
         JSONObject obj = (JSONObject) JSON.parse(this.getParam());
         try {
             if (null != obj.getString("producturl")) {
-                producturl = (URLDecoder.decode(obj.getString("producturl"), UTF8));
-                numiid = RegexUtils.getTaobaoId(producturl);
+                this.producturl = (URLDecoder.decode(obj.getString("producturl"), UTF8));
+                numiid = RegexUtils.getTaobaoId(this.producturl);
             }
 
             if (null == numiid) {
-                log.error("===not found item id==={}", producturl);
+                log.error("===not found item id==={}", this.producturl);
                 return null;
             }
 
@@ -143,7 +76,7 @@ public class TaobaoItemDetail extends TaobaoParser {
             if (null != obj.getString("comment_count")) {
                 detailCount = (URLDecoder.decode(obj.getString("comment_count"), UTF8));
             } else {
-                log.info("===not found item detail count==={}", producturl);
+                log.info("===not found item detail count==={}", this.producturl);
                 return null;
             }
 
@@ -151,20 +84,14 @@ public class TaobaoItemDetail extends TaobaoParser {
             if (null != obj.getString("sib")) {
                 sib = (URLDecoder.decode(obj.getString("sib"), UTF8)).replace("onSibRequestSuccess(", "").replace(");", "");
             } else {
-                log.info("===not found item sib-api==={}", producturl);
+                log.info("===not found item sib-api==={}", this.producturl);
                 return null;
             }
         } catch (UnsupportedEncodingException e) {
             throw e;
         }
 
-        DItems item = new DItems();
-        item.setId(GuidUtils.getGuid32());
-        item.setDate(this.getRunid());
-        item.setShopid(this.getShopid());
-        item.setNumiid(numiid);
-        item.setItemUrl(producturl);
-        item.setUpdated(new Date());
+        DItems item = this.getDefaultDitem(numiid);
 
         /*商品标题*/
         NodeList list = this.extractAllNodesThatMatch(FILTER_CLASS,
@@ -172,34 +99,14 @@ public class TaobaoItemDetail extends TaobaoParser {
         if (null != list && list.size() > 0) {
             item.setTitle(((HeadingTag) list.elementAt(0)).getAttribute("data-title"));
         } else {
-            log.info("item title is null:{}", producturl);
+            log.info("item title is null:{}", this.producturl);
         }
 
         /*商品主图*/
-        list = this.extractAllNodesThatMatch(FILTER_ID, "J_ImgBooth");
-        if (null != list && list.size() > 0) {
-            ImageTag img = (ImageTag) list.elementAt(0);
-            if (null != img && null != img.getAttribute("data-src")) {
-                item.setPicUrl(this.httpPrefix(img.getAttribute("data-src").trim()));
-            } else {
-                item.setPicUrl(this.httpPrefix(img.getAttribute("src").trim()));
-            }
-        } else {
-            log.info("item images is null:{}", producturl);
-        }
+        this.handleImages(item, false);
 
         //上下架时间
-        String dbst = RegexUtils.findText(this.getResource(), "dbst.*?(?=,)");
-        if (!StringUtils.isEmpty(dbst)) {
-            Date listtime = new Date(Long.parseLong(RegexUtils.getInteger(dbst.trim())));
-            Calendar c = Calendar.getInstance();
-            c.setTime(listtime);
-            c.add(Calendar.DAY_OF_YEAR, 7);
-            item.setListTime(listtime);
-            item.setDelistTime(c.getTime());
-        } else {
-            log.info("item dbst is null:{}", producturl);
-        }
+        this.handleDbst(item, "dbst.*?(?=,)");
 
         //类目
         String rcid = RegexUtils.findText(this.getResource(), "[\\r\\s\\n]rcid.*?(?=,)");
@@ -221,20 +128,20 @@ public class TaobaoItemDetail extends TaobaoParser {
             JSONObject data = null;
             try {
                 JSONObject j = JSON.parseObject(sib);
-                if (log.isDebugEnabled()) {
-                    log.debug("data:==={}", j.get("data"));
-                }
                 data = (JSONObject) j.get("data");
                 if (data == null) {
-                    log.error("===item sib->data is null===", producturl);
+                    log.error("===item sib->data is null==={}", this.producturl);
                     return null;
+                }
+                if (log.isDebugEnabled()) {
+                    log.debug("data:==={}", j.get("data"));
                 }
             } catch (Exception e) {
                 throw e;
             }
             this.handelPrices(item, data);
         } else {
-            log.error("===sib->data is null===", producturl);
+            log.error("===sib->data is null==={}", this.producturl);
             return null;  //数据不全，返回
         }
 
@@ -247,6 +154,9 @@ public class TaobaoItemDetail extends TaobaoParser {
                 item.setTotalRatedCount(0);
             }
         }
+
+        //品牌名称
+        item.setBrandName(this.transfHtml());
 
         log.info(item.toString());
         return item;
@@ -270,7 +180,7 @@ public class TaobaoItemDetail extends TaobaoParser {
                 log.debug("sellableQuantity={}", dynStock.getInteger("sellableQuantity").toString());
             }
             item.setStock(dynStock.getInteger("stock"));
-            item.setSellablequantity(dynStock.getInteger("sellableQuantity"));
+            item.setSellableQuantity(dynStock.getInteger("sellableQuantity"));
             //库存明细
             if (null != dynStock.get("sku")) {
                 item.setSkuStock(dynStock.get("sku").toString());
@@ -278,7 +188,7 @@ public class TaobaoItemDetail extends TaobaoParser {
         }
 
         //销售量
-        JSONObject soldQuantity = (JSONObject) data.getJSONObject("soldQuantity");
+        JSONObject soldQuantity = data.getJSONObject("soldQuantity");
         if (null != soldQuantity) {
             if (log.isDebugEnabled()) {
                 log.debug("soldTotalCount={}", soldQuantity.getInteger("soldTotalCount").toString());
@@ -291,34 +201,34 @@ public class TaobaoItemDetail extends TaobaoParser {
 
         //获取优惠信息及价格
         BigDecimal price = null;
-        JSONObject promotion = (JSONObject) data.getJSONObject("promotion");
-        if (null != promotion) {
-            JSONObject promoData = promotion.getJSONObject("promoData");
-            if (null != promoData) {
-                JSONArray def = promoData.getJSONArray("def");
-                if (null != def && def.size() > 0) {
-                    if (log.isDebugEnabled()) {
-                        log.debug(def.toJSONString());
-                    }
-                    JSONObject defObj = (JSONObject) def.get(0);
-                    if (null != defObj && null != defObj.get("price")) {
-                        price = new BigDecimal(defObj.get("price").toString());
-                    }
-                    if (null != defObj && null != defObj.get("type")) {
-                        item.setPromoInfo(defObj.get("type").toString());
-                    }
-                }
-            }
-        }
+//        JSONObject promotion = (JSONObject) data.getJSONObject("promotion");
+//        if (null != promotion) {
+//            JSONObject promoData = promotion.getJSONObject("promoData");
+//            if (null != promoData) {
+//                JSONArray def = promoData.getJSONArray("def");
+//                if (null != def && def.size() > 0) {
+//                    if (log.isDebugEnabled()) {
+//                        log.debug(def.toJSONString());
+//                    }
+//                    JSONObject defObj = (JSONObject) def.get(0);
+//                    if (null != defObj && null != defObj.get("price")) {
+//                        price = new BigDecimal(defObj.get("price").toString());
+//                    }
+//                    if (null != defObj && null != defObj.get("type")) {
+//                        item.setPromoInfo(defObj.get("type").toString());
+//                    }
+//                }
+//            }
+//        }
 
-        if (price == null) {
-            //区间价
-            if (item.getMarkerPrice().indexOf("-") > 0) {
-                price = new BigDecimal(item.getMarkerPrice().split("-")[0].trim());
-            } else {
-                price = new BigDecimal(item.getMarkerPrice());
-            }
+//        if (price == null) {
+        //区间价
+        if (item.getMarkerPrice().indexOf("-") > 0) {
+            price = new BigDecimal(item.getMarkerPrice().split("-")[0].trim());
+        } else {
+            price = new BigDecimal(item.getMarkerPrice());
         }
+//        }
 
         //销售金额
         item.setPrice(price);
@@ -326,6 +236,48 @@ public class TaobaoItemDetail extends TaobaoParser {
 
         //邮费
         item.setPostFee(this.getPostFee(data));
+    }
+
+    /**
+     * Transf file string.
+     *
+     * @return the string
+     * @throws ParserException the parser exception
+     */
+    public String transfHtml() throws ParserException {
+        String brandName = "";
+
+        NodeList params = this.extractAllNodesThatMatch(FILTER_CLASS,
+                "attributes-list");
+        if (params != null && params.size() > 0) {
+            params = params.elementAt(0).getChildren();
+        } else {
+            log.info("not found attributes-list,{}", this.producturl);
+            return brandName;
+        }
+
+        for (int i = 0; i < params.size(); i++) {
+            if (params.elementAt(i) instanceof Tag) {
+
+                Bullet li = null;
+                if (params.elementAt(i) instanceof Bullet) {
+                    li = (Bullet) params.elementAt(i);
+                }
+                if (null == li)
+                    continue;
+
+                String[] value = RegexUtils.valueParam(li.toPlainTextString());
+
+                String key = value[0];
+                String val = RegexUtils.charDecoder(li.getAttribute("title"));
+
+                if (key.equals("品牌")) {
+                    brandName = val;
+                    break;
+                }
+            }
+        }
+        return brandName;
     }
 
     /**
@@ -379,16 +331,16 @@ public class TaobaoItemDetail extends TaobaoParser {
      */
     public static void main(String[] args) {
         try {
-            String res = readHtmlFile("d://file//detail.html", "GBK");
+            String res = readHtmlFile(TaobaoItemDetail.class.getClassLoader().getResource("").getPath() + "/file/detail.html", "GBK");
             TaobaoItemDetail dox = new TaobaoItemDetail(res).call();
 
             DItems obj = dox.handelItemInfo();
-            if (null != obj) {
-                new DItemsDao().insert(obj);
-
-                DItemNum diobj = dox.handelItemNum(obj.getNumiid());
-                new DItemsNumDao().insert(diobj);
-            }
+//            if (null != obj) {
+//                new DItemsDao().insert(obj);
+//
+//                DItemNum diobj = dox.handelItemNum(obj.getNumiid());
+//                new DItemsNumDao().insert(diobj);
+//            }
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -5,7 +5,7 @@ package com.xingmima.dpfx.kafka;
  * Copyright (c) 2004-2016 All Rights Reserved.
  *
  * @author tiaotiaohu
- * @version Consumer, v 0.1
+ * @version KafkaProperties, v 0.1
  * @date 2016/8/31 17:40
  */
 public class KafkaProperties {
@@ -27,6 +27,13 @@ public class KafkaProperties {
 
     public static final String TOPIC_ITEM_DETAIL = "taobao.shop.product";
     public static final Integer TOPIC_ITEM_DETAIL_THREADS = 1;
+
+
+    public static final String TOPIC_TMALL_SHOP_INFO = "tmall.shop.info";
+    public static final Integer TOPIC_TMALL_SHOP_INFO_THREADS = 1;
+
+    public static final String TOPIC_TMALL_ITEM_DETAIL = "tmall.shop.product";
+    public static final Integer TOPIC_TMALL_ITEM_DETAIL_THREADS = 1;
 
     private KafkaProperties() {
     }

@@ -58,7 +58,7 @@ public class HttpUtil {
      * @param host    如：list.taobao.com
      * @param ua      如：Mozilla/5.0 (Windows NT 6.1; rv:33.0) Gecko/20100101
      *                Firefox/33.0
-     * @param accept  如：application/json,或 html
+     * @param accept  如：application/json,或 file
      * @param referer 页面来源(上一级url)，重要（淘宝页面不传会没有结果）
      * @param charset 字符编码集，多为UTF-8, GBK
      * @return 网页文本数据
@@ -78,7 +78,7 @@ public class HttpUtil {
      * @param host    如：list.taobao.com
      * @param ua      如：Mozilla/5.0 (Windows NT 6.1; rv:33.0) Gecko/20100101
      *                Firefox/33.0
-     * @param accept  如：application/json,或 html
+     * @param accept  如：application/json,或 file
      * @param referer 页面来源(上一级url)，重要（淘宝页面不传会没有结果）
      * @param charset 字符编码集，多为UTF-8, GBK
      * @return 网页文本数据
@@ -147,7 +147,7 @@ public class HttpUtil {
         CloseableHttpClient client = HttpClientBuilder.create()
                 .setRedirectStrategy(new SpaceRedirectStrategy()).build();
         try {
-			/* 2 生成 HttpGet 对象并设置参数 */
+            /* 2 生成 HttpGet 对象并设置参数 */
             HttpGet request = new HttpGet(url);
 
             RequestConfig requestConfig = RequestConfig.custom()
@@ -526,5 +526,16 @@ public class HttpUtil {
     public static String getUserAget() {
         // 默认ua
         return "Mozilla/5.0 (Windows NT 6.1; rv:34.0) Gecko/20100101 Firefox/34.0";
+    }
+
+    public static void main(String[] args) {
+        String referer = "https://list.tmall.com/search_product.htm?q=%CB%D5%C4%FE&type=p&vmarket=&spm=875.7931836%2FA.a2227oh.d100&from=mallfp..pc_1_searchbutton";
+        try {
+            String html = HttpUtil.get2("https://suning.tmall.com/", "tmall.com", HttpUtil.getUserAget(),
+                    "text/html", referer, "GB2312", "");
+            System.out.println(html);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

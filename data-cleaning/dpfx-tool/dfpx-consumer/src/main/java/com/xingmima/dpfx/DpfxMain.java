@@ -2,6 +2,8 @@ package com.xingmima.dpfx;
 
 import com.xingmima.dpfx.client.TaobaoItemConsumer;
 import com.xingmima.dpfx.client.TaobaoShopInfoConsumer;
+import com.xingmima.dpfx.client.TmallItemConsumer;
+import com.xingmima.dpfx.client.TmallShopInfoConsumer;
 
 /**
  * xingmima.com Inc.
@@ -16,5 +18,7 @@ public class DpfxMain {
     public static void main(String[] args) {
         new TaobaoShopInfoConsumer().consumer();
         new TaobaoItemConsumer().consumer();
+        new TmallShopInfoConsumer().consumer();
+        new TmallItemConsumer().consumer();
     }
 }

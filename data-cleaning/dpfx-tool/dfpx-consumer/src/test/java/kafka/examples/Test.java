@@ -7,20 +7,8 @@ import kafka.javaapi.consumer.ConsumerConnector;
 import kafka.message.MessageAndMetadata;
 import kafka.serializer.StringDecoder;
 import kafka.utils.VerifiableProperties;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
-
-import kafka.consumer.ConsumerConfig;
-import kafka.consumer.ConsumerIterator;
-import kafka.consumer.KafkaStream;
-import kafka.javaapi.consumer.ConsumerConnector;
-import kafka.message.MessageAndMetadata;
-import kafka.serializer.StringDecoder;
-import kafka.utils.VerifiableProperties;
-import org.apache.kafka.clients.producer.KafkaProducer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
 import java.util.List;
@@ -37,6 +25,7 @@ import java.util.Properties;
  */
 public class Test {
     private final ConsumerConnector consumer;
+    public final static Logger log = LoggerFactory.getLogger(Test.class);
 
     private Test() {
         Properties props = new Properties();
@@ -61,19 +50,19 @@ public class Test {
 
     void consume() {
         Map<String, Integer> topicCountMap = new HashMap<String, Integer>();
-        topicCountMap.put("taobao.shop.info", new Integer(1));
+        topicCountMap.put("tmall.shop.product", new Integer(1));
 
         StringDecoder keyDecoder = new StringDecoder(new VerifiableProperties());
         StringDecoder valueDecoder = new StringDecoder(new VerifiableProperties());
 
         Map<String, List<KafkaStream<String, String>>> consumerMap =
                 consumer.createMessageStreams(topicCountMap, keyDecoder, valueDecoder);
-        KafkaStream<String, String> stream = consumerMap.get("taobao.shop.info").get(0);
+        KafkaStream<String, String> stream = consumerMap.get("tmall.shop.product").get(0);
         ConsumerIterator<String, String> it = stream.iterator();
-        System.out.println("start....");
+        log.info("start....");
         while (it.hasNext()) {
             MessageAndMetadata<String, String> c = it.next();
-            System.out.println(c.message());
+            log.info(c.message());
         }
     }
 

@@ -97,7 +97,12 @@ public class DItems {
     /**
      * 可销售库存
      */
-    private Integer sellablequantity;
+    private Integer sellableQuantity;
+
+    /**
+     * 品牌
+     */
+    private String brandName;
 
     /**
      * 自动上架时间
@@ -424,18 +429,34 @@ public class DItems {
 
     /**
      * 可销售库存
-     * @return sellableQuantity 可销售库存
+     * @return sellable_quantity 可销售库存
      */
-    public Integer getSellablequantity() {
-        return sellablequantity;
+    public Integer getSellableQuantity() {
+        return sellableQuantity;
     }
 
     /**
      * 可销售库存
-     * @param sellablequantity 可销售库存
+     * @param sellableQuantity 可销售库存
      */
-    public void setSellablequantity(Integer sellablequantity) {
-        this.sellablequantity = sellablequantity;
+    public void setSellableQuantity(Integer sellableQuantity) {
+        this.sellableQuantity = sellableQuantity;
+    }
+
+    /**
+     * 品牌
+     * @return brand_name 品牌
+     */
+    public String getBrandName() {
+        return brandName;
+    }
+
+    /**
+     * 品牌
+     * @param brandName 品牌
+     */
+    public void setBrandName(String brandName) {
+        this.brandName = brandName == null ? null : brandName.trim();
     }
 
     /**
@@ -574,7 +595,8 @@ public class DItems {
         sb.append(", totalRatedCount=").append(totalRatedCount);
         sb.append(", totalSales=").append(totalSales);
         sb.append(", stock=").append(stock);
-        sb.append(", sellablequantity=").append(sellablequantity);
+        sb.append(", sellableQuantity=").append(sellableQuantity);
+        sb.append(", brandName=").append(brandName);
         sb.append(", listTime=").append(listTime);
         sb.append(", delistTime=").append(delistTime);
         sb.append(", addTime=").append(addTime);

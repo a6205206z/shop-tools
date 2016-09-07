@@ -6,6 +6,7 @@ import com.xingmima.dpfx.entity.DItemNum;
 import com.xingmima.dpfx.entity.DItems;
 import com.xingmima.dpfx.kafka.KafkaProperties;
 import com.xingmima.dpfx.parser.TaobaoItemDetail;
+import com.xingmima.dpfx.parser.TmallItemDetail;
 import kafka.consumer.ConsumerIterator;
 import kafka.consumer.KafkaStream;
 import kafka.message.MessageAndMetadata;
@@ -17,17 +18,18 @@ import org.slf4j.LoggerFactory;
  * Copyright (c) 2004-2016 All Rights Reserved.
  *
  * @author tiaotiaohu
- * @version TaobaoItemDetailThread, v 0.1
+ * @version TmallItemDetailThread, v 0.1
  * @date 2016/9/3 15:37
  */
-public class TaobaoItemDetailThread implements Runnable {
-    private static final Logger log = LoggerFactory.getLogger(TaobaoItemDetailThread.class);
+public class TmallItemDetailThread implements Runnable {
+    private static final Logger log = LoggerFactory.getLogger(TmallItemDetailThread.class);
     //消息流
     private KafkaStream stream;
     private DItemsDao did;
     private DItemsNumDao dind;
 
-    public TaobaoItemDetailThread(KafkaStream stream) {
+
+    public TmallItemDetailThread(KafkaStream stream) {
         this.stream = stream;
         this.did = new DItemsDao();
         this.dind = new DItemsNumDao();
@@ -35,12 +37,12 @@ public class TaobaoItemDetailThread implements Runnable {
 
     @Override
     public void run() {
-        log.info("----------{}-----------@startup", KafkaProperties.TOPIC_ITEM_DETAIL);
+        log.info("----------{}-----------@startup", KafkaProperties.TOPIC_TMALL_ITEM_DETAIL);
         ConsumerIterator<String, String> it = stream.iterator();
         while (it.hasNext()) {
             MessageAndMetadata<String, String> c = it.next();
             /*捕获异常，继续处理*/
-            TaobaoItemDetail info = new TaobaoItemDetail(c.message()).call();
+            TmallItemDetail info = new TmallItemDetail(c.message()).call();
             if (null != info) {
                 try {
                     DItems obj = info.handelItemInfo();
@@ -51,7 +53,7 @@ public class TaobaoItemDetailThread implements Runnable {
                         dind.insert(diobj);
                     }
                 } catch (Exception e) {
-                    log.error(KafkaProperties.TOPIC_ITEM_DETAIL + ":", e);
+                    log.error(KafkaProperties.TOPIC_TMALL_ITEM_DETAIL + ":", e);
                 }
             } else {
                 log.error("null========================{}", c.message());
