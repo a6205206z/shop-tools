@@ -17,7 +17,7 @@ import org.slf4j.LoggerFactory;
  * Copyright (c) 2004-2016 All Rights Reserved.
  *
  * @author tiaotiaohu
- * @version TaobaoShopInfoThread, v 0.1
+ * @version TaobaoItemDetailThread, v 0.1
  * @date 2016/9/3 15:37
  */
 public class TaobaoItemDetailThread implements Runnable {
@@ -26,7 +26,6 @@ public class TaobaoItemDetailThread implements Runnable {
     private KafkaStream stream;
     private DItemsDao did;
     private DItemsNumDao dind;
-
 
     public TaobaoItemDetailThread(KafkaStream stream) {
         this.stream = stream;

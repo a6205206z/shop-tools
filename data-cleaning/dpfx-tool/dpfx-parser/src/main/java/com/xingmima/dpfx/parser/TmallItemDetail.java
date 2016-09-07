@@ -156,14 +156,14 @@ public class TmallItemDetail extends TaobaoParser {
             if (log.isDebugEnabled()) {
                 log.debug(detailCount);
             }
-            String dl = RegexUtils.findText(detailCount, "rateTotal\":.*(?=})");
+            String dl = RegexUtils.findText(detailCount, "rateTotal\":.*?(?=,)");
             if (!StringUtils.isEmpty(dl)) {
                 item.setTotalRatedCount(Integer.parseInt(RegexUtils.getInteger(dl)));
             } else {
                 item.setTotalRatedCount(0);
             }
             //商品动态评分
-            dl = RegexUtils.findText(detailCount, "gradeAvg\":.*(?=})");
+            dl = RegexUtils.findText(detailCount, "gradeAvg\":.*?(?=,)");
             if (!StringUtils.isEmpty(dl)) {
                 item.setRated(new BigDecimal(RegexUtils.getDecimal(dl)));
             } else {
@@ -239,12 +239,12 @@ public class TmallItemDetail extends TaobaoParser {
             TmallItemDetail dox = new TmallItemDetail(res).call();
 
             DItems obj = dox.handelItemInfo();
-            if (null != obj) {
-                new DItemsDao().insert(obj);
-
-                DItemNum diobj = dox.handelItemNum(obj.getNumiid());
-                new DItemsNumDao().insert(diobj);
-            }
+//            if (null != obj) {
+//                new DItemsDao().insert(obj);
+//
+//                DItemNum diobj = dox.handelItemNum(obj.getNumiid());
+//                new DItemsNumDao().insert(diobj);
+//            }
         } catch (Exception e) {
             e.printStackTrace();
         }

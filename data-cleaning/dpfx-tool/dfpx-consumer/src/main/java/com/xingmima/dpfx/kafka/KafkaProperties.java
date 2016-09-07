@@ -5,7 +5,7 @@ package com.xingmima.dpfx.kafka;
  * Copyright (c) 2004-2016 All Rights Reserved.
  *
  * @author tiaotiaohu
- * @version Consumer, v 0.1
+ * @version KafkaProperties, v 0.1
  * @date 2016/8/31 17:40
  */
 public class KafkaProperties {

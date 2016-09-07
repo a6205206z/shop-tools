@@ -112,6 +112,7 @@ public class RegexUtils {
 
 
         System.out.println(findText("//tbskip.taobao.com/json/show_bid_count.htm?itemNumId=534248818107&old_quantity=1203&date=1472694923000\"","date=.*?(?=\")"));
-
+        System.out.println(findText("jsonp198({\"dsr\":{\"gradeAvg\":5.50,\"itemId\":0,\"peopleNum\":0,\"periodSoldQuantity\":0,\"rateTotal\":68,\"sellerId\":0,\"spuId\":0,\"totalSoldQuantity\":0}})",
+                "rateTotal\":.*?(?=,)"));
     }
 }

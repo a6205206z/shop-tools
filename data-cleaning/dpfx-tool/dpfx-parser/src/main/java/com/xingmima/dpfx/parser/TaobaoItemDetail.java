@@ -3,25 +3,20 @@ package com.xingmima.dpfx.parser;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.xingmima.dpfx.entity.DItemNum;
 import com.xingmima.dpfx.entity.DItems;
 import com.xingmima.dpfx.inter.TaobaoParser;
 import com.xingmima.dpfx.util.Constant;
-import com.xingmima.dpfx.util.GuidUtils;
 import com.xingmima.dpfx.util.RegexUtils;
 import org.apache.commons.lang.StringUtils;
 import org.htmlparser.Tag;
 import org.htmlparser.tags.Bullet;
 import org.htmlparser.tags.HeadingTag;
-import org.htmlparser.tags.ImageTag;
 import org.htmlparser.util.NodeList;
 import org.htmlparser.util.ParserException;
 
 import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.net.URLDecoder;
-import java.util.Calendar;
-import java.util.Date;
 
 /**
  * xingmima.com Inc.
