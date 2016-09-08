@@ -1,0 +1,186 @@
+2016-09-08 10:44:06 [scrapy] INFO: Scrapy 1.1.2 started (bot: xmmspider)
+2016-09-08 10:44:06 [scrapy] INFO: Overridden settings: {'COOKIES_DEBUG': True, 'NEWSPIDER_MODULE': 'xmmspider.spiders', 'SPIDER_MODULES': ['xmmspider.spiders'], 'RETRY_TIMES': 5, 'BOT_NAME': 'xmmspider', 'LOG_FILE': '/Users/cean/workspace/Java/workspace/xmm-shop-tools/data-collection/xmmspider/xmmspider/logs/TmallShopSpider-1473264000.log', 'DOWNLOAD_DELAY': 3}
+2016-09-08 10:44:06 [scrapy] INFO: Enabled extensions:
+['scrapy.extensions.logstats.LogStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.corestats.CoreStats',
+ 'xmmspider.extensions.SpiderRequestInterval',
+ 'xmmspider.extensions.TaobaoShopDataMySQLLoader',
+ 'xmmspider.extensions.SpiderMonitor']
+2016-09-08 10:44:06 [scrapy] INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.chunked.ChunkedTransferMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2016-09-08 10:44:06 [scrapy] INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2016-09-08 10:44:06 [pykafka.topic] INFO: Successfully loaded pykafka.rdkafka extension.
+2016-09-08 10:44:06 [scrapy] INFO: Enabled item pipelines:
+['xmmspider.pipelines.PushDataToKafka']
+2016-09-08 10:44:06 [scrapy] INFO: Spider opened
+2016-09-08 10:44:06 [pykafka.cluster] DEBUG: Updating cluster, attempt 1/3
+2016-09-08 10:44:06 [pykafka.connection] DEBUG: Connecting to 192.168.103.245:9092
+2016-09-08 10:44:06 [pykafka.connection] DEBUG: Successfully connected to 192.168.103.245:9092
+2016-09-08 10:44:06 [pykafka.handlers] INFO: RequestHandler.stop: about to flush requests queue
+2016-09-08 10:44:06 [pykafka.cluster] INFO: Discovered 1 brokers
+2016-09-08 10:44:06 [pykafka.cluster] DEBUG: Discovered broker id 0: 192.168.103.245:9092
+2016-09-08 10:44:06 [pykafka.connection] DEBUG: Connecting to 192.168.103.245:9092
+2016-09-08 10:44:06 [pykafka.connection] DEBUG: Successfully connected to 192.168.103.245:9092
+2016-09-08 10:44:06 [pykafka.cluster] INFO: Discovered 4 topics
+2016-09-08 10:44:06 [pykafka.cluster] DEBUG: Discovered topic 'taobao.shop.info'
+2016-09-08 10:44:06 [pykafka.cluster] DEBUG: Discovered topic 'taobao.shop.product'
+2016-09-08 10:44:06 [pykafka.cluster] DEBUG: Discovered topic 'tmall.shop.product'
+2016-09-08 10:44:06 [pykafka.cluster] DEBUG: Discovered topic 'tmall.shop.info'
+2016-09-08 10:44:06 [scrapy] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2016-09-08 10:44:06 [xmmspider.extensions] INFO: load shop urls
+2016-09-08 10:44:06 [scrapy] DEBUG: Telnet console listening on 127.0.0.1:6025
+2016-09-08 10:44:07 [pykafka.handlers] INFO: RequestHandler worker: exiting cleanly
+2016-09-08 10:44:12 [scrapy] DEBUG: Redirecting (302) to <GET https://login.taobao.com/jump?target=http%3a%2f%2fkindle.tmall.com%2F%3ftbpm%3d1> from <GET https://kindle.tmall.com/>
+2016-09-08 10:44:15 [scrapy] DEBUG: Redirecting (302) to <GET https://login.taobao.com/jump?target=http%3a%2f%2fhuromhuiyue.tmall.com%2F%3ftbpm%3d1> from <GET https://huromhuiyue.tmall.com/>
+2016-09-08 10:44:18 [scrapy] DEBUG: Received cookies from: <302 https://login.taobao.com/jump?target=http%3a%2f%2fkindle.tmall.com%2F%3ftbpm%3d1>
+Set-Cookie: _tb_token_=pjZ3YEE5mC3w;domain=.taobao.com;Path=/;HttpOnly
+
+Set-Cookie: cookie2=b8b7043d1a5365d9961275759816b1e2;domain=.taobao.com;Path=/;HttpOnly
+
+Set-Cookie: t=d5d0112cbd58302f24c5b3d275a559f2;domain=.taobao.com;Expires=Wed, 07-Dec-2016 02:44:18 GMT;Path=/
+
+2016-09-08 10:44:18 [scrapy] DEBUG: Redirecting (302) to <GET https://pass.tmall.com/add?_tb_token_=pjZ3YEE5mC3w&cookie2=b8b7043d1a5365d9961275759816b1e2&t=d5d0112cbd58302f24c5b3d275a559f2&target=http%3a%2f%2fkindle.tmall.com%2F%3ftbpm%3d1&pacc=ISKChrlALvqwcuJJIdVnfA==&opi=101.204.247.120&tmsc=1473302658916388> from <GET https://login.taobao.com/jump?target=http%3a%2f%2fkindle.tmall.com%2F%3ftbpm%3d1>
+2016-09-08 10:44:22 [scrapy] DEBUG: Received cookies from: <302 https://login.taobao.com/jump?target=http%3a%2f%2fhuromhuiyue.tmall.com%2F%3ftbpm%3d1>
+Set-Cookie: _tb_token_=5BlPan96dov8;domain=.taobao.com;Path=/;HttpOnly
+
+Set-Cookie: cookie2=0f598970b386349abef21e5ba93ca7fb;domain=.taobao.com;Path=/;HttpOnly
+
+Set-Cookie: t=b70e3a07f245dd2c52354b1bd7768186;domain=.taobao.com;Expires=Wed, 07-Dec-2016 02:44:21 GMT;Path=/
+
+2016-09-08 10:44:22 [scrapy] DEBUG: Redirecting (302) to <GET https://pass.tmall.com/add?_tb_token_=5BlPan96dov8&cookie2=0f598970b386349abef21e5ba93ca7fb&t=b70e3a07f245dd2c52354b1bd7768186&target=http%3a%2f%2fhuromhuiyue.tmall.com%2F%3ftbpm%3d1&pacc=_HOsJk02b5lxJUlCvq_G7A==&opi=101.204.247.120&tmsc=1473302661975981> from <GET https://login.taobao.com/jump?target=http%3a%2f%2fhuromhuiyue.tmall.com%2F%3ftbpm%3d1>
+2016-09-08 10:44:25 [scrapy] DEBUG: Received cookies from: <302 https://pass.tmall.com/add?_tb_token_=pjZ3YEE5mC3w&cookie2=b8b7043d1a5365d9961275759816b1e2&t=d5d0112cbd58302f24c5b3d275a559f2&target=http%3a%2f%2fkindle.tmall.com%2F%3ftbpm%3d1&pacc=ISKChrlALvqwcuJJIdVnfA==&opi=101.204.247.120&tmsc=1473302658916388>
+Set-Cookie: _tb_token_=pjZ3YEE5mC3w;domain=.tmall.com;Path=/
+
+Set-Cookie: cookie2=b8b7043d1a5365d9961275759816b1e2;domain=.tmall.com;Path=/;HttpOnly
+
+Set-Cookie: t=d5d0112cbd58302f24c5b3d275a559f2;domain=.tmall.com;Path=/
+
+2016-09-08 10:44:25 [scrapy] DEBUG: Redirecting (302) to <GET http://kindle.tmall.com/?tbpm=1> from <GET https://pass.tmall.com/add?_tb_token_=pjZ3YEE5mC3w&cookie2=b8b7043d1a5365d9961275759816b1e2&t=d5d0112cbd58302f24c5b3d275a559f2&target=http%3a%2f%2fkindle.tmall.com%2F%3ftbpm%3d1&pacc=ISKChrlALvqwcuJJIdVnfA==&opi=101.204.247.120&tmsc=1473302658916388>
+2016-09-08 10:44:28 [scrapy] DEBUG: Sending cookies to: <GET http://kindle.tmall.com/?tbpm=1>
+Cookie: cookie2=b8b7043d1a5365d9961275759816b1e2; _tb_token_=pjZ3YEE5mC3w; t=d5d0112cbd58302f24c5b3d275a559f2
+
+2016-09-08 10:44:28 [scrapy] DEBUG: Received cookies from: <302 https://pass.tmall.com/add?_tb_token_=5BlPan96dov8&cookie2=0f598970b386349abef21e5ba93ca7fb&t=b70e3a07f245dd2c52354b1bd7768186&target=http%3a%2f%2fhuromhuiyue.tmall.com%2F%3ftbpm%3d1&pacc=_HOsJk02b5lxJUlCvq_G7A==&opi=101.204.247.120&tmsc=1473302661975981>
+Set-Cookie: _tb_token_=5BlPan96dov8;domain=.tmall.com;Path=/
+
+Set-Cookie: cookie2=0f598970b386349abef21e5ba93ca7fb;domain=.tmall.com;Path=/;HttpOnly
+
+Set-Cookie: t=b70e3a07f245dd2c52354b1bd7768186;domain=.tmall.com;Path=/
+
+2016-09-08 10:44:28 [scrapy] DEBUG: Redirecting (302) to <GET http://huromhuiyue.tmall.com/?tbpm=1> from <GET https://pass.tmall.com/add?_tb_token_=5BlPan96dov8&cookie2=0f598970b386349abef21e5ba93ca7fb&t=b70e3a07f245dd2c52354b1bd7768186&target=http%3a%2f%2fhuromhuiyue.tmall.com%2F%3ftbpm%3d1&pacc=_HOsJk02b5lxJUlCvq_G7A==&opi=101.204.247.120&tmsc=1473302661975981>
+2016-09-08 10:44:31 [scrapy] DEBUG: Sending cookies to: <GET http://huromhuiyue.tmall.com/?tbpm=1>
+Cookie: cookie2=0f598970b386349abef21e5ba93ca7fb; _tb_token_=5BlPan96dov8; t=b70e3a07f245dd2c52354b1bd7768186
+
+2016-09-08 10:44:31 [scrapy] DEBUG: Redirecting (301) to <GET https://kindle.tmall.com/?tbpm=1> from <GET http://kindle.tmall.com/?tbpm=1>
+2016-09-08 10:44:34 [scrapy] DEBUG: Sending cookies to: <GET https://kindle.tmall.com/?tbpm=1>
+Cookie: cookie2=0f598970b386349abef21e5ba93ca7fb; _tb_token_=5BlPan96dov8; t=b70e3a07f245dd2c52354b1bd7768186
+
+2016-09-08 10:44:34 [scrapy] DEBUG: Redirecting (301) to <GET https://huromhuiyue.tmall.com/?tbpm=1> from <GET http://huromhuiyue.tmall.com/?tbpm=1>
+2016-09-08 10:44:37 [scrapy] DEBUG: Sending cookies to: <GET https://huromhuiyue.tmall.com/?tbpm=1>
+Cookie: cookie2=0f598970b386349abef21e5ba93ca7fb; _tb_token_=5BlPan96dov8; t=b70e3a07f245dd2c52354b1bd7768186
+
+2016-09-08 10:44:37 [scrapy] DEBUG: Redirecting (302) to <GET http://kindle.tmall.com/> from <GET https://kindle.tmall.com/?tbpm=1>
+2016-09-08 10:44:40 [scrapy] DEBUG: Sending cookies to: <GET http://kindle.tmall.com/>
+Cookie: cookie2=0f598970b386349abef21e5ba93ca7fb; _tb_token_=5BlPan96dov8; t=b70e3a07f245dd2c52354b1bd7768186
+
+2016-09-08 10:44:40 [scrapy] DEBUG: Redirecting (302) to <GET http://huromhuiyue.tmall.com/> from <GET https://huromhuiyue.tmall.com/?tbpm=1>
+2016-09-08 10:44:43 [scrapy] DEBUG: Sending cookies to: <GET http://huromhuiyue.tmall.com/>
+Cookie: cookie2=0f598970b386349abef21e5ba93ca7fb; _tb_token_=5BlPan96dov8; t=b70e3a07f245dd2c52354b1bd7768186
+
+2016-09-08 10:44:43 [scrapy] DEBUG: Redirecting (301) to <GET https://kindle.tmall.com/> from <GET http://kindle.tmall.com/>
+2016-09-08 10:44:46 [scrapy] DEBUG: Sending cookies to: <GET https://kindle.tmall.com/>
+Cookie: cookie2=0f598970b386349abef21e5ba93ca7fb; _tb_token_=5BlPan96dov8; t=b70e3a07f245dd2c52354b1bd7768186
+
+2016-09-08 10:44:46 [scrapy] DEBUG: Redirecting (301) to <GET https://huromhuiyue.tmall.com/> from <GET http://huromhuiyue.tmall.com/>
+2016-09-08 10:44:49 [scrapy] DEBUG: Sending cookies to: <GET https://huromhuiyue.tmall.com/>
+Cookie: cookie2=0f598970b386349abef21e5ba93ca7fb; _tb_token_=5BlPan96dov8; t=b70e3a07f245dd2c52354b1bd7768186
+
+2016-09-08 10:44:49 [scrapy] DEBUG: Crawled (200) <GET https://huromhuiyue.tmall.com/> (referer: None)
+2016-09-08 10:44:49 [scrapy] DEBUG: Crawled (200) <GET https://kindle.tmall.com/> (referer: None)
+2016-09-08 10:44:52 [scrapy] DEBUG: Sending cookies to: <GET https://rate.taobao.com/user-rate-UvCQYvCkbMmcbONTT.htm>
+Cookie: cna=4RdLEIipQlECAWXM93goJEgl; cookie2=0f598970b386349abef21e5ba93ca7fb; _tb_token_=5BlPan96dov8; t=b70e3a07f245dd2c52354b1bd7768186
+
+2016-09-08 10:44:55 [scrapy] DEBUG: Sending cookies to: <GET https://rate.taobao.com/user-rate-UvCNSOFNyvmxWvgTT.htm>
+Cookie: cna=4RdLEIipQlECAWXM93goJEgl; cookie2=0f598970b386349abef21e5ba93ca7fb; _tb_token_=5BlPan96dov8; t=b70e3a07f245dd2c52354b1bd7768186
+
+2016-09-08 10:44:55 [scrapy] DEBUG: Received cookies from: <200 https://rate.taobao.com/user-rate-UvCQYvCkbMmcbONTT.htm>
+Set-Cookie: uc1=cookie14=UoWwJ0glWKodJw%3D%3D; Domain=.taobao.com; Path=/
+
+Set-Cookie: v=0; Domain=.taobao.com; Path=/
+
+2016-09-08 10:44:55 [scrapy] DEBUG: Crawled (200) <GET https://rate.taobao.com/user-rate-UvCQYvCkbMmcbONTT.htm> (referer: https://huromhuiyue.tmall.com/)
+2016-09-08 10:44:55 [pykafka.connection] DEBUG: Connecting to 192.168.103.245:9092
+2016-09-08 10:44:55 [pykafka.connection] DEBUG: Successfully connected to 192.168.103.245:9092
+2016-09-08 10:44:55 [pykafka.handlers] INFO: RequestHandler.stop: about to flush requests queue
+2016-09-08 10:44:55 [pykafka.topic] INFO: Adding 1 partitions
+2016-09-08 10:44:55 [pykafka.topic] DEBUG: Adding partition tmall.shop.info/0
+2016-09-08 10:44:55 [pykafka.producer] INFO: Starting new produce worker for broker 0
+2016-09-08 10:44:55 [pykafka.producer] DEBUG: Sending 1 messages to broker 0
+2016-09-08 10:44:55 [pykafka.producer] DEBUG: Successfully sent 1/1 messages to broker 0
+2016-09-08 10:44:56 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-08 10:44:56 [pykafka.handlers] INFO: RequestHandler worker: exiting cleanly
+2016-09-08 10:45:00 [pykafka.producer] INFO: Worker exited for broker 192.168.103.245:9092
+2016-09-08 10:45:00 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-08 10:45:00 [pykafka.producer] DEBUG: Finalising <pykafka.producer.Producer at 0x10a380a50>
+2016-09-08 10:45:00 [scrapy] DEBUG: Scraped from <200 https://rate.taobao.com/user-rate-UvCQYvCkbMmcbONTT.htm>
+None
+2016-09-08 10:45:00 [scrapy] DEBUG: Received cookies from: <200 https://rate.taobao.com/user-rate-UvCNSOFNyvmxWvgTT.htm>
+Set-Cookie: uc1=cookie14=UoWwJ0glWKodJw%3D%3D; Domain=.taobao.com; Path=/
+
+Set-Cookie: v=0; Domain=.taobao.com; Path=/
+
+2016-09-08 10:45:00 [scrapy] DEBUG: Crawled (200) <GET https://rate.taobao.com/user-rate-UvCNSOFNyvmxWvgTT.htm> (referer: https://kindle.tmall.com/)
+2016-09-08 10:45:01 [pykafka.connection] DEBUG: Connecting to 192.168.103.245:9092
+2016-09-08 10:45:01 [pykafka.connection] DEBUG: Successfully connected to 192.168.103.245:9092
+2016-09-08 10:45:01 [pykafka.handlers] INFO: RequestHandler.stop: about to flush requests queue
+2016-09-08 10:45:01 [pykafka.topic] INFO: Adding 1 partitions
+2016-09-08 10:45:01 [pykafka.topic] DEBUG: Adding partition tmall.shop.info/0
+2016-09-08 10:45:01 [pykafka.producer] INFO: Starting new produce worker for broker 0
+2016-09-08 10:45:01 [pykafka.producer] DEBUG: Sending 1 messages to broker 0
+2016-09-08 10:45:01 [pykafka.producer] DEBUG: Successfully sent 1/1 messages to broker 0
+2016-09-08 10:45:01 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-08 10:45:02 [pykafka.handlers] INFO: RequestHandler worker: exiting cleanly
+2016-09-08 10:45:06 [pykafka.producer] INFO: Worker exited for broker 192.168.103.245:9092
+2016-09-08 10:45:06 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-08 10:45:06 [pykafka.producer] DEBUG: Finalising <pykafka.producer.Producer at 0x10a5560d0>
+2016-09-08 10:45:06 [scrapy] DEBUG: Scraped from <200 https://rate.taobao.com/user-rate-UvCNSOFNyvmxWvgTT.htm>
+None
+2016-09-08 10:45:06 [scrapy] INFO: Closing spider (finished)
+2016-09-08 10:45:06 [scrapy] INFO: Dumping Scrapy stats:
+{'downloader/request_bytes': 5352,
+ 'downloader/request_count': 16,
+ 'downloader/request_method_count/GET': 16,
+ 'downloader/response_bytes': 55469,
+ 'downloader/response_count': 16,
+ 'downloader/response_status_count/200': 4,
+ 'downloader/response_status_count/301': 4,
+ 'downloader/response_status_count/302': 8,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2016, 9, 8, 2, 45, 6, 136849),
+ 'item_scraped_count': 2,
+ 'log_count/DEBUG': 57,
+ 'log_count/INFO': 27,
+ 'request_depth_max': 1,
+ 'response_received_count': 4,
+ 'scheduler/dequeued': 16,
+ 'scheduler/dequeued/memory': 16,
+ 'scheduler/enqueued': 16,
+ 'scheduler/enqueued/memory': 16,
+ 'start_time': datetime.datetime(2016, 9, 8, 2, 44, 6, 488048)}
+2016-09-08 10:45:06 [scrapy] INFO: Spider closed (finished)
+2016-09-08 10:45:06 [pykafka.handlers] INFO: RequestHandler.stop: about to flush requests queue
