@@ -45,7 +45,7 @@ public class RegexUtils {
      * @return the numbers
      */
     public static String getDecimal(String text) {
-        return findText(text, "\\d+.\\d+");
+        return findText(text, "\\d+\\.?\\d+{1,2}?");
     }
 
     public static Long getTaobaoId(String url) {
@@ -102,17 +102,8 @@ public class RegexUtils {
         return data[0];
     }
 
-
     public static void main(String[] args) {
-        System.out.println(findText("bnow    skuComponentFirst: 'true',   rcid             : '50010404',  cid              : '50009047',         : true,chong: false,dbst           ccc   :         1471654322000,   stepdata         : {},xjcc: false,                type             : 'ifashion',",
-                "[\\r\\s\\n]cid.*?(?=,)")); //dbst.*(?=,)
-
-
-        System.out.println(findText("jsonp100({\"count\":756})", ":.*?(?=})"));
-
-
-        System.out.println(findText("//tbskip.taobao.com/json/show_bid_count.htm?itemNumId=534248818107&old_quantity=1203&date=1472694923000\"","date=.*?(?=\")"));
-        System.out.println(findText("jsonp198({\"dsr\":{\"gradeAvg\":5.50,\"itemId\":0,\"peopleNum\":0,\"periodSoldQuantity\":0,\"rateTotal\":68,\"sellerId\":0,\"spuId\":0,\"totalSoldQuantity\":0}})",
-                "rateTotal\":.*?(?=,)"));
+        System.out.println(RegexUtils.getDecimal(RegexUtils.findText("jsonp197({\"dsr\":{\"gradeAvg\":5,\"itemId\":0,\"peopleNum\":0,\"periodSoldQuantity\":0,\"rateTotal\":12,\"sellerId\":0,\"spuId\":0,\"totalSoldQuantity\":0}})",
+                "gradeAvg\":.*?(?=,)")));
     }
 }
