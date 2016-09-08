@@ -1,5 +1,10 @@
 package com.xmm.shoptools.stats;
 
+import com.xmm.shoptools.stats.entity.Product;
+import com.xmm.shoptools.stats.loader.ProductDataLoader;
+
+import java.util.List;
+
 /**
  * Xingmima.com Inc.
  * Copyright (c) 2015-2016 All Rights Reserved.
@@ -15,6 +20,7 @@ public class Bootstrap {
      * @param args the args
      */
     public static void main(String args[]){
-
+        ProductDataLoader loader = new ProductDataLoader();
+        List<Product> list = loader.LoadProducts(0);
     }
 }

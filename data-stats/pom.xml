@@ -15,6 +15,7 @@
         <dbcp_version>1.4</dbcp_version>
         <lang_version>2.6</lang_version>
         <mysql_connector_version>5.1.38</mysql_connector_version>
+        <slf4j_version>1.7.14</slf4j_version>
     </properties>
     <dependencies>
         <dependency>
@@ -36,6 +37,11 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql_connector_version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j_version}</version>
         </dependency>
     </dependencies>
 </project>
