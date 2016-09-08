@@ -251,7 +251,7 @@ public class TaobaoParser extends DPFXJsonParserImpl {
             BigDecimal dsr = new BigDecimal(RegexUtils.getDecimal(((EmTag) box.elementAt(0)).getAttribute("title")));
             JSONObject obj = new JSONObject();
             for (int i = 1, k = 5; i < box.size(); i++, k--) {
-                obj.put("c_" + k, box.elementAt(i).toPlainTextString());
+                obj.put("c_" + k, RegexUtils.getDecimal(box.elementAt(i).toPlainTextString()));
             }
             info.put("pf", obj);
             info.put("dsr", dsr);

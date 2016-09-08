@@ -332,22 +332,6 @@ public class DItems {
     }
 
     /**
-     * 促销优惠信息
-     * @return promo_info 促销优惠信息
-     */
-    public String getPromoInfo() {
-        return promoInfo;
-    }
-
-    /**
-     * 促销优惠信息
-     * @param promoInfo 促销优惠信息
-     */
-    public void setPromoInfo(String promoInfo) {
-        this.promoInfo = promoInfo == null ? null : promoInfo.trim();
-    }
-
-    /**
      * 近30天交易成功数
      * @return sold_total_count 近30天交易成功数
      */
