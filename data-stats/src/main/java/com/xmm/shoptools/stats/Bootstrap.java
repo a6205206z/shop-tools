@@ -1,9 +1,6 @@
 package com.xmm.shoptools.stats;
 
-import com.xmm.shoptools.stats.entity.Product;
-import com.xmm.shoptools.stats.loader.ProductDataLoader;
-
-import java.util.List;
+import com.xmm.shoptools.stats.job.ProductStatsJob;
 
 /**
  * Xingmima.com Inc.
@@ -20,7 +17,7 @@ public class Bootstrap {
      * @param args the args
      */
     public static void main(String args[]){
-        ProductDataLoader loader = new ProductDataLoader();
-        List<Product> list = loader.LoadProducts(0);
+        ProductStatsJob job = new ProductStatsJob();
+        job.begin();
     }
 }

@@ -1,0 +1,1367 @@
+2016-09-09 09:28:51 [scrapy] INFO: Scrapy 1.1.2 started (bot: xmmspider)
+2016-09-09 09:28:51 [scrapy] INFO: Overridden settings: {'COOKIES_DEBUG': True, 'NEWSPIDER_MODULE': 'xmmspider.spiders', 'SPIDER_MODULES': ['xmmspider.spiders'], 'RETRY_TIMES': 5, 'BOT_NAME': 'xmmspider', 'LOG_FILE': '/Users/cean/workspace/Java/workspace/xmm-shop-tools/data-collection/xmmspider/xmmspider/logs/TmallShopProductSpider-1473350400.log', 'DOWNLOAD_DELAY': 3}
+2016-09-09 09:28:51 [scrapy] INFO: Enabled extensions:
+['scrapy.extensions.logstats.LogStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.corestats.CoreStats',
+ 'xmmspider.extensions.SpiderRequestInterval',
+ 'xmmspider.extensions.TaobaoShopDataMySQLLoader',
+ 'xmmspider.extensions.SpiderMonitor']
+2016-09-09 09:28:51 [scrapy] INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.chunked.ChunkedTransferMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2016-09-09 09:28:51 [scrapy] INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2016-09-09 09:28:51 [pykafka.topic] INFO: Successfully loaded pykafka.rdkafka extension.
+2016-09-09 09:28:51 [scrapy] INFO: Enabled item pipelines:
+['xmmspider.pipelines.PushDataToKafka']
+2016-09-09 09:28:51 [scrapy] INFO: Spider opened
+2016-09-09 09:28:51 [pykafka.cluster] DEBUG: Updating cluster, attempt 1/3
+2016-09-09 09:28:51 [pykafka.connection] DEBUG: Connecting to 192.168.103.245:9092
+2016-09-09 09:28:52 [pykafka.connection] DEBUG: Successfully connected to 192.168.103.245:9092
+2016-09-09 09:28:52 [pykafka.handlers] INFO: RequestHandler.stop: about to flush requests queue
+2016-09-09 09:28:52 [pykafka.cluster] INFO: Discovered 1 brokers
+2016-09-09 09:28:52 [pykafka.cluster] DEBUG: Discovered broker id 0: 192.168.103.245:9092
+2016-09-09 09:28:52 [pykafka.connection] DEBUG: Connecting to 192.168.103.245:9092
+2016-09-09 09:28:52 [pykafka.connection] DEBUG: Successfully connected to 192.168.103.245:9092
+2016-09-09 09:28:52 [pykafka.cluster] INFO: Discovered 4 topics
+2016-09-09 09:28:52 [pykafka.cluster] DEBUG: Discovered topic 'taobao.shop.info'
+2016-09-09 09:28:52 [pykafka.cluster] DEBUG: Discovered topic 'taobao.shop.product'
+2016-09-09 09:28:52 [pykafka.cluster] DEBUG: Discovered topic 'tmall.shop.product'
+2016-09-09 09:28:52 [pykafka.cluster] DEBUG: Discovered topic 'tmall.shop.info'
+2016-09-09 09:28:52 [scrapy] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2016-09-09 09:28:52 [xmmspider.extensions] INFO: load shop urls
+2016-09-09 09:28:52 [scrapy] DEBUG: Telnet console listening on 127.0.0.1:6024
+2016-09-09 09:28:53 [pykafka.handlers] INFO: RequestHandler worker: exiting cleanly
+2016-09-09 09:28:58 [scrapy] DEBUG: Redirecting (302) to <GET https://login.taobao.com/jump?target=http%3a%2f%2fkindle.tmall.com%2Fsearch.htm%3ftbpm%3d1> from <GET https://kindle.tmall.com/search.htm>
+2016-09-09 09:29:01 [scrapy] DEBUG: Redirecting (302) to <GET https://login.taobao.com/jump?target=http%3a%2f%2fhuromhuiyue.tmall.com%2Fsearch.htm%3ftbpm%3d1> from <GET https://huromhuiyue.tmall.com/search.htm>
+2016-09-09 09:29:05 [scrapy] DEBUG: Received cookies from: <302 https://login.taobao.com/jump?target=http%3a%2f%2fkindle.tmall.com%2Fsearch.htm%3ftbpm%3d1>
+Set-Cookie: _tb_token_=NA937U8dlc9Z;domain=.taobao.com;Path=/;HttpOnly
+
+Set-Cookie: cookie2=c59c202dd9029951d1e8573520010711;domain=.taobao.com;Path=/;HttpOnly
+
+Set-Cookie: t=3bf8566cae323cfbc2fc61d3fe598044;domain=.taobao.com;Expires=Thu, 08-Dec-2016 01:29:02 GMT;Path=/
+
+2016-09-09 09:29:05 [scrapy] DEBUG: Redirecting (302) to <GET https://pass.tmall.com/add?_tb_token_=NA937U8dlc9Z&cookie2=c59c202dd9029951d1e8573520010711&t=3bf8566cae323cfbc2fc61d3fe598044&target=http%3a%2f%2fkindle.tmall.com%2Fsearch.htm%3ftbpm%3d1&pacc=F39-NOGQkpNTqqcHwzPMNA==&opi=101.204.247.120&tmsc=1473384542901781> from <GET https://login.taobao.com/jump?target=http%3a%2f%2fkindle.tmall.com%2Fsearch.htm%3ftbpm%3d1>
+2016-09-09 09:29:08 [scrapy] DEBUG: Received cookies from: <302 https://login.taobao.com/jump?target=http%3a%2f%2fhuromhuiyue.tmall.com%2Fsearch.htm%3ftbpm%3d1>
+Set-Cookie: _tb_token_=0w9bgKCpMrZi;domain=.taobao.com;Path=/;HttpOnly
+
+Set-Cookie: cookie2=1695b631179f04abbe83760bd9012ca5;domain=.taobao.com;Path=/;HttpOnly
+
+Set-Cookie: t=d5dc6bc0eca06f715aea395af45f3d0f;domain=.taobao.com;Expires=Thu, 08-Dec-2016 01:29:02 GMT;Path=/
+
+2016-09-09 09:29:08 [scrapy] DEBUG: Redirecting (302) to <GET https://pass.tmall.com/add?_tb_token_=0w9bgKCpMrZi&cookie2=1695b631179f04abbe83760bd9012ca5&t=d5dc6bc0eca06f715aea395af45f3d0f&target=http%3a%2f%2fhuromhuiyue.tmall.com%2Fsearch.htm%3ftbpm%3d1&pacc=_puqjSHEqXuVISlhYHjqLQ==&opi=101.204.247.120&tmsc=1473384542918942> from <GET https://login.taobao.com/jump?target=http%3a%2f%2fhuromhuiyue.tmall.com%2Fsearch.htm%3ftbpm%3d1>
+2016-09-09 09:29:11 [scrapy] DEBUG: Received cookies from: <302 https://pass.tmall.com/add?_tb_token_=NA937U8dlc9Z&cookie2=c59c202dd9029951d1e8573520010711&t=3bf8566cae323cfbc2fc61d3fe598044&target=http%3a%2f%2fkindle.tmall.com%2Fsearch.htm%3ftbpm%3d1&pacc=F39-NOGQkpNTqqcHwzPMNA==&opi=101.204.247.120&tmsc=1473384542901781>
+Set-Cookie: _tb_token_=NA937U8dlc9Z;domain=.tmall.com;Path=/
+
+Set-Cookie: cookie2=c59c202dd9029951d1e8573520010711;domain=.tmall.com;Path=/;HttpOnly
+
+Set-Cookie: t=3bf8566cae323cfbc2fc61d3fe598044;domain=.tmall.com;Path=/
+
+2016-09-09 09:29:11 [scrapy] DEBUG: Redirecting (302) to <GET http://kindle.tmall.com/search.htm?tbpm=1> from <GET https://pass.tmall.com/add?_tb_token_=NA937U8dlc9Z&cookie2=c59c202dd9029951d1e8573520010711&t=3bf8566cae323cfbc2fc61d3fe598044&target=http%3a%2f%2fkindle.tmall.com%2Fsearch.htm%3ftbpm%3d1&pacc=F39-NOGQkpNTqqcHwzPMNA==&opi=101.204.247.120&tmsc=1473384542901781>
+2016-09-09 09:29:14 [scrapy] DEBUG: Sending cookies to: <GET http://kindle.tmall.com/search.htm?tbpm=1>
+Cookie: cookie2=c59c202dd9029951d1e8573520010711; _tb_token_=NA937U8dlc9Z; t=3bf8566cae323cfbc2fc61d3fe598044
+
+2016-09-09 09:29:14 [scrapy] DEBUG: Received cookies from: <302 https://pass.tmall.com/add?_tb_token_=0w9bgKCpMrZi&cookie2=1695b631179f04abbe83760bd9012ca5&t=d5dc6bc0eca06f715aea395af45f3d0f&target=http%3a%2f%2fhuromhuiyue.tmall.com%2Fsearch.htm%3ftbpm%3d1&pacc=_puqjSHEqXuVISlhYHjqLQ==&opi=101.204.247.120&tmsc=1473384542918942>
+Set-Cookie: _tb_token_=0w9bgKCpMrZi;domain=.tmall.com;Path=/
+
+Set-Cookie: cookie2=1695b631179f04abbe83760bd9012ca5;domain=.tmall.com;Path=/;HttpOnly
+
+Set-Cookie: t=d5dc6bc0eca06f715aea395af45f3d0f;domain=.tmall.com;Path=/
+
+2016-09-09 09:29:14 [scrapy] DEBUG: Redirecting (302) to <GET http://huromhuiyue.tmall.com/search.htm?tbpm=1> from <GET https://pass.tmall.com/add?_tb_token_=0w9bgKCpMrZi&cookie2=1695b631179f04abbe83760bd9012ca5&t=d5dc6bc0eca06f715aea395af45f3d0f&target=http%3a%2f%2fhuromhuiyue.tmall.com%2Fsearch.htm%3ftbpm%3d1&pacc=_puqjSHEqXuVISlhYHjqLQ==&opi=101.204.247.120&tmsc=1473384542918942>
+2016-09-09 09:29:17 [scrapy] DEBUG: Sending cookies to: <GET http://huromhuiyue.tmall.com/search.htm?tbpm=1>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:29:17 [scrapy] DEBUG: Redirecting (301) to <GET https://kindle.tmall.com/search.htm?tbpm=1> from <GET http://kindle.tmall.com/search.htm?tbpm=1>
+2016-09-09 09:29:20 [scrapy] DEBUG: Sending cookies to: <GET https://kindle.tmall.com/search.htm?tbpm=1>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:29:20 [scrapy] DEBUG: Redirecting (301) to <GET https://huromhuiyue.tmall.com/search.htm?tbpm=1> from <GET http://huromhuiyue.tmall.com/search.htm?tbpm=1>
+2016-09-09 09:29:23 [scrapy] DEBUG: Sending cookies to: <GET https://huromhuiyue.tmall.com/search.htm?tbpm=1>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:29:23 [scrapy] DEBUG: Redirecting (302) to <GET http://kindle.tmall.com/search.htm> from <GET https://kindle.tmall.com/search.htm?tbpm=1>
+2016-09-09 09:29:26 [scrapy] DEBUG: Sending cookies to: <GET http://kindle.tmall.com/search.htm>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:29:26 [scrapy] DEBUG: Redirecting (302) to <GET http://huromhuiyue.tmall.com/search.htm> from <GET https://huromhuiyue.tmall.com/search.htm?tbpm=1>
+2016-09-09 09:29:29 [scrapy] DEBUG: Sending cookies to: <GET http://huromhuiyue.tmall.com/search.htm>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:29:29 [scrapy] DEBUG: Redirecting (301) to <GET https://kindle.tmall.com/search.htm> from <GET http://kindle.tmall.com/search.htm>
+2016-09-09 09:29:32 [scrapy] DEBUG: Sending cookies to: <GET https://kindle.tmall.com/search.htm>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:29:32 [scrapy] DEBUG: Redirecting (301) to <GET https://huromhuiyue.tmall.com/search.htm> from <GET http://huromhuiyue.tmall.com/search.htm>
+2016-09-09 09:29:35 [scrapy] DEBUG: Sending cookies to: <GET https://huromhuiyue.tmall.com/search.htm>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:29:35 [scrapy] DEBUG: Crawled (200) <GET https://huromhuiyue.tmall.com/search.htm> (referer: None)
+2016-09-09 09:29:35 [scrapy] DEBUG: Crawled (200) <GET https://kindle.tmall.com/search.htm> (referer: None)
+2016-09-09 09:29:38 [scrapy] DEBUG: Sending cookies to: <GET https://huromhuiyue.tmall.com//i/asynSearch.htm?mid=w-15014346708-0&wid=15014346708&path=/search.htm&&search=y>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:29:41 [scrapy] DEBUG: Sending cookies to: <GET https://kindle.tmall.com//i/asynSearch.htm?mid=w-14852666541-0&wid=14852666541&path=/search.htm&&search=y>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:29:42 [scrapy] DEBUG: Crawled (200) <GET https://huromhuiyue.tmall.com//i/asynSearch.htm?mid=w-15014346708-0&wid=15014346708&path=/search.htm&&search=y> (referer: https://huromhuiyue.tmall.com/search.htm)
+2016-09-09 09:29:42 [scrapy] DEBUG: Crawled (200) <GET https://kindle.tmall.com//i/asynSearch.htm?mid=w-14852666541-0&wid=14852666541&path=/search.htm&&search=y> (referer: https://kindle.tmall.com/search.htm)
+2016-09-09 09:29:45 [scrapy] DEBUG: Sending cookies to: <GET https://detail.tmall.com/item.htm?id=521122242786&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:29:51 [scrapy] DEBUG: Sending cookies to: <GET https://detail.tmall.com/item.htm?id=534274368086&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:29:51 [scrapy] DEBUG: Sending cookies to: <GET https://detail.tmall.com/item.htm?id=522642972798&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:29:57 [scrapy] INFO: Crawled 4 pages (at 4 pages/min), scraped 0 items (at 0 items/min)
+2016-09-09 09:29:57 [scrapy] DEBUG: Sending cookies to: <GET https://detail.tmall.com/item.htm?id=522680881881&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:29:57 [scrapy] DEBUG: Sending cookies to: <GET https://detail.tmall.com/item.htm?id=520155187915&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:30:03 [scrapy] DEBUG: Sending cookies to: <GET https://detail.tmall.com/item.htm?id=529330967656&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:30:03 [scrapy] DEBUG: Sending cookies to: <GET https://detail.tmall.com/item.htm?id=45156523269&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:30:09 [scrapy] DEBUG: Sending cookies to: <GET https://detail.tmall.com/item.htm?id=522686700744&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:30:09 [scrapy] DEBUG: Sending cookies to: <GET https://detail.tmall.com/item.htm?id=531947109704&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:30:15 [scrapy] DEBUG: Sending cookies to: <GET https://detail.tmall.com/item.htm?id=534313212999&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:30:15 [scrapy] DEBUG: Sending cookies to: <GET https://detail.tmall.com/item.htm?id=538159559962&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:30:21 [scrapy] DEBUG: Sending cookies to: <GET https://detail.tmall.com/item.htm?id=520138273925&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:30:21 [scrapy] DEBUG: Sending cookies to: <GET https://detail.tmall.com/item.htm?id=44516314209&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:30:27 [scrapy] DEBUG: Sending cookies to: <GET https://detail.tmall.com/item.htm?id=524576695087&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:30:27 [scrapy] DEBUG: Sending cookies to: <GET https://detail.tmall.com/item.htm?id=44597897759&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:30:30 [scrapy] DEBUG: Retrying <GET https://detail.tmall.com/item.htm?id=521122242786&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0> (failed 1 times): [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2016-09-09 09:30:36 [scrapy] DEBUG: Sending cookies to: <GET https://detail.tmall.com/item.htm?id=520139246239&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:30:36 [scrapy] DEBUG: Sending cookies to: <GET https://detail.tmall.com/item.htm?id=44516210076&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:30:39 [scrapy] DEBUG: Retrying <GET https://detail.tmall.com/item.htm?id=534274368086&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0> (failed 1 times): [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2016-09-09 09:30:45 [scrapy] DEBUG: Sending cookies to: <GET https://detail.tmall.com/item.htm?id=524809449316&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:30:48 [scrapy] DEBUG: Retrying <GET https://detail.tmall.com/item.htm?id=522642972798&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0> (failed 1 times): [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2016-09-09 09:30:54 [scrapy] DEBUG: Sending cookies to: <GET https://detail.tmall.com/item.htm?id=45775586486&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:30:54 [scrapy] DEBUG: Retrying <GET https://detail.tmall.com/item.htm?id=520155187915&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0> (failed 1 times): [<twisted.python.failure.Failure OpenSSL.SSL.Error: [('SSL routines', 'ssl3_read_bytes', 'ssl handshake failure')]>]
+2016-09-09 09:30:57 [scrapy] DEBUG: Retrying <GET https://detail.tmall.com/item.htm?id=522680881881&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0> (failed 1 times): [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2016-09-09 09:31:00 [scrapy] INFO: Crawled 4 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2016-09-09 09:31:03 [scrapy] DEBUG: Sending cookies to: <GET https://detail.tmall.com/item.htm?id=525548984603&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:31:03 [scrapy] DEBUG: Sending cookies to: <GET https://detail.tmall.com/item.htm?id=44557457884&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:31:03 [scrapy] DEBUG: Retrying <GET https://detail.tmall.com/item.htm?id=529330967656&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0> (failed 1 times): [<twisted.python.failure.Failure OpenSSL.SSL.Error: [('SSL routines', 'ssl3_read_bytes', 'ssl handshake failure')]>]
+2016-09-09 09:31:09 [scrapy] DEBUG: Sending cookies to: <GET https://detail.tmall.com/item.htm?id=529795486164&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:31:15 [scrapy] DEBUG: Retrying <GET https://detail.tmall.com/item.htm?id=45156523269&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0> (failed 1 times): [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2016-09-09 09:31:18 [scrapy] DEBUG: Sending cookies to: <GET https://detail.tmall.com/item.htm?id=524765098752&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:31:24 [scrapy] DEBUG: Crawled (200) <GET https://detail.tmall.com/item.htm?id=522686700744&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0> (referer: https://kindle.tmall.com//i/asynSearch.htm?mid=w-14852666541-0&wid=14852666541&path=/search.htm&&search=y)
+2016-09-09 09:31:24 [scrapy] DEBUG: Sending cookies to: <GET https://detail.tmall.com/item.htm?id=45585775024&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:31:27 [scrapy] DEBUG: Crawled (200) <GET https://detail.tmall.com/item.htm?id=531947109704&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0> (referer: https://huromhuiyue.tmall.com//i/asynSearch.htm?mid=w-15014346708-0&wid=15014346708&path=/search.htm&&search=y)
+2016-09-09 09:31:27 [scrapy] DEBUG: Sending cookies to: <GET https://detail.tmall.com/item.htm?id=41559155332&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:31:30 [scrapy] DEBUG: Crawled (200) <GET https://detail.tmall.com/item.htm?id=44516314209&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0> (referer: https://huromhuiyue.tmall.com//i/asynSearch.htm?mid=w-15014346708-0&wid=15014346708&path=/search.htm&&search=y)
+2016-09-09 09:31:33 [scrapy] DEBUG: Sending cookies to: <GET https://mdskip.taobao.com/core/initItemDetail.htm?isApparel=false&tryBeforeBuy=false&sellerPreview=false&showShopProm=false&isSecKill=false&cartEnable=true&isForbidBuyItem=false&isRegionLevel=true&cachedTimestamp=1473384625122&service3C=true&itemId=522686700744&tmallBuySupport=true&offlineShop=false&household=false&isPurchaseMallPage=false&isAreaSell=true&queryMemberRight=true&addressLevel=4&isUseInventoryCenter=true&callback=setMdskip>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:31:36 [scrapy] DEBUG: Crawled (200) <GET https://detail.tmall.com/item.htm?id=534313212999&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0> (referer: https://kindle.tmall.com//i/asynSearch.htm?mid=w-14852666541-0&wid=14852666541&path=/search.htm&&search=y)
+2016-09-09 09:31:42 [scrapy] DEBUG: Sending cookies to: <GET https://mdskip.taobao.com/core/initItemDetail.htm?cachedTimestamp=1473384682339&tryBeforeBuy=false&tmallBuySupport=true&offlineShop=false&showShopProm=false&cartEnable=true&isRegionLevel=false&isUseInventoryCenter=false&sellerPreview=false&isAreaSell=false&service3C=true&household=false&isPurchaseMallPage=false&isForbidBuyItem=false&isSecKill=false&itemId=531947109704&queryMemberRight=true&isApparel=false&addressLevel=2&callback=setMdskip>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:31:45 [scrapy] DEBUG: Crawled (200) <GET https://detail.tmall.com/item.htm?id=524576695087&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0> (referer: https://kindle.tmall.com//i/asynSearch.htm?mid=w-14852666541-0&wid=14852666541&path=/search.htm&&search=y)
+2016-09-09 09:31:45 [scrapy] DEBUG: Crawled (200) <GET https://detail.tmall.com/item.htm?id=538159559962&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0> (referer: https://huromhuiyue.tmall.com//i/asynSearch.htm?mid=w-15014346708-0&wid=15014346708&path=/search.htm&&search=y)
+2016-09-09 09:31:54 [scrapy] DEBUG: Sending cookies to: <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_531947109704,DFX_200_1_531947109704,ICVT_7_531947109704,ICCP_1_531947109704,SCCP_2_116679011>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:31:54 [scrapy] DEBUG: Sending cookies to: <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=522686700744&callback=jsonp197>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:31:57 [scrapy] DEBUG: Crawled (200) <GET https://detail.tmall.com/item.htm?id=44597897759&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0> (referer: https://huromhuiyue.tmall.com//i/asynSearch.htm?mid=w-15014346708-0&wid=15014346708&path=/search.htm&&search=y)
+2016-09-09 09:31:57 [scrapy] DEBUG: Retrying <GET https://detail.tmall.com/item.htm?id=520138273925&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0> (failed 1 times): [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2016-09-09 09:32:06 [scrapy] INFO: Crawled 11 pages (at 7 pages/min), scraped 0 items (at 0 items/min)
+2016-09-09 09:32:09 [scrapy] DEBUG: Sending cookies to: <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=531947109704&callback=jsonp197>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:32:09 [scrapy] DEBUG: Sending cookies to: <GET https://mdskip.taobao.com/core/initItemDetail.htm?tmallBuySupport=true&isSecKill=false&addressLevel=4&cachedTimestamp=1473384688460&showShopProm=false&isApparel=false&queryMemberRight=true&itemId=534313212999&cartEnable=true&offlineShop=false&tryBeforeBuy=false&isForbidBuyItem=false&isAreaSell=true&service3C=true&sellerPreview=false&isPurchaseMallPage=false&isRegionLevel=true&household=false&isUseInventoryCenter=true&callback=setMdskip>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:32:30 [scrapy] DEBUG: Crawled (200) <GET https://detail.tmall.com/item.htm?id=520139246239&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0> (referer: https://kindle.tmall.com//i/asynSearch.htm?mid=w-14852666541-0&wid=14852666541&path=/search.htm&&search=y)
+2016-09-09 09:32:39 [scrapy] DEBUG: Sending cookies to: <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=534313212999&callback=jsonp197>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:32:42 [scrapy] DEBUG: Retrying <GET https://mdskip.taobao.com/core/initItemDetail.htm?cachedTimestamp=1473384682339&tryBeforeBuy=false&tmallBuySupport=true&offlineShop=false&showShopProm=false&cartEnable=true&isRegionLevel=false&isUseInventoryCenter=false&sellerPreview=false&isAreaSell=false&service3C=true&household=false&isPurchaseMallPage=false&isForbidBuyItem=false&isSecKill=false&itemId=531947109704&queryMemberRight=true&isApparel=false&addressLevel=2&callback=setMdskip> (failed 1 times): [<twisted.python.failure.Failure OpenSSL.SSL.Error: [('SSL routines', 'ssl3_read_bytes', 'ssl handshake failure')]>]
+2016-09-09 09:32:45 [scrapy] DEBUG: Retrying <GET https://mdskip.taobao.com/core/initItemDetail.htm?isApparel=false&tryBeforeBuy=false&sellerPreview=false&showShopProm=false&isSecKill=false&cartEnable=true&isForbidBuyItem=false&isRegionLevel=true&cachedTimestamp=1473384625122&service3C=true&itemId=522686700744&tmallBuySupport=true&offlineShop=false&household=false&isPurchaseMallPage=false&isAreaSell=true&queryMemberRight=true&addressLevel=4&isUseInventoryCenter=true&callback=setMdskip> (failed 1 times): [<twisted.python.failure.Failure OpenSSL.SSL.Error: [('SSL routines', 'ssl3_read_bytes', 'ssl handshake failure')]>]
+2016-09-09 09:32:48 [scrapy] DEBUG: Crawled (200) <GET https://detail.tmall.com/item.htm?id=44516210076&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0> (referer: https://huromhuiyue.tmall.com//i/asynSearch.htm?mid=w-15014346708-0&wid=15014346708&path=/search.htm&&search=y)
+2016-09-09 09:32:54 [scrapy] DEBUG: Sending cookies to: <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=538159559962&callback=jsonp197>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:32:54 [scrapy] DEBUG: Sending cookies to: <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=524576695087&callback=jsonp197>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:32:54 [scrapy] DEBUG: Sending cookies to: <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_44597897759,DFX_200_1_44597897759,ICVT_7_44597897759,ICCP_1_44597897759,SCCP_2_116679011>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:32:57 [scrapy] DEBUG: Crawled (200) <GET https://detail.tmall.com/item.htm?id=524809449316&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0> (referer: https://kindle.tmall.com//i/asynSearch.htm?mid=w-14852666541-0&wid=14852666541&path=/search.htm&&search=y)
+2016-09-09 09:33:00 [scrapy] INFO: Crawled 14 pages (at 3 pages/min), scraped 0 items (at 0 items/min)
+2016-09-09 09:33:00 [scrapy] DEBUG: Sending cookies to: <GET https://mdskip.taobao.com/core/initItemDetail.htm?offlineShop=false&queryMemberRight=true&isAreaSell=true&tmallBuySupport=true&addressLevel=4&isForbidBuyItem=false&isApparel=false&sellerPreview=false&showShopProm=false&isSecKill=false&isUseInventoryCenter=true&isPurchaseMallPage=false&isRegionLevel=true&service3C=true&tryBeforeBuy=false&cachedTimestamp=1473379865729&household=false&cartEnable=true&itemId=520139246239&callback=setMdskip>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:33:00 [scrapy] DEBUG: Crawled (200) <GET https://detail.tmall.com/item.htm?id=45775586486&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0> (referer: https://kindle.tmall.com//i/asynSearch.htm?mid=w-14852666541-0&wid=14852666541&path=/search.htm&&search=y)
+2016-09-09 09:33:00 [scrapy] DEBUG: Retrying <GET https://mdskip.taobao.com/core/initItemDetail.htm?tmallBuySupport=true&isSecKill=false&addressLevel=4&cachedTimestamp=1473384688460&showShopProm=false&isApparel=false&queryMemberRight=true&itemId=534313212999&cartEnable=true&offlineShop=false&tryBeforeBuy=false&isForbidBuyItem=false&isAreaSell=true&service3C=true&sellerPreview=false&isPurchaseMallPage=false&isRegionLevel=true&household=false&isUseInventoryCenter=true&callback=setMdskip> (failed 1 times): [<twisted.python.failure.Failure OpenSSL.SSL.Error: [('SSL routines', 'ssl3_read_bytes', 'ssl handshake failure')]>]
+2016-09-09 09:33:09 [scrapy] DEBUG: Sending cookies to: <GET https://mdskip.taobao.com/core/initItemDetail.htm?sellerPreview=false&showShopProm=false&service3C=true&queryMemberRight=true&cartEnable=true&tmallBuySupport=true&isApparel=false&offlineShop=false&cachedTimestamp=1473374350489&household=false&isSecKill=false&isForbidBuyItem=false&itemId=44516210076&isUseInventoryCenter=false&isRegionLevel=false&isPurchaseMallPage=false&tryBeforeBuy=false&addressLevel=2&isAreaSell=false&callback=setMdskip>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:33:09 [scrapy] DEBUG: Sending cookies to: <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_520139246239,DFX_200_1_520139246239,ICVT_7_520139246239,ICCP_1_520139246239,SCCP_2_110918969>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:33:09 [scrapy] DEBUG: Crawled (200) <GET https://detail.tmall.com/item.htm?id=525548984603&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0> (referer: https://kindle.tmall.com//i/asynSearch.htm?mid=w-14852666541-0&wid=14852666541&path=/search.htm&&search=y)
+2016-09-09 09:33:21 [scrapy] DEBUG: Sending cookies to: <GET https://mdskip.taobao.com/core/initItemDetail.htm?isForbidBuyItem=false&isPurchaseMallPage=false&cartEnable=true&tmallBuySupport=true&household=false&isAreaSell=true&isRegionLevel=true&isApparel=false&isUseInventoryCenter=true&isSecKill=false&cachedTimestamp=1473377288215&showShopProm=false&sellerPreview=false&queryMemberRight=true&itemId=45775586486&tryBeforeBuy=false&addressLevel=4&offlineShop=false&service3C=true&callback=setMdskip>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:33:21 [scrapy] DEBUG: Crawled (200) <GET https://detail.tmall.com/item.htm?id=44557457884&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0> (referer: https://huromhuiyue.tmall.com//i/asynSearch.htm?mid=w-15014346708-0&wid=15014346708&path=/search.htm&&search=y)
+2016-09-09 09:33:21 [scrapy] DEBUG: Retrying <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=522686700744&callback=jsonp197> (failed 1 times): [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2016-09-09 09:33:24 [scrapy] DEBUG: Retrying <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_531947109704,DFX_200_1_531947109704,ICVT_7_531947109704,ICCP_1_531947109704,SCCP_2_116679011> (failed 1 times): [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2016-09-09 09:33:37 [scrapy] DEBUG: Sending cookies to: <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_45775586486,DFX_200_1_45775586486,ICVT_7_45775586486,ICCP_1_45775586486,SCCP_2_110918969>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:33:37 [scrapy] DEBUG: Sending cookies to: <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=44516210076&callback=jsonp197>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:33:37 [scrapy] DEBUG: Sending cookies to: <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_524809449316,DFX_200_1_524809449316,ICVT_7_524809449316,ICCP_1_524809449316,SCCP_2_110918969>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:33:37 [scrapy] DEBUG: Crawled (200) <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=531947109704&callback=jsonp197> (referer: https://detail.tmall.com/item.htm?id=531947109704&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0)
+2016-09-09 09:33:49 [scrapy] DEBUG: Sending cookies to: <GET https://mdskip.taobao.com/core/initItemDetail.htm?addressLevel=2&isUseInventoryCenter=false&household=false&isAreaSell=false&isPurchaseMallPage=false&itemId=44557457884&cartEnable=true&queryMemberRight=true&cachedTimestamp=1473384535330&isForbidBuyItem=false&tmallBuySupport=true&tryBeforeBuy=false&isRegionLevel=false&offlineShop=false&service3C=true&isSecKill=false&showShopProm=false&sellerPreview=false&isApparel=false&callback=setMdskip>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:33:49 [scrapy] DEBUG: Crawled (200) <GET https://detail.tmall.com/item.htm?id=529795486164&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0> (referer: https://kindle.tmall.com//i/asynSearch.htm?mid=w-14852666541-0&wid=14852666541&path=/search.htm&&search=y)
+2016-09-09 09:33:49 [scrapy] DEBUG: Retrying <GET https://mdskip.taobao.com/core/initItemDetail.htm?offlineShop=false&queryMemberRight=true&isAreaSell=true&tmallBuySupport=true&addressLevel=4&isForbidBuyItem=false&isApparel=false&sellerPreview=false&showShopProm=false&isSecKill=false&isUseInventoryCenter=true&isPurchaseMallPage=false&isRegionLevel=true&service3C=true&tryBeforeBuy=false&cachedTimestamp=1473379865729&household=false&cartEnable=true&itemId=520139246239&callback=setMdskip> (failed 1 times): [<twisted.python.failure.Failure OpenSSL.SSL.Error: [('SSL routines', 'ssl3_read_bytes', 'ssl handshake failure')]>]
+2016-09-09 09:33:58 [scrapy] DEBUG: Sending cookies to: <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_44557457884,DFX_200_1_44557457884,ICVT_7_44557457884,ICCP_1_44557457884,SCCP_2_116679011>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:33:58 [scrapy] DEBUG: Sending cookies to: <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_525548984603,DFX_200_1_525548984603,ICVT_7_525548984603,ICCP_1_525548984603,SCCP_2_110918969>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:33:58 [scrapy] DEBUG: Crawled (200) <GET https://detail.tmall.com/item.htm?id=524765098752&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0> (referer: https://kindle.tmall.com//i/asynSearch.htm?mid=w-14852666541-0&wid=14852666541&path=/search.htm&&search=y)
+2016-09-09 09:33:58 [scrapy] DEBUG: Crawled (200) <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=534313212999&callback=jsonp197> (referer: https://detail.tmall.com/item.htm?id=534313212999&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:33:58 [scrapy] DEBUG: Retrying <GET https://mdskip.taobao.com/core/initItemDetail.htm?sellerPreview=false&showShopProm=false&service3C=true&queryMemberRight=true&cartEnable=true&tmallBuySupport=true&isApparel=false&offlineShop=false&cachedTimestamp=1473374350489&household=false&isSecKill=false&isForbidBuyItem=false&itemId=44516210076&isUseInventoryCenter=false&isRegionLevel=false&isPurchaseMallPage=false&tryBeforeBuy=false&addressLevel=2&isAreaSell=false&callback=setMdskip> (failed 1 times): [<twisted.python.failure.Failure OpenSSL.SSL.Error: [('SSL routines', 'ssl23_read', 'ssl handshake failure')]>]
+2016-09-09 09:34:01 [scrapy] INFO: Crawled 21 pages (at 7 pages/min), scraped 0 items (at 0 items/min)
+2016-09-09 09:34:10 [scrapy] DEBUG: Sending cookies to: <GET https://mdskip.taobao.com/core/initItemDetail.htm?tmallBuySupport=true&isPurchaseMallPage=false&isAreaSell=true&cartEnable=true&household=false&itemId=529795486164&isForbidBuyItem=false&queryMemberRight=true&addressLevel=4&offlineShop=false&tryBeforeBuy=false&cachedTimestamp=1473383547408&isApparel=false&isRegionLevel=true&isUseInventoryCenter=true&sellerPreview=false&isSecKill=false&showShopProm=false&service3C=true&callback=setMdskip>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:34:10 [scrapy] DEBUG: Sending cookies to: <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=44557457884&callback=jsonp197>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:34:10 [scrapy] DEBUG: Sending cookies to: <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=525548984603&callback=jsonp197>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:34:10 [scrapy] DEBUG: Crawled (200) <GET https://detail.tmall.com/item.htm?id=45585775024&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0> (referer: https://kindle.tmall.com//i/asynSearch.htm?mid=w-14852666541-0&wid=14852666541&path=/search.htm&&search=y)
+2016-09-09 09:34:10 [scrapy] DEBUG: Retrying <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_44597897759,DFX_200_1_44597897759,ICVT_7_44597897759,ICCP_1_44597897759,SCCP_2_116679011> (failed 1 times): [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2016-09-09 09:34:13 [scrapy] DEBUG: Retrying <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=538159559962&callback=jsonp197> (failed 1 times): [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2016-09-09 09:34:22 [scrapy] DEBUG: Sending cookies to: <GET https://mdskip.taobao.com/core/initItemDetail.htm?showShopProm=false&cachedTimestamp=1473381570776&isForbidBuyItem=false&cartEnable=true&addressLevel=4&isAreaSell=true&tmallBuySupport=true&isUseInventoryCenter=true&tryBeforeBuy=false&queryMemberRight=true&isPurchaseMallPage=false&sellerPreview=false&household=false&itemId=524765098752&isSecKill=false&isRegionLevel=true&isApparel=false&offlineShop=false&service3C=true&callback=setMdskip>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:34:22 [scrapy] DEBUG: Sending cookies to: <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_529795486164,DFX_200_1_529795486164,ICVT_7_529795486164,ICCP_1_529795486164,SCCP_2_110918969>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:34:22 [scrapy] DEBUG: Sending cookies to: <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=45775586486&callback=jsonp197>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:34:22 [scrapy] DEBUG: Retrying <GET https://mdskip.taobao.com/core/initItemDetail.htm?isForbidBuyItem=false&isPurchaseMallPage=false&cartEnable=true&tmallBuySupport=true&household=false&isAreaSell=true&isRegionLevel=true&isApparel=false&isUseInventoryCenter=true&isSecKill=false&cachedTimestamp=1473377288215&showShopProm=false&sellerPreview=false&queryMemberRight=true&itemId=45775586486&tryBeforeBuy=false&addressLevel=4&offlineShop=false&service3C=true&callback=setMdskip> (failed 1 times): [<twisted.python.failure.Failure OpenSSL.SSL.Error: [('SSL routines', 'ssl3_read_bytes', 'ssl handshake failure')]>]
+2016-09-09 09:34:25 [scrapy] DEBUG: Crawled (200) <GET https://detail.tmall.com/item.htm?id=41559155332&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0> (referer: https://kindle.tmall.com//i/asynSearch.htm?mid=w-14852666541-0&wid=14852666541&path=/search.htm&&search=y)
+2016-09-09 09:34:25 [scrapy] DEBUG: Retrying <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_520139246239,DFX_200_1_520139246239,ICVT_7_520139246239,ICCP_1_520139246239,SCCP_2_110918969> (failed 1 times): [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2016-09-09 09:34:28 [scrapy] DEBUG: Retrying <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=524576695087&callback=jsonp197> (failed 1 times): [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2016-09-09 09:34:40 [scrapy] DEBUG: Sending cookies to: <GET https://mdskip.taobao.com/core/initItemDetail.htm?tmallBuySupport=true&queryMemberRight=true&isForbidBuyItem=false&isRegionLevel=true&showShopProm=false&isSecKill=false&isUseInventoryCenter=true&isPurchaseMallPage=false&cachedTimestamp=1473384839260&addressLevel=4&cartEnable=true&tryBeforeBuy=false&sellerPreview=false&isAreaSell=true&itemId=45585775024&offlineShop=false&isApparel=false&household=false&service3C=true&callback=setMdskip>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:34:40 [scrapy] DEBUG: Sending cookies to: <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_524765098752,DFX_200_1_524765098752,ICVT_7_524765098752,ICCP_1_524765098752,SCCP_2_110918969>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:34:40 [scrapy] DEBUG: Sending cookies to: <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=529795486164&callback=jsonp197>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:34:40 [scrapy] DEBUG: Sending cookies to: <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=524809449316&callback=jsonp197>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:34:40 [scrapy] DEBUG: Crawled (200) <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=525548984603&callback=jsonp197> (referer: https://detail.tmall.com/item.htm?id=525548984603&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:34:40 [scrapy] DEBUG: Retrying <GET https://mdskip.taobao.com/core/initItemDetail.htm?addressLevel=2&isUseInventoryCenter=false&household=false&isAreaSell=false&isPurchaseMallPage=false&itemId=44557457884&cartEnable=true&queryMemberRight=true&cachedTimestamp=1473384535330&isForbidBuyItem=false&tmallBuySupport=true&tryBeforeBuy=false&isRegionLevel=false&offlineShop=false&service3C=true&isSecKill=false&showShopProm=false&sellerPreview=false&isApparel=false&callback=setMdskip> (failed 1 times): [<twisted.python.failure.Failure OpenSSL.SSL.Error: [('SSL routines', 'ssl23_read', 'ssl handshake failure')]>]
+2016-09-09 09:34:52 [scrapy] DEBUG: Sending cookies to: <GET https://mdskip.taobao.com/core/initItemDetail.htm?isApparel=false&service3C=true&isAreaSell=true&queryMemberRight=true&household=false&showShopProm=false&isSecKill=false&itemId=41559155332&addressLevel=4&isUseInventoryCenter=true&tmallBuySupport=true&tryBeforeBuy=false&isPurchaseMallPage=false&sellerPreview=false&offlineShop=false&cachedTimestamp=1473379865301&cartEnable=true&isForbidBuyItem=false&isRegionLevel=true&callback=setMdskip>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:34:52 [scrapy] DEBUG: Sending cookies to: <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_45585775024,DFX_200_1_45585775024,ICVT_7_45585775024,ICCP_1_45585775024,SCCP_2_110918969>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:34:52 [scrapy] DEBUG: Retrying <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_45775586486,DFX_200_1_45775586486,ICVT_7_45775586486,ICCP_1_45775586486,SCCP_2_110918969> (failed 1 times): [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2016-09-09 09:34:55 [scrapy] DEBUG: Retrying <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=44516210076&callback=jsonp197> (failed 1 times): [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2016-09-09 09:35:04 [scrapy] DEBUG: Sending cookies to: <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_41559155332,DFX_200_1_41559155332,ICVT_7_41559155332,ICCP_1_41559155332,SCCP_2_110918969>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:35:04 [scrapy] DEBUG: Sending cookies to: <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=45585775024&callback=jsonp197>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:35:04 [scrapy] INFO: Crawled 24 pages (at 3 pages/min), scraped 0 items (at 0 items/min)
+2016-09-09 09:35:04 [scrapy] DEBUG: Retrying <GET https://mdskip.taobao.com/core/initItemDetail.htm?tmallBuySupport=true&isPurchaseMallPage=false&isAreaSell=true&cartEnable=true&household=false&itemId=529795486164&isForbidBuyItem=false&queryMemberRight=true&addressLevel=4&offlineShop=false&tryBeforeBuy=false&cachedTimestamp=1473383547408&isApparel=false&isRegionLevel=true&isUseInventoryCenter=true&sellerPreview=false&isSecKill=false&showShopProm=false&service3C=true&callback=setMdskip> (failed 1 times): [<twisted.python.failure.Failure OpenSSL.SSL.Error: [('SSL routines', 'ssl3_read_bytes', 'ssl handshake failure')]>]
+2016-09-09 09:35:10 [scrapy] DEBUG: Sending cookies to: <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=41559155332&callback=jsonp197>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:35:10 [scrapy] DEBUG: Retrying <GET https://mdskip.taobao.com/core/initItemDetail.htm?showShopProm=false&cachedTimestamp=1473381570776&isForbidBuyItem=false&cartEnable=true&addressLevel=4&isAreaSell=true&tmallBuySupport=true&isUseInventoryCenter=true&tryBeforeBuy=false&queryMemberRight=true&isPurchaseMallPage=false&sellerPreview=false&household=false&itemId=524765098752&isSecKill=false&isRegionLevel=true&isApparel=false&offlineShop=false&service3C=true&callback=setMdskip> (failed 1 times): [<twisted.python.failure.Failure OpenSSL.SSL.Error: [('SSL routines', 'ssl3_read_bytes', 'ssl handshake failure')]>]
+2016-09-09 09:35:13 [scrapy] DEBUG: Crawled (200) <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=529795486164&callback=jsonp197> (referer: https://detail.tmall.com/item.htm?id=529795486164&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:35:13 [scrapy] DEBUG: Retrying <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_524809449316,DFX_200_1_524809449316,ICVT_7_524809449316,ICCP_1_524809449316,SCCP_2_110918969> (failed 1 times): [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2016-09-09 09:35:16 [scrapy] DEBUG: Sending cookies to: <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=524765098752&callback=jsonp197>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:35:16 [scrapy] DEBUG: Sending cookies to: <GET https://mdskip.taobao.com/core/initItemDetail.htm?cachedTimestamp=1473376448137&offlineShop=false&isAreaSell=true&isUseInventoryCenter=true&cartEnable=true&queryMemberRight=true&isForbidBuyItem=false&tryBeforeBuy=false&isApparel=false&addressLevel=4&household=false&sellerPreview=false&isRegionLevel=true&isPurchaseMallPage=false&itemId=525548984603&service3C=true&tmallBuySupport=true&isSecKill=false&showShopProm=false&callback=setMdskip>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:35:16 [scrapy] DEBUG: Sending cookies to: <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_44516210076,DFX_200_1_44516210076,ICVT_7_44516210076,ICCP_1_44516210076,SCCP_2_116679011>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:35:16 [scrapy] DEBUG: Retrying <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_44557457884,DFX_200_1_44557457884,ICVT_7_44557457884,ICCP_1_44557457884,SCCP_2_116679011> (failed 1 times): [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2016-09-09 09:35:19 [scrapy] DEBUG: Sending cookies to: <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=520139246239&callback=jsonp197>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:35:19 [scrapy] DEBUG: Retrying <GET https://mdskip.taobao.com/core/initItemDetail.htm?tmallBuySupport=true&queryMemberRight=true&isForbidBuyItem=false&isRegionLevel=true&showShopProm=false&isSecKill=false&isUseInventoryCenter=true&isPurchaseMallPage=false&cachedTimestamp=1473384839260&addressLevel=4&cartEnable=true&tryBeforeBuy=false&sellerPreview=false&isAreaSell=true&itemId=45585775024&offlineShop=false&isApparel=false&household=false&service3C=true&callback=setMdskip> (failed 1 times): [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2016-09-09 09:35:22 [scrapy] DEBUG: Sending cookies to: <GET https://mdskip.taobao.com/core/initItemDetail.htm?addressLevel=4&queryMemberRight=true&isForbidBuyItem=false&isUseInventoryCenter=true&tryBeforeBuy=false&sellerPreview=false&service3C=true&isRegionLevel=true&isAreaSell=true&cartEnable=true&isSecKill=false&tmallBuySupport=true&itemId=524809449316&cachedTimestamp=1473384766676&showShopProm=false&household=false&offlineShop=false&isPurchaseMallPage=false&isApparel=false&callback=setMdskip>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:35:22 [scrapy] DEBUG: Crawled (200) <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_525548984603,DFX_200_1_525548984603,ICVT_7_525548984603,ICCP_1_525548984603,SCCP_2_110918969> (referer: https://detail.tmall.com/item.htm?id=525548984603&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:35:22 [scrapy] DEBUG: Crawled (200) <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=45585775024&callback=jsonp197> (referer: https://detail.tmall.com/item.htm?id=45585775024&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:35:22 [scrapy] DEBUG: Crawled (200) <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=44557457884&callback=jsonp197> (referer: https://detail.tmall.com/item.htm?id=44557457884&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0)
+2016-09-09 09:35:22 [scrapy] DEBUG: Sending cookies to: <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=44597897759&callback=jsonp197>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:35:22 [scrapy] DEBUG: Sending cookies to: <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_538159559962,DFX_200_1_538159559962,ICVT_7_538159559962,ICCP_1_538159559962,SCCP_2_116679011>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:35:22 [scrapy] DEBUG: Sending cookies to: <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_524576695087,DFX_200_1_524576695087,ICVT_7_524576695087,ICCP_1_524576695087,SCCP_2_110918969>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:35:22 [scrapy] DEBUG: Crawled (200) <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_524765098752,DFX_200_1_524765098752,ICVT_7_524765098752,ICCP_1_524765098752,SCCP_2_110918969> (referer: https://detail.tmall.com/item.htm?id=524765098752&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:35:22 [scrapy] DEBUG: Crawled (200) <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_529795486164,DFX_200_1_529795486164,ICVT_7_529795486164,ICCP_1_529795486164,SCCP_2_110918969> (referer: https://detail.tmall.com/item.htm?id=529795486164&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:35:22 [scrapy] DEBUG: Sending cookies to: <GET https://mdskip.taobao.com/core/initItemDetail.htm?service3C=true&queryMemberRight=true&isAreaSell=true&cachedTimestamp=1473384596861&cartEnable=true&sellerPreview=false&itemId=44597897759&isForbidBuyItem=false&isUseInventoryCenter=true&tryBeforeBuy=false&isPurchaseMallPage=false&addressLevel=4&offlineShop=false&showShopProm=false&isSecKill=false&household=false&isRegionLevel=true&isApparel=false&tmallBuySupport=true&callback=setMdskip>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:35:22 [scrapy] DEBUG: Sending cookies to: <GET https://detail.tmall.com/item.htm?id=527273327446&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:35:22 [scrapy] DEBUG: Crawled (200) <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=45775586486&callback=jsonp197> (referer: https://detail.tmall.com/item.htm?id=45775586486&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:35:22 [scrapy] DEBUG: Sending cookies to: <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_534313212999,DFX_200_1_534313212999,ICVT_7_534313212999,ICCP_1_534313212999,SCCP_2_110918969>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:35:22 [scrapy] DEBUG: Crawled (200) <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_41559155332,DFX_200_1_41559155332,ICVT_7_41559155332,ICCP_1_41559155332,SCCP_2_110918969> (referer: https://detail.tmall.com/item.htm?id=41559155332&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:35:22 [scrapy] DEBUG: Sending cookies to: <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=44516314209&callback=jsonp197>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:35:22 [scrapy] DEBUG: Crawled (200) <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_45585775024,DFX_200_1_45585775024,ICVT_7_45585775024,ICCP_1_45585775024,SCCP_2_110918969> (referer: https://detail.tmall.com/item.htm?id=45585775024&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:35:22 [scrapy] DEBUG: Sending cookies to: <GET https://mdskip.taobao.com/core/initItemDetail.htm?cachedTimestamp=1473376860312&addressLevel=2&service3C=true&itemId=538159559962&household=false&isSecKill=false&showShopProm=false&cartEnable=true&isForbidBuyItem=false&isUseInventoryCenter=false&offlineShop=false&sellerPreview=false&isApparel=false&tmallBuySupport=true&tryBeforeBuy=false&isAreaSell=false&isRegionLevel=false&isPurchaseMallPage=false&queryMemberRight=true&callback=setMdskip>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:35:22 [scrapy] DEBUG: Crawled (200) <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=524809449316&callback=jsonp197> (referer: https://detail.tmall.com/item.htm?id=524809449316&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:35:22 [scrapy] DEBUG: Sending cookies to: <GET https://mdskip.taobao.com/core/initItemDetail.htm?isApparel=false&cartEnable=true&tmallBuySupport=true&addressLevel=4&showShopProm=false&tryBeforeBuy=false&isAreaSell=true&household=false&itemId=524576695087&isForbidBuyItem=false&isSecKill=false&cachedTimestamp=1473382297429&sellerPreview=false&isUseInventoryCenter=true&offlineShop=false&service3C=true&queryMemberRight=true&isPurchaseMallPage=false&isRegionLevel=true&callback=setMdskip>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:35:22 [scrapy] DEBUG: Crawled (200) <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=41559155332&callback=jsonp197> (referer: https://detail.tmall.com/item.htm?id=41559155332&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:35:22 [scrapy] DEBUG: Sending cookies to: <GET https://detail.tmall.com/item.htm?id=524764962295&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:35:22 [scrapy] DEBUG: Crawled (200) <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_44516210076,DFX_200_1_44516210076,ICVT_7_44516210076,ICCP_1_44516210076,SCCP_2_116679011> (referer: https://detail.tmall.com/item.htm?id=44516210076&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0)
+2016-09-09 09:35:22 [scrapy] DEBUG: Sending cookies to: <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_44516314209,DFX_200_1_44516314209,ICVT_7_44516314209,ICCP_1_44516314209,SCCP_2_116679011>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:35:22 [scrapy] DEBUG: Received cookies from: <200 https://mdskip.taobao.com/core/initItemDetail.htm?cachedTimestamp=1473376448137&offlineShop=false&isAreaSell=true&isUseInventoryCenter=true&cartEnable=true&queryMemberRight=true&isForbidBuyItem=false&tryBeforeBuy=false&isApparel=false&addressLevel=4&household=false&sellerPreview=false&isRegionLevel=true&isPurchaseMallPage=false&itemId=525548984603&service3C=true&tmallBuySupport=true&isSecKill=false&showShopProm=false&callback=setMdskip>
+Set-Cookie: t=d5dc6bc0eca06f715aea395af45f3d0f; Domain=.taobao.com; Expires=Thu, 08-Dec-2016 01:35:20 GMT; Path=/
+
+Set-Cookie: cookie2=1695b631179f04abbe83760bd9012ca5;Domain=.taobao.com;Path=/;HttpOnly
+
+Set-Cookie: v=0; Domain=.taobao.com; Path=/
+
+2016-09-09 09:35:22 [scrapy] DEBUG: Crawled (200) <GET https://mdskip.taobao.com/core/initItemDetail.htm?cachedTimestamp=1473376448137&offlineShop=false&isAreaSell=true&isUseInventoryCenter=true&cartEnable=true&queryMemberRight=true&isForbidBuyItem=false&tryBeforeBuy=false&isApparel=false&addressLevel=4&household=false&sellerPreview=false&isRegionLevel=true&isPurchaseMallPage=false&itemId=525548984603&service3C=true&tmallBuySupport=true&isSecKill=false&showShopProm=false&callback=setMdskip> (referer: https://detail.tmall.com/item.htm?id=525548984603&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:35:22 [scrapy] DEBUG: Sending cookies to: <GET https://detail.tmall.com/item.htm?id=522588121221&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:35:22 [scrapy] DEBUG: Crawled (200) <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_538159559962,DFX_200_1_538159559962,ICVT_7_538159559962,ICCP_1_538159559962,SCCP_2_116679011> (referer: https://detail.tmall.com/item.htm?id=538159559962&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0)
+2016-09-09 09:35:22 [scrapy] DEBUG: Sending cookies to: <GET https://mdskip.taobao.com/core/initItemDetail.htm?tryBeforeBuy=false&addressLevel=2&isForbidBuyItem=false&isAreaSell=false&isSecKill=false&sellerPreview=false&cachedTimestamp=1473375489275&isApparel=false&isUseInventoryCenter=false&isPurchaseMallPage=false&tmallBuySupport=true&isRegionLevel=false&household=false&queryMemberRight=true&offlineShop=false&itemId=44516314209&cartEnable=true&showShopProm=false&service3C=true&callback=setMdskip>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f; v=0
+
+2016-09-09 09:35:22 [scrapy] DEBUG: Crawled (200) <GET https://detail.tmall.com/item.htm?id=527273327446&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0> (referer: https://kindle.tmall.com//i/asynSearch.htm?mid=w-14852666541-0&wid=14852666541&path=/search.htm&&search=y)
+2016-09-09 09:35:22 [scrapy] DEBUG: Sending cookies to: <GET https://detail.tmall.com/item.htm?id=534248818107&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:35:22 [scrapy] DEBUG: Received cookies from: <200 https://mdskip.taobao.com/core/initItemDetail.htm?addressLevel=4&queryMemberRight=true&isForbidBuyItem=false&isUseInventoryCenter=true&tryBeforeBuy=false&sellerPreview=false&service3C=true&isRegionLevel=true&isAreaSell=true&cartEnable=true&isSecKill=false&tmallBuySupport=true&itemId=524809449316&cachedTimestamp=1473384766676&showShopProm=false&household=false&offlineShop=false&isPurchaseMallPage=false&isApparel=false&callback=setMdskip>
+Set-Cookie: t=d5dc6bc0eca06f715aea395af45f3d0f; Domain=.taobao.com; Expires=Thu, 08-Dec-2016 01:35:20 GMT; Path=/
+
+Set-Cookie: cookie2=1695b631179f04abbe83760bd9012ca5;Domain=.taobao.com;Path=/;HttpOnly
+
+Set-Cookie: v=0; Domain=.taobao.com; Path=/
+
+2016-09-09 09:35:22 [scrapy] DEBUG: Crawled (200) <GET https://mdskip.taobao.com/core/initItemDetail.htm?addressLevel=4&queryMemberRight=true&isForbidBuyItem=false&isUseInventoryCenter=true&tryBeforeBuy=false&sellerPreview=false&service3C=true&isRegionLevel=true&isAreaSell=true&cartEnable=true&isSecKill=false&tmallBuySupport=true&itemId=524809449316&cachedTimestamp=1473384766676&showShopProm=false&household=false&offlineShop=false&isPurchaseMallPage=false&isApparel=false&callback=setMdskip> (referer: https://detail.tmall.com/item.htm?id=524809449316&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:35:22 [pykafka.connection] DEBUG: Connecting to 192.168.103.245:9092
+2016-09-09 09:35:22 [pykafka.connection] DEBUG: Successfully connected to 192.168.103.245:9092
+2016-09-09 09:35:22 [pykafka.handlers] INFO: RequestHandler.stop: about to flush requests queue
+2016-09-09 09:35:22 [pykafka.topic] INFO: Adding 1 partitions
+2016-09-09 09:35:22 [pykafka.topic] DEBUG: Adding partition tmall.shop.product/0
+2016-09-09 09:35:22 [pykafka.producer] INFO: Starting new produce worker for broker 0
+2016-09-09 09:35:22 [pykafka.producer] DEBUG: Sending 1 messages to broker 0
+2016-09-09 09:35:22 [pykafka.producer] DEBUG: Successfully sent 1/1 messages to broker 0
+2016-09-09 09:35:22 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:35:23 [pykafka.handlers] INFO: RequestHandler worker: exiting cleanly
+2016-09-09 09:35:27 [pykafka.producer] INFO: Worker exited for broker 192.168.103.245:9092
+2016-09-09 09:35:27 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:35:27 [pykafka.producer] DEBUG: Finalising <pykafka.producer.Producer at 0x109f34590>
+2016-09-09 09:35:27 [scrapy] DEBUG: Scraped from <200 https://mdskip.taobao.com/core/initItemDetail.htm?cachedTimestamp=1473376448137&offlineShop=false&isAreaSell=true&isUseInventoryCenter=true&cartEnable=true&queryMemberRight=true&isForbidBuyItem=false&tryBeforeBuy=false&isApparel=false&addressLevel=4&household=false&sellerPreview=false&isRegionLevel=true&isPurchaseMallPage=false&itemId=525548984603&service3C=true&tmallBuySupport=true&isSecKill=false&showShopProm=false&callback=setMdskip>
+None
+2016-09-09 09:35:27 [scrapy] DEBUG: Sending cookies to: <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_522686700744,DFX_200_1_522686700744,ICVT_7_522686700744,ICCP_1_522686700744,SCCP_2_110918969>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f; v=0
+
+2016-09-09 09:35:27 [scrapy] DEBUG: Received cookies from: <200 https://mdskip.taobao.com/core/initItemDetail.htm?isApparel=false&service3C=true&isAreaSell=true&queryMemberRight=true&household=false&showShopProm=false&isSecKill=false&itemId=41559155332&addressLevel=4&isUseInventoryCenter=true&tmallBuySupport=true&tryBeforeBuy=false&isPurchaseMallPage=false&sellerPreview=false&offlineShop=false&cachedTimestamp=1473379865301&cartEnable=true&isForbidBuyItem=false&isRegionLevel=true&callback=setMdskip>
+Set-Cookie: t=d5dc6bc0eca06f715aea395af45f3d0f; Domain=.taobao.com; Expires=Thu, 08-Dec-2016 01:35:20 GMT; Path=/
+
+Set-Cookie: cookie2=1695b631179f04abbe83760bd9012ca5;Domain=.taobao.com;Path=/;HttpOnly
+
+Set-Cookie: v=0; Domain=.taobao.com; Path=/
+
+2016-09-09 09:35:27 [scrapy] DEBUG: Crawled (200) <GET https://mdskip.taobao.com/core/initItemDetail.htm?isApparel=false&service3C=true&isAreaSell=true&queryMemberRight=true&household=false&showShopProm=false&isSecKill=false&itemId=41559155332&addressLevel=4&isUseInventoryCenter=true&tmallBuySupport=true&tryBeforeBuy=false&isPurchaseMallPage=false&sellerPreview=false&offlineShop=false&cachedTimestamp=1473379865301&cartEnable=true&isForbidBuyItem=false&isRegionLevel=true&callback=setMdskip> (referer: https://detail.tmall.com/item.htm?id=41559155332&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:35:27 [scrapy] DEBUG: Sending cookies to: <GET https://detail.tmall.com/item.htm?id=41603913615&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:35:30 [scrapy] DEBUG: Received cookies from: <200 https://mdskip.taobao.com/core/initItemDetail.htm?service3C=true&queryMemberRight=true&isAreaSell=true&cachedTimestamp=1473384596861&cartEnable=true&sellerPreview=false&itemId=44597897759&isForbidBuyItem=false&isUseInventoryCenter=true&tryBeforeBuy=false&isPurchaseMallPage=false&addressLevel=4&offlineShop=false&showShopProm=false&isSecKill=false&household=false&isRegionLevel=true&isApparel=false&tmallBuySupport=true&callback=setMdskip>
+Set-Cookie: t=d5dc6bc0eca06f715aea395af45f3d0f; Domain=.taobao.com; Expires=Thu, 08-Dec-2016 01:35:25 GMT; Path=/
+
+Set-Cookie: cookie2=1695b631179f04abbe83760bd9012ca5;Domain=.taobao.com;Path=/;HttpOnly
+
+Set-Cookie: v=0; Domain=.taobao.com; Path=/
+
+2016-09-09 09:35:30 [scrapy] DEBUG: Crawled (200) <GET https://mdskip.taobao.com/core/initItemDetail.htm?service3C=true&queryMemberRight=true&isAreaSell=true&cachedTimestamp=1473384596861&cartEnable=true&sellerPreview=false&itemId=44597897759&isForbidBuyItem=false&isUseInventoryCenter=true&tryBeforeBuy=false&isPurchaseMallPage=false&addressLevel=4&offlineShop=false&showShopProm=false&isSecKill=false&household=false&isRegionLevel=true&isApparel=false&tmallBuySupport=true&callback=setMdskip> (referer: https://detail.tmall.com/item.htm?id=44597897759&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0)
+2016-09-09 09:35:30 [scrapy] DEBUG: Crawled (200) <GET https://detail.tmall.com/item.htm?id=524764962295&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0> (referer: https://kindle.tmall.com//i/asynSearch.htm?mid=w-14852666541-0&wid=14852666541&path=/search.htm&&search=y)
+2016-09-09 09:35:30 [scrapy] DEBUG: Crawled (200) <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=524765098752&callback=jsonp197> (referer: https://detail.tmall.com/item.htm?id=524765098752&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:35:30 [scrapy] DEBUG: Sending cookies to: <GET https://mdskip.taobao.com/core/initItemDetail.htm?tmallBuySupport=true&offlineShop=false&cachedTimestamp=1473384920425&isForbidBuyItem=false&isAreaSell=true&itemId=527273327446&tryBeforeBuy=false&isRegionLevel=true&household=false&isUseInventoryCenter=true&addressLevel=4&cartEnable=true&isApparel=false&service3C=true&isSecKill=false&queryMemberRight=true&showShopProm=false&isPurchaseMallPage=false&sellerPreview=false&callback=setMdskip>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f; v=0
+
+2016-09-09 09:35:30 [scrapy] DEBUG: Sending cookies to: <GET https://detail.tmall.com/item.htm?id=520139972109&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:35:30 [scrapy] DEBUG: Sending cookies to: <GET https://detail.tmall.com/item.htm?id=535617926063&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:35:33 [pykafka.connection] DEBUG: Connecting to 192.168.103.245:9092
+2016-09-09 09:35:33 [pykafka.connection] DEBUG: Successfully connected to 192.168.103.245:9092
+2016-09-09 09:35:33 [pykafka.handlers] INFO: RequestHandler.stop: about to flush requests queue
+2016-09-09 09:35:33 [pykafka.topic] INFO: Adding 1 partitions
+2016-09-09 09:35:33 [pykafka.topic] DEBUG: Adding partition tmall.shop.product/0
+2016-09-09 09:35:33 [pykafka.producer] INFO: Starting new produce worker for broker 0
+2016-09-09 09:35:33 [pykafka.producer] DEBUG: Sending 1 messages to broker 0
+2016-09-09 09:35:33 [pykafka.producer] DEBUG: Successfully sent 1/1 messages to broker 0
+2016-09-09 09:35:33 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:35:34 [pykafka.handlers] INFO: RequestHandler worker: exiting cleanly
+2016-09-09 09:35:38 [pykafka.producer] INFO: Worker exited for broker 192.168.103.245:9092
+2016-09-09 09:35:38 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:35:38 [pykafka.producer] DEBUG: Finalising <pykafka.producer.Producer at 0x10aa04f10>
+2016-09-09 09:35:38 [scrapy] DEBUG: Scraped from <200 https://mdskip.taobao.com/core/initItemDetail.htm?isApparel=false&service3C=true&isAreaSell=true&queryMemberRight=true&household=false&showShopProm=false&isSecKill=false&itemId=41559155332&addressLevel=4&isUseInventoryCenter=true&tmallBuySupport=true&tryBeforeBuy=false&isPurchaseMallPage=false&sellerPreview=false&offlineShop=false&cachedTimestamp=1473379865301&cartEnable=true&isForbidBuyItem=false&isRegionLevel=true&callback=setMdskip>
+None
+2016-09-09 09:35:44 [scrapy] DEBUG: Received cookies from: <200 https://mdskip.taobao.com/core/initItemDetail.htm?cachedTimestamp=1473376860312&addressLevel=2&service3C=true&itemId=538159559962&household=false&isSecKill=false&showShopProm=false&cartEnable=true&isForbidBuyItem=false&isUseInventoryCenter=false&offlineShop=false&sellerPreview=false&isApparel=false&tmallBuySupport=true&tryBeforeBuy=false&isAreaSell=false&isRegionLevel=false&isPurchaseMallPage=false&queryMemberRight=true&callback=setMdskip>
+Set-Cookie: t=d5dc6bc0eca06f715aea395af45f3d0f; Domain=.taobao.com; Expires=Thu, 08-Dec-2016 01:35:39 GMT; Path=/
+
+Set-Cookie: cookie2=1695b631179f04abbe83760bd9012ca5;Domain=.taobao.com;Path=/;HttpOnly
+
+Set-Cookie: v=0; Domain=.taobao.com; Path=/
+
+2016-09-09 09:35:44 [scrapy] DEBUG: Crawled (200) <GET https://mdskip.taobao.com/core/initItemDetail.htm?cachedTimestamp=1473376860312&addressLevel=2&service3C=true&itemId=538159559962&household=false&isSecKill=false&showShopProm=false&cartEnable=true&isForbidBuyItem=false&isUseInventoryCenter=false&offlineShop=false&sellerPreview=false&isApparel=false&tmallBuySupport=true&tryBeforeBuy=false&isAreaSell=false&isRegionLevel=false&isPurchaseMallPage=false&queryMemberRight=true&callback=setMdskip> (referer: https://detail.tmall.com/item.htm?id=538159559962&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0)
+2016-09-09 09:35:44 [scrapy] DEBUG: Crawled (200) <GET https://detail.tmall.com/item.htm?id=522588121221&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0> (referer: https://kindle.tmall.com//i/asynSearch.htm?mid=w-14852666541-0&wid=14852666541&path=/search.htm&&search=y)
+2016-09-09 09:35:44 [scrapy] DEBUG: Crawled (200) <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=520139246239&callback=jsonp197> (referer: https://detail.tmall.com/item.htm?id=520139246239&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:35:47 [scrapy] DEBUG: Sending cookies to: <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_524764962295,DFX_200_1_524764962295,ICVT_7_524764962295,ICCP_1_524764962295,SCCP_2_110918969>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f; v=0
+
+2016-09-09 09:35:47 [scrapy] DEBUG: Sending cookies to: <GET https://mdskip.taobao.com/core/initItemDetail.htm?tryBeforeBuy=false&offlineShop=false&queryMemberRight=true&household=false&service3C=true&itemId=524764962295&isForbidBuyItem=false&cartEnable=true&isApparel=false&addressLevel=4&isSecKill=false&isAreaSell=true&tmallBuySupport=true&isPurchaseMallPage=false&isUseInventoryCenter=true&isRegionLevel=true&cachedTimestamp=1473377555436&showShopProm=false&sellerPreview=false&callback=setMdskip>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f; v=0
+
+2016-09-09 09:35:47 [scrapy] DEBUG: Sending cookies to: <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=527273327446&callback=jsonp197>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:35:47 [scrapy] DEBUG: Received cookies from: <200 https://mdskip.taobao.com/core/initItemDetail.htm?isApparel=false&cartEnable=true&tmallBuySupport=true&addressLevel=4&showShopProm=false&tryBeforeBuy=false&isAreaSell=true&household=false&itemId=524576695087&isForbidBuyItem=false&isSecKill=false&cachedTimestamp=1473382297429&sellerPreview=false&isUseInventoryCenter=true&offlineShop=false&service3C=true&queryMemberRight=true&isPurchaseMallPage=false&isRegionLevel=true&callback=setMdskip>
+Set-Cookie: t=d5dc6bc0eca06f715aea395af45f3d0f; Domain=.taobao.com; Expires=Thu, 08-Dec-2016 01:35:43 GMT; Path=/
+
+Set-Cookie: cookie2=1695b631179f04abbe83760bd9012ca5;Domain=.taobao.com;Path=/;HttpOnly
+
+Set-Cookie: v=0; Domain=.taobao.com; Path=/
+
+2016-09-09 09:35:47 [scrapy] DEBUG: Crawled (200) <GET https://mdskip.taobao.com/core/initItemDetail.htm?isApparel=false&cartEnable=true&tmallBuySupport=true&addressLevel=4&showShopProm=false&tryBeforeBuy=false&isAreaSell=true&household=false&itemId=524576695087&isForbidBuyItem=false&isSecKill=false&cachedTimestamp=1473382297429&sellerPreview=false&isUseInventoryCenter=true&offlineShop=false&service3C=true&queryMemberRight=true&isPurchaseMallPage=false&isRegionLevel=true&callback=setMdskip> (referer: https://detail.tmall.com/item.htm?id=524576695087&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:35:47 [scrapy] DEBUG: Crawled (200) <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=44597897759&callback=jsonp197> (referer: https://detail.tmall.com/item.htm?id=44597897759&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0)
+2016-09-09 09:35:50 [scrapy] DEBUG: Sending cookies to: <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=524764962295&callback=jsonp197>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:35:50 [scrapy] DEBUG: Sending cookies to: <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_527273327446,DFX_200_1_527273327446,ICVT_7_527273327446,ICCP_1_527273327446,SCCP_2_110918969>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f; v=0
+
+2016-09-09 09:35:51 [scrapy] DEBUG: Crawled (200) <GET https://detail.tmall.com/item.htm?id=534248818107&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0> (referer: https://kindle.tmall.com//i/asynSearch.htm?mid=w-14852666541-0&wid=14852666541&path=/search.htm&&search=y)
+2016-09-09 09:35:54 [scrapy] DEBUG: Sending cookies to: <GET https://mdskip.taobao.com/core/initItemDetail.htm?queryMemberRight=true&household=false&service3C=true&isAreaSell=true&isSecKill=false&isApparel=false&showShopProm=false&addressLevel=4&isUseInventoryCenter=true&sellerPreview=false&itemId=522588121221&tryBeforeBuy=false&isForbidBuyItem=false&offlineShop=false&cachedTimestamp=1473375693870&isRegionLevel=true&tmallBuySupport=true&cartEnable=true&isPurchaseMallPage=false&callback=setMdskip>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f; v=0
+
+2016-09-09 09:35:54 [scrapy] INFO: Crawled 50 pages (at 26 pages/min), scraped 2 items (at 2 items/min)
+2016-09-09 09:35:57 [scrapy] DEBUG: Crawled (200) <GET https://mdskip.taobao.com/core/initItemDetail.htm?tryBeforeBuy=false&addressLevel=2&isForbidBuyItem=false&isAreaSell=false&isSecKill=false&sellerPreview=false&cachedTimestamp=1473375489275&isApparel=false&isUseInventoryCenter=false&isPurchaseMallPage=false&tmallBuySupport=true&isRegionLevel=false&household=false&queryMemberRight=true&offlineShop=false&itemId=44516314209&cartEnable=true&showShopProm=false&service3C=true&callback=setMdskip> (referer: https://detail.tmall.com/item.htm?id=44516314209&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0)
+2016-09-09 09:35:57 [scrapy] DEBUG: Crawled (200) <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_524576695087,DFX_200_1_524576695087,ICVT_7_524576695087,ICCP_1_524576695087,SCCP_2_110918969> (referer: https://detail.tmall.com/item.htm?id=524576695087&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:35:57 [scrapy] DEBUG: Crawled (200) <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=44516314209&callback=jsonp197> (referer: https://detail.tmall.com/item.htm?id=44516314209&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0)
+2016-09-09 09:35:57 [scrapy] DEBUG: Crawled (200) <GET https://detail.tmall.com/item.htm?id=41603913615&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0> (referer: https://kindle.tmall.com//i/asynSearch.htm?mid=w-14852666541-0&wid=14852666541&path=/search.htm&&search=y)
+2016-09-09 09:36:00 [scrapy] DEBUG: Sending cookies to: <GET https://mdskip.taobao.com/core/initItemDetail.htm?itemId=534248818107&offlineShop=false&isSecKill=false&queryMemberRight=true&cachedTimestamp=1473384945858&addressLevel=4&sellerPreview=false&isAreaSell=true&service3C=true&isRegionLevel=true&isForbidBuyItem=false&isUseInventoryCenter=true&household=false&cartEnable=true&isPurchaseMallPage=false&tmallBuySupport=true&isApparel=false&tryBeforeBuy=false&showShopProm=false&callback=setMdskip>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f; v=0
+
+2016-09-09 09:36:00 [scrapy] DEBUG: Sending cookies to: <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_522588121221,DFX_200_1_522588121221,ICVT_7_522588121221,ICCP_1_522588121221,SCCP_2_110918969>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f; v=0
+
+2016-09-09 09:36:00 [scrapy] DEBUG: Sending cookies to: <GET https://detail.tmall.com/item.htm?id=39307444836&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:36:00 [scrapy] DEBUG: Sending cookies to: <GET https://detail.tmall.com/item.htm?id=44577732002&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:36:03 [scrapy] DEBUG: Crawled (200) <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_534313212999,DFX_200_1_534313212999,ICVT_7_534313212999,ICCP_1_534313212999,SCCP_2_110918969> (referer: https://detail.tmall.com/item.htm?id=534313212999&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:36:06 [scrapy] DEBUG: Sending cookies to: <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_534248818107,DFX_200_1_534248818107,ICVT_7_534248818107,ICCP_1_534248818107,SCCP_2_110918969>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f; v=0
+
+2016-09-09 09:36:06 [scrapy] DEBUG: Crawled (200) <GET https://detail.tmall.com/item.htm?id=520139972109&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0> (referer: https://kindle.tmall.com//i/asynSearch.htm?mid=w-14852666541-0&wid=14852666541&path=/search.htm&&search=y)
+2016-09-09 09:36:06 [scrapy] DEBUG: Crawled (200) <GET https://mdskip.taobao.com/core/initItemDetail.htm?tmallBuySupport=true&offlineShop=false&cachedTimestamp=1473384920425&isForbidBuyItem=false&isAreaSell=true&itemId=527273327446&tryBeforeBuy=false&isRegionLevel=true&household=false&isUseInventoryCenter=true&addressLevel=4&cartEnable=true&isApparel=false&service3C=true&isSecKill=false&queryMemberRight=true&showShopProm=false&isPurchaseMallPage=false&sellerPreview=false&callback=setMdskip> (referer: https://detail.tmall.com/item.htm?id=527273327446&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:36:12 [scrapy] DEBUG: Sending cookies to: <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=534248818107&callback=jsonp197>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:36:12 [scrapy] DEBUG: Sending cookies to: <GET https://mdskip.taobao.com/core/initItemDetail.htm?isApparel=false&cachedTimestamp=1473379660879&offlineShop=false&sellerPreview=false&isRegionLevel=true&itemId=41603913615&isPurchaseMallPage=false&service3C=true&household=false&tryBeforeBuy=false&isForbidBuyItem=false&isAreaSell=true&isUseInventoryCenter=true&addressLevel=4&queryMemberRight=true&tmallBuySupport=true&cartEnable=true&isSecKill=false&showShopProm=false&callback=setMdskip>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f; v=0
+
+2016-09-09 09:36:12 [scrapy] DEBUG: Crawled (200) <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=524764962295&callback=jsonp197> (referer: https://detail.tmall.com/item.htm?id=524764962295&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:36:12 [scrapy] DEBUG: Crawled (200) <GET https://detail.tmall.com/item.htm?id=535617926063&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0> (referer: https://kindle.tmall.com//i/asynSearch.htm?mid=w-14852666541-0&wid=14852666541&path=/search.htm&&search=y)
+2016-09-09 09:36:12 [scrapy] DEBUG: Crawled (200) <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_44516314209,DFX_200_1_44516314209,ICVT_7_44516314209,ICCP_1_44516314209,SCCP_2_116679011> (referer: https://detail.tmall.com/item.htm?id=44516314209&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0)
+2016-09-09 09:36:15 [scrapy] DEBUG: Sending cookies to: <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_41603913615,DFX_200_1_41603913615,ICVT_7_41603913615,ICCP_1_41603913615,SCCP_2_110918969>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f; v=0
+
+2016-09-09 09:36:15 [scrapy] DEBUG: Sending cookies to: <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=522588121221&callback=jsonp197>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:36:15 [scrapy] DEBUG: Sending cookies to: <GET https://mdskip.taobao.com/core/initItemDetail.htm?tmallBuySupport=true&queryMemberRight=true&isForbidBuyItem=false&isRegionLevel=true&showShopProm=false&isSecKill=false&isUseInventoryCenter=true&isPurchaseMallPage=false&cachedTimestamp=1473384839260&addressLevel=4&cartEnable=true&tryBeforeBuy=false&sellerPreview=false&isAreaSell=true&itemId=45585775024&offlineShop=false&isApparel=false&household=false&service3C=true&callback=setMdskip>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f; v=0
+
+2016-09-09 09:36:15 [scrapy] DEBUG: Crawled (200) <GET https://mdskip.taobao.com/core/initItemDetail.htm?tryBeforeBuy=false&offlineShop=false&queryMemberRight=true&household=false&service3C=true&itemId=524764962295&isForbidBuyItem=false&cartEnable=true&isApparel=false&addressLevel=4&isSecKill=false&isAreaSell=true&tmallBuySupport=true&isPurchaseMallPage=false&isUseInventoryCenter=true&isRegionLevel=true&cachedTimestamp=1473377555436&showShopProm=false&sellerPreview=false&callback=setMdskip> (referer: https://detail.tmall.com/item.htm?id=524764962295&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:36:15 [scrapy] DEBUG: Crawled (200) <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_522686700744,DFX_200_1_522686700744,ICVT_7_522686700744,ICCP_1_522686700744,SCCP_2_110918969> (referer: https://detail.tmall.com/item.htm?id=522686700744&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:36:21 [scrapy] DEBUG: Sending cookies to: <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=41603913615&callback=jsonp197>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:36:21 [scrapy] DEBUG: Sending cookies to: <GET https://mdskip.taobao.com/core/initItemDetail.htm?isAreaSell=true&isRegionLevel=true&tryBeforeBuy=false&cachedTimestamp=1473384960937&showShopProm=false&service3C=true&isSecKill=false&offlineShop=false&isPurchaseMallPage=false&addressLevel=4&itemId=520139972109&household=false&isApparel=false&isForbidBuyItem=false&tmallBuySupport=true&queryMemberRight=true&isUseInventoryCenter=true&sellerPreview=false&cartEnable=true&callback=setMdskip>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f; v=0
+
+2016-09-09 09:36:21 [scrapy] DEBUG: Crawled (200) <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=534248818107&callback=jsonp197> (referer: https://detail.tmall.com/item.htm?id=534248818107&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:36:21 [scrapy] DEBUG: Crawled (200) <GET https://detail.tmall.com/item.htm?id=39307444836&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0> (referer: https://kindle.tmall.com//i/asynSearch.htm?mid=w-14852666541-0&wid=14852666541&path=/search.htm&&search=y)
+2016-09-09 09:36:27 [pykafka.connection] DEBUG: Connecting to 192.168.103.245:9092
+2016-09-09 09:36:27 [pykafka.connection] DEBUG: Successfully connected to 192.168.103.245:9092
+2016-09-09 09:36:27 [pykafka.handlers] INFO: RequestHandler.stop: about to flush requests queue
+2016-09-09 09:36:27 [pykafka.topic] INFO: Adding 1 partitions
+2016-09-09 09:36:27 [pykafka.topic] DEBUG: Adding partition tmall.shop.product/0
+2016-09-09 09:36:27 [pykafka.producer] INFO: Starting new produce worker for broker 0
+2016-09-09 09:36:27 [pykafka.producer] DEBUG: Sending 1 messages to broker 0
+2016-09-09 09:36:27 [pykafka.producer] DEBUG: Successfully sent 1/1 messages to broker 0
+2016-09-09 09:36:27 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:36:28 [pykafka.handlers] INFO: RequestHandler worker: exiting cleanly
+2016-09-09 09:36:32 [pykafka.producer] INFO: Worker exited for broker 192.168.103.245:9092
+2016-09-09 09:36:32 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:36:32 [pykafka.producer] DEBUG: Finalising <pykafka.producer.Producer at 0x10a9e1c50>
+2016-09-09 09:36:32 [scrapy] DEBUG: Scraped from <200 https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_44516314209,DFX_200_1_44516314209,ICVT_7_44516314209,ICCP_1_44516314209,SCCP_2_116679011>
+None
+2016-09-09 09:36:32 [scrapy] DEBUG: Sending cookies to: <GET https://mdskip.taobao.com/core/initItemDetail.htm?household=false&isForbidBuyItem=false&offlineShop=false&isAreaSell=true&queryMemberRight=true&service3C=true&sellerPreview=false&isRegionLevel=true&isApparel=false&tmallBuySupport=true&cachedTimestamp=1473383713750&addressLevel=4&isPurchaseMallPage=false&itemId=535617926063&showShopProm=false&isUseInventoryCenter=true&isSecKill=false&tryBeforeBuy=false&cartEnable=true&callback=setMdskip>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f; v=0
+
+2016-09-09 09:36:32 [scrapy] DEBUG: Sending cookies to: <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_520139972109,DFX_200_1_520139972109,ICVT_7_520139972109,ICCP_1_520139972109,SCCP_2_110918969>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f; v=0
+
+2016-09-09 09:36:32 [scrapy] DEBUG: Crawled (200) <GET https://mdskip.taobao.com/core/initItemDetail.htm?queryMemberRight=true&household=false&service3C=true&isAreaSell=true&isSecKill=false&isApparel=false&showShopProm=false&addressLevel=4&isUseInventoryCenter=true&sellerPreview=false&itemId=522588121221&tryBeforeBuy=false&isForbidBuyItem=false&offlineShop=false&cachedTimestamp=1473375693870&isRegionLevel=true&tmallBuySupport=true&cartEnable=true&isPurchaseMallPage=false&callback=setMdskip> (referer: https://detail.tmall.com/item.htm?id=522588121221&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:36:32 [scrapy] DEBUG: Crawled (200) <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_524764962295,DFX_200_1_524764962295,ICVT_7_524764962295,ICCP_1_524764962295,SCCP_2_110918969> (referer: https://detail.tmall.com/item.htm?id=524764962295&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:36:38 [scrapy] DEBUG: Sending cookies to: <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_535617926063,DFX_200_1_535617926063,ICVT_7_535617926063,ICCP_1_535617926063,SCCP_2_110918969>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f; v=0
+
+2016-09-09 09:36:38 [scrapy] DEBUG: Sending cookies to: <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=520139972109&callback=jsonp197>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:36:38 [scrapy] DEBUG: Crawled (200) <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_527273327446,DFX_200_1_527273327446,ICVT_7_527273327446,ICCP_1_527273327446,SCCP_2_110918969> (referer: https://detail.tmall.com/item.htm?id=527273327446&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:36:38 [scrapy] DEBUG: Crawled (200) <GET https://mdskip.taobao.com/core/initItemDetail.htm?itemId=534248818107&offlineShop=false&isSecKill=false&queryMemberRight=true&cachedTimestamp=1473384945858&addressLevel=4&sellerPreview=false&isAreaSell=true&service3C=true&isRegionLevel=true&isForbidBuyItem=false&isUseInventoryCenter=true&household=false&cartEnable=true&isPurchaseMallPage=false&tmallBuySupport=true&isApparel=false&tryBeforeBuy=false&showShopProm=false&callback=setMdskip> (referer: https://detail.tmall.com/item.htm?id=534248818107&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:36:38 [scrapy] DEBUG: Crawled (200) <GET https://detail.tmall.com/item.htm?id=44577732002&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0> (referer: https://huromhuiyue.tmall.com//i/asynSearch.htm?mid=w-15014346708-0&wid=15014346708&path=/search.htm&&search=y)
+2016-09-09 09:36:44 [scrapy] DEBUG: Sending cookies to: <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=535617926063&callback=jsonp197>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:36:44 [scrapy] DEBUG: Sending cookies to: <GET https://mdskip.taobao.com/core/initItemDetail.htm?isPurchaseMallPage=false&cartEnable=true&isSecKill=false&cachedTimestamp=1473379011340&isForbidBuyItem=false&isUseInventoryCenter=true&offlineShop=false&addressLevel=4&isApparel=false&itemId=39307444836&isRegionLevel=true&queryMemberRight=true&showShopProm=false&household=false&sellerPreview=false&service3C=true&tryBeforeBuy=false&tmallBuySupport=true&isAreaSell=true&callback=setMdskip>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f; v=0
+
+2016-09-09 09:36:44 [scrapy] DEBUG: Sending cookies to: <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_44557457884,DFX_200_1_44557457884,ICVT_7_44557457884,ICCP_1_44557457884,SCCP_2_116679011>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f; v=0
+
+2016-09-09 09:36:47 [pykafka.connection] DEBUG: Connecting to 192.168.103.245:9092
+2016-09-09 09:36:47 [pykafka.connection] DEBUG: Successfully connected to 192.168.103.245:9092
+2016-09-09 09:36:47 [pykafka.handlers] INFO: RequestHandler.stop: about to flush requests queue
+2016-09-09 09:36:47 [pykafka.topic] INFO: Adding 1 partitions
+2016-09-09 09:36:47 [pykafka.topic] DEBUG: Adding partition tmall.shop.product/0
+2016-09-09 09:36:47 [pykafka.producer] INFO: Starting new produce worker for broker 0
+2016-09-09 09:36:47 [pykafka.producer] DEBUG: Sending 1 messages to broker 0
+2016-09-09 09:36:47 [pykafka.producer] DEBUG: Successfully sent 1/1 messages to broker 0
+2016-09-09 09:36:47 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:36:48 [pykafka.handlers] INFO: RequestHandler worker: exiting cleanly
+2016-09-09 09:36:52 [pykafka.producer] INFO: Worker exited for broker 192.168.103.245:9092
+2016-09-09 09:36:52 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:36:52 [pykafka.producer] DEBUG: Finalising <pykafka.producer.Producer at 0x10aa2be50>
+2016-09-09 09:36:52 [scrapy] DEBUG: Scraped from <200 https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_524764962295,DFX_200_1_524764962295,ICVT_7_524764962295,ICCP_1_524764962295,SCCP_2_110918969>
+None
+2016-09-09 09:36:52 [scrapy] DEBUG: Crawled (200) <GET https://mdskip.taobao.com/core/initItemDetail.htm?isApparel=false&cachedTimestamp=1473379660879&offlineShop=false&sellerPreview=false&isRegionLevel=true&itemId=41603913615&isPurchaseMallPage=false&service3C=true&household=false&tryBeforeBuy=false&isForbidBuyItem=false&isAreaSell=true&isUseInventoryCenter=true&addressLevel=4&queryMemberRight=true&tmallBuySupport=true&cartEnable=true&isSecKill=false&showShopProm=false&callback=setMdskip> (referer: https://detail.tmall.com/item.htm?id=41603913615&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:36:52 [scrapy] DEBUG: Crawled (200) <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_522588121221,DFX_200_1_522588121221,ICVT_7_522588121221,ICCP_1_522588121221,SCCP_2_110918969> (referer: https://detail.tmall.com/item.htm?id=522588121221&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:36:52 [scrapy] DEBUG: Crawled (200) <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=520139972109&callback=jsonp197> (referer: https://detail.tmall.com/item.htm?id=520139972109&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:36:52 [scrapy] DEBUG: Crawled (200) <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=527273327446&callback=jsonp197> (referer: https://detail.tmall.com/item.htm?id=527273327446&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:36:55 [scrapy] DEBUG: Sending cookies to: <GET https://mdskip.taobao.com/core/initItemDetail.htm?isPurchaseMallPage=false&offlineShop=false&itemId=44577732002&tmallBuySupport=true&tryBeforeBuy=false&isRegionLevel=false&household=false&isAreaSell=false&cachedTimestamp=1473377698511&cartEnable=true&isSecKill=false&addressLevel=2&queryMemberRight=true&showShopProm=false&isUseInventoryCenter=false&sellerPreview=false&isApparel=false&isForbidBuyItem=false&service3C=true&callback=setMdskip>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f; v=0
+
+2016-09-09 09:36:55 [scrapy] DEBUG: Sending cookies to: <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_39307444836,DFX_200_1_39307444836,ICVT_7_39307444836,ICCP_1_39307444836,SCCP_2_110918969>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f; v=0
+
+2016-09-09 09:36:55 [scrapy] DEBUG: Sending cookies to: <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_524809449316,DFX_200_1_524809449316,ICVT_7_524809449316,ICCP_1_524809449316,SCCP_2_110918969>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f; v=0
+
+2016-09-09 09:36:55 [scrapy] DEBUG: Sending cookies to: <GET https://mdskip.taobao.com/core/initItemDetail.htm?showShopProm=false&cachedTimestamp=1473381570776&isForbidBuyItem=false&cartEnable=true&addressLevel=4&isAreaSell=true&tmallBuySupport=true&isUseInventoryCenter=true&tryBeforeBuy=false&queryMemberRight=true&isPurchaseMallPage=false&sellerPreview=false&household=false&itemId=524765098752&isSecKill=false&isRegionLevel=true&isApparel=false&offlineShop=false&service3C=true&callback=setMdskip>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f; v=0
+
+2016-09-09 09:36:58 [scrapy] DEBUG: Crawled (200) <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=535617926063&callback=jsonp197> (referer: https://detail.tmall.com/item.htm?id=535617926063&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:36:58 [scrapy] INFO: Crawled 74 pages (at 24 pages/min), scraped 4 items (at 2 items/min)
+2016-09-09 09:37:01 [scrapy] DEBUG: Sending cookies to: <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_44577732002,DFX_200_1_44577732002,ICVT_7_44577732002,ICCP_1_44577732002,SCCP_2_116679011>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f; v=0
+
+2016-09-09 09:37:01 [scrapy] DEBUG: Crawled (200) <GET https://mdskip.taobao.com/core/initItemDetail.htm?tmallBuySupport=true&queryMemberRight=true&isForbidBuyItem=false&isRegionLevel=true&showShopProm=false&isSecKill=false&isUseInventoryCenter=true&isPurchaseMallPage=false&cachedTimestamp=1473384839260&addressLevel=4&cartEnable=true&tryBeforeBuy=false&sellerPreview=false&isAreaSell=true&itemId=45585775024&offlineShop=false&isApparel=false&household=false&service3C=true&callback=setMdskip> (referer: https://detail.tmall.com/item.htm?id=45585775024&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:37:01 [scrapy] DEBUG: Crawled (200) <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_534248818107,DFX_200_1_534248818107,ICVT_7_534248818107,ICCP_1_534248818107,SCCP_2_110918969> (referer: https://detail.tmall.com/item.htm?id=534248818107&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:37:01 [pykafka.connection] DEBUG: Connecting to 192.168.103.245:9092
+2016-09-09 09:37:01 [pykafka.connection] DEBUG: Successfully connected to 192.168.103.245:9092
+2016-09-09 09:37:01 [pykafka.handlers] INFO: RequestHandler.stop: about to flush requests queue
+2016-09-09 09:37:01 [pykafka.topic] INFO: Adding 1 partitions
+2016-09-09 09:37:01 [pykafka.topic] DEBUG: Adding partition tmall.shop.product/0
+2016-09-09 09:37:01 [pykafka.producer] INFO: Starting new produce worker for broker 0
+2016-09-09 09:37:01 [pykafka.producer] DEBUG: Sending 1 messages to broker 0
+2016-09-09 09:37:01 [pykafka.producer] DEBUG: Successfully sent 1/1 messages to broker 0
+2016-09-09 09:37:01 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:37:02 [pykafka.handlers] INFO: RequestHandler worker: exiting cleanly
+2016-09-09 09:37:06 [pykafka.producer] INFO: Worker exited for broker 192.168.103.245:9092
+2016-09-09 09:37:06 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:37:06 [pykafka.producer] DEBUG: Finalising <pykafka.producer.Producer at 0x10aa042d0>
+2016-09-09 09:37:06 [scrapy] DEBUG: Scraped from <200 https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=527273327446&callback=jsonp197>
+None
+2016-09-09 09:37:09 [scrapy] DEBUG: Sending cookies to: <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=44577732002&callback=jsonp197>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:37:09 [scrapy] DEBUG: Sending cookies to: <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=39307444836&callback=jsonp197>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:37:09 [pykafka.connection] DEBUG: Connecting to 192.168.103.245:9092
+2016-09-09 09:37:09 [pykafka.connection] DEBUG: Successfully connected to 192.168.103.245:9092
+2016-09-09 09:37:09 [pykafka.handlers] INFO: RequestHandler.stop: about to flush requests queue
+2016-09-09 09:37:09 [pykafka.topic] INFO: Adding 1 partitions
+2016-09-09 09:37:09 [pykafka.topic] DEBUG: Adding partition tmall.shop.product/0
+2016-09-09 09:37:09 [pykafka.producer] INFO: Starting new produce worker for broker 0
+2016-09-09 09:37:09 [pykafka.producer] DEBUG: Sending 1 messages to broker 0
+2016-09-09 09:37:09 [pykafka.producer] DEBUG: Successfully sent 1/1 messages to broker 0
+2016-09-09 09:37:09 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:37:10 [pykafka.handlers] INFO: RequestHandler worker: exiting cleanly
+2016-09-09 09:37:14 [pykafka.producer] INFO: Worker exited for broker 192.168.103.245:9092
+2016-09-09 09:37:14 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:37:14 [pykafka.producer] DEBUG: Finalising <pykafka.producer.Producer at 0x109face90>
+2016-09-09 09:37:14 [scrapy] DEBUG: Scraped from <200 https://mdskip.taobao.com/core/initItemDetail.htm?tmallBuySupport=true&queryMemberRight=true&isForbidBuyItem=false&isRegionLevel=true&showShopProm=false&isSecKill=false&isUseInventoryCenter=true&isPurchaseMallPage=false&cachedTimestamp=1473384839260&addressLevel=4&cartEnable=true&tryBeforeBuy=false&sellerPreview=false&isAreaSell=true&itemId=45585775024&offlineShop=false&isApparel=false&household=false&service3C=true&callback=setMdskip>
+None
+2016-09-09 09:37:14 [pykafka.connection] DEBUG: Connecting to 192.168.103.245:9092
+2016-09-09 09:37:14 [pykafka.connection] DEBUG: Successfully connected to 192.168.103.245:9092
+2016-09-09 09:37:14 [pykafka.handlers] INFO: RequestHandler.stop: about to flush requests queue
+2016-09-09 09:37:14 [pykafka.topic] INFO: Adding 1 partitions
+2016-09-09 09:37:14 [pykafka.topic] DEBUG: Adding partition tmall.shop.product/0
+2016-09-09 09:37:14 [pykafka.producer] INFO: Starting new produce worker for broker 0
+2016-09-09 09:37:14 [pykafka.producer] DEBUG: Sending 1 messages to broker 0
+2016-09-09 09:37:14 [pykafka.producer] DEBUG: Successfully sent 1/1 messages to broker 0
+2016-09-09 09:37:14 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:37:15 [pykafka.handlers] INFO: RequestHandler worker: exiting cleanly
+2016-09-09 09:37:19 [pykafka.producer] INFO: Worker exited for broker 192.168.103.245:9092
+2016-09-09 09:37:19 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:37:19 [pykafka.producer] DEBUG: Finalising <pykafka.producer.Producer at 0x10a024910>
+2016-09-09 09:37:19 [scrapy] DEBUG: Scraped from <200 https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_534248818107,DFX_200_1_534248818107,ICVT_7_534248818107,ICCP_1_534248818107,SCCP_2_110918969>
+None
+2016-09-09 09:37:19 [scrapy] DEBUG: Crawled (200) <GET https://mdskip.taobao.com/core/initItemDetail.htm?isAreaSell=true&isRegionLevel=true&tryBeforeBuy=false&cachedTimestamp=1473384960937&showShopProm=false&service3C=true&isSecKill=false&offlineShop=false&isPurchaseMallPage=false&addressLevel=4&itemId=520139972109&household=false&isApparel=false&isForbidBuyItem=false&tmallBuySupport=true&queryMemberRight=true&isUseInventoryCenter=true&sellerPreview=false&cartEnable=true&callback=setMdskip> (referer: https://detail.tmall.com/item.htm?id=520139972109&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:37:19 [scrapy] DEBUG: Crawled (200) <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_41603913615,DFX_200_1_41603913615,ICVT_7_41603913615,ICCP_1_41603913615,SCCP_2_110918969> (referer: https://detail.tmall.com/item.htm?id=41603913615&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:37:19 [scrapy] DEBUG: Crawled (200) <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=44577732002&callback=jsonp197> (referer: https://detail.tmall.com/item.htm?id=44577732002&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0)
+2016-09-09 09:37:19 [scrapy] DEBUG: Crawled (200) <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_520139972109,DFX_200_1_520139972109,ICVT_7_520139972109,ICCP_1_520139972109,SCCP_2_110918969> (referer: https://detail.tmall.com/item.htm?id=520139972109&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:37:19 [scrapy] DEBUG: Crawled (200) <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=522588121221&callback=jsonp197> (referer: https://detail.tmall.com/item.htm?id=522588121221&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:37:19 [scrapy] DEBUG: Sending cookies to: <GET https://mdskip.taobao.com/core/initItemDetail.htm?tmallBuySupport=true&isPurchaseMallPage=false&isAreaSell=true&cartEnable=true&household=false&itemId=529795486164&isForbidBuyItem=false&queryMemberRight=true&addressLevel=4&offlineShop=false&tryBeforeBuy=false&cachedTimestamp=1473383547408&isApparel=false&isRegionLevel=true&isUseInventoryCenter=true&sellerPreview=false&isSecKill=false&showShopProm=false&service3C=true&callback=setMdskip>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f; v=0
+
+2016-09-09 09:37:19 [scrapy] DEBUG: Sending cookies to: <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=44516210076&callback=jsonp197>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:37:19 [scrapy] DEBUG: Sending cookies to: <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_45775586486,DFX_200_1_45775586486,ICVT_7_45775586486,ICCP_1_45775586486,SCCP_2_110918969>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f; v=0
+
+2016-09-09 09:37:19 [scrapy] DEBUG: Sending cookies to: <GET https://mdskip.taobao.com/core/initItemDetail.htm?addressLevel=2&isUseInventoryCenter=false&household=false&isAreaSell=false&isPurchaseMallPage=false&itemId=44557457884&cartEnable=true&queryMemberRight=true&cachedTimestamp=1473384535330&isForbidBuyItem=false&tmallBuySupport=true&tryBeforeBuy=false&isRegionLevel=false&offlineShop=false&service3C=true&isSecKill=false&showShopProm=false&sellerPreview=false&isApparel=false&callback=setMdskip>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f; v=0
+
+2016-09-09 09:37:19 [scrapy] DEBUG: Sending cookies to: <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=524576695087&callback=jsonp197>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:37:19 [scrapy] DEBUG: Crawled (200) <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_535617926063,DFX_200_1_535617926063,ICVT_7_535617926063,ICCP_1_535617926063,SCCP_2_110918969> (referer: https://detail.tmall.com/item.htm?id=535617926063&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:37:19 [scrapy] DEBUG: Sending cookies to: <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_520139246239,DFX_200_1_520139246239,ICVT_7_520139246239,ICCP_1_520139246239,SCCP_2_110918969>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f; v=0
+
+2016-09-09 09:37:19 [scrapy] DEBUG: Crawled (200) <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=39307444836&callback=jsonp197> (referer: https://detail.tmall.com/item.htm?id=39307444836&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:37:19 [scrapy] DEBUG: Sending cookies to: <GET https://mdskip.taobao.com/core/initItemDetail.htm?isForbidBuyItem=false&isPurchaseMallPage=false&cartEnable=true&tmallBuySupport=true&household=false&isAreaSell=true&isRegionLevel=true&isApparel=false&isUseInventoryCenter=true&isSecKill=false&cachedTimestamp=1473377288215&showShopProm=false&sellerPreview=false&queryMemberRight=true&itemId=45775586486&tryBeforeBuy=false&addressLevel=4&offlineShop=false&service3C=true&callback=setMdskip>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f; v=0
+
+2016-09-09 09:37:19 [scrapy] DEBUG: Crawled (200) <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=41603913615&callback=jsonp197> (referer: https://detail.tmall.com/item.htm?id=41603913615&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:37:19 [scrapy] DEBUG: Sending cookies to: <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=538159559962&callback=jsonp197>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:37:19 [pykafka.connection] DEBUG: Connecting to 192.168.103.245:9092
+2016-09-09 09:37:19 [pykafka.connection] DEBUG: Successfully connected to 192.168.103.245:9092
+2016-09-09 09:37:19 [pykafka.handlers] INFO: RequestHandler.stop: about to flush requests queue
+2016-09-09 09:37:19 [pykafka.topic] INFO: Adding 1 partitions
+2016-09-09 09:37:19 [pykafka.topic] DEBUG: Adding partition tmall.shop.product/0
+2016-09-09 09:37:19 [pykafka.producer] INFO: Starting new produce worker for broker 0
+2016-09-09 09:37:19 [pykafka.producer] DEBUG: Sending 1 messages to broker 0
+2016-09-09 09:37:19 [pykafka.producer] DEBUG: Successfully sent 1/1 messages to broker 0
+2016-09-09 09:37:19 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:37:20 [pykafka.handlers] INFO: RequestHandler worker: exiting cleanly
+2016-09-09 09:37:24 [pykafka.producer] INFO: Worker exited for broker 192.168.103.245:9092
+2016-09-09 09:37:24 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:37:24 [pykafka.producer] DEBUG: Finalising <pykafka.producer.Producer at 0x10aa3dad0>
+2016-09-09 09:37:24 [scrapy] DEBUG: Scraped from <200 https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_520139972109,DFX_200_1_520139972109,ICVT_7_520139972109,ICCP_1_520139972109,SCCP_2_110918969>
+None
+2016-09-09 09:37:24 [scrapy] DEBUG: Crawled (200) <GET https://mdskip.taobao.com/core/initItemDetail.htm?household=false&isForbidBuyItem=false&offlineShop=false&isAreaSell=true&queryMemberRight=true&service3C=true&sellerPreview=false&isRegionLevel=true&isApparel=false&tmallBuySupport=true&cachedTimestamp=1473383713750&addressLevel=4&isPurchaseMallPage=false&itemId=535617926063&showShopProm=false&isUseInventoryCenter=true&isSecKill=false&tryBeforeBuy=false&cartEnable=true&callback=setMdskip> (referer: https://detail.tmall.com/item.htm?id=535617926063&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:37:24 [scrapy] DEBUG: Crawled (200) <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_44557457884,DFX_200_1_44557457884,ICVT_7_44557457884,ICCP_1_44557457884,SCCP_2_116679011> (referer: https://detail.tmall.com/item.htm?id=44557457884&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0)
+2016-09-09 09:37:24 [scrapy] DEBUG: Crawled (200) <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_39307444836,DFX_200_1_39307444836,ICVT_7_39307444836,ICCP_1_39307444836,SCCP_2_110918969> (referer: https://detail.tmall.com/item.htm?id=39307444836&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:37:24 [scrapy] DEBUG: Sending cookies to: <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_44597897759,DFX_200_1_44597897759,ICVT_7_44597897759,ICCP_1_44597897759,SCCP_2_116679011>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f; v=0
+
+2016-09-09 09:37:24 [scrapy] DEBUG: Sending cookies to: <GET https://mdskip.taobao.com/core/initItemDetail.htm?sellerPreview=false&showShopProm=false&service3C=true&queryMemberRight=true&cartEnable=true&tmallBuySupport=true&isApparel=false&offlineShop=false&cachedTimestamp=1473374350489&household=false&isSecKill=false&isForbidBuyItem=false&itemId=44516210076&isUseInventoryCenter=false&isRegionLevel=false&isPurchaseMallPage=false&tryBeforeBuy=false&addressLevel=2&isAreaSell=false&callback=setMdskip>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f; v=0
+
+2016-09-09 09:37:24 [scrapy] DEBUG: Sending cookies to: <GET https://mdskip.taobao.com/core/initItemDetail.htm?offlineShop=false&queryMemberRight=true&isAreaSell=true&tmallBuySupport=true&addressLevel=4&isForbidBuyItem=false&isApparel=false&sellerPreview=false&showShopProm=false&isSecKill=false&isUseInventoryCenter=true&isPurchaseMallPage=false&isRegionLevel=true&service3C=true&tryBeforeBuy=false&cachedTimestamp=1473379865729&household=false&cartEnable=true&itemId=520139246239&callback=setMdskip>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f; v=0
+
+2016-09-09 09:37:24 [pykafka.connection] DEBUG: Connecting to 192.168.103.245:9092
+2016-09-09 09:37:24 [pykafka.connection] DEBUG: Successfully connected to 192.168.103.245:9092
+2016-09-09 09:37:24 [pykafka.handlers] INFO: RequestHandler.stop: about to flush requests queue
+2016-09-09 09:37:24 [pykafka.topic] INFO: Adding 1 partitions
+2016-09-09 09:37:24 [pykafka.topic] DEBUG: Adding partition tmall.shop.product/0
+2016-09-09 09:37:24 [pykafka.producer] INFO: Starting new produce worker for broker 0
+2016-09-09 09:37:24 [pykafka.producer] DEBUG: Sending 1 messages to broker 0
+2016-09-09 09:37:24 [pykafka.producer] DEBUG: Successfully sent 1/1 messages to broker 0
+2016-09-09 09:37:24 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:37:25 [pykafka.handlers] INFO: RequestHandler worker: exiting cleanly
+2016-09-09 09:37:29 [pykafka.producer] INFO: Worker exited for broker 192.168.103.245:9092
+2016-09-09 09:37:29 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:37:29 [pykafka.producer] DEBUG: Finalising <pykafka.producer.Producer at 0x10a9b7290>
+2016-09-09 09:37:29 [scrapy] DEBUG: Scraped from <200 https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=522588121221&callback=jsonp197>
+None
+2016-09-09 09:37:29 [pykafka.connection] DEBUG: Connecting to 192.168.103.245:9092
+2016-09-09 09:37:29 [pykafka.connection] DEBUG: Successfully connected to 192.168.103.245:9092
+2016-09-09 09:37:29 [pykafka.handlers] INFO: RequestHandler.stop: about to flush requests queue
+2016-09-09 09:37:29 [pykafka.topic] INFO: Adding 1 partitions
+2016-09-09 09:37:29 [pykafka.topic] DEBUG: Adding partition tmall.shop.product/0
+2016-09-09 09:37:29 [pykafka.producer] INFO: Starting new produce worker for broker 0
+2016-09-09 09:37:29 [pykafka.producer] DEBUG: Sending 1 messages to broker 0
+2016-09-09 09:37:29 [pykafka.producer] DEBUG: Successfully sent 1/1 messages to broker 0
+2016-09-09 09:37:29 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:37:30 [pykafka.handlers] INFO: RequestHandler worker: exiting cleanly
+2016-09-09 09:37:34 [pykafka.producer] INFO: Worker exited for broker 192.168.103.245:9092
+2016-09-09 09:37:34 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:37:34 [pykafka.producer] DEBUG: Finalising <pykafka.producer.Producer at 0x10aa04310>
+2016-09-09 09:37:34 [scrapy] DEBUG: Scraped from <200 https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=41603913615&callback=jsonp197>
+None
+2016-09-09 09:37:34 [scrapy] DEBUG: Crawled (200) <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_524809449316,DFX_200_1_524809449316,ICVT_7_524809449316,ICCP_1_524809449316,SCCP_2_110918969> (referer: https://detail.tmall.com/item.htm?id=524809449316&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:37:34 [scrapy] DEBUG: Crawled (200) <GET https://mdskip.taobao.com/core/initItemDetail.htm?isPurchaseMallPage=false&cartEnable=true&isSecKill=false&cachedTimestamp=1473379011340&isForbidBuyItem=false&isUseInventoryCenter=true&offlineShop=false&addressLevel=4&isApparel=false&itemId=39307444836&isRegionLevel=true&queryMemberRight=true&showShopProm=false&household=false&sellerPreview=false&service3C=true&tryBeforeBuy=false&tmallBuySupport=true&isAreaSell=true&callback=setMdskip> (referer: https://detail.tmall.com/item.htm?id=39307444836&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:37:34 [scrapy] DEBUG: Crawled (200) <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_44577732002,DFX_200_1_44577732002,ICVT_7_44577732002,ICCP_1_44577732002,SCCP_2_116679011> (referer: https://detail.tmall.com/item.htm?id=44577732002&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0)
+2016-09-09 09:37:34 [scrapy] DEBUG: Crawled (200) <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=44516210076&callback=jsonp197> (referer: https://detail.tmall.com/item.htm?id=44516210076&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0)
+2016-09-09 09:37:34 [pykafka.connection] DEBUG: Connecting to 192.168.103.245:9092
+2016-09-09 09:37:34 [pykafka.connection] DEBUG: Successfully connected to 192.168.103.245:9092
+2016-09-09 09:37:34 [pykafka.handlers] INFO: RequestHandler.stop: about to flush requests queue
+2016-09-09 09:37:34 [pykafka.topic] INFO: Adding 1 partitions
+2016-09-09 09:37:34 [pykafka.topic] DEBUG: Adding partition tmall.shop.product/0
+2016-09-09 09:37:34 [pykafka.producer] INFO: Starting new produce worker for broker 0
+2016-09-09 09:37:34 [pykafka.producer] DEBUG: Sending 1 messages to broker 0
+2016-09-09 09:37:34 [pykafka.producer] DEBUG: Successfully sent 1/1 messages to broker 0
+2016-09-09 09:37:34 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:37:35 [pykafka.handlers] INFO: RequestHandler worker: exiting cleanly
+2016-09-09 09:37:39 [pykafka.producer] INFO: Worker exited for broker 192.168.103.245:9092
+2016-09-09 09:37:39 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:37:39 [pykafka.producer] DEBUG: Finalising <pykafka.producer.Producer at 0x10a038f10>
+2016-09-09 09:37:39 [scrapy] DEBUG: Scraped from <200 https://mdskip.taobao.com/core/initItemDetail.htm?household=false&isForbidBuyItem=false&offlineShop=false&isAreaSell=true&queryMemberRight=true&service3C=true&sellerPreview=false&isRegionLevel=true&isApparel=false&tmallBuySupport=true&cachedTimestamp=1473383713750&addressLevel=4&isPurchaseMallPage=false&itemId=535617926063&showShopProm=false&isUseInventoryCenter=true&isSecKill=false&tryBeforeBuy=false&cartEnable=true&callback=setMdskip>
+None
+2016-09-09 09:37:39 [scrapy] DEBUG: Sending cookies to: <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_531947109704,DFX_200_1_531947109704,ICVT_7_531947109704,ICCP_1_531947109704,SCCP_2_116679011>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f; v=0
+
+2016-09-09 09:37:39 [scrapy] DEBUG: Sending cookies to: <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=522686700744&callback=jsonp197>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:37:39 [scrapy] DEBUG: Sending cookies to: <GET https://mdskip.taobao.com/core/initItemDetail.htm?tmallBuySupport=true&isSecKill=false&addressLevel=4&cachedTimestamp=1473384688460&showShopProm=false&isApparel=false&queryMemberRight=true&itemId=534313212999&cartEnable=true&offlineShop=false&tryBeforeBuy=false&isForbidBuyItem=false&isAreaSell=true&service3C=true&sellerPreview=false&isPurchaseMallPage=false&isRegionLevel=true&household=false&isUseInventoryCenter=true&callback=setMdskip>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f; v=0
+
+2016-09-09 09:37:39 [scrapy] DEBUG: Sending cookies to: <GET https://mdskip.taobao.com/core/initItemDetail.htm?isApparel=false&tryBeforeBuy=false&sellerPreview=false&showShopProm=false&isSecKill=false&cartEnable=true&isForbidBuyItem=false&isRegionLevel=true&cachedTimestamp=1473384625122&service3C=true&itemId=522686700744&tmallBuySupport=true&offlineShop=false&household=false&isPurchaseMallPage=false&isAreaSell=true&queryMemberRight=true&addressLevel=4&isUseInventoryCenter=true&callback=setMdskip>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f; v=0
+
+2016-09-09 09:37:39 [scrapy] DEBUG: Crawled (200) <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_45775586486,DFX_200_1_45775586486,ICVT_7_45775586486,ICCP_1_45775586486,SCCP_2_110918969> (referer: https://detail.tmall.com/item.htm?id=45775586486&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:37:39 [scrapy] DEBUG: Sending cookies to: <GET https://mdskip.taobao.com/core/initItemDetail.htm?cachedTimestamp=1473384682339&tryBeforeBuy=false&tmallBuySupport=true&offlineShop=false&showShopProm=false&cartEnable=true&isRegionLevel=false&isUseInventoryCenter=false&sellerPreview=false&isAreaSell=false&service3C=true&household=false&isPurchaseMallPage=false&isForbidBuyItem=false&isSecKill=false&itemId=531947109704&queryMemberRight=true&isApparel=false&addressLevel=2&callback=setMdskip>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f; v=0
+
+2016-09-09 09:37:39 [pykafka.connection] DEBUG: Connecting to 192.168.103.245:9092
+2016-09-09 09:37:39 [pykafka.connection] DEBUG: Successfully connected to 192.168.103.245:9092
+2016-09-09 09:37:39 [pykafka.handlers] INFO: RequestHandler.stop: about to flush requests queue
+2016-09-09 09:37:39 [pykafka.topic] INFO: Adding 1 partitions
+2016-09-09 09:37:39 [pykafka.topic] DEBUG: Adding partition tmall.shop.product/0
+2016-09-09 09:37:39 [pykafka.producer] INFO: Starting new produce worker for broker 0
+2016-09-09 09:37:39 [pykafka.producer] DEBUG: Sending 1 messages to broker 0
+2016-09-09 09:37:39 [pykafka.producer] DEBUG: Successfully sent 1/1 messages to broker 0
+2016-09-09 09:37:39 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:37:40 [pykafka.handlers] INFO: RequestHandler worker: exiting cleanly
+2016-09-09 09:37:44 [pykafka.producer] INFO: Worker exited for broker 192.168.103.245:9092
+2016-09-09 09:37:44 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:37:44 [pykafka.producer] DEBUG: Finalising <pykafka.producer.Producer at 0x10aa3d490>
+2016-09-09 09:37:44 [scrapy] DEBUG: Scraped from <200 https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_524809449316,DFX_200_1_524809449316,ICVT_7_524809449316,ICCP_1_524809449316,SCCP_2_110918969>
+None
+2016-09-09 09:37:44 [pykafka.connection] DEBUG: Connecting to 192.168.103.245:9092
+2016-09-09 09:37:44 [pykafka.connection] DEBUG: Successfully connected to 192.168.103.245:9092
+2016-09-09 09:37:44 [pykafka.handlers] INFO: RequestHandler.stop: about to flush requests queue
+2016-09-09 09:37:44 [pykafka.topic] INFO: Adding 1 partitions
+2016-09-09 09:37:44 [pykafka.topic] DEBUG: Adding partition tmall.shop.product/0
+2016-09-09 09:37:44 [pykafka.producer] INFO: Starting new produce worker for broker 0
+2016-09-09 09:37:44 [pykafka.producer] DEBUG: Sending 1 messages to broker 0
+2016-09-09 09:37:44 [pykafka.producer] DEBUG: Successfully sent 1/1 messages to broker 0
+2016-09-09 09:37:44 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:37:45 [pykafka.handlers] INFO: RequestHandler worker: exiting cleanly
+2016-09-09 09:37:49 [pykafka.producer] INFO: Worker exited for broker 192.168.103.245:9092
+2016-09-09 09:37:49 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:37:49 [pykafka.producer] DEBUG: Finalising <pykafka.producer.Producer at 0x10aa3d5d0>
+2016-09-09 09:37:49 [scrapy] DEBUG: Scraped from <200 https://mdskip.taobao.com/core/initItemDetail.htm?isPurchaseMallPage=false&cartEnable=true&isSecKill=false&cachedTimestamp=1473379011340&isForbidBuyItem=false&isUseInventoryCenter=true&offlineShop=false&addressLevel=4&isApparel=false&itemId=39307444836&isRegionLevel=true&queryMemberRight=true&showShopProm=false&household=false&sellerPreview=false&service3C=true&tryBeforeBuy=false&tmallBuySupport=true&isAreaSell=true&callback=setMdskip>
+None
+2016-09-09 09:37:50 [scrapy] DEBUG: Crawled (200) <GET https://mdskip.taobao.com/core/initItemDetail.htm?isPurchaseMallPage=false&offlineShop=false&itemId=44577732002&tmallBuySupport=true&tryBeforeBuy=false&isRegionLevel=false&household=false&isAreaSell=false&cachedTimestamp=1473377698511&cartEnable=true&isSecKill=false&addressLevel=2&queryMemberRight=true&showShopProm=false&isUseInventoryCenter=false&sellerPreview=false&isApparel=false&isForbidBuyItem=false&service3C=true&callback=setMdskip> (referer: https://detail.tmall.com/item.htm?id=44577732002&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0)
+2016-09-09 09:37:50 [scrapy] DEBUG: Crawled (200) <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=524576695087&callback=jsonp197> (referer: https://detail.tmall.com/item.htm?id=524576695087&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:37:50 [scrapy] DEBUG: Sending cookies to: <GET https://detail.tmall.com/item.htm?id=520138273925&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:37:50 [scrapy] DEBUG: Sending cookies to: <GET https://detail.tmall.com/item.htm?id=45156523269&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:37:50 [pykafka.connection] DEBUG: Connecting to 192.168.103.245:9092
+2016-09-09 09:37:50 [pykafka.connection] DEBUG: Successfully connected to 192.168.103.245:9092
+2016-09-09 09:37:50 [pykafka.handlers] INFO: RequestHandler.stop: about to flush requests queue
+2016-09-09 09:37:50 [pykafka.topic] INFO: Adding 1 partitions
+2016-09-09 09:37:50 [pykafka.topic] DEBUG: Adding partition tmall.shop.product/0
+2016-09-09 09:37:50 [pykafka.producer] INFO: Starting new produce worker for broker 0
+2016-09-09 09:37:50 [pykafka.producer] DEBUG: Sending 1 messages to broker 0
+2016-09-09 09:37:50 [pykafka.producer] DEBUG: Successfully sent 1/1 messages to broker 0
+2016-09-09 09:37:50 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:37:51 [pykafka.handlers] INFO: RequestHandler worker: exiting cleanly
+2016-09-09 09:37:55 [pykafka.producer] INFO: Worker exited for broker 192.168.103.245:9092
+2016-09-09 09:37:55 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:37:55 [pykafka.producer] DEBUG: Finalising <pykafka.producer.Producer at 0x10a9477d0>
+2016-09-09 09:37:55 [scrapy] DEBUG: Scraped from <200 https://mdskip.taobao.com/core/initItemDetail.htm?isPurchaseMallPage=false&offlineShop=false&itemId=44577732002&tmallBuySupport=true&tryBeforeBuy=false&isRegionLevel=false&household=false&isAreaSell=false&cachedTimestamp=1473377698511&cartEnable=true&isSecKill=false&addressLevel=2&queryMemberRight=true&showShopProm=false&isUseInventoryCenter=false&sellerPreview=false&isApparel=false&isForbidBuyItem=false&service3C=true&callback=setMdskip>
+None
+2016-09-09 09:37:55 [scrapy] DEBUG: Crawled (200) <GET https://mdskip.taobao.com/core/initItemDetail.htm?showShopProm=false&cachedTimestamp=1473381570776&isForbidBuyItem=false&cartEnable=true&addressLevel=4&isAreaSell=true&tmallBuySupport=true&isUseInventoryCenter=true&tryBeforeBuy=false&queryMemberRight=true&isPurchaseMallPage=false&sellerPreview=false&household=false&itemId=524765098752&isSecKill=false&isRegionLevel=true&isApparel=false&offlineShop=false&service3C=true&callback=setMdskip> (referer: https://detail.tmall.com/item.htm?id=524765098752&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:37:55 [scrapy] DEBUG: Crawled (200) <GET https://detail.tmall.com/item.htm?id=520138273925&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0> (referer: https://kindle.tmall.com//i/asynSearch.htm?mid=w-14852666541-0&wid=14852666541&path=/search.htm&&search=y)
+2016-09-09 09:37:55 [scrapy] DEBUG: Crawled (200) <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_520139246239,DFX_200_1_520139246239,ICVT_7_520139246239,ICCP_1_520139246239,SCCP_2_110918969> (referer: https://detail.tmall.com/item.htm?id=520139246239&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:37:55 [pykafka.connection] DEBUG: Connecting to 192.168.103.245:9092
+2016-09-09 09:37:55 [pykafka.connection] DEBUG: Successfully connected to 192.168.103.245:9092
+2016-09-09 09:37:55 [pykafka.handlers] INFO: RequestHandler.stop: about to flush requests queue
+2016-09-09 09:37:55 [pykafka.topic] INFO: Adding 1 partitions
+2016-09-09 09:37:55 [pykafka.topic] DEBUG: Adding partition tmall.shop.product/0
+2016-09-09 09:37:55 [pykafka.producer] INFO: Starting new produce worker for broker 0
+2016-09-09 09:37:55 [pykafka.producer] DEBUG: Sending 1 messages to broker 0
+2016-09-09 09:37:55 [pykafka.producer] DEBUG: Successfully sent 1/1 messages to broker 0
+2016-09-09 09:37:55 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:37:56 [pykafka.handlers] INFO: RequestHandler worker: exiting cleanly
+2016-09-09 09:38:00 [pykafka.producer] INFO: Worker exited for broker 192.168.103.245:9092
+2016-09-09 09:38:00 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:38:00 [pykafka.producer] DEBUG: Finalising <pykafka.producer.Producer at 0x10a916250>
+2016-09-09 09:38:00 [scrapy] DEBUG: Scraped from <200 https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=524576695087&callback=jsonp197>
+None
+2016-09-09 09:38:00 [scrapy] INFO: Crawled 97 pages (at 23 pages/min), scraped 15 items (at 11 items/min)
+2016-09-09 09:38:00 [scrapy] DEBUG: Sending cookies to: <GET https://detail.tmall.com/item.htm?id=529330967656&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:38:00 [scrapy] DEBUG: Sending cookies to: <GET https://detail.tmall.com/item.htm?id=522680881881&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:38:00 [scrapy] DEBUG: Sending cookies to: <GET https://detail.tmall.com/item.htm?id=520155187915&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:38:00 [pykafka.connection] DEBUG: Connecting to 192.168.103.245:9092
+2016-09-09 09:38:00 [pykafka.connection] DEBUG: Successfully connected to 192.168.103.245:9092
+2016-09-09 09:38:00 [pykafka.handlers] INFO: RequestHandler.stop: about to flush requests queue
+2016-09-09 09:38:00 [pykafka.topic] INFO: Adding 1 partitions
+2016-09-09 09:38:00 [pykafka.topic] DEBUG: Adding partition tmall.shop.product/0
+2016-09-09 09:38:00 [pykafka.producer] INFO: Starting new produce worker for broker 0
+2016-09-09 09:38:00 [pykafka.producer] DEBUG: Sending 1 messages to broker 0
+2016-09-09 09:38:00 [pykafka.producer] DEBUG: Successfully sent 1/1 messages to broker 0
+2016-09-09 09:38:00 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:38:01 [pykafka.handlers] INFO: RequestHandler worker: exiting cleanly
+2016-09-09 09:38:05 [pykafka.producer] INFO: Worker exited for broker 192.168.103.245:9092
+2016-09-09 09:38:05 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:38:05 [pykafka.producer] DEBUG: Finalising <pykafka.producer.Producer at 0x10a9baf50>
+2016-09-09 09:38:05 [scrapy] DEBUG: Scraped from <200 https://mdskip.taobao.com/core/initItemDetail.htm?showShopProm=false&cachedTimestamp=1473381570776&isForbidBuyItem=false&cartEnable=true&addressLevel=4&isAreaSell=true&tmallBuySupport=true&isUseInventoryCenter=true&tryBeforeBuy=false&queryMemberRight=true&isPurchaseMallPage=false&sellerPreview=false&household=false&itemId=524765098752&isSecKill=false&isRegionLevel=true&isApparel=false&offlineShop=false&service3C=true&callback=setMdskip>
+None
+2016-09-09 09:38:08 [scrapy] DEBUG: Crawled (200) <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_44597897759,DFX_200_1_44597897759,ICVT_7_44597897759,ICCP_1_44597897759,SCCP_2_116679011> (referer: https://detail.tmall.com/item.htm?id=44597897759&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0)
+2016-09-09 09:38:08 [scrapy] DEBUG: Crawled (200) <GET https://mdskip.taobao.com/core/initItemDetail.htm?tmallBuySupport=true&isPurchaseMallPage=false&isAreaSell=true&cartEnable=true&household=false&itemId=529795486164&isForbidBuyItem=false&queryMemberRight=true&addressLevel=4&offlineShop=false&tryBeforeBuy=false&cachedTimestamp=1473383547408&isApparel=false&isRegionLevel=true&isUseInventoryCenter=true&sellerPreview=false&isSecKill=false&showShopProm=false&service3C=true&callback=setMdskip> (referer: https://detail.tmall.com/item.htm?id=529795486164&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:38:08 [scrapy] DEBUG: Crawled (200) <GET https://detail.tmall.com/item.htm?id=45156523269&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0> (referer: https://huromhuiyue.tmall.com//i/asynSearch.htm?mid=w-15014346708-0&wid=15014346708&path=/search.htm&&search=y)
+2016-09-09 09:38:11 [scrapy] DEBUG: Sending cookies to: <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_520138273925,DFX_200_1_520138273925,ICVT_7_520138273925,ICCP_1_520138273925,SCCP_2_110918969>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f; v=0
+
+2016-09-09 09:38:11 [scrapy] DEBUG: Sending cookies to: <GET https://mdskip.taobao.com/core/initItemDetail.htm?cartEnable=true&cachedTimestamp=1473385067930&itemId=520138273925&isApparel=false&household=false&addressLevel=4&tmallBuySupport=true&isForbidBuyItem=false&tryBeforeBuy=false&isSecKill=false&isPurchaseMallPage=false&offlineShop=false&isRegionLevel=true&queryMemberRight=true&showShopProm=false&isUseInventoryCenter=true&sellerPreview=false&isAreaSell=true&service3C=true&callback=setMdskip>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f; v=0
+
+2016-09-09 09:38:11 [scrapy] DEBUG: Sending cookies to: <GET https://detail.tmall.com/item.htm?id=522642972798&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:38:14 [scrapy] DEBUG: Crawled (200) <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_531947109704,DFX_200_1_531947109704,ICVT_7_531947109704,ICCP_1_531947109704,SCCP_2_116679011> (referer: https://detail.tmall.com/item.htm?id=531947109704&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0)
+2016-09-09 09:38:14 [scrapy] DEBUG: Crawled (200) <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=538159559962&callback=jsonp197> (referer: https://detail.tmall.com/item.htm?id=538159559962&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0)
+2016-09-09 09:38:14 [scrapy] DEBUG: Crawled (200) <GET https://mdskip.taobao.com/core/initItemDetail.htm?addressLevel=2&isUseInventoryCenter=false&household=false&isAreaSell=false&isPurchaseMallPage=false&itemId=44557457884&cartEnable=true&queryMemberRight=true&cachedTimestamp=1473384535330&isForbidBuyItem=false&tmallBuySupport=true&tryBeforeBuy=false&isRegionLevel=false&offlineShop=false&service3C=true&isSecKill=false&showShopProm=false&sellerPreview=false&isApparel=false&callback=setMdskip> (referer: https://detail.tmall.com/item.htm?id=44557457884&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0)
+2016-09-09 09:38:14 [scrapy] DEBUG: Crawled (200) <GET https://detail.tmall.com/item.htm?id=529330967656&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0> (referer: https://kindle.tmall.com//i/asynSearch.htm?mid=w-14852666541-0&wid=14852666541&path=/search.htm&&search=y)
+2016-09-09 09:38:14 [pykafka.connection] DEBUG: Connecting to 192.168.103.245:9092
+2016-09-09 09:38:14 [pykafka.connection] DEBUG: Successfully connected to 192.168.103.245:9092
+2016-09-09 09:38:14 [pykafka.handlers] INFO: RequestHandler.stop: about to flush requests queue
+2016-09-09 09:38:14 [pykafka.topic] INFO: Adding 1 partitions
+2016-09-09 09:38:14 [pykafka.topic] DEBUG: Adding partition tmall.shop.product/0
+2016-09-09 09:38:14 [pykafka.producer] INFO: Starting new produce worker for broker 0
+2016-09-09 09:38:14 [pykafka.producer] DEBUG: Sending 1 messages to broker 0
+2016-09-09 09:38:14 [pykafka.producer] DEBUG: Successfully sent 1/1 messages to broker 0
+2016-09-09 09:38:14 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:38:15 [pykafka.handlers] INFO: RequestHandler worker: exiting cleanly
+2016-09-09 09:38:19 [pykafka.producer] INFO: Worker exited for broker 192.168.103.245:9092
+2016-09-09 09:38:19 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:38:19 [pykafka.producer] DEBUG: Finalising <pykafka.producer.Producer at 0x10a947650>
+2016-09-09 09:38:19 [scrapy] DEBUG: Scraped from <200 https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_44597897759,DFX_200_1_44597897759,ICVT_7_44597897759,ICCP_1_44597897759,SCCP_2_116679011>
+None
+2016-09-09 09:38:19 [pykafka.connection] DEBUG: Connecting to 192.168.103.245:9092
+2016-09-09 09:38:19 [pykafka.connection] DEBUG: Successfully connected to 192.168.103.245:9092
+2016-09-09 09:38:19 [pykafka.handlers] INFO: RequestHandler.stop: about to flush requests queue
+2016-09-09 09:38:19 [pykafka.topic] INFO: Adding 1 partitions
+2016-09-09 09:38:19 [pykafka.topic] DEBUG: Adding partition tmall.shop.product/0
+2016-09-09 09:38:19 [pykafka.producer] INFO: Starting new produce worker for broker 0
+2016-09-09 09:38:19 [pykafka.producer] DEBUG: Sending 1 messages to broker 0
+2016-09-09 09:38:19 [pykafka.producer] DEBUG: Successfully sent 1/1 messages to broker 0
+2016-09-09 09:38:19 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:38:20 [pykafka.handlers] INFO: RequestHandler worker: exiting cleanly
+2016-09-09 09:38:24 [pykafka.producer] INFO: Worker exited for broker 192.168.103.245:9092
+2016-09-09 09:38:24 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:38:24 [pykafka.producer] DEBUG: Finalising <pykafka.producer.Producer at 0x10aa04e90>
+2016-09-09 09:38:24 [scrapy] DEBUG: Scraped from <200 https://mdskip.taobao.com/core/initItemDetail.htm?tmallBuySupport=true&isPurchaseMallPage=false&isAreaSell=true&cartEnable=true&household=false&itemId=529795486164&isForbidBuyItem=false&queryMemberRight=true&addressLevel=4&offlineShop=false&tryBeforeBuy=false&cachedTimestamp=1473383547408&isApparel=false&isRegionLevel=true&isUseInventoryCenter=true&sellerPreview=false&isSecKill=false&showShopProm=false&service3C=true&callback=setMdskip>
+None
+2016-09-09 09:38:27 [scrapy] DEBUG: Sending cookies to: <GET https://mdskip.taobao.com/core/initItemDetail.htm?showShopProm=false&isApparel=false&isRegionLevel=false&household=false&isAreaSell=false&isPurchaseMallPage=false&tmallBuySupport=true&tryBeforeBuy=false&queryMemberRight=true&isForbidBuyItem=false&cartEnable=true&cachedTimestamp=1473381336386&isSecKill=false&addressLevel=2&sellerPreview=false&itemId=45156523269&service3C=true&isUseInventoryCenter=false&offlineShop=false&callback=setMdskip>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f; v=0
+
+2016-09-09 09:38:27 [scrapy] DEBUG: Sending cookies to: <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=520138273925&callback=jsonp197>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:38:27 [scrapy] DEBUG: Sending cookies to: <GET https://detail.tmall.com/item.htm?id=534274368086&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:38:27 [scrapy] DEBUG: Sending cookies to: <GET https://detail.tmall.com/item.htm?id=521122242786&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:38:27 [scrapy] DEBUG: Crawled (200) <GET https://detail.tmall.com/item.htm?id=522680881881&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0> (referer: https://kindle.tmall.com//i/asynSearch.htm?mid=w-14852666541-0&wid=14852666541&path=/search.htm&&search=y)
+2016-09-09 09:38:30 [scrapy] DEBUG: Sending cookies to: <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_45156523269,DFX_200_1_45156523269,ICVT_7_45156523269,ICCP_1_45156523269,SCCP_2_116679011>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f; v=0
+
+2016-09-09 09:38:30 [scrapy] DEBUG: Crawled (200) <GET https://mdskip.taobao.com/core/initItemDetail.htm?isForbidBuyItem=false&isPurchaseMallPage=false&cartEnable=true&tmallBuySupport=true&household=false&isAreaSell=true&isRegionLevel=true&isApparel=false&isUseInventoryCenter=true&isSecKill=false&cachedTimestamp=1473377288215&showShopProm=false&sellerPreview=false&queryMemberRight=true&itemId=45775586486&tryBeforeBuy=false&addressLevel=4&offlineShop=false&service3C=true&callback=setMdskip> (referer: https://detail.tmall.com/item.htm?id=45775586486&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:38:30 [scrapy] DEBUG: Crawled (200) <GET https://detail.tmall.com/item.htm?id=520155187915&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0> (referer: https://huromhuiyue.tmall.com//i/asynSearch.htm?mid=w-15014346708-0&wid=15014346708&path=/search.htm&&search=y)
+2016-09-09 09:38:30 [pykafka.connection] DEBUG: Connecting to 192.168.103.245:9092
+2016-09-09 09:38:30 [pykafka.connection] DEBUG: Successfully connected to 192.168.103.245:9092
+2016-09-09 09:38:30 [pykafka.handlers] INFO: RequestHandler.stop: about to flush requests queue
+2016-09-09 09:38:30 [pykafka.topic] INFO: Adding 1 partitions
+2016-09-09 09:38:30 [pykafka.topic] DEBUG: Adding partition tmall.shop.product/0
+2016-09-09 09:38:30 [pykafka.producer] INFO: Starting new produce worker for broker 0
+2016-09-09 09:38:30 [pykafka.producer] DEBUG: Sending 1 messages to broker 0
+2016-09-09 09:38:30 [pykafka.producer] DEBUG: Successfully sent 1/1 messages to broker 0
+2016-09-09 09:38:30 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:38:31 [pykafka.handlers] INFO: RequestHandler worker: exiting cleanly
+2016-09-09 09:38:35 [pykafka.producer] INFO: Worker exited for broker 192.168.103.245:9092
+2016-09-09 09:38:35 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:38:35 [pykafka.producer] DEBUG: Finalising <pykafka.producer.Producer at 0x10a024690>
+2016-09-09 09:38:35 [scrapy] DEBUG: Scraped from <200 https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=538159559962&callback=jsonp197>
+None
+2016-09-09 09:38:35 [pykafka.connection] DEBUG: Connecting to 192.168.103.245:9092
+2016-09-09 09:38:35 [pykafka.connection] DEBUG: Successfully connected to 192.168.103.245:9092
+2016-09-09 09:38:35 [pykafka.handlers] INFO: RequestHandler.stop: about to flush requests queue
+2016-09-09 09:38:35 [pykafka.topic] INFO: Adding 1 partitions
+2016-09-09 09:38:35 [pykafka.topic] DEBUG: Adding partition tmall.shop.product/0
+2016-09-09 09:38:35 [pykafka.producer] INFO: Starting new produce worker for broker 0
+2016-09-09 09:38:35 [pykafka.producer] DEBUG: Sending 1 messages to broker 0
+2016-09-09 09:38:35 [pykafka.producer] DEBUG: Successfully sent 1/1 messages to broker 0
+2016-09-09 09:38:35 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:38:36 [pykafka.handlers] INFO: RequestHandler worker: exiting cleanly
+2016-09-09 09:38:40 [pykafka.producer] INFO: Worker exited for broker 192.168.103.245:9092
+2016-09-09 09:38:40 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:38:40 [pykafka.producer] DEBUG: Finalising <pykafka.producer.Producer at 0x10aa4b5d0>
+2016-09-09 09:38:40 [scrapy] DEBUG: Scraped from <200 https://mdskip.taobao.com/core/initItemDetail.htm?addressLevel=2&isUseInventoryCenter=false&household=false&isAreaSell=false&isPurchaseMallPage=false&itemId=44557457884&cartEnable=true&queryMemberRight=true&cachedTimestamp=1473384535330&isForbidBuyItem=false&tmallBuySupport=true&tryBeforeBuy=false&isRegionLevel=false&offlineShop=false&service3C=true&isSecKill=false&showShopProm=false&sellerPreview=false&isApparel=false&callback=setMdskip>
+None
+2016-09-09 09:38:44 [scrapy] DEBUG: Sending cookies to: <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=45156523269&callback=jsonp197>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:38:44 [scrapy] DEBUG: Sending cookies to: <GET https://mdskip.taobao.com/core/initItemDetail.htm?itemId=529330967656&showShopProm=false&isForbidBuyItem=false&service3C=true&isUseInventoryCenter=true&household=false&isSecKill=false&isRegionLevel=true&tryBeforeBuy=false&tmallBuySupport=true&isPurchaseMallPage=false&addressLevel=4&cachedTimestamp=1473384950691&isAreaSell=true&cartEnable=true&sellerPreview=false&isApparel=false&queryMemberRight=true&offlineShop=false&callback=setMdskip>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f; v=0
+
+2016-09-09 09:38:50 [scrapy] DEBUG: Crawled (200) <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=45156523269&callback=jsonp197> (referer: https://detail.tmall.com/item.htm?id=45156523269&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0)
+2016-09-09 09:38:50 [scrapy] DEBUG: Crawled (200) <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=522686700744&callback=jsonp197> (referer: https://detail.tmall.com/item.htm?id=522686700744&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:38:50 [scrapy] DEBUG: Crawled (200) <GET https://detail.tmall.com/item.htm?id=522642972798&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0> (referer: https://huromhuiyue.tmall.com//i/asynSearch.htm?mid=w-15014346708-0&wid=15014346708&path=/search.htm&&search=y)
+2016-09-09 09:38:50 [pykafka.connection] DEBUG: Connecting to 192.168.103.245:9092
+2016-09-09 09:38:50 [pykafka.connection] DEBUG: Successfully connected to 192.168.103.245:9092
+2016-09-09 09:38:50 [pykafka.handlers] INFO: RequestHandler.stop: about to flush requests queue
+2016-09-09 09:38:50 [pykafka.topic] INFO: Adding 1 partitions
+2016-09-09 09:38:50 [pykafka.topic] DEBUG: Adding partition tmall.shop.product/0
+2016-09-09 09:38:50 [pykafka.producer] INFO: Starting new produce worker for broker 0
+2016-09-09 09:38:50 [pykafka.producer] DEBUG: Sending 1 messages to broker 0
+2016-09-09 09:38:50 [pykafka.producer] DEBUG: Successfully sent 1/1 messages to broker 0
+2016-09-09 09:38:50 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:38:51 [pykafka.handlers] INFO: RequestHandler worker: exiting cleanly
+2016-09-09 09:38:55 [pykafka.producer] INFO: Worker exited for broker 192.168.103.245:9092
+2016-09-09 09:38:55 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:38:55 [pykafka.producer] DEBUG: Finalising <pykafka.producer.Producer at 0x10aa2bc10>
+2016-09-09 09:38:55 [scrapy] DEBUG: Scraped from <200 https://mdskip.taobao.com/core/initItemDetail.htm?isForbidBuyItem=false&isPurchaseMallPage=false&cartEnable=true&tmallBuySupport=true&household=false&isAreaSell=true&isRegionLevel=true&isApparel=false&isUseInventoryCenter=true&isSecKill=false&cachedTimestamp=1473377288215&showShopProm=false&sellerPreview=false&queryMemberRight=true&itemId=45775586486&tryBeforeBuy=false&addressLevel=4&offlineShop=false&service3C=true&callback=setMdskip>
+None
+2016-09-09 09:38:58 [scrapy] DEBUG: Sending cookies to: <GET https://mdskip.taobao.com/core/initItemDetail.htm?isSecKill=false&cartEnable=true&isPurchaseMallPage=false&tryBeforeBuy=false&isRegionLevel=false&showShopProm=false&isAreaSell=false&sellerPreview=false&service3C=true&isUseInventoryCenter=false&tmallBuySupport=true&addressLevel=2&isApparel=false&offlineShop=false&itemId=520155187915&isForbidBuyItem=false&queryMemberRight=true&household=false&cachedTimestamp=1473385105233&callback=setMdskip>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f; v=0
+
+2016-09-09 09:38:58 [scrapy] DEBUG: Sending cookies to: <GET https://mdskip.taobao.com/core/initItemDetail.htm?tmallBuySupport=true&tryBeforeBuy=false&cartEnable=true&itemId=522680881881&isUseInventoryCenter=true&isRegionLevel=true&isApparel=false&queryMemberRight=true&household=false&offlineShop=false&isForbidBuyItem=false&isSecKill=false&addressLevel=4&sellerPreview=false&cachedTimestamp=1473385034743&isAreaSell=true&isPurchaseMallPage=false&service3C=true&showShopProm=false&callback=setMdskip>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f; v=0
+
+2016-09-09 09:38:58 [scrapy] DEBUG: Sending cookies to: <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_529330967656,DFX_200_1_529330967656,ICVT_7_529330967656,ICCP_1_529330967656,SCCP_2_110918969>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f; v=0
+
+2016-09-09 09:39:04 [scrapy] DEBUG: Crawled (200) <GET https://mdskip.taobao.com/core/initItemDetail.htm?sellerPreview=false&showShopProm=false&service3C=true&queryMemberRight=true&cartEnable=true&tmallBuySupport=true&isApparel=false&offlineShop=false&cachedTimestamp=1473374350489&household=false&isSecKill=false&isForbidBuyItem=false&itemId=44516210076&isUseInventoryCenter=false&isRegionLevel=false&isPurchaseMallPage=false&tryBeforeBuy=false&addressLevel=2&isAreaSell=false&callback=setMdskip> (referer: https://detail.tmall.com/item.htm?id=44516210076&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0)
+2016-09-09 09:39:04 [scrapy] INFO: Crawled 111 pages (at 14 pages/min), scraped 21 items (at 6 items/min)
+2016-09-09 09:39:07 [scrapy] DEBUG: Sending cookies to: <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_520155187915,DFX_200_1_520155187915,ICVT_7_520155187915,ICCP_1_520155187915,SCCP_2_116679011>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f; v=0
+
+2016-09-09 09:39:10 [scrapy] DEBUG: Crawled (200) <GET https://mdskip.taobao.com/core/initItemDetail.htm?offlineShop=false&queryMemberRight=true&isAreaSell=true&tmallBuySupport=true&addressLevel=4&isForbidBuyItem=false&isApparel=false&sellerPreview=false&showShopProm=false&isSecKill=false&isUseInventoryCenter=true&isPurchaseMallPage=false&isRegionLevel=true&service3C=true&tryBeforeBuy=false&cachedTimestamp=1473379865729&household=false&cartEnable=true&itemId=520139246239&callback=setMdskip> (referer: https://detail.tmall.com/item.htm?id=520139246239&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:39:10 [scrapy] DEBUG: Crawled (200) <GET https://detail.tmall.com/item.htm?id=534274368086&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0> (referer: https://kindle.tmall.com//i/asynSearch.htm?mid=w-14852666541-0&wid=14852666541&path=/search.htm&&search=y)
+2016-09-09 09:39:16 [scrapy] DEBUG: Sending cookies to: <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=520155187915&callback=jsonp197>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:39:16 [scrapy] DEBUG: Sending cookies to: <GET https://mdskip.taobao.com/core/initItemDetail.htm?tmallBuySupport=true&isSecKill=false&offlineShop=false&isApparel=false&cartEnable=true&isAreaSell=false&isPurchaseMallPage=false&tryBeforeBuy=false&isRegionLevel=false&cachedTimestamp=1473385124366&addressLevel=2&queryMemberRight=true&showShopProm=false&service3C=true&isUseInventoryCenter=false&itemId=522642972798&household=false&isForbidBuyItem=false&sellerPreview=false&callback=setMdskip>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f; v=0
+
+2016-09-09 09:39:16 [scrapy] DEBUG: Crawled (200) <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_520138273925,DFX_200_1_520138273925,ICVT_7_520138273925,ICCP_1_520138273925,SCCP_2_110918969> (referer: https://detail.tmall.com/item.htm?id=520138273925&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:39:16 [scrapy] DEBUG: Crawled (200) <GET https://detail.tmall.com/item.htm?id=521122242786&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0> (referer: https://huromhuiyue.tmall.com//i/asynSearch.htm?mid=w-15014346708-0&wid=15014346708&path=/search.htm&&search=y)
+2016-09-09 09:39:19 [pykafka.connection] DEBUG: Connecting to 192.168.103.245:9092
+2016-09-09 09:39:19 [pykafka.connection] DEBUG: Successfully connected to 192.168.103.245:9092
+2016-09-09 09:39:19 [pykafka.handlers] INFO: RequestHandler.stop: about to flush requests queue
+2016-09-09 09:39:19 [pykafka.topic] INFO: Adding 1 partitions
+2016-09-09 09:39:19 [pykafka.topic] DEBUG: Adding partition tmall.shop.product/0
+2016-09-09 09:39:19 [pykafka.producer] INFO: Starting new produce worker for broker 0
+2016-09-09 09:39:19 [pykafka.producer] DEBUG: Sending 1 messages to broker 0
+2016-09-09 09:39:19 [pykafka.producer] DEBUG: Successfully sent 1/1 messages to broker 0
+2016-09-09 09:39:19 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:39:20 [pykafka.handlers] INFO: RequestHandler worker: exiting cleanly
+2016-09-09 09:39:24 [pykafka.producer] INFO: Worker exited for broker 192.168.103.245:9092
+2016-09-09 09:39:24 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:39:24 [pykafka.producer] DEBUG: Finalising <pykafka.producer.Producer at 0x10a787450>
+2016-09-09 09:39:24 [scrapy] DEBUG: Scraped from <200 https://mdskip.taobao.com/core/initItemDetail.htm?sellerPreview=false&showShopProm=false&service3C=true&queryMemberRight=true&cartEnable=true&tmallBuySupport=true&isApparel=false&offlineShop=false&cachedTimestamp=1473374350489&household=false&isSecKill=false&isForbidBuyItem=false&itemId=44516210076&isUseInventoryCenter=false&isRegionLevel=false&isPurchaseMallPage=false&tryBeforeBuy=false&addressLevel=2&isAreaSell=false&callback=setMdskip>
+None
+2016-09-09 09:39:24 [scrapy] DEBUG: Sending cookies to: <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_522642972798,DFX_200_1_522642972798,ICVT_7_522642972798,ICCP_1_522642972798,SCCP_2_116679011>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f; v=0
+
+2016-09-09 09:39:24 [scrapy] DEBUG: Sending cookies to: <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=522680881881&callback=jsonp197>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:39:24 [scrapy] DEBUG: Crawled (200) <GET https://mdskip.taobao.com/core/initItemDetail.htm?tmallBuySupport=true&isSecKill=false&addressLevel=4&cachedTimestamp=1473384688460&showShopProm=false&isApparel=false&queryMemberRight=true&itemId=534313212999&cartEnable=true&offlineShop=false&tryBeforeBuy=false&isForbidBuyItem=false&isAreaSell=true&service3C=true&sellerPreview=false&isPurchaseMallPage=false&isRegionLevel=true&household=false&isUseInventoryCenter=true&callback=setMdskip> (referer: https://detail.tmall.com/item.htm?id=534313212999&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:39:24 [scrapy] DEBUG: Crawled (200) <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=520155187915&callback=jsonp197> (referer: https://detail.tmall.com/item.htm?id=520155187915&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0)
+2016-09-09 09:39:24 [pykafka.connection] DEBUG: Connecting to 192.168.103.245:9092
+2016-09-09 09:39:24 [pykafka.connection] DEBUG: Successfully connected to 192.168.103.245:9092
+2016-09-09 09:39:24 [pykafka.handlers] INFO: RequestHandler.stop: about to flush requests queue
+2016-09-09 09:39:24 [pykafka.topic] INFO: Adding 1 partitions
+2016-09-09 09:39:24 [pykafka.topic] DEBUG: Adding partition tmall.shop.product/0
+2016-09-09 09:39:24 [pykafka.producer] INFO: Starting new produce worker for broker 0
+2016-09-09 09:39:24 [pykafka.producer] DEBUG: Sending 1 messages to broker 0
+2016-09-09 09:39:24 [pykafka.producer] DEBUG: Successfully sent 1/1 messages to broker 0
+2016-09-09 09:39:24 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:39:25 [pykafka.handlers] INFO: RequestHandler worker: exiting cleanly
+2016-09-09 09:39:29 [pykafka.producer] INFO: Worker exited for broker 192.168.103.245:9092
+2016-09-09 09:39:29 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:39:29 [pykafka.producer] DEBUG: Finalising <pykafka.producer.Producer at 0x10a9ba790>
+2016-09-09 09:39:29 [scrapy] DEBUG: Scraped from <200 https://mdskip.taobao.com/core/initItemDetail.htm?offlineShop=false&queryMemberRight=true&isAreaSell=true&tmallBuySupport=true&addressLevel=4&isForbidBuyItem=false&isApparel=false&sellerPreview=false&showShopProm=false&isSecKill=false&isUseInventoryCenter=true&isPurchaseMallPage=false&isRegionLevel=true&service3C=true&tryBeforeBuy=false&cachedTimestamp=1473379865729&household=false&cartEnable=true&itemId=520139246239&callback=setMdskip>
+None
+2016-09-09 09:39:35 [scrapy] DEBUG: Sending cookies to: <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=522642972798&callback=jsonp197>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:39:35 [scrapy] DEBUG: Sending cookies to: <GET https://mdskip.taobao.com/core/initItemDetail.htm?queryMemberRight=true&household=false&isUseInventoryCenter=true&isSecKill=false&tryBeforeBuy=false&cachedTimestamp=1473385125038&addressLevel=4&service3C=true&isApparel=false&offlineShop=false&showShopProm=false&sellerPreview=false&cartEnable=true&isRegionLevel=true&isPurchaseMallPage=false&itemId=534274368086&isAreaSell=true&tmallBuySupport=true&isForbidBuyItem=false&callback=setMdskip>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f; v=0
+
+2016-09-09 09:39:35 [scrapy] DEBUG: Crawled (200) <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=520138273925&callback=jsonp197> (referer: https://detail.tmall.com/item.htm?id=520138273925&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:39:41 [scrapy] DEBUG: Sending cookies to: <GET https://mdskip.taobao.com/core/initItemDetail.htm?isRegionLevel=true&addressLevel=3&showShopProm=false&isForbidBuyItem=false&cartEnable=true&isAreaSell=true&itemId=521122242786&isSecKill=false&isPurchaseMallPage=false&isUseInventoryCenter=true&tryBeforeBuy=false&offlineShop=false&tmallBuySupport=true&cachedTimestamp=1473385115312&isApparel=false&sellerPreview=false&household=false&queryMemberRight=true&service3C=true&callback=setMdskip>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f; v=0
+
+2016-09-09 09:39:41 [scrapy] DEBUG: Crawled (200) <GET https://mdskip.taobao.com/core/initItemDetail.htm?isApparel=false&tryBeforeBuy=false&sellerPreview=false&showShopProm=false&isSecKill=false&cartEnable=true&isForbidBuyItem=false&isRegionLevel=true&cachedTimestamp=1473384625122&service3C=true&itemId=522686700744&tmallBuySupport=true&offlineShop=false&household=false&isPurchaseMallPage=false&isAreaSell=true&queryMemberRight=true&addressLevel=4&isUseInventoryCenter=true&callback=setMdskip> (referer: https://detail.tmall.com/item.htm?id=522686700744&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:39:41 [scrapy] DEBUG: Crawled (200) <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_45156523269,DFX_200_1_45156523269,ICVT_7_45156523269,ICCP_1_45156523269,SCCP_2_116679011> (referer: https://detail.tmall.com/item.htm?id=45156523269&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0)
+2016-09-09 09:39:41 [pykafka.connection] DEBUG: Connecting to 192.168.103.245:9092
+2016-09-09 09:39:41 [pykafka.connection] DEBUG: Successfully connected to 192.168.103.245:9092
+2016-09-09 09:39:41 [pykafka.handlers] INFO: RequestHandler.stop: about to flush requests queue
+2016-09-09 09:39:41 [pykafka.topic] INFO: Adding 1 partitions
+2016-09-09 09:39:41 [pykafka.topic] DEBUG: Adding partition tmall.shop.product/0
+2016-09-09 09:39:41 [pykafka.producer] INFO: Starting new produce worker for broker 0
+2016-09-09 09:39:41 [pykafka.producer] DEBUG: Sending 1 messages to broker 0
+2016-09-09 09:39:41 [pykafka.producer] DEBUG: Successfully sent 1/1 messages to broker 0
+2016-09-09 09:39:41 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:39:42 [pykafka.handlers] INFO: RequestHandler worker: exiting cleanly
+2016-09-09 09:39:46 [pykafka.producer] INFO: Worker exited for broker 192.168.103.245:9092
+2016-09-09 09:39:46 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:39:46 [pykafka.producer] DEBUG: Finalising <pykafka.producer.Producer at 0x10a32f7d0>
+2016-09-09 09:39:46 [scrapy] DEBUG: Scraped from <200 https://mdskip.taobao.com/core/initItemDetail.htm?tmallBuySupport=true&isSecKill=false&addressLevel=4&cachedTimestamp=1473384688460&showShopProm=false&isApparel=false&queryMemberRight=true&itemId=534313212999&cartEnable=true&offlineShop=false&tryBeforeBuy=false&isForbidBuyItem=false&isAreaSell=true&service3C=true&sellerPreview=false&isPurchaseMallPage=false&isRegionLevel=true&household=false&isUseInventoryCenter=true&callback=setMdskip>
+None
+2016-09-09 09:39:52 [scrapy] DEBUG: Sending cookies to: <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_521122242786,DFX_200_1_521122242786,ICVT_7_521122242786,ICCP_1_521122242786,SCCP_2_116679011>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f; v=0
+
+2016-09-09 09:39:52 [scrapy] DEBUG: Sending cookies to: <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=534274368086&callback=jsonp197>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:39:52 [scrapy] DEBUG: Crawled (200) <GET https://mdskip.taobao.com/core/initItemDetail.htm?cachedTimestamp=1473384682339&tryBeforeBuy=false&tmallBuySupport=true&offlineShop=false&showShopProm=false&cartEnable=true&isRegionLevel=false&isUseInventoryCenter=false&sellerPreview=false&isAreaSell=false&service3C=true&household=false&isPurchaseMallPage=false&isForbidBuyItem=false&isSecKill=false&itemId=531947109704&queryMemberRight=true&isApparel=false&addressLevel=2&callback=setMdskip> (referer: https://detail.tmall.com/item.htm?id=531947109704&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0)
+2016-09-09 09:39:52 [scrapy] INFO: Crawled 121 pages (at 10 pages/min), scraped 24 items (at 3 items/min)
+2016-09-09 09:39:55 [scrapy] DEBUG: Sending cookies to: <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=521122242786&callback=jsonp197>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:39:55 [scrapy] DEBUG: Crawled (200) <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=522642972798&callback=jsonp197> (referer: https://detail.tmall.com/item.htm?id=522642972798&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0)
+2016-09-09 09:39:55 [scrapy] DEBUG: Crawled (200) <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_529330967656,DFX_200_1_529330967656,ICVT_7_529330967656,ICCP_1_529330967656,SCCP_2_110918969> (referer: https://detail.tmall.com/item.htm?id=529330967656&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:39:55 [pykafka.connection] DEBUG: Connecting to 192.168.103.245:9092
+2016-09-09 09:39:55 [pykafka.connection] DEBUG: Successfully connected to 192.168.103.245:9092
+2016-09-09 09:39:55 [pykafka.handlers] INFO: RequestHandler.stop: about to flush requests queue
+2016-09-09 09:39:55 [pykafka.topic] INFO: Adding 1 partitions
+2016-09-09 09:39:55 [pykafka.topic] DEBUG: Adding partition tmall.shop.product/0
+2016-09-09 09:39:55 [pykafka.producer] INFO: Starting new produce worker for broker 0
+2016-09-09 09:39:55 [pykafka.producer] DEBUG: Sending 1 messages to broker 0
+2016-09-09 09:39:55 [pykafka.producer] DEBUG: Successfully sent 1/1 messages to broker 0
+2016-09-09 09:39:55 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:39:56 [pykafka.handlers] INFO: RequestHandler worker: exiting cleanly
+2016-09-09 09:40:00 [pykafka.producer] INFO: Worker exited for broker 192.168.103.245:9092
+2016-09-09 09:40:00 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:40:00 [pykafka.producer] DEBUG: Finalising <pykafka.producer.Producer at 0x10a532d50>
+2016-09-09 09:40:00 [scrapy] DEBUG: Scraped from <200 https://mdskip.taobao.com/core/initItemDetail.htm?isApparel=false&tryBeforeBuy=false&sellerPreview=false&showShopProm=false&isSecKill=false&cartEnable=true&isForbidBuyItem=false&isRegionLevel=true&cachedTimestamp=1473384625122&service3C=true&itemId=522686700744&tmallBuySupport=true&offlineShop=false&household=false&isPurchaseMallPage=false&isAreaSell=true&queryMemberRight=true&addressLevel=4&isUseInventoryCenter=true&callback=setMdskip>
+None
+2016-09-09 09:40:00 [scrapy] DEBUG: Sending cookies to: <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_534274368086,DFX_200_1_534274368086,ICVT_7_534274368086,ICCP_1_534274368086,SCCP_2_110918969>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f; v=0
+
+2016-09-09 09:40:00 [scrapy] DEBUG: Sending cookies to: <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_522680881881,DFX_200_1_522680881881,ICVT_7_522680881881,ICCP_1_522680881881,SCCP_2_110918969>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f; v=0
+
+2016-09-09 09:40:00 [scrapy] DEBUG: Crawled (200) <GET https://mdskip.taobao.com/core/initItemDetail.htm?cartEnable=true&cachedTimestamp=1473385067930&itemId=520138273925&isApparel=false&household=false&addressLevel=4&tmallBuySupport=true&isForbidBuyItem=false&tryBeforeBuy=false&isSecKill=false&isPurchaseMallPage=false&offlineShop=false&isRegionLevel=true&queryMemberRight=true&showShopProm=false&isUseInventoryCenter=true&sellerPreview=false&isAreaSell=true&service3C=true&callback=setMdskip> (referer: https://detail.tmall.com/item.htm?id=520138273925&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:40:00 [scrapy] DEBUG: Crawled (200) <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=534274368086&callback=jsonp197> (referer: https://detail.tmall.com/item.htm?id=534274368086&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:40:00 [pykafka.connection] DEBUG: Connecting to 192.168.103.245:9092
+2016-09-09 09:40:00 [pykafka.connection] DEBUG: Successfully connected to 192.168.103.245:9092
+2016-09-09 09:40:00 [pykafka.handlers] INFO: RequestHandler.stop: about to flush requests queue
+2016-09-09 09:40:00 [pykafka.topic] INFO: Adding 1 partitions
+2016-09-09 09:40:00 [pykafka.topic] DEBUG: Adding partition tmall.shop.product/0
+2016-09-09 09:40:00 [pykafka.producer] INFO: Starting new produce worker for broker 0
+2016-09-09 09:40:00 [pykafka.producer] DEBUG: Sending 1 messages to broker 0
+2016-09-09 09:40:00 [pykafka.producer] DEBUG: Successfully sent 1/1 messages to broker 0
+2016-09-09 09:40:00 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:40:01 [pykafka.handlers] INFO: RequestHandler worker: exiting cleanly
+2016-09-09 09:40:05 [pykafka.producer] INFO: Worker exited for broker 192.168.103.245:9092
+2016-09-09 09:40:05 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:40:05 [pykafka.producer] DEBUG: Finalising <pykafka.producer.Producer at 0x10a97bf90>
+2016-09-09 09:40:05 [scrapy] DEBUG: Scraped from <200 https://mdskip.taobao.com/core/initItemDetail.htm?cachedTimestamp=1473384682339&tryBeforeBuy=false&tmallBuySupport=true&offlineShop=false&showShopProm=false&cartEnable=true&isRegionLevel=false&isUseInventoryCenter=false&sellerPreview=false&isAreaSell=false&service3C=true&household=false&isPurchaseMallPage=false&isForbidBuyItem=false&isSecKill=false&itemId=531947109704&queryMemberRight=true&isApparel=false&addressLevel=2&callback=setMdskip>
+None
+2016-09-09 09:40:05 [scrapy] DEBUG: Sending cookies to: <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=529330967656&callback=jsonp197>
+Cookie: cookie2=1695b631179f04abbe83760bd9012ca5; _tb_token_=0w9bgKCpMrZi; t=d5dc6bc0eca06f715aea395af45f3d0f
+
+2016-09-09 09:40:05 [scrapy] DEBUG: Crawled (200) <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_520155187915,DFX_200_1_520155187915,ICVT_7_520155187915,ICCP_1_520155187915,SCCP_2_116679011> (referer: https://detail.tmall.com/item.htm?id=520155187915&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0)
+2016-09-09 09:40:05 [scrapy] DEBUG: Crawled (200) <GET https://mdskip.taobao.com/core/initItemDetail.htm?showShopProm=false&isApparel=false&isRegionLevel=false&household=false&isAreaSell=false&isPurchaseMallPage=false&tmallBuySupport=true&tryBeforeBuy=false&queryMemberRight=true&isForbidBuyItem=false&cartEnable=true&cachedTimestamp=1473381336386&isSecKill=false&addressLevel=2&sellerPreview=false&itemId=45156523269&service3C=true&isUseInventoryCenter=false&offlineShop=false&callback=setMdskip> (referer: https://detail.tmall.com/item.htm?id=45156523269&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0)
+2016-09-09 09:40:05 [pykafka.connection] DEBUG: Connecting to 192.168.103.245:9092
+2016-09-09 09:40:05 [pykafka.connection] DEBUG: Successfully connected to 192.168.103.245:9092
+2016-09-09 09:40:05 [pykafka.handlers] INFO: RequestHandler.stop: about to flush requests queue
+2016-09-09 09:40:05 [pykafka.topic] INFO: Adding 1 partitions
+2016-09-09 09:40:05 [pykafka.topic] DEBUG: Adding partition tmall.shop.product/0
+2016-09-09 09:40:05 [pykafka.producer] INFO: Starting new produce worker for broker 0
+2016-09-09 09:40:05 [pykafka.producer] DEBUG: Sending 1 messages to broker 0
+2016-09-09 09:40:05 [pykafka.producer] DEBUG: Successfully sent 1/1 messages to broker 0
+2016-09-09 09:40:05 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:40:06 [pykafka.handlers] INFO: RequestHandler worker: exiting cleanly
+2016-09-09 09:40:10 [pykafka.producer] INFO: Worker exited for broker 192.168.103.245:9092
+2016-09-09 09:40:10 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:40:10 [pykafka.producer] DEBUG: Finalising <pykafka.producer.Producer at 0x10a39fad0>
+2016-09-09 09:40:10 [scrapy] DEBUG: Scraped from <200 https://mdskip.taobao.com/core/initItemDetail.htm?cartEnable=true&cachedTimestamp=1473385067930&itemId=520138273925&isApparel=false&household=false&addressLevel=4&tmallBuySupport=true&isForbidBuyItem=false&tryBeforeBuy=false&isSecKill=false&isPurchaseMallPage=false&offlineShop=false&isRegionLevel=true&queryMemberRight=true&showShopProm=false&isUseInventoryCenter=true&sellerPreview=false&isAreaSell=true&service3C=true&callback=setMdskip>
+None
+2016-09-09 09:40:10 [scrapy] DEBUG: Crawled (200) <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=529330967656&callback=jsonp197> (referer: https://detail.tmall.com/item.htm?id=529330967656&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:40:10 [scrapy] DEBUG: Crawled (200) <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=521122242786&callback=jsonp197> (referer: https://detail.tmall.com/item.htm?id=521122242786&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0)
+2016-09-09 09:40:10 [scrapy] DEBUG: Crawled (200) <GET https://mdskip.taobao.com/core/initItemDetail.htm?itemId=529330967656&showShopProm=false&isForbidBuyItem=false&service3C=true&isUseInventoryCenter=true&household=false&isSecKill=false&isRegionLevel=true&tryBeforeBuy=false&tmallBuySupport=true&isPurchaseMallPage=false&addressLevel=4&cachedTimestamp=1473384950691&isAreaSell=true&cartEnable=true&sellerPreview=false&isApparel=false&queryMemberRight=true&offlineShop=false&callback=setMdskip> (referer: https://detail.tmall.com/item.htm?id=529330967656&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:40:10 [scrapy] DEBUG: Crawled (200) <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_522642972798,DFX_200_1_522642972798,ICVT_7_522642972798,ICCP_1_522642972798,SCCP_2_116679011> (referer: https://detail.tmall.com/item.htm?id=522642972798&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0)
+2016-09-09 09:40:11 [pykafka.connection] DEBUG: Connecting to 192.168.103.245:9092
+2016-09-09 09:40:11 [pykafka.connection] DEBUG: Successfully connected to 192.168.103.245:9092
+2016-09-09 09:40:11 [pykafka.handlers] INFO: RequestHandler.stop: about to flush requests queue
+2016-09-09 09:40:11 [pykafka.topic] INFO: Adding 1 partitions
+2016-09-09 09:40:11 [pykafka.topic] DEBUG: Adding partition tmall.shop.product/0
+2016-09-09 09:40:11 [pykafka.producer] INFO: Starting new produce worker for broker 0
+2016-09-09 09:40:11 [pykafka.producer] DEBUG: Sending 1 messages to broker 0
+2016-09-09 09:40:11 [pykafka.producer] DEBUG: Successfully sent 1/1 messages to broker 0
+2016-09-09 09:40:11 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:40:12 [pykafka.handlers] INFO: RequestHandler worker: exiting cleanly
+2016-09-09 09:40:16 [pykafka.producer] INFO: Worker exited for broker 192.168.103.245:9092
+2016-09-09 09:40:16 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:40:16 [pykafka.producer] DEBUG: Finalising <pykafka.producer.Producer at 0x10a3112d0>
+2016-09-09 09:40:16 [scrapy] DEBUG: Scraped from <200 https://mdskip.taobao.com/core/initItemDetail.htm?showShopProm=false&isApparel=false&isRegionLevel=false&household=false&isAreaSell=false&isPurchaseMallPage=false&tmallBuySupport=true&tryBeforeBuy=false&queryMemberRight=true&isForbidBuyItem=false&cartEnable=true&cachedTimestamp=1473381336386&isSecKill=false&addressLevel=2&sellerPreview=false&itemId=45156523269&service3C=true&isUseInventoryCenter=false&offlineShop=false&callback=setMdskip>
+None
+2016-09-09 09:40:16 [scrapy] DEBUG: Crawled (200) <GET https://mdskip.taobao.com/core/initItemDetail.htm?isSecKill=false&cartEnable=true&isPurchaseMallPage=false&tryBeforeBuy=false&isRegionLevel=false&showShopProm=false&isAreaSell=false&sellerPreview=false&service3C=true&isUseInventoryCenter=false&tmallBuySupport=true&addressLevel=2&isApparel=false&offlineShop=false&itemId=520155187915&isForbidBuyItem=false&queryMemberRight=true&household=false&cachedTimestamp=1473385105233&callback=setMdskip> (referer: https://detail.tmall.com/item.htm?id=520155187915&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0)
+2016-09-09 09:40:16 [scrapy] DEBUG: Crawled (200) <GET https://dsr-rate.tmall.com/list_dsr_info.htm?itemId=522680881881&callback=jsonp197> (referer: https://detail.tmall.com/item.htm?id=522680881881&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:40:16 [pykafka.connection] DEBUG: Connecting to 192.168.103.245:9092
+2016-09-09 09:40:16 [pykafka.connection] DEBUG: Successfully connected to 192.168.103.245:9092
+2016-09-09 09:40:16 [pykafka.handlers] INFO: RequestHandler.stop: about to flush requests queue
+2016-09-09 09:40:16 [pykafka.topic] INFO: Adding 1 partitions
+2016-09-09 09:40:16 [pykafka.topic] DEBUG: Adding partition tmall.shop.product/0
+2016-09-09 09:40:16 [pykafka.producer] INFO: Starting new produce worker for broker 0
+2016-09-09 09:40:16 [pykafka.producer] DEBUG: Sending 1 messages to broker 0
+2016-09-09 09:40:16 [pykafka.producer] DEBUG: Successfully sent 1/1 messages to broker 0
+2016-09-09 09:40:16 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:40:17 [pykafka.handlers] INFO: RequestHandler worker: exiting cleanly
+2016-09-09 09:40:21 [pykafka.producer] INFO: Worker exited for broker 192.168.103.245:9092
+2016-09-09 09:40:21 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:40:21 [pykafka.producer] DEBUG: Finalising <pykafka.producer.Producer at 0x1063b7890>
+2016-09-09 09:40:21 [scrapy] DEBUG: Scraped from <200 https://mdskip.taobao.com/core/initItemDetail.htm?itemId=529330967656&showShopProm=false&isForbidBuyItem=false&service3C=true&isUseInventoryCenter=true&household=false&isSecKill=false&isRegionLevel=true&tryBeforeBuy=false&tmallBuySupport=true&isPurchaseMallPage=false&addressLevel=4&cachedTimestamp=1473384950691&isAreaSell=true&cartEnable=true&sellerPreview=false&isApparel=false&queryMemberRight=true&offlineShop=false&callback=setMdskip>
+None
+2016-09-09 09:40:21 [scrapy] DEBUG: Crawled (200) <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_521122242786,DFX_200_1_521122242786,ICVT_7_521122242786,ICCP_1_521122242786,SCCP_2_116679011> (referer: https://detail.tmall.com/item.htm?id=521122242786&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0)
+2016-09-09 09:40:21 [scrapy] DEBUG: Crawled (200) <GET https://mdskip.taobao.com/core/initItemDetail.htm?tmallBuySupport=true&tryBeforeBuy=false&cartEnable=true&itemId=522680881881&isUseInventoryCenter=true&isRegionLevel=true&isApparel=false&queryMemberRight=true&household=false&offlineShop=false&isForbidBuyItem=false&isSecKill=false&addressLevel=4&sellerPreview=false&cachedTimestamp=1473385034743&isAreaSell=true&isPurchaseMallPage=false&service3C=true&showShopProm=false&callback=setMdskip> (referer: https://detail.tmall.com/item.htm?id=522680881881&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:40:21 [pykafka.connection] DEBUG: Connecting to 192.168.103.245:9092
+2016-09-09 09:40:21 [pykafka.connection] DEBUG: Successfully connected to 192.168.103.245:9092
+2016-09-09 09:40:21 [pykafka.handlers] INFO: RequestHandler.stop: about to flush requests queue
+2016-09-09 09:40:21 [pykafka.topic] INFO: Adding 1 partitions
+2016-09-09 09:40:21 [pykafka.topic] DEBUG: Adding partition tmall.shop.product/0
+2016-09-09 09:40:21 [pykafka.producer] INFO: Starting new produce worker for broker 0
+2016-09-09 09:40:21 [pykafka.producer] DEBUG: Sending 1 messages to broker 0
+2016-09-09 09:40:21 [pykafka.producer] DEBUG: Successfully sent 1/1 messages to broker 0
+2016-09-09 09:40:21 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:40:22 [pykafka.handlers] INFO: RequestHandler worker: exiting cleanly
+2016-09-09 09:40:26 [pykafka.producer] INFO: Worker exited for broker 192.168.103.245:9092
+2016-09-09 09:40:26 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:40:26 [pykafka.producer] DEBUG: Finalising <pykafka.producer.Producer at 0x10a3775d0>
+2016-09-09 09:40:26 [scrapy] DEBUG: Scraped from <200 https://mdskip.taobao.com/core/initItemDetail.htm?isSecKill=false&cartEnable=true&isPurchaseMallPage=false&tryBeforeBuy=false&isRegionLevel=false&showShopProm=false&isAreaSell=false&sellerPreview=false&service3C=true&isUseInventoryCenter=false&tmallBuySupport=true&addressLevel=2&isApparel=false&offlineShop=false&itemId=520155187915&isForbidBuyItem=false&queryMemberRight=true&household=false&cachedTimestamp=1473385105233&callback=setMdskip>
+None
+2016-09-09 09:40:26 [scrapy] DEBUG: Crawled (200) <GET https://mdskip.taobao.com/core/initItemDetail.htm?tmallBuySupport=true&isSecKill=false&offlineShop=false&isApparel=false&cartEnable=true&isAreaSell=false&isPurchaseMallPage=false&tryBeforeBuy=false&isRegionLevel=false&cachedTimestamp=1473385124366&addressLevel=2&queryMemberRight=true&showShopProm=false&service3C=true&isUseInventoryCenter=false&itemId=522642972798&household=false&isForbidBuyItem=false&sellerPreview=false&callback=setMdskip> (referer: https://detail.tmall.com/item.htm?id=522642972798&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0)
+2016-09-09 09:40:26 [scrapy] DEBUG: Crawled (200) <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_534274368086,DFX_200_1_534274368086,ICVT_7_534274368086,ICCP_1_534274368086,SCCP_2_110918969> (referer: https://detail.tmall.com/item.htm?id=534274368086&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:40:26 [scrapy] DEBUG: Crawled (200) <GET https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_522680881881,DFX_200_1_522680881881,ICVT_7_522680881881,ICCP_1_522680881881,SCCP_2_110918969> (referer: https://detail.tmall.com/item.htm?id=522680881881&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:40:26 [pykafka.connection] DEBUG: Connecting to 192.168.103.245:9092
+2016-09-09 09:40:26 [pykafka.connection] DEBUG: Successfully connected to 192.168.103.245:9092
+2016-09-09 09:40:26 [pykafka.handlers] INFO: RequestHandler.stop: about to flush requests queue
+2016-09-09 09:40:26 [pykafka.topic] INFO: Adding 1 partitions
+2016-09-09 09:40:26 [pykafka.topic] DEBUG: Adding partition tmall.shop.product/0
+2016-09-09 09:40:26 [pykafka.producer] INFO: Starting new produce worker for broker 0
+2016-09-09 09:40:26 [pykafka.producer] DEBUG: Sending 1 messages to broker 0
+2016-09-09 09:40:26 [pykafka.producer] DEBUG: Successfully sent 1/1 messages to broker 0
+2016-09-09 09:40:26 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:40:27 [pykafka.handlers] INFO: RequestHandler worker: exiting cleanly
+2016-09-09 09:40:31 [pykafka.producer] INFO: Worker exited for broker 192.168.103.245:9092
+2016-09-09 09:40:31 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:40:31 [pykafka.producer] DEBUG: Finalising <pykafka.producer.Producer at 0x10a39fc50>
+2016-09-09 09:40:31 [scrapy] DEBUG: Scraped from <200 https://mdskip.taobao.com/core/initItemDetail.htm?tmallBuySupport=true&isSecKill=false&offlineShop=false&isApparel=false&cartEnable=true&isAreaSell=false&isPurchaseMallPage=false&tryBeforeBuy=false&isRegionLevel=false&cachedTimestamp=1473385124366&addressLevel=2&queryMemberRight=true&showShopProm=false&service3C=true&isUseInventoryCenter=false&itemId=522642972798&household=false&isForbidBuyItem=false&sellerPreview=false&callback=setMdskip>
+None
+2016-09-09 09:40:31 [scrapy] DEBUG: Crawled (200) <GET https://mdskip.taobao.com/core/initItemDetail.htm?queryMemberRight=true&household=false&isUseInventoryCenter=true&isSecKill=false&tryBeforeBuy=false&cachedTimestamp=1473385125038&addressLevel=4&service3C=true&isApparel=false&offlineShop=false&showShopProm=false&sellerPreview=false&cartEnable=true&isRegionLevel=true&isPurchaseMallPage=false&itemId=534274368086&isAreaSell=true&tmallBuySupport=true&isForbidBuyItem=false&callback=setMdskip> (referer: https://detail.tmall.com/item.htm?id=534274368086&rn=6f5bd7735dea107ee3bc307a0161b181&abbucket=0)
+2016-09-09 09:40:31 [pykafka.connection] DEBUG: Connecting to 192.168.103.245:9092
+2016-09-09 09:40:31 [pykafka.connection] DEBUG: Successfully connected to 192.168.103.245:9092
+2016-09-09 09:40:31 [pykafka.handlers] INFO: RequestHandler.stop: about to flush requests queue
+2016-09-09 09:40:31 [pykafka.topic] INFO: Adding 1 partitions
+2016-09-09 09:40:31 [pykafka.topic] DEBUG: Adding partition tmall.shop.product/0
+2016-09-09 09:40:31 [pykafka.producer] INFO: Starting new produce worker for broker 0
+2016-09-09 09:40:31 [pykafka.producer] DEBUG: Sending 1 messages to broker 0
+2016-09-09 09:40:31 [pykafka.producer] DEBUG: Successfully sent 1/1 messages to broker 0
+2016-09-09 09:40:31 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:40:32 [pykafka.handlers] INFO: RequestHandler worker: exiting cleanly
+2016-09-09 09:40:36 [pykafka.producer] INFO: Worker exited for broker 192.168.103.245:9092
+2016-09-09 09:40:36 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:40:36 [pykafka.producer] DEBUG: Finalising <pykafka.producer.Producer at 0x109fdd350>
+2016-09-09 09:40:36 [scrapy] DEBUG: Scraped from <200 https://count.taobao.com/counter3?callback=jsonp225&keys=ICCP_1_522680881881,DFX_200_1_522680881881,ICVT_7_522680881881,ICCP_1_522680881881,SCCP_2_110918969>
+None
+2016-09-09 09:40:36 [scrapy] DEBUG: Crawled (200) <GET https://mdskip.taobao.com/core/initItemDetail.htm?isRegionLevel=true&addressLevel=3&showShopProm=false&isForbidBuyItem=false&cartEnable=true&isAreaSell=true&itemId=521122242786&isSecKill=false&isPurchaseMallPage=false&isUseInventoryCenter=true&tryBeforeBuy=false&offlineShop=false&tmallBuySupport=true&cachedTimestamp=1473385115312&isApparel=false&sellerPreview=false&household=false&queryMemberRight=true&service3C=true&callback=setMdskip> (referer: https://detail.tmall.com/item.htm?id=521122242786&rn=2ebd59b58be99efe2b9291fdf26e1274&abbucket=0)
+2016-09-09 09:40:36 [pykafka.connection] DEBUG: Connecting to 192.168.103.245:9092
+2016-09-09 09:40:36 [pykafka.connection] DEBUG: Successfully connected to 192.168.103.245:9092
+2016-09-09 09:40:36 [pykafka.handlers] INFO: RequestHandler.stop: about to flush requests queue
+2016-09-09 09:40:36 [pykafka.topic] INFO: Adding 1 partitions
+2016-09-09 09:40:36 [pykafka.topic] DEBUG: Adding partition tmall.shop.product/0
+2016-09-09 09:40:36 [pykafka.producer] INFO: Starting new produce worker for broker 0
+2016-09-09 09:40:36 [pykafka.producer] DEBUG: Sending 1 messages to broker 0
+2016-09-09 09:40:36 [pykafka.producer] DEBUG: Successfully sent 1/1 messages to broker 0
+2016-09-09 09:40:36 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:40:37 [pykafka.handlers] INFO: RequestHandler worker: exiting cleanly
+2016-09-09 09:40:41 [pykafka.producer] INFO: Worker exited for broker 192.168.103.245:9092
+2016-09-09 09:40:41 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:40:41 [pykafka.producer] DEBUG: Finalising <pykafka.producer.Producer at 0x10a377a10>
+2016-09-09 09:40:41 [scrapy] DEBUG: Scraped from <200 https://mdskip.taobao.com/core/initItemDetail.htm?queryMemberRight=true&household=false&isUseInventoryCenter=true&isSecKill=false&tryBeforeBuy=false&cachedTimestamp=1473385125038&addressLevel=4&service3C=true&isApparel=false&offlineShop=false&showShopProm=false&sellerPreview=false&cartEnable=true&isRegionLevel=true&isPurchaseMallPage=false&itemId=534274368086&isAreaSell=true&tmallBuySupport=true&isForbidBuyItem=false&callback=setMdskip>
+None
+2016-09-09 09:40:41 [pykafka.connection] DEBUG: Connecting to 192.168.103.245:9092
+2016-09-09 09:40:41 [pykafka.connection] DEBUG: Successfully connected to 192.168.103.245:9092
+2016-09-09 09:40:41 [pykafka.handlers] INFO: RequestHandler.stop: about to flush requests queue
+2016-09-09 09:40:41 [pykafka.topic] INFO: Adding 1 partitions
+2016-09-09 09:40:41 [pykafka.topic] DEBUG: Adding partition tmall.shop.product/0
+2016-09-09 09:40:41 [pykafka.producer] INFO: Starting new produce worker for broker 0
+2016-09-09 09:40:41 [pykafka.producer] DEBUG: Sending 1 messages to broker 0
+2016-09-09 09:40:41 [pykafka.producer] DEBUG: Successfully sent 1/1 messages to broker 0
+2016-09-09 09:40:41 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:40:42 [pykafka.handlers] INFO: RequestHandler worker: exiting cleanly
+2016-09-09 09:40:46 [pykafka.producer] INFO: Worker exited for broker 192.168.103.245:9092
+2016-09-09 09:40:46 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-09 09:40:46 [pykafka.producer] DEBUG: Finalising <pykafka.producer.Producer at 0x109f54f50>
+2016-09-09 09:40:46 [scrapy] DEBUG: Scraped from <200 https://mdskip.taobao.com/core/initItemDetail.htm?isRegionLevel=true&addressLevel=3&showShopProm=false&isForbidBuyItem=false&cartEnable=true&isAreaSell=true&itemId=521122242786&isSecKill=false&isPurchaseMallPage=false&isUseInventoryCenter=true&tryBeforeBuy=false&offlineShop=false&tmallBuySupport=true&cachedTimestamp=1473385115312&isApparel=false&sellerPreview=false&household=false&queryMemberRight=true&service3C=true&callback=setMdskip>
+None
+2016-09-09 09:40:46 [scrapy] INFO: Closing spider (finished)
+2016-09-09 09:40:46 [scrapy] INFO: Dumping Scrapy stats:
+{'downloader/exception_count': 28,
+ 'downloader/exception_type_count/twisted.web._newclient.ResponseNeverReceived': 28,
+ 'downloader/request_bytes': 105622,
+ 'downloader/request_count': 180,
+ 'downloader/request_method_count/GET': 180,
+ 'downloader/response_bytes': 877156,
+ 'downloader/response_count': 152,
+ 'downloader/response_status_count/200': 140,
+ 'downloader/response_status_count/301': 4,
+ 'downloader/response_status_count/302': 8,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2016, 9, 9, 1, 40, 46, 438188),
+ 'item_scraped_count': 34,
+ 'log_count/DEBUG': 613,
+ 'log_count/INFO': 262,
+ 'request_depth_max': 3,
+ 'response_received_count': 140,
+ 'scheduler/dequeued': 180,
+ 'scheduler/dequeued/memory': 180,
+ 'scheduler/enqueued': 180,
+ 'scheduler/enqueued/memory': 180,
+ 'start_time': datetime.datetime(2016, 9, 9, 1, 28, 52, 700144)}
+2016-09-09 09:40:46 [scrapy] INFO: Spider closed (finished)
+2016-09-09 09:40:46 [pykafka.handlers] INFO: RequestHandler.stop: about to flush requests queue

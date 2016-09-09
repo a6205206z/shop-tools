@@ -250,7 +250,7 @@ public class Product {
      *
      * @return the total rated count
      */
-    public double getTotal_rated_count() {
+    public int getTotal_rated_count() {
         return total_rated_count;
     }
 
@@ -259,7 +259,7 @@ public class Product {
      *
      * @param total_rated_count the total rated count
      */
-    public void setTotal_rated_count(double total_rated_count) {
+    public void setTotal_rated_count(int total_rated_count) {
         this.total_rated_count = total_rated_count;
     }
 
@@ -443,6 +443,60 @@ public class Product {
         this.updated = updated;
     }
 
+    /**
+     * Gets i favorite num.
+     *
+     * @return the i favorite num
+     */
+    public int getI_favorite_num() {
+        return i_favorite_num;
+    }
+
+    /**
+     * Sets i favorite num.
+     *
+     * @param i_favorite_num the favorite num
+     */
+    public void setI_favorite_num(int i_favorite_num) {
+        this.i_favorite_num = i_favorite_num;
+    }
+
+    /**
+     * Gets i share num.
+     *
+     * @return the i share num
+     */
+    public int getI_share_num() {
+        return i_share_num;
+    }
+
+    /**
+     * Sets i share num.
+     *
+     * @param i_share_num the share num
+     */
+    public void setI_share_num(int i_share_num) {
+        this.i_share_num = i_share_num;
+    }
+
+    /**
+     * Gets i pv.
+     *
+     * @return the i pv
+     */
+    public int getI_pv() {
+        return i_pv;
+    }
+
+    /**
+     * Sets i pv.
+     *
+     * @param i_pv the pv
+     */
+    public void setI_pv(int i_pv) {
+        this.i_pv = i_pv;
+    }
+
     private long date;
     private long shopid;
     private long numiid;
@@ -456,7 +510,7 @@ public class Product {
     private double post_fee;
     private int sold_total_count;
     private int confirm_goods_count;
-    private double total_rated_count;
+    private int total_rated_count;
     private double total_sales;
     private int stock;
     private int sellable_quantity;
@@ -467,4 +521,7 @@ public class Product {
     private boolean is_delisting;
     private double rated;
     private Date updated;
+    private int i_favorite_num;
+    private int i_share_num;
+    private int i_pv;
 }
