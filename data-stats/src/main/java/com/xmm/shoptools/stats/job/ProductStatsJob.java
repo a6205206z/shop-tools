@@ -51,9 +51,23 @@ public class ProductStatsJob implements Job {
             ps.setNumiid(tp.getNumiid());
             ps.setStock(tp.getStock());
             if (yp != null) {
-                ps.setTotal_sales(tp.getTotal_sales() - yp.getTotal_sales());
-                ps.setSold_total_count(tp.getSold_total_count() - yp.getSold_total_count());
-                ps.setTotal_rated_count(tp.getTotal_rated_count() - yp.getTotal_rated_count());
+                /*
+                *估算销量 = 平均销量 + 浮动制
+                *估算销量 = (今天(30天内销量) + 昨天(30天内销量)) / 60 + (今天(30天内销量) - 昨天(30天内销量))
+                * */
+                ps.setTotal_sales(
+                        ((tp.getTotal_sales() + yp.getTotal_sales()) / 60 + (tp.getTotal_sales() - yp.getTotal_sales())) > 0
+                                ? ((tp.getTotal_sales() + yp.getTotal_sales()) / 60 + (tp.getTotal_sales() - yp.getTotal_sales())) : 0
+                );
+                ps.setSold_total_count(
+                        ((tp.getSold_total_count() + yp.getSold_total_count()) / 60 + (tp.getSold_total_count() - yp.getSold_total_count())) > 0
+                                ? ((tp.getSold_total_count() + yp.getSold_total_count()) / 60 + (tp.getSold_total_count() - yp.getSold_total_count())) : 0
+                );
+                ps.setTotal_rated_count(
+                        ((tp.getTotal_rated_count() + yp.getTotal_rated_count()) + (tp.getTotal_rated_count() - yp.getTotal_rated_count())) > 0
+                                ? ((tp.getTotal_rated_count() + yp.getTotal_rated_count()) + (tp.getTotal_rated_count() - yp.getTotal_rated_count())) : 0
+                );
+
                 ps.setI_favorite_num(tp.getI_favorite_num() - yp.getI_favorite_num());
                 ps.setI_share_num(tp.getI_share_num() - yp.getI_share_num());
                 ps.setI_pv(tp.getI_pv() - yp.getI_pv());
