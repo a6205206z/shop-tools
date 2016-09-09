@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration debug="true">
     <property name="app_name" value="data-stats"/>
-    <property name="log_home" value="/logs"/>
+    <property name="log_home" value="logs"/>
     <!--<property name="encoder_pattern" value="%d{yyyy/MM/dd-HH:mm:ss} %level [%thread] %caller{1} - %msg%n"/>-->
     <property name="encoder_pattern" value="%d{yyyy/MM/dd-HH:mm:ss.SSS} %level [%thread] %logger{80}[%file:%line] - %msg%n"/>
 
