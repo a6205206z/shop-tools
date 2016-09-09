@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true">
+    <property name="app_name" value="data-stats"/>
+    <property name="log_home" value="/logs"/>
+    <!--<property name="encoder_pattern" value="%d{yyyy/MM/dd-HH:mm:ss} %level [%thread] %caller{1} - %msg%n"/>-->
+    <property name="encoder_pattern" value="%d{yyyy/MM/dd-HH:mm:ss.SSS} %level [%thread] %logger{80}[%file:%line] - %msg%n"/>
+
+    <contextName>${app_name}</contextName>
+
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>${encoder_pattern}</Pattern>
+        </encoder>
+    </appender>
+
+    <appender name="file"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log_home}/${app_name}.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${encoder_pattern}</pattern>
+        </encoder>
+    </appender>
+
+    <root>
+        <level value="debug"/>
+        <appender-ref ref="console"/>
+        <appender-ref ref="file"/>
+    </root>
+</configuration>

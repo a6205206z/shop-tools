@@ -20,17 +20,24 @@ import java.util.Date;
  * @date 16 /9/8.
  */
 public class Helper {
+
     private static final Logger logger = LoggerFactory.getLogger(Helper.class);
+
+    public static String getTodayAsSecond() {
+        return getTodayAsSecond(0);
+    }
+
     /**
      * Gets today as second.
      *
      * @return the today as second
      */
-    public static String getTodayAsSecond() {
+    public static String getTodayAsSecond(int d) {
         String result = "0";
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         Calendar calendar = Calendar.getInstance();
         try {
+            calendar.add(Calendar.DAY_OF_YEAR, d);
             Date date = df.parse(df.format(calendar.getTime()));
             calendar.setTime(date);
             result = Long.toString(calendar.getTimeInMillis() / 1000);
@@ -59,6 +66,7 @@ public class Helper {
 
     /**
      * 获取36字符串
+     *
      * @return
      */
     public static String getGuid() {
@@ -90,6 +98,7 @@ public class Helper {
 
     /**
      * 获取32UUID
+     *
      * @return
      */
     public static String getGuid32() {
