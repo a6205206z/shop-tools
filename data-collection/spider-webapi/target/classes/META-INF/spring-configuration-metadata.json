@@ -1,0 +1,35 @@
+{
+  "groups": [{
+    "name": "spider",
+    "type": "com.xmm.spider.webapi.configs.SpiderConfig",
+    "sourceType": "com.xmm.spider.webapi.configs.SpiderConfig"
+  }],
+  "properties": [
+    {
+      "name": "spider.crawls",
+      "type": "java.lang.String",
+      "sourceType": "com.xmm.spider.webapi.configs.SpiderConfig"
+    },
+    {
+      "name": "spider.log-path",
+      "type": "java.lang.String",
+      "sourceType": "com.xmm.spider.webapi.configs.SpiderConfig"
+    },
+    {
+      "name": "spider.name",
+      "type": "java.lang.String",
+      "sourceType": "com.xmm.spider.webapi.configs.SpiderConfig"
+    },
+    {
+      "name": "spider.path",
+      "type": "java.lang.String",
+      "sourceType": "com.xmm.spider.webapi.configs.SpiderConfig"
+    },
+    {
+      "name": "spider.result-path",
+      "type": "java.lang.String",
+      "sourceType": "com.xmm.spider.webapi.configs.SpiderConfig"
+    }
+  ],
+  "hints": []
+}

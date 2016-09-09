@@ -38,7 +38,7 @@ public class CommandController {
      */
     @Deprecated
     @RequestMapping(value = "/spider/crawl/list", method = RequestMethod.GET)
-    public List<String> ListSpiderCrawls(){
+    public List<String> ListSpiderCrawls() {
         return Spider.load(spiderConfig).getCrawlList();
     }
 
@@ -49,7 +49,7 @@ public class CommandController {
      */
     @Deprecated
     @RequestMapping(value = "/spider/config", method = RequestMethod.GET)
-    public String GetSpiderConfig(){
+    public String GetSpiderConfig() {
         return Spider.load(spiderConfig).getSpiderConfig();
     }
 
@@ -62,10 +62,21 @@ public class CommandController {
      */
     @Deprecated
     @RequestMapping(value = "/spider/crawl/start", method = RequestMethod.GET)
-    public String StartCrawl(String name){
+    public String StartCrawl(String name) {
         return Spider.load(spiderConfig).runCrawl(name);
     }
 
+    /**
+     * Start crawl all string.
+     *
+     * @return the string
+     */
+    @Deprecated
+    @RequestMapping(value = "/spider/crawl/startall", method = RequestMethod.GET)
+    public String StartCrawlAll() {
+        Spider.load(spiderConfig).runCrawlAll();
+        return "OK";
+    }
 
     /**
      * Get log string.
@@ -75,7 +86,7 @@ public class CommandController {
      */
     @Deprecated
     @RequestMapping(value = "/spider/log", method = RequestMethod.GET)
-    public String GetLog(String name){
+    public String GetLog(String name) {
         return Spider.load(spiderConfig).getSpiderLog(name);
     }
 }

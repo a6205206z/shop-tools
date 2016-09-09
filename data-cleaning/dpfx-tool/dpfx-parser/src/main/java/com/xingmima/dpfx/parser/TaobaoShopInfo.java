@@ -3,6 +3,8 @@ package com.xingmima.dpfx.parser;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.xingmima.dpfx.dao.DdsrDao;
+import com.xingmima.dpfx.dao.RateDao;
+import com.xingmima.dpfx.dao.ShopDao;
 import com.xingmima.dpfx.entity.DDsr;
 import com.xingmima.dpfx.entity.DRated;
 import com.xingmima.dpfx.entity.DShop;
@@ -258,11 +260,11 @@ public class TaobaoShopInfo extends TaobaoParser {
 
             TaobaoShopInfo dox = new TaobaoShopInfo(res).call();
 
-//            DShop obj = dox.handleShopInfo();
-//            new ShopDao().insert(obj);
+            DShop obj = dox.handleShopInfo();
+            new ShopDao().insert(obj);
 
-//            DRated obj2 = dox.handleRating();
-//            new RateDao().insert(obj2);
+            DRated obj2 = dox.handleRating();
+            new RateDao().insert(obj2);
 
             DDsr obj3 = dox.handelDsr();
             new DdsrDao().insert(obj3);

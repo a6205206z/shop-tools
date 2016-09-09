@@ -3,6 +3,9 @@ package com.xingmima.dpfx.parser;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.xingmima.dpfx.dao.DItemsDao;
+import com.xingmima.dpfx.dao.DItemsNumDao;
+import com.xingmima.dpfx.entity.DItemNum;
 import com.xingmima.dpfx.entity.DItems;
 import com.xingmima.dpfx.inter.TaobaoParser;
 import com.xingmima.dpfx.util.Constant;
@@ -335,12 +338,12 @@ public class TaobaoItemDetail extends TaobaoParser {
             TaobaoItemDetail dox = new TaobaoItemDetail(res).call();
 
             DItems obj = dox.handelItemInfo();
-//            if (null != obj) {
-//                new DItemsDao().insert(obj);
-//
-//                DItemNum diobj = dox.handelItemNum(obj.getNumiid());
-//                new DItemsNumDao().insert(diobj);
-//            }
+            if (null != obj) {
+                new DItemsDao().insert(obj);
+
+                DItemNum diobj = dox.handelItemNum(obj.getNumiid());
+                new DItemsNumDao().insert(diobj);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

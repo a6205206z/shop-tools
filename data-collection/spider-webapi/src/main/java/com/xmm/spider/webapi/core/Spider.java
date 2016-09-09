@@ -99,6 +99,16 @@ public class Spider {
         return name + "-" + runID + ".log";
     }
 
+    /**
+     * Run crawl all.
+     */
+    public void runCrawlAll(){
+        String runID = getTimeHourString();
+        for (String crawl:config.getCrawls().split(",")){
+            exec(String.format("scrapy crawl %s --logfile=%s/%s-%s.log -a ri=%s", crawl, config.getLogPath(), crawl, runID, runID), false);
+        }
+    }
+
     private List<String> exec(String cmd, boolean returnMsg) {
         List<String> result = new ArrayList<>();
         try {

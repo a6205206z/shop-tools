@@ -84,9 +84,27 @@ public class SpiderConfig {
         this.logPath = logPath;
     }
 
+    /**
+     * Gets crawls.
+     *
+     * @return the crawls
+     */
+    public String getCrawls() {
+        return crawls;
+    }
+
+    /**
+     * Sets crawls.
+     *
+     * @param crawls the crawls
+     */
+    public void setCrawls(String crawls) {
+        this.crawls = crawls;
+    }
+
     private String name;
     private String path;
     private String resultPath;
     private String logPath;
-
+    private String crawls;
 }
