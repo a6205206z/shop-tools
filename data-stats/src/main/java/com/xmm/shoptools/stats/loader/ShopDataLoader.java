@@ -1,8 +1,6 @@
 package com.xmm.shoptools.stats.loader;
 
-import com.xmm.shoptools.stats.Helper;
 import com.xmm.shoptools.stats.db.Dbutils;
-import com.xmm.shoptools.stats.entity.RShop;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
