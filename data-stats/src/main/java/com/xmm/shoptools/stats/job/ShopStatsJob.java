@@ -85,7 +85,4 @@ public class ShopStatsJob implements Job {
         log.info("stats success@{}#{}", shopId, date);
     }
 
-    public static void main(String[] args) {
-        new ShopStatsJob().begin();
-    }
 }

@@ -1,6 +1,7 @@
 package com.xmm.shoptools.stats;
 
 import com.xmm.shoptools.stats.job.ProductStatsJob;
+import com.xmm.shoptools.stats.job.ShopStatsJob;
 
 /**
  * Xingmima.com Inc.
@@ -17,7 +18,9 @@ public class Bootstrap {
      * @param args the args
      */
     public static void main(String args[]){
-        ProductStatsJob job = new ProductStatsJob();
-        job.begin();
+        ProductStatsJob productjob = new ProductStatsJob();
+        productjob.begin();
+        ShopStatsJob shopjob = new ShopStatsJob();
+        shopjob.begin();
     }
 }
