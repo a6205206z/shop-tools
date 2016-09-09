@@ -20,19 +20,13 @@ import java.util.Date;
  * @date 16 /9/8.
  */
 public class Helper {
-<<<<<<< .mine
+
+    private static final Logger logger = LoggerFactory.getLogger(Helper.class);
 
     public static String getTodayAsSecond() {
         return getTodayAsSecond(0);
     }
 
-=======
-    private static final Logger logger = LoggerFactory.getLogger(Helper.class);
-
-
-
-
->>>>>>> .theirs
     /**
      * Gets today as second.
      *
@@ -72,6 +66,7 @@ public class Helper {
 
     /**
      * 获取36字符串
+     *
      * @return
      */
     public static String getGuid() {
@@ -103,6 +98,7 @@ public class Helper {
 
     /**
      * 获取32UUID
+     *
      * @return
      */
     public static String getGuid32() {
