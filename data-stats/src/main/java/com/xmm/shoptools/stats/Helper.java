@@ -15,16 +15,22 @@ import java.util.Date;
  * @date 16 /9/8.
  */
 public class Helper {
+
+    public static String getTodayAsSecond() {
+        return getTodayAsSecond(0);
+    }
+
     /**
      * Gets today as second.
      *
      * @return the today as second
      */
-    public static String getTodayAsSecond() {
+    public static String getTodayAsSecond(int d) {
         String result = "0";
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         Calendar calendar = Calendar.getInstance();
         try {
+            calendar.add(Calendar.DAY_OF_YEAR, d);
             Date date = df.parse(df.format(calendar.getTime()));
             calendar.setTime(date);
             result = Long.toString(calendar.getTimeInMillis() / 1000);

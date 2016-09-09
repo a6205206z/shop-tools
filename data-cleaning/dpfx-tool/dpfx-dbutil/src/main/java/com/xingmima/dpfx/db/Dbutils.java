@@ -44,10 +44,10 @@ public class Dbutils {
             // dbcp
             dbcp.setDriverClassName("com.mysql.jdbc.Driver");
             dbcp.setUrl(
-                    "jdbc:mysql://localhost:3306/xmm_shop_tools?useUnicode=true&characterEncoding=UTF-8&rewriteBatchedStatements=true&zeroDateTimeBehavior=convertToNull");
+                    "jdbc:mysql://192.168.105.252:3306/xmm_shop_tools?useUnicode=true&characterEncoding=UTF-8&rewriteBatchedStatements=true&zeroDateTimeBehavior=convertToNull");
 
-            dbcp.setUsername("root");
-            dbcp.setPassword("root");
+            dbcp.setUsername("ams");
+            dbcp.setPassword("ams_admin");
 
             dbcp.setDefaultAutoCommit(true);
             dbcp.setInitialSize(10); // 初始化连接
