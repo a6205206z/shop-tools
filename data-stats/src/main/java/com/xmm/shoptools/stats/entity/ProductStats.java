@@ -189,6 +189,114 @@ public class ProductStats {
         this.i_pv = i_pv;
     }
 
+    /**
+     * Gets old title.
+     *
+     * @return the old title
+     */
+    public String getOld_title() {
+        return old_title;
+    }
+
+    /**
+     * Sets old title.
+     *
+     * @param old_title the old title
+     */
+    public void setOld_title(String old_title) {
+        this.old_title = old_title;
+    }
+
+    /**
+     * Gets new title.
+     *
+     * @return the new title
+     */
+    public String getNew_title() {
+        return new_title;
+    }
+
+    /**
+     * Sets new title.
+     *
+     * @param new_title the new title
+     */
+    public void setNew_title(String new_title) {
+        this.new_title = new_title;
+    }
+
+    /**
+     * Gets old price.
+     *
+     * @return the old price
+     */
+    public String getOld_price() {
+        return old_price;
+    }
+
+    /**
+     * Sets old price.
+     *
+     * @param old_price the old price
+     */
+    public void setOld_price(String old_price) {
+        this.old_price = old_price;
+    }
+
+    /**
+     * Gets new price.
+     *
+     * @return the new price
+     */
+    public String getNew_price() {
+        return new_price;
+    }
+
+    /**
+     * Sets new price.
+     *
+     * @param new_price the new price
+     */
+    public void setNew_price(String new_price) {
+        this.new_price = new_price;
+    }
+
+    /**
+     * Gets old pic.
+     *
+     * @return the old pic
+     */
+    public String getOld_pic() {
+        return old_pic;
+    }
+
+    /**
+     * Sets old pic.
+     *
+     * @param old_pic the old pic
+     */
+    public void setOld_pic(String old_pic) {
+        this.old_pic = old_pic;
+    }
+
+    /**
+     * Gets new pic.
+     *
+     * @return the new pic
+     */
+    public String getNew_pic() {
+        return new_pic;
+    }
+
+    /**
+     * Sets new pic.
+     *
+     * @param new_pic the new pic
+     */
+    public void setNew_pic(String new_pic) {
+        this.new_pic = new_pic;
+    }
+
     private long date;
     private long shopid;
     private long numiid;
@@ -199,4 +307,10 @@ public class ProductStats {
     private int i_favorite_num;
     private int i_share_num;
     private int i_pv;
+    private String old_title;
+    private String new_title;
+    private String old_price;
+    private String new_price;
+    private String old_pic;
+    private String new_pic;
 }
