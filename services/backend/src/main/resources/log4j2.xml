@@ -9,7 +9,7 @@
 			<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss,SSS}:%4p %t (%F:%L) - %m%n" />
 		</Console>
 
-		<RollingFile name="RollingFile" fileName="../logs/ams.log" filePattern="../logs/$${date:yyyy-MM}/ams-%d{MM-dd}-%i.log.gz">
+		<RollingFile name="RollingFile" fileName="../logs/backend.log" filePattern="../logs/$${date:yyyy-MM}/backend-%d{MM-dd}-%i.log.gz">
 			<ThresholdFilter level="debug" onMatch="ACCEPT"
 				onMismatch="DENY" />
 			<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss,SSS}:%4p %t (%F:%L) - %m%n" />
