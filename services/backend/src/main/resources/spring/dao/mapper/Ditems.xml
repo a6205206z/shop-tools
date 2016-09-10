@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="Ditems">
+	<resultMap id="ditemsResultMap" type="com.xmm.shoptools.backend.entity.Ditems">
+		<result column="id" property="id" />
+		<result column="date" property="date" />
+		<result column="shopid" property="shopid" />
+		<result column="numiid" property="numiid" />
+		<result column="title" property="title" />
+		<result column="item_url" property="itemUrl" />
+		<result column="pic_url" property="picUrl" />
+		<result column="rcid" property="rcid" />
+		<result column="cid" property="cid" />
+		<result column="marker_price" property="markerPrice" />
+		<result column="price" property="price" />
+		<result column="post_fee" property="postFee" />
+		<result column="sold_total_count" property="soldTotalCount" />
+		<result column="confirm_goods_count" property="confirmGoodsCount" />
+		<result column="total_rated_count" property="totalRatedCount" />
+		<result column="total_sales" property="totalSales" />
+		<result column="stock" property="stock" />
+		<result column="sellable_quantity" property="sellableQuantity" />
+		<result column="sku_stock" property="skuStock" />
+		<result column="brand_name" property="brandName" />
+		<result column="list_time" property="listTime" />
+		<result column="delist_time" property="delistTime" />
+		<result column="add_time" property="addTime" />
+		<result column="is_delisting" property="isDelisting" />
+		<result column="rated" property="rated" />
+		<result column="updated" property="updated" />
+	</resultMap>
+
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="commonColumns">
+		 id ,
+		 date ,
+		 shopid ,
+		 numiid ,
+		 title ,
+		 item_url ,
+		 pic_url ,
+		 rcid ,
+		 cid ,
+		 marker_price ,
+		 price ,
+		 post_fee ,
+		 sold_total_count ,
+		 confirm_goods_count ,
+		 total_rated_count ,
+		 total_sales ,
+		 stock ,
+		 sellable_quantity ,
+		 sku_stock ,
+		 brand_name ,
+		 list_time ,
+		 delist_time ,
+		 add_time ,
+		 is_delisting ,
+		 rated ,
+		 updated 
+	</sql>
+
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.xmm.shoptools.backend.entity.Ditems">
+		insert into d_items (
+			date ,
+			shopid ,
+			numiid ,
+			title ,
+			item_url ,
+			pic_url ,
+			rcid ,
+			cid ,
+			marker_price ,
+			price ,
+			post_fee ,
+			sold_total_count ,
+			confirm_goods_count ,
+			total_rated_count ,
+			total_sales ,
+			stock ,
+			sellable_quantity ,
+			sku_stock ,
+			brand_name ,
+			list_time ,
+			delist_time ,
+			add_time ,
+			is_delisting ,
+			rated ,
+			updated 
+		)values(
+			#{date},
+			#{shopid},
+			#{numiid},
+			#{title},
+			#{itemUrl},
+			#{picUrl},
+			#{rcid},
+			#{cid},
+			#{markerPrice},
+			#{price},
+			#{postFee},
+			#{soldTotalCount},
+			#{confirmGoodsCount},
+			#{totalRatedCount},
+			#{totalSales},
+			#{stock},
+			#{sellableQuantity},
+			#{skuStock},
+			#{brandName},
+			#{listTime},
+			#{delistTime},
+			#{addTime},
+			#{isDelisting},
+			#{rated},
+			#{updated}
+		)
+	</insert>
+
+	<update id="updateByMap" parameterType="map">
+		update d_items
+		<set>
+			<if test="date != null">
+				date=#{date},
+			</if>
+			<if test="shopid != null">
+				shopid=#{shopid},
+			</if>
+			<if test="numiid != null">
+				numiid=#{numiid},
+			</if>
+			<if test="title != null">
+				title=#{title},
+			</if>
+			<if test="itemUrl != null">
+				item_url=#{itemUrl},
+			</if>
+			<if test="picUrl != null">
+				pic_url=#{picUrl},
+			</if>
+			<if test="rcid != null">
+				rcid=#{rcid},
+			</if>
+			<if test="cid != null">
+				cid=#{cid},
+			</if>
+			<if test="markerPrice != null">
+				marker_price=#{markerPrice},
+			</if>
+			<if test="price != null">
+				price=#{price},
+			</if>
+			<if test="postFee != null">
+				post_fee=#{postFee},
+			</if>
+			<if test="soldTotalCount != null">
+				sold_total_count=#{soldTotalCount},
+			</if>
+			<if test="confirmGoodsCount != null">
+				confirm_goods_count=#{confirmGoodsCount},
+			</if>
+			<if test="totalRatedCount != null">
+				total_rated_count=#{totalRatedCount},
+			</if>
+			<if test="totalSales != null">
+				total_sales=#{totalSales},
+			</if>
+			<if test="stock != null">
+				stock=#{stock},
+			</if>
+			<if test="sellableQuantity != null">
+				sellable_quantity=#{sellableQuantity},
+			</if>
+			<if test="skuStock != null">
+				sku_stock=#{skuStock},
+			</if>
+			<if test="brandName != null">
+				brand_name=#{brandName},
+			</if>
+			<if test="listTime != null">
+				list_time=#{listTime},
+			</if>
+			<if test="delistTime != null">
+				delist_time=#{delistTime},
+			</if>
+			<if test="addTime != null">
+				add_time=#{addTime},
+			</if>
+			<if test="isDelisting != null">
+				is_delisting=#{isDelisting},
+			</if>
+			<if test="rated != null">
+				rated=#{rated},
+			</if>
+			<if test="updated != null">
+				updated=#{updated}
+			</if>
+		</set>
+		where id=#{id}
+	</update>
+
+	<update id="delete" parameterType="long">
+		delete from d_items
+		where id=#{id}
+	</update>
+
+	<select id="select" resultMap="ditemsResultMap"
+		parameterType="long">
+		select
+		<include refid="commonColumns" />
+		from d_items where id=#{id}
+	</select>
+
+	<sql id="dynamicWhere">
+		<if test="id != null">
+			and id=#{id}
+		</if>
+		<if test="date != null">
+			and date=#{date}
+		</if>
+		<if test="shopid != null">
+			and shopid=#{shopid}
+		</if>
+		<if test="numiid != null">
+			and numiid=#{numiid}
+		</if>
+		<if test="title != null">
+			and title=#{title}
+		</if>
+		<if test="itemUrl != null">
+			and item_url=#{itemUrl}
+		</if>
+		<if test="picUrl != null">
+			and pic_url=#{picUrl}
+		</if>
+		<if test="rcid != null">
+			and rcid=#{rcid}
+		</if>
+		<if test="cid != null">
+			and cid=#{cid}
+		</if>
+		<if test="markerPrice != null">
+			and marker_price=#{markerPrice}
+		</if>
+		<if test="price != null">
+			and price=#{price}
+		</if>
+		<if test="postFee != null">
+			and post_fee=#{postFee}
+		</if>
+		<if test="soldTotalCount != null">
+			and sold_total_count=#{soldTotalCount}
+		</if>
+		<if test="confirmGoodsCount != null">
+			and confirm_goods_count=#{confirmGoodsCount}
+		</if>
+		<if test="totalRatedCount != null">
+			and total_rated_count=#{totalRatedCount}
+		</if>
+		<if test="totalSales != null">
+			and total_sales=#{totalSales}
+		</if>
+		<if test="stock != null">
+			and stock=#{stock}
+		</if>
+		<if test="sellableQuantity != null">
+			and sellable_quantity=#{sellableQuantity}
+		</if>
+		<if test="skuStock != null">
+			and sku_stock=#{skuStock}
+		</if>
+		<if test="brandName != null">
+			and brand_name=#{brandName}
+		</if>
+		<if test="listTime != null">
+			and list_time=#{listTime}
+		</if>
+		<if test="delistTime != null">
+			and delist_time=#{delistTime}
+		</if>
+		<if test="addTime != null">
+			and add_time=#{addTime}
+		</if>
+		<if test="isDelisting != null">
+			and is_delisting=#{isDelisting}
+		</if>
+		<if test="rated != null">
+			and rated=#{rated}
+		</if>
+		<if test="updated != null">
+			and updated=#{updated}
+		</if>
+	</sql>
+
+	<select id="cntByMap" resultType="int">
+		select count(*) from d_items where 1=1
+		<include refid="dynamicWhere" />
+	</select>
+
+	<select id="getByMap" resultType="long">
+		select id from d_items where 1=1
+		<include refid="dynamicWhere" />
+		<if test="max_id != null">
+			and id &gt; #{max_id}
+		</if>
+		<if test="sortColumns != null">
+			ORDER BY ${sortColumns}
+		</if>
+		<if test="max_id != null">
+			limit #{size}
+		</if>
+		<if test="start != null">
+			limit #{start}, #{size}
+		</if>
+	</select>
+
+	<select id="getListByMap" resultMap="ditemsResultMap">
+		select * from d_items where 1=1
+		<include refid="dynamicWhere" />
+		<if test="max_id != null">
+			and id &gt; #{max_id}
+		</if>
+		<if test="sortColumns != null">
+			ORDER BY ${sortColumns}
+		</if>
+		<if test="max_id != null">
+			limit #{size}
+		</if>
+		<if test="start != null">
+			limit #{start}, #{size}
+		</if>
+	</select>
+	
+	<select id="query" resultMap="ditemsResultMap" parameterType="com.xmm.shoptools.backend.vo.DitemsQuery">
+		select
+		<include refid="commonColumns" />
+		from d_items where
+		shopid=#{shopid} and date=#{date}
+		ORDER BY updated DESC
+		limit #{begin},#{pageSize}
+	</select>
+	
+	<select id="count" parameterType="com.xmm.shoptools.backend.vo.DitemsQuery" resultType="int">
+		select count(*) from d_items where shopid=#{shopid} and date=#{date}
+	</select>
+</mapper>

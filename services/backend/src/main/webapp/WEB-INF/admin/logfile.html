@@ -1,0 +1,21 @@
+<#include "/admin/c.html" />
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="${path}/css/common.css">
+<script type="text/javascript" src="${path}/js/easyui/jquery.min.js"></script>
+<title>日志详情</title>
+</head>
+<body>
+    <#if getLogs??>
+		<div id="logDiv">
+			<textarea style="width:100%;height:600px">${getLogs}</textarea>
+			<br />
+		<a style="float:right" href="javascript:window.location.href=window.location.href;" class="btn btn-primary btn6 mr10">刷新</a>
+		</div>
+	<#else>
+		<h1>该日志文件不存在!!</h1>
+	</#if>	
+</body>
+</html>

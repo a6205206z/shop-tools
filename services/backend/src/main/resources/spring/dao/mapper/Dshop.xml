@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="Dshop">
+	<resultMap id="dshopResultMap" type="com.xmm.shoptools.backend.entity.Dshop">
+		<result column="id" property="id" />
+		<result column="date" property="date" />
+		<result column="shopid" property="shopid" />
+		<result column="title" property="title" />
+		<result column="credit_score" property="creditScore" />
+		<result column="credit_level" property="creditLevel" />
+		<result column="credit_total_num" property="creditTotalNum" />
+		<result column="credit_good_num" property="creditGoodNum" />
+		<result column="rating" property="rating" />
+		<result column="updated" property="updated" />
+	</resultMap>
+
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="commonColumns">
+		 id ,
+		 date ,
+		 shopid ,
+		 title ,
+		 credit_score ,
+		 credit_level ,
+		 credit_total_num ,
+		 credit_good_num ,
+		 rating ,
+		 updated 
+	</sql>
+
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.xmm.shoptools.backend.entity.Dshop">
+		insert into d_shop (
+			date ,
+			shopid ,
+			title ,
+			credit_score ,
+			credit_level ,
+			credit_total_num ,
+			credit_good_num ,
+			rating ,
+			updated 
+		)values(
+			#{date},
+			#{shopid},
+			#{title},
+			#{creditScore},
+			#{creditLevel},
+			#{creditTotalNum},
+			#{creditGoodNum},
+			#{rating},
+			#{updated}
+		)
+	</insert>
+
+	<update id="updateByMap" parameterType="map">
+		update d_shop
+		<set>
+			<if test="date != null">
+				date=#{date},
+			</if>
+			<if test="shopid != null">
+				shopid=#{shopid},
+			</if>
+			<if test="title != null">
+				title=#{title},
+			</if>
+			<if test="creditScore != null">
+				credit_score=#{creditScore},
+			</if>
+			<if test="creditLevel != null">
+				credit_level=#{creditLevel},
+			</if>
+			<if test="creditTotalNum != null">
+				credit_total_num=#{creditTotalNum},
+			</if>
+			<if test="creditGoodNum != null">
+				credit_good_num=#{creditGoodNum},
+			</if>
+			<if test="rating != null">
+				rating=#{rating},
+			</if>
+			<if test="updated != null">
+				updated=#{updated}
+			</if>
+		</set>
+		where id=#{id}
+	</update>
+
+	<update id="delete" parameterType="long">
+		delete from d_shop
+		where id=#{id}
+	</update>
+
+	<select id="select" resultMap="dshopResultMap"
+		parameterType="long">
+		select
+		<include refid="commonColumns" />
+		from d_shop where id=#{id}
+	</select>
+
+	<sql id="dynamicWhere">
+		<if test="id != null">
+			and id=#{id}
+		</if>
+		<if test="date != null">
+			and date=#{date}
+		</if>
+		<if test="shopid != null">
+			and shopid=#{shopid}
+		</if>
+		<if test="title != null">
+			and title=#{title}
+		</if>
+		<if test="creditScore != null">
+			and credit_score=#{creditScore}
+		</if>
+		<if test="creditLevel != null">
+			and credit_level=#{creditLevel}
+		</if>
+		<if test="creditTotalNum != null">
+			and credit_total_num=#{creditTotalNum}
+		</if>
+		<if test="creditGoodNum != null">
+			and credit_good_num=#{creditGoodNum}
+		</if>
+		<if test="rating != null">
+			and rating=#{rating}
+		</if>
+		<if test="updated != null">
+			and updated=#{updated}
+		</if>
+	</sql>
+
+	<select id="cntByMap" resultType="int">
+		select count(*) from d_shop where 1=1
+		<include refid="dynamicWhere" />
+	</select>
+
+	<select id="getByMap" resultType="long">
+		select id from d_shop where 1=1
+		<include refid="dynamicWhere" />
+		<if test="max_id != null">
+			and id &gt; #{max_id}
+		</if>
+		<if test="sortColumns != null">
+			ORDER BY ${sortColumns}
+		</if>
+		<if test="max_id != null">
+			limit #{size}
+		</if>
+		<if test="start != null">
+			limit #{start}, #{size}
+		</if>
+	</select>
+
+	<select id="getListByMap" resultMap="dshopResultMap">
+		select * from d_shop where 1=1
+		<include refid="dynamicWhere" />
+		<if test="max_id != null">
+			and id &gt; #{max_id}
+		</if>
+		<if test="sortColumns != null">
+			ORDER BY ${sortColumns}
+		</if>
+		<if test="max_id != null">
+			limit #{size}
+		</if>
+		<if test="start != null">
+			limit #{start}, #{size}
+		</if>
+	</select>
+	
+	<select id="query" resultMap="dshopResultMap" parameterType="com.xmm.shoptools.backend.vo.DshopQuery">
+		select
+		<include refid="commonColumns" />
+		from d_shop where
+		date=#{runid}
+		ORDER BY updated DESC
+		limit #{begin},#{pageSize}
+	</select>
+	
+	<select id="count" parameterType="com.xmm.shoptools.backend.vo.DshopQuery" resultType="int">
+		select count(*) from d_shop where date=#{runid}
+	</select>
+</mapper>

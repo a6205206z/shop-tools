@@ -1,0 +1,104 @@
+<#include "/admin/c.html" />
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link id="themeStyle" rel="stylesheet" type="text/css" href="${path}/js/easyui/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="${path}/js/easyui/themes/icon.css">
+<link rel="stylesheet" type="text/css" href="${path}/js/easyui/themes/color.css">  
+<script type="text/javascript" src="${path}/js/easyui/jquery.min.js"></script>
+<script type="text/javascript" src="${path}/js/easyui/jquery.easyui.min.js"></script>
+	<!--国际化 ,easyui表单验证 -->
+<script type="text/javascript" src="${path}/js/easyui/locale/easyui-lang-zh_CN.js"></script>
+<title>商品页</title>
+<script type="text/javascript">
+//声明会用到的变量
+var date;//抓取批次
+var shopid;//店铺id
+
+date = ${date!}
+shopid = ${shopid!}
+
+
+	$(function() {
+		var ditemsDatagrid = $("#ditems-datagrid");
+		var editditemsDialog = $("#editditemsDialog");
+		var editditemsForm = $("#editditemsForm");
+		
+		//JS操作方法
+		var cmdObj = {
+			refresh: function(){
+				ditemsDatagrid.datagrid("reload");
+			}
+		}
+		//表格数据填充
+		ditemsDatagrid.datagrid({
+			url : "${path}/ajax/ditems/list",
+			title : "商品列表",
+			fitColumns : true,
+			rownumbers : true,
+			singleSelect : true,
+			pagination : true,
+			toolbar:"#ditems-toolbar",
+			pageSize:20,
+			border:false,
+			columns : [[
+						{field : 'date',title : '数据抓取日期',width : 20},
+			            {field : 'shopid',title : '店铺ID',width : 20},
+			            {field : 'numiid',title : '商品ID',width : 20},
+			            {field : 'title',title : '商品标题',width : 20},
+			            {field : 'itemUrl',title : '商品URL',width : 20},
+			            {field : 'picUrl',title : '图片链接地址',width : 20},
+			            {field : 'rcid',title : '一级类目',width : 20},
+			            {field : 'cid',title : '二级类目',width : 20},
+			            {field : 'markerPrice',title : '市场价格',width : 20},
+			            {field : 'price',title : '销售价格',width:20},
+			            {field : 'postFee',title : '邮费',width:20},
+			            {field : 'soldTotalCount',title : '近30天交易成功数',width:20},
+			            {field : 'confirmGoodsCount',title : '近30天确认收货数',width:20},
+			            {field : 'totalRatedCount',title : '累计评论数',width:20},
+			            {field : 'totalSales',title : '销售额',width:20},
+			            {field : 'stock',title : '库存',width:20},
+			            {field : 'sellableQuantity',title : '可销售库存',width:20},
+			            {field : 'skuStock',title : 'sku库存明细',width:20},
+			            {field : 'brandName',title : '品牌',width:20},
+			            {field : 'listTime',title : '自动上架时间',width:20},
+			            {field : 'delistTime',title : '自动下架时间',width:20},
+			            {field : 'addTime',title : '商品创建时间',width:20},
+			            {field : 'isDelisting',title : '是否下架',width:20},
+			            {field : 'rated',title : '商品动态评分(天猫)',width:20},
+			            {field : 'updated',title : '更新时间',width:20}
+			          ]],
+            onBeforeLoad : function(param){
+				//加载之前传递参数,shopid，date
+				param.shopid = shopid;
+				param.date = date;
+			}
+		});
+	
+		// 5、对页面所有按钮，统一监听
+		$("a[data-cmd]").on("click", function() {
+			// 获取对应按钮的cmd信息 
+			var cmd = $(this).data("cmd");
+			if (cmd) {
+				// 调用命令对象的方法做事情
+				cmdObj[cmd]();
+			}
+		});
+		
+	});
+	
+   
+</script>
+</head>
+<body>
+	<table fit="true" id="ditems-datagrid"></table>
+
+	<div id="ditems-toolbar" style="padding:5px;height:auto">
+		<div style="margin-bottom:5px">
+			<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-reload" plain="true" data-cmd="refresh">刷新</a>
+		</div>
+	</div>
+	
+</body>
+</html>

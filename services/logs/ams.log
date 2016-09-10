@@ -1,0 +1,4 @@
+2016-09-08 17:34:26,028:DEBUG main (LogFactory.java:135) - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2016-09-08 17:34:26,183:DEBUG main (LogFactory.java:135) - Logging initialized using 'class org.apache.ibatis.logging.log4j2.Log4j2Impl' adapter.
+2016-09-08 17:34:26,191:DEBUG main (SqlSessionFactoryBean.java:377) - Parsed configuration file: 'class path resource [spring/dao/mybatis.xml]'
+2016-09-08 17:34:26,569:DEBUG main (SqlSessionFactoryBean.java:418) - Parsed mapper file: 'file [E:\workspace\xmm-shop-tools\services\backend\target\classes\spring\dao\mapper\Tjob.xml]'

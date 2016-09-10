@@ -1,0 +1,109 @@
+<#include "/admin/c.html" />
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link id="themeStyle" rel="stylesheet" type="text/css" href="${path}/js/easyui/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="${path}/js/easyui/themes/icon.css">
+<link rel="stylesheet" type="text/css" href="${path}/js/easyui/themes/color.css">  
+<script type="text/javascript" src="${path}/js/easyui/jquery.min.js"></script>
+<script type="text/javascript" src="${path}/js/easyui/jquery.easyui.min.js"></script>
+	<!--国际化 ,easyui表单验证 -->
+<script type="text/javascript" src="${path}/js/easyui/locale/easyui-lang-zh_CN.js"></script>
+<title>抓取的店铺页</title>
+<script type="text/javascript">
+//声明会用到的变量
+var runid;//抓取批次
+
+runid = ${runid!}
+
+
+	$(function() {
+		var dshopDatagrid = $("#dshop-datagrid");
+		var editdshopDialog = $("#editdshopDialog");
+		var editdshopForm = $("#editdshopForm");
+		
+		//JS操作方法
+		var cmdObj = {
+			refresh: function(){
+				dshopDatagrid.datagrid("reload");
+			}
+		}
+		//表格数据填充
+		dshopDatagrid.datagrid({
+			url : "${path}/ajax/dshop/list",
+			title : "店铺列表",
+			fitColumns : true,
+			rownumbers : true,
+			singleSelect : true,
+			pagination : true,
+			toolbar:"#dshop-toolbar",
+			pageSize:20,
+			border:false,
+			columns : [[
+						{field : 'date',title : '数据抓取日期',width : 50},
+			            {field : 'shopid',title : '店铺ID',width : 50,formatter:shopFormatter},
+			            {field : 'title',title : '店铺名称',width : 50},
+			            {field : 'creditScore',title : '信用总分',width : 50},
+			            {field : 'creditLevel',title : '信用等级',width : 20,formatter:levelFormatter},
+			            {field : 'creditTotalNum',title : '收到的评价总条数',width : 20},
+			            {field : 'creditGoodNum',title : '收到的好评总条数',width : 20},
+			            {field : 'rating',title : '好评率',width : 20},
+			            {field : 'updated',title : '最后修改时间',width:30}
+			          ]],
+            onBeforeLoad : function(param){
+				//加载之前传递参数,runid
+				param.runid = runid;
+			}
+		});
+	
+		// 5、对页面所有按钮，统一监听
+		$("a[data-cmd]").on("click", function() {
+			// 获取对应按钮的cmd信息 
+			var cmd = $(this).data("cmd");
+			if (cmd) {
+				// 调用命令对象的方法做事情
+				cmdObj[cmd]();
+			}
+		});
+		
+	});
+	
+   //格式化,信用等级图片
+   function levelFormatter(val, row){
+	   return "<img alt='暂无' src='"+val+"'>";
+   }
+   
+   //格式化,店铺商品链接
+   function shopFormatter(val, row){
+	   return "<a href='javascript:void(0)' onclick=\"shopItems("+val+","+row.date+");\">"+val+"</a>";
+   }
+   
+   function shopItems(shopid,date){
+	   var jq = top.jQuery;    
+       var url = '${path}/ditems/index?shopid='+shopid+'&date='+date;
+       if (jq("#tt").tabs('exists', '查看店铺['+shopid+']下的商品')){    
+           jq("#tt").tabs('select', '查看店铺['+shopid+']下的商品');    
+       } else {  
+             var content = '<iframe scrolling="auto" frameborder="0"  src="'+url+'" style="width:100%;height:100%;"></iframe>';     
+              jq("#tt").tabs('add',{    
+                                 title:'查看店铺['+shopid+']下的商品',    
+                                 content:content,    
+                                 closable:true    
+              });    
+        }    
+		
+	}
+</script>
+</head>
+<body>
+	<table fit="true" id="dshop-datagrid"></table>
+
+	<div id="dshop-toolbar" style="padding:5px;height:auto">
+		<div style="margin-bottom:5px">
+			<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-reload" plain="true" data-cmd="refresh">刷新</a>
+		</div>
+	</div>
+	
+</body>
+</html>

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="Tjob">
+	<resultMap id="tjobResultMap" type="com.xmm.shoptools.backend.entity.Tjob">
+		<result column="runid" property="runid" />
+		<result column="spider_name" property="spiderName" />
+		<result column="starttime" property="starttime" />
+		<result column="finishtime" property="finishtime" />
+		<result column="logfile" property="logfile" />
+		<result column="stats" property="stats" />
+	</resultMap>
+
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="commonColumns">
+		 runid ,
+		 spider_name ,
+		 starttime ,
+		 finishtime ,
+		 logfile ,
+		 stats 
+	</sql>
+
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.xmm.shoptools.backend.entity.Tjob">
+		insert into t_job (
+			runid ,
+			spider_name ,
+			starttime ,
+			finishtime ,
+			logfile ,
+			stats 
+		)values(
+			#{runid},
+			#{spiderName},
+			#{starttime},
+			#{finishtime},
+			#{logfile},
+			#{stats}
+		)
+	</insert>
+
+	<update id="updateByMap" parameterType="map">
+		update t_job
+		<set>
+			<if test="runid != null">
+				runid=#{runid},
+			</if>
+			<if test="spiderName != null">
+				spider_name=#{spiderName},
+			</if>
+			<if test="starttime != null">
+				starttime=#{starttime},
+			</if>
+			<if test="finishtime != null">
+				finishtime=#{finishtime},
+			</if>
+			<if test="logfile != null">
+				logfile=#{logfile},
+			</if>
+			<if test="stats != null">
+				stats=#{stats}
+			</if>
+		</set>
+		where id=#{id}
+	</update>
+
+	<update id="delete" parameterType="long">
+		delete from t_job
+		where id=#{id}
+	</update>
+
+	<select id="select" resultMap="tjobResultMap"
+		parameterType="long">
+		select
+		<include refid="commonColumns" />
+		from t_job where runid=#{id}
+	</select>
+
+	<sql id="dynamicWhere">
+		<if test="runid != null">
+			and runid=#{runid}
+		</if>
+		<if test="spiderName != null">
+			and spider_name=#{spiderName}
+		</if>
+		<if test="starttime != null">
+			and starttime=#{starttime}
+		</if>
+		<if test="finishtime != null">
+			and finishtime=#{finishtime}
+		</if>
+		<if test="logfile != null">
+			and logfile=#{logfile}
+		</if>
+		<if test="stats != null">
+			and stats=#{stats}
+		</if>
+	</sql>
+
+	<select id="cntByMap" resultType="int">
+		select count(*) from t_job where 1=1
+		<include refid="dynamicWhere" />
+	</select>
+
+	<select id="getByMap" resultType="long">
+		select id from t_job where 1=1
+		<include refid="dynamicWhere" />
+		<if test="max_id != null">
+			and id &gt; #{max_id}
+		</if>
+		<if test="sortColumns != null">
+			ORDER BY ${sortColumns}
+		</if>
+		<if test="max_id != null">
+			limit #{size}
+		</if>
+		<if test="start != null">
+			limit #{start}, #{size}
+		</if>
+	</select>
+
+	<select id="getListByMap" resultMap="tjobResultMap">
+		select * from t_job where 1=1
+		<include refid="dynamicWhere" />
+		<if test="max_id != null">
+			and id &gt; #{max_id}
+		</if>
+		<if test="sortColumns != null">
+			ORDER BY ${sortColumns}
+		</if>
+		<if test="max_id != null">
+			limit #{size}
+		</if>
+		<if test="start != null">
+			limit #{start}, #{size}
+		</if>
+	</select>
+	
+	<select id="query" resultMap="tjobResultMap" parameterType="com.xmm.shoptools.backend.vo.TjobQuery">
+		select
+		<include refid="commonColumns" />
+		from t_job
+		ORDER BY starttime DESC
+		limit #{begin},#{pageSize}
+	</select>
+	
+	<select id="count" parameterType="com.xmm.shoptools.backend.vo.TjobQuery" resultType="int">
+		select count(*) from t_job
+	</select>
+</mapper>
