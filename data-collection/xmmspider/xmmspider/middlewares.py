@@ -32,16 +32,17 @@ class ProxyMiddleware(object):
         )
 
     def process_request(self, request, spider):
-        proxy = random.choice(self.proxy_list)
+        if 'proxy' in request.meta:
+            proxy = random.choice(self.proxy_list)
 
-        ip = proxy.split(' ')[0]
-        port = proxy.split(' ')[1]
-        http_method = proxy.split(' ')[2]
+            ip = proxy.split(' ')[0]
+            port = proxy.split(' ')[1]
+            http_method = proxy.split(' ')[2]
 
-        http_method = http_method.lower()
-        request.meta['proxy'] = "%s://%s:%s" % (http_method, ip, port)
+            http_method = http_method.lower()
+            request.meta['proxy'] = "%s://%s:%s" % (http_method, ip, port)
 
-        logger.info("Use proxy:%s" % request.meta['proxy'])
+            logger.info("Use proxy:%s" % request.meta['proxy'])
         # if user_pass is not None:
         #    request.meta['proxy'] = "%s://%s:%s" % (http_method,ip,port)
         #    encoded_user_pass = base64.encodestring(user_pass)
