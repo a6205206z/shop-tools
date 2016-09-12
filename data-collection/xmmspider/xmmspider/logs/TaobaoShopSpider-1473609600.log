@@ -1,0 +1,408 @@
+2016-09-12 13:08:57 [scrapy] INFO: Scrapy 1.1.2 started (bot: xmmspider)
+2016-09-12 13:08:57 [scrapy] INFO: Overridden settings: {'COOKIES_DEBUG': True, 'NEWSPIDER_MODULE': 'xmmspider.spiders', 'SPIDER_MODULES': ['xmmspider.spiders'], 'BOT_NAME': 'xmmspider', 'LOG_FILE': '/Users/cean/workspace/Java/workspace/xmm-shop-tools/data-collection/xmmspider/xmmspider/logs/TaobaoShopSpider-1473609600.log', 'DOWNLOAD_DELAY': 3}
+2016-09-12 13:08:57 [scrapy] INFO: Enabled extensions:
+['scrapy.extensions.logstats.LogStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.corestats.CoreStats',
+ 'xmmspider.extensions.SpiderRequestInterval',
+ 'xmmspider.extensions.TaobaoShopDataMySQLLoader',
+ 'xmmspider.extensions.SpiderMonitor']
+2016-09-12 13:08:57 [scrapy] INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.chunked.ChunkedTransferMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2016-09-12 13:08:57 [scrapy] INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2016-09-12 13:08:57 [pykafka.topic] INFO: Successfully loaded pykafka.rdkafka extension.
+2016-09-12 13:08:57 [scrapy] INFO: Enabled item pipelines:
+['xmmspider.pipelines.PushDataToKafka']
+2016-09-12 13:08:57 [scrapy] INFO: Spider opened
+2016-09-12 13:08:57 [pykafka.cluster] DEBUG: Updating cluster, attempt 1/3
+2016-09-12 13:08:57 [pykafka.connection] DEBUG: Connecting to 192.168.103.245:9092
+2016-09-12 13:08:57 [pykafka.connection] DEBUG: Successfully connected to 192.168.103.245:9092
+2016-09-12 13:08:57 [pykafka.handlers] INFO: RequestHandler.stop: about to flush requests queue
+2016-09-12 13:08:57 [pykafka.cluster] INFO: Discovered 1 brokers
+2016-09-12 13:08:57 [pykafka.cluster] DEBUG: Discovered broker id 0: 192.168.103.245:9092
+2016-09-12 13:08:57 [pykafka.connection] DEBUG: Connecting to 192.168.103.245:9092
+2016-09-12 13:08:57 [pykafka.connection] DEBUG: Successfully connected to 192.168.103.245:9092
+2016-09-12 13:08:57 [pykafka.cluster] INFO: Discovered 4 topics
+2016-09-12 13:08:57 [pykafka.cluster] DEBUG: Discovered topic 'taobao.shop.info'
+2016-09-12 13:08:57 [pykafka.cluster] DEBUG: Discovered topic 'taobao.shop.product'
+2016-09-12 13:08:57 [pykafka.cluster] DEBUG: Discovered topic 'tmall.shop.product'
+2016-09-12 13:08:57 [pykafka.cluster] DEBUG: Discovered topic 'tmall.shop.info'
+2016-09-12 13:08:57 [scrapy] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2016-09-12 13:08:57 [xmmspider.extensions] INFO: load shop urls
+2016-09-12 13:08:57 [scrapy] DEBUG: Telnet console listening on 127.0.0.1:6026
+2016-09-12 13:08:58 [pykafka.handlers] INFO: RequestHandler worker: exiting cleanly
+2016-09-12 13:09:03 [scrapy] DEBUG: Received cookies from: <200 https://shop34685656.taobao.com/>
+Set-Cookie: thw=cn; Path=/; Domain=.taobao.com; Expires=Tue, 12-Sep-17 05:09:03 GMT;
+
+2016-09-12 13:09:03 [scrapy] DEBUG: Crawled (200) <GET https://shop34685656.taobao.com/> (referer: None)
+2016-09-12 13:09:06 [scrapy] DEBUG: Received cookies from: <200 https://shop20027371.taobao.com/>
+Set-Cookie: thw=cn; Path=/; Domain=.taobao.com; Expires=Tue, 12-Sep-17 05:09:03 GMT;
+
+2016-09-12 13:09:06 [scrapy] DEBUG: Crawled (200) <GET https://shop20027371.taobao.com/> (referer: None)
+2016-09-12 13:09:06 [scrapy] DEBUG: Sending cookies to: <GET https://rate.taobao.com/user-rate-UMF8YvGkWvGIT.htm>
+Cookie: cna=4RdLEIipQlECAWXM93goJEgl; thw=cn
+
+2016-09-12 13:09:10 [scrapy] DEBUG: Sending cookies to: <GET https://rate.taobao.com/user-rate-UvCNWvCcGMGHT.htm>
+Cookie: cna=4RdLEIipQlECAWXM93goJEgl; thw=cn
+
+2016-09-12 13:09:10 [scrapy] DEBUG: Received cookies from: <200 https://rate.taobao.com/user-rate-UMF8YvGkWvGIT.htm>
+Set-Cookie: uc1=cookie14=UoWwJ01z8f8kAw%3D%3D; Domain=.taobao.com; Path=/
+
+Set-Cookie: v=0; Domain=.taobao.com; Path=/
+
+Set-Cookie: cookie2=1cf2d0704404d90371ab6f1d9cff2b79;Domain=.taobao.com;Path=/;HttpOnly
+
+Set-Cookie: t=2fe31a249ea1df9ca9aa794fb8e0bc71; Domain=.taobao.com; Expires=Sun, 11-Dec-2016 05:09:10 GMT; Path=/
+
+2016-09-12 13:09:10 [scrapy] DEBUG: Crawled (200) <GET https://rate.taobao.com/user-rate-UMF8YvGkWvGIT.htm> (referer: https://shop34685656.taobao.com/)
+2016-09-12 13:09:10 [pykafka.connection] DEBUG: Connecting to 192.168.103.245:9092
+2016-09-12 13:09:10 [pykafka.connection] DEBUG: Successfully connected to 192.168.103.245:9092
+2016-09-12 13:09:10 [pykafka.handlers] INFO: RequestHandler.stop: about to flush requests queue
+2016-09-12 13:09:10 [pykafka.topic] INFO: Adding 3 partitions
+2016-09-12 13:09:10 [pykafka.topic] DEBUG: Adding partition taobao.shop.info/0
+2016-09-12 13:09:10 [pykafka.topic] DEBUG: Adding partition taobao.shop.info/1
+2016-09-12 13:09:10 [pykafka.topic] DEBUG: Adding partition taobao.shop.info/2
+2016-09-12 13:09:10 [pykafka.producer] INFO: Starting new produce worker for broker 0
+2016-09-12 13:09:10 [pykafka.producer] DEBUG: Sending 1 messages to broker 0
+2016-09-12 13:09:10 [pykafka.producer] DEBUG: Successfully sent 1/1 messages to broker 0
+2016-09-12 13:09:10 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-12 13:09:11 [pykafka.handlers] INFO: RequestHandler worker: exiting cleanly
+2016-09-12 13:09:15 [pykafka.producer] INFO: Worker exited for broker 192.168.103.245:9092
+2016-09-12 13:09:15 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-12 13:09:15 [pykafka.producer] DEBUG: Finalising <pykafka.producer.Producer at 0x1067c65d0>
+2016-09-12 13:09:15 [scrapy] DEBUG: Scraped from <200 https://rate.taobao.com/user-rate-UMF8YvGkWvGIT.htm>
+None
+2016-09-12 13:09:15 [scrapy] DEBUG: Received cookies from: <200 https://rate.taobao.com/user-rate-UvCNWvCcGMGHT.htm>
+Set-Cookie: uc1=cookie14=UoWwJ01z8f8kBg%3D%3D; Domain=.taobao.com; Path=/
+
+Set-Cookie: v=0; Domain=.taobao.com; Path=/
+
+Set-Cookie: cookie2=1c39a8eb03676787487632ded41a90d8;Domain=.taobao.com;Path=/;HttpOnly
+
+Set-Cookie: t=78363f60b64a5921a1ef787c48e71465; Domain=.taobao.com; Expires=Sun, 11-Dec-2016 05:09:15 GMT; Path=/
+
+2016-09-12 13:09:15 [scrapy] DEBUG: Crawled (200) <GET https://rate.taobao.com/user-rate-UvCNWvCcGMGHT.htm> (referer: https://shop20027371.taobao.com/)
+2016-09-12 13:09:15 [pykafka.connection] DEBUG: Connecting to 192.168.103.245:9092
+2016-09-12 13:09:15 [pykafka.connection] DEBUG: Successfully connected to 192.168.103.245:9092
+2016-09-12 13:09:15 [pykafka.handlers] INFO: RequestHandler.stop: about to flush requests queue
+2016-09-12 13:09:15 [pykafka.topic] INFO: Adding 3 partitions
+2016-09-12 13:09:15 [pykafka.topic] DEBUG: Adding partition taobao.shop.info/0
+2016-09-12 13:09:15 [pykafka.topic] DEBUG: Adding partition taobao.shop.info/1
+2016-09-12 13:09:15 [pykafka.topic] DEBUG: Adding partition taobao.shop.info/2
+2016-09-12 13:09:15 [pykafka.producer] INFO: Starting new produce worker for broker 0
+2016-09-12 13:09:15 [pykafka.producer] DEBUG: Sending 1 messages to broker 0
+2016-09-12 13:09:15 [pykafka.producer] DEBUG: Successfully sent 1/1 messages to broker 0
+2016-09-12 13:09:15 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-12 13:09:16 [pykafka.handlers] INFO: RequestHandler worker: exiting cleanly
+2016-09-12 13:09:20 [pykafka.producer] INFO: Worker exited for broker 192.168.103.245:9092
+2016-09-12 13:09:20 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-12 13:09:20 [pykafka.producer] DEBUG: Finalising <pykafka.producer.Producer at 0x10a419510>
+2016-09-12 13:09:20 [scrapy] DEBUG: Scraped from <200 https://rate.taobao.com/user-rate-UvCNWvCcGMGHT.htm>
+None
+2016-09-12 13:09:20 [scrapy] INFO: Closing spider (finished)
+2016-09-12 13:09:20 [scrapy] INFO: Dumping Scrapy stats:
+{'downloader/request_bytes': 1100,
+ 'downloader/request_count': 4,
+ 'downloader/request_method_count/GET': 4,
+ 'downloader/response_bytes': 44825,
+ 'downloader/response_count': 4,
+ 'downloader/response_status_count/200': 4,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2016, 9, 12, 5, 9, 20, 539188),
+ 'item_scraped_count': 2,
+ 'log_count/DEBUG': 39,
+ 'log_count/INFO': 27,
+ 'request_depth_max': 1,
+ 'response_received_count': 4,
+ 'scheduler/dequeued': 4,
+ 'scheduler/dequeued/memory': 4,
+ 'scheduler/enqueued': 4,
+ 'scheduler/enqueued/memory': 4,
+ 'start_time': datetime.datetime(2016, 9, 12, 5, 8, 57, 511261)}
+2016-09-12 13:09:20 [scrapy] INFO: Spider closed (finished)
+2016-09-12 13:09:20 [pykafka.handlers] INFO: RequestHandler.stop: about to flush requests queue
+2016-09-12 14:48:43 [scrapy] INFO: Scrapy 1.1.2 started (bot: xmmspider)
+2016-09-12 14:48:43 [scrapy] INFO: Overridden settings: {'COOKIES_DEBUG': True, 'NEWSPIDER_MODULE': 'xmmspider.spiders', 'SPIDER_MODULES': ['xmmspider.spiders'], 'BOT_NAME': 'xmmspider', 'LOG_FILE': '/Users/cean/workspace/Java/workspace/xmm-shop-tools/data-collection/xmmspider/xmmspider/logs/TaobaoShopSpider-1473609600.log', 'DOWNLOAD_DELAY': 1}
+2016-09-12 14:48:43 [scrapy] INFO: Enabled extensions:
+['scrapy.extensions.logstats.LogStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.corestats.CoreStats',
+ 'xmmspider.extensions.SpiderRequestInterval',
+ 'xmmspider.extensions.TaobaoShopDataMySQLLoader',
+ 'xmmspider.extensions.SpiderMonitor']
+2016-09-12 14:48:43 [scrapy] INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.chunked.ChunkedTransferMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2016-09-12 14:48:43 [scrapy] INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2016-09-12 14:48:43 [pykafka.topic] INFO: Successfully loaded pykafka.rdkafka extension.
+2016-09-12 14:48:43 [scrapy] INFO: Enabled item pipelines:
+['xmmspider.pipelines.PushDataToKafka']
+2016-09-12 14:48:43 [scrapy] INFO: Spider opened
+2016-09-12 14:48:43 [pykafka.cluster] DEBUG: Updating cluster, attempt 1/3
+2016-09-12 14:48:43 [pykafka.connection] DEBUG: Connecting to 192.168.103.245:9092
+2016-09-12 14:48:43 [pykafka.connection] DEBUG: Successfully connected to 192.168.103.245:9092
+2016-09-12 14:48:43 [pykafka.handlers] INFO: RequestHandler.stop: about to flush requests queue
+2016-09-12 14:48:43 [pykafka.cluster] INFO: Discovered 1 brokers
+2016-09-12 14:48:43 [pykafka.cluster] DEBUG: Discovered broker id 0: 192.168.103.245:9092
+2016-09-12 14:48:43 [pykafka.connection] DEBUG: Connecting to 192.168.103.245:9092
+2016-09-12 14:48:43 [pykafka.connection] DEBUG: Successfully connected to 192.168.103.245:9092
+2016-09-12 14:48:43 [pykafka.cluster] INFO: Discovered 4 topics
+2016-09-12 14:48:43 [pykafka.cluster] DEBUG: Discovered topic 'taobao.shop.info'
+2016-09-12 14:48:43 [pykafka.cluster] DEBUG: Discovered topic 'taobao.shop.product'
+2016-09-12 14:48:43 [pykafka.cluster] DEBUG: Discovered topic 'tmall.shop.product'
+2016-09-12 14:48:43 [pykafka.cluster] DEBUG: Discovered topic 'tmall.shop.info'
+2016-09-12 14:48:43 [scrapy] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2016-09-12 14:48:43 [xmmspider.extensions] INFO: load shop urls
+2016-09-12 14:48:43 [scrapy] DEBUG: Telnet console listening on 127.0.0.1:6025
+2016-09-12 14:48:44 [pykafka.handlers] INFO: RequestHandler worker: exiting cleanly
+2016-09-12 14:48:45 [scrapy] DEBUG: Received cookies from: <200 https://shop20027371.taobao.com/>
+Set-Cookie: thw=cn; Path=/; Domain=.taobao.com; Expires=Tue, 12-Sep-17 06:48:45 GMT;
+
+2016-09-12 14:48:45 [scrapy] DEBUG: Crawled (200) <GET https://shop20027371.taobao.com/> (referer: None)
+2016-09-12 14:48:47 [scrapy] DEBUG: Sending cookies to: <GET https://rate.taobao.com/user-rate-UvCNWvCcGMGHT.htm>
+Cookie: cna=4RdLEIipQlECAWXM93goJEgl; thw=cn
+
+2016-09-12 14:48:47 [scrapy] DEBUG: Received cookies from: <200 https://rate.taobao.com/user-rate-UvCNWvCcGMGHT.htm>
+Set-Cookie: uc1=cookie14=UoWwJ01wwSfq2Q%3D%3D; Domain=.taobao.com; Path=/
+
+Set-Cookie: v=0; Domain=.taobao.com; Path=/
+
+Set-Cookie: cookie2=1cb7594cfe2ae866c8030efa767fc825;Domain=.taobao.com;Path=/;HttpOnly
+
+Set-Cookie: t=3b02bf6bd87f4a0abb61a7cba23e6138; Domain=.taobao.com; Expires=Sun, 11-Dec-2016 06:48:47 GMT; Path=/
+
+2016-09-12 14:48:47 [scrapy] DEBUG: Crawled (200) <GET https://rate.taobao.com/user-rate-UvCNWvCcGMGHT.htm> (referer: https://shop20027371.taobao.com/)
+2016-09-12 14:48:47 [pykafka.connection] DEBUG: Connecting to 192.168.103.245:9092
+2016-09-12 14:48:47 [pykafka.connection] DEBUG: Successfully connected to 192.168.103.245:9092
+2016-09-12 14:48:47 [pykafka.handlers] INFO: RequestHandler.stop: about to flush requests queue
+2016-09-12 14:48:47 [pykafka.topic] INFO: Adding 3 partitions
+2016-09-12 14:48:47 [pykafka.topic] DEBUG: Adding partition taobao.shop.info/0
+2016-09-12 14:48:47 [pykafka.topic] DEBUG: Adding partition taobao.shop.info/1
+2016-09-12 14:48:47 [pykafka.topic] DEBUG: Adding partition taobao.shop.info/2
+2016-09-12 14:48:47 [pykafka.producer] INFO: Starting new produce worker for broker 0
+2016-09-12 14:48:47 [pykafka.producer] DEBUG: Sending 1 messages to broker 0
+2016-09-12 14:48:47 [pykafka.producer] DEBUG: Successfully sent 1/1 messages to broker 0
+2016-09-12 14:48:47 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-12 14:48:48 [pykafka.handlers] INFO: RequestHandler worker: exiting cleanly
+2016-09-12 14:48:52 [pykafka.producer] INFO: Worker exited for broker 192.168.103.245:9092
+2016-09-12 14:48:52 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-12 14:48:52 [pykafka.producer] DEBUG: Finalising <pykafka.producer.Producer at 0x1068c65d0>
+2016-09-12 14:48:52 [scrapy] DEBUG: Scraped from <200 https://rate.taobao.com/user-rate-UvCNWvCcGMGHT.htm>
+None
+2016-09-12 14:48:52 [scrapy] DEBUG: Received cookies from: <200 https://shop34685656.taobao.com/>
+Set-Cookie: thw=cn; Path=/; Domain=.taobao.com; Expires=Tue, 12-Sep-17 06:48:52 GMT;
+
+2016-09-12 14:48:52 [scrapy] DEBUG: Crawled (200) <GET https://shop34685656.taobao.com/> (referer: None)
+2016-09-12 14:48:53 [scrapy] DEBUG: Sending cookies to: <GET https://rate.taobao.com/user-rate-UMF8YvGkWvGIT.htm>
+Cookie: cna=4RdLEIipQlECAWXM93goJEgl; thw=cn; cookie2=1cb7594cfe2ae866c8030efa767fc825; t=3b02bf6bd87f4a0abb61a7cba23e6138; uc1=cookie14=UoWwJ01wwSfq2Q%3D%3D; v=0
+
+2016-09-12 14:48:53 [scrapy] DEBUG: Received cookies from: <200 https://rate.taobao.com/user-rate-UMF8YvGkWvGIT.htm>
+Set-Cookie: uc1=cookie14=UoWwJ01wwSfrNQ%3D%3D; Domain=.taobao.com; Path=/
+
+2016-09-12 14:48:53 [scrapy] DEBUG: Crawled (200) <GET https://rate.taobao.com/user-rate-UMF8YvGkWvGIT.htm> (referer: https://shop34685656.taobao.com/)
+2016-09-12 14:48:53 [pykafka.connection] DEBUG: Connecting to 192.168.103.245:9092
+2016-09-12 14:48:53 [pykafka.connection] DEBUG: Successfully connected to 192.168.103.245:9092
+2016-09-12 14:48:53 [pykafka.handlers] INFO: RequestHandler.stop: about to flush requests queue
+2016-09-12 14:48:53 [pykafka.topic] INFO: Adding 3 partitions
+2016-09-12 14:48:53 [pykafka.topic] DEBUG: Adding partition taobao.shop.info/0
+2016-09-12 14:48:53 [pykafka.topic] DEBUG: Adding partition taobao.shop.info/1
+2016-09-12 14:48:53 [pykafka.topic] DEBUG: Adding partition taobao.shop.info/2
+2016-09-12 14:48:53 [pykafka.producer] INFO: Starting new produce worker for broker 0
+2016-09-12 14:48:53 [pykafka.producer] DEBUG: Sending 1 messages to broker 0
+2016-09-12 14:48:54 [pykafka.producer] DEBUG: Successfully sent 1/1 messages to broker 0
+2016-09-12 14:48:54 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-12 14:48:54 [pykafka.handlers] INFO: RequestHandler worker: exiting cleanly
+2016-09-12 14:48:59 [pykafka.producer] INFO: Worker exited for broker 192.168.103.245:9092
+2016-09-12 14:48:59 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-12 14:48:59 [pykafka.producer] DEBUG: Finalising <pykafka.producer.Producer at 0x10a409ed0>
+2016-09-12 14:48:59 [scrapy] DEBUG: Scraped from <200 https://rate.taobao.com/user-rate-UMF8YvGkWvGIT.htm>
+None
+2016-09-12 14:48:59 [scrapy] INFO: Closing spider (finished)
+2016-09-12 14:48:59 [scrapy] INFO: Dumping Scrapy stats:
+{'downloader/request_bytes': 1218,
+ 'downloader/request_count': 4,
+ 'downloader/request_method_count/GET': 4,
+ 'downloader/response_bytes': 44579,
+ 'downloader/response_count': 4,
+ 'downloader/response_status_count/200': 4,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2016, 9, 12, 6, 48, 59, 14608),
+ 'item_scraped_count': 2,
+ 'log_count/DEBUG': 39,
+ 'log_count/INFO': 27,
+ 'request_depth_max': 1,
+ 'response_received_count': 4,
+ 'scheduler/dequeued': 4,
+ 'scheduler/dequeued/memory': 4,
+ 'scheduler/enqueued': 4,
+ 'scheduler/enqueued/memory': 4,
+ 'start_time': datetime.datetime(2016, 9, 12, 6, 48, 43, 287037)}
+2016-09-12 14:48:59 [scrapy] INFO: Spider closed (finished)
+2016-09-12 14:48:59 [pykafka.handlers] INFO: RequestHandler.stop: about to flush requests queue
+2016-09-12 15:30:00 [scrapy] INFO: Scrapy 1.1.2 started (bot: xmmspider)
+2016-09-12 15:30:00 [scrapy] INFO: Overridden settings: {'COOKIES_DEBUG': True, 'NEWSPIDER_MODULE': 'xmmspider.spiders', 'SPIDER_MODULES': ['xmmspider.spiders'], 'BOT_NAME': 'xmmspider', 'LOG_FILE': '/Users/cean/workspace/Java/workspace/xmm-shop-tools/data-collection/xmmspider/xmmspider/logs/TaobaoShopSpider-1473609600.log', 'DOWNLOAD_DELAY': 1}
+2016-09-12 15:30:00 [scrapy] INFO: Enabled extensions:
+['scrapy.extensions.logstats.LogStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.corestats.CoreStats',
+ 'xmmspider.extensions.SpiderRequestInterval',
+ 'xmmspider.extensions.TaobaoShopDataMySQLLoader',
+ 'xmmspider.extensions.SpiderMonitor']
+2016-09-12 15:30:00 [scrapy] INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.chunked.ChunkedTransferMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2016-09-12 15:30:00 [scrapy] INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2016-09-12 15:30:01 [pykafka.topic] INFO: Successfully loaded pykafka.rdkafka extension.
+2016-09-12 15:30:01 [scrapy] INFO: Enabled item pipelines:
+['xmmspider.pipelines.PushDataToKafka']
+2016-09-12 15:30:01 [scrapy] INFO: Spider opened
+2016-09-12 15:30:01 [pykafka.cluster] DEBUG: Updating cluster, attempt 1/3
+2016-09-12 15:30:01 [pykafka.connection] DEBUG: Connecting to 192.168.103.245:9092
+2016-09-12 15:30:01 [pykafka.connection] DEBUG: Successfully connected to 192.168.103.245:9092
+2016-09-12 15:30:01 [pykafka.handlers] INFO: RequestHandler.stop: about to flush requests queue
+2016-09-12 15:30:01 [pykafka.cluster] INFO: Discovered 1 brokers
+2016-09-12 15:30:01 [pykafka.cluster] DEBUG: Discovered broker id 0: 192.168.103.245:9092
+2016-09-12 15:30:01 [pykafka.connection] DEBUG: Connecting to 192.168.103.245:9092
+2016-09-12 15:30:01 [pykafka.connection] DEBUG: Successfully connected to 192.168.103.245:9092
+2016-09-12 15:30:01 [pykafka.cluster] INFO: Discovered 4 topics
+2016-09-12 15:30:01 [pykafka.cluster] DEBUG: Discovered topic 'taobao.shop.info'
+2016-09-12 15:30:01 [pykafka.cluster] DEBUG: Discovered topic 'taobao.shop.product'
+2016-09-12 15:30:01 [pykafka.cluster] DEBUG: Discovered topic 'tmall.shop.product'
+2016-09-12 15:30:01 [pykafka.cluster] DEBUG: Discovered topic 'tmall.shop.info'
+2016-09-12 15:30:01 [scrapy] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2016-09-12 15:30:01 [xmmspider.extensions] INFO: load shop urls
+2016-09-12 15:30:01 [scrapy] DEBUG: Telnet console listening on 127.0.0.1:6026
+2016-09-12 15:30:02 [pykafka.handlers] INFO: RequestHandler worker: exiting cleanly
+2016-09-12 15:30:03 [scrapy] DEBUG: Received cookies from: <200 https://shop34685656.taobao.com/>
+Set-Cookie: thw=cn; Path=/; Domain=.taobao.com; Expires=Tue, 12-Sep-17 07:30:03 GMT;
+
+2016-09-12 15:30:03 [scrapy] DEBUG: Crawled (200) <GET https://shop34685656.taobao.com/> (referer: None)
+2016-09-12 15:30:03 [scrapy] DEBUG: Received cookies from: <200 https://shop20027371.taobao.com/>
+Set-Cookie: thw=cn; Path=/; Domain=.taobao.com; Expires=Tue, 12-Sep-17 07:30:03 GMT;
+
+2016-09-12 15:30:03 [scrapy] DEBUG: Crawled (200) <GET https://shop20027371.taobao.com/> (referer: None)
+2016-09-12 15:30:04 [scrapy] DEBUG: Sending cookies to: <GET https://rate.taobao.com/user-rate-UMF8YvGkWvGIT.htm>
+Cookie: cna=4RdLEIipQlECAWXM93goJEgl; thw=cn
+
+2016-09-12 15:30:05 [scrapy] DEBUG: Sending cookies to: <GET https://rate.taobao.com/user-rate-UvCNWvCcGMGHT.htm>
+Cookie: cna=4RdLEIipQlECAWXM93goJEgl; thw=cn
+
+2016-09-12 15:30:05 [scrapy] DEBUG: Received cookies from: <200 https://rate.taobao.com/user-rate-UvCNWvCcGMGHT.htm>
+Set-Cookie: uc1=cookie14=UoWwJ01wxnmm9A%3D%3D; Domain=.taobao.com; Path=/
+
+Set-Cookie: v=0; Domain=.taobao.com; Path=/
+
+Set-Cookie: cookie2=1cc7d7770479518a255618eb308852b8;Domain=.taobao.com;Path=/;HttpOnly
+
+Set-Cookie: t=4f65bf8d37612e884fdfa8b79ca5f1c5; Domain=.taobao.com; Expires=Sun, 11-Dec-2016 07:30:06 GMT; Path=/
+
+2016-09-12 15:30:05 [scrapy] DEBUG: Crawled (200) <GET https://rate.taobao.com/user-rate-UvCNWvCcGMGHT.htm> (referer: https://shop20027371.taobao.com/)
+2016-09-12 15:30:05 [scrapy] DEBUG: Received cookies from: <200 https://rate.taobao.com/user-rate-UMF8YvGkWvGIT.htm>
+Set-Cookie: uc1=cookie14=UoWwJ01wxnmm9A%3D%3D; Domain=.taobao.com; Path=/
+
+Set-Cookie: v=0; Domain=.taobao.com; Path=/
+
+Set-Cookie: cookie2=1c251d8561e2ceab8a995918bc5ed5f0;Domain=.taobao.com;Path=/;HttpOnly
+
+Set-Cookie: t=e5081e2379a3c7acbd57f4c88edecd90; Domain=.taobao.com; Expires=Sun, 11-Dec-2016 07:30:06 GMT; Path=/
+
+2016-09-12 15:30:05 [scrapy] DEBUG: Crawled (200) <GET https://rate.taobao.com/user-rate-UMF8YvGkWvGIT.htm> (referer: https://shop34685656.taobao.com/)
+2016-09-12 15:30:06 [pykafka.connection] DEBUG: Connecting to 192.168.103.245:9092
+2016-09-12 15:30:06 [pykafka.connection] DEBUG: Successfully connected to 192.168.103.245:9092
+2016-09-12 15:30:06 [pykafka.handlers] INFO: RequestHandler.stop: about to flush requests queue
+2016-09-12 15:30:06 [pykafka.topic] INFO: Adding 3 partitions
+2016-09-12 15:30:06 [pykafka.topic] DEBUG: Adding partition taobao.shop.info/0
+2016-09-12 15:30:06 [pykafka.topic] DEBUG: Adding partition taobao.shop.info/1
+2016-09-12 15:30:06 [pykafka.topic] DEBUG: Adding partition taobao.shop.info/2
+2016-09-12 15:30:06 [pykafka.producer] INFO: Starting new produce worker for broker 0
+2016-09-12 15:30:06 [pykafka.producer] DEBUG: Sending 1 messages to broker 0
+2016-09-12 15:30:06 [pykafka.producer] DEBUG: Successfully sent 1/1 messages to broker 0
+2016-09-12 15:30:06 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-12 15:30:07 [pykafka.handlers] INFO: RequestHandler worker: exiting cleanly
+2016-09-12 15:30:11 [pykafka.producer] INFO: Worker exited for broker 192.168.103.245:9092
+2016-09-12 15:30:11 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-12 15:30:11 [pykafka.producer] DEBUG: Finalising <pykafka.producer.Producer at 0x1062a6890>
+2016-09-12 15:30:11 [scrapy] DEBUG: Scraped from <200 https://rate.taobao.com/user-rate-UvCNWvCcGMGHT.htm>
+None
+2016-09-12 15:30:11 [pykafka.connection] DEBUG: Connecting to 192.168.103.245:9092
+2016-09-12 15:30:11 [pykafka.connection] DEBUG: Successfully connected to 192.168.103.245:9092
+2016-09-12 15:30:11 [pykafka.handlers] INFO: RequestHandler.stop: about to flush requests queue
+2016-09-12 15:30:11 [pykafka.topic] INFO: Adding 3 partitions
+2016-09-12 15:30:11 [pykafka.topic] DEBUG: Adding partition taobao.shop.info/0
+2016-09-12 15:30:11 [pykafka.topic] DEBUG: Adding partition taobao.shop.info/1
+2016-09-12 15:30:11 [pykafka.topic] DEBUG: Adding partition taobao.shop.info/2
+2016-09-12 15:30:11 [pykafka.producer] INFO: Starting new produce worker for broker 0
+2016-09-12 15:30:11 [pykafka.producer] DEBUG: Sending 1 messages to broker 0
+2016-09-12 15:30:11 [pykafka.producer] DEBUG: Successfully sent 1/1 messages to broker 0
+2016-09-12 15:30:11 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-12 15:30:12 [pykafka.handlers] INFO: RequestHandler worker: exiting cleanly
+2016-09-12 15:30:16 [pykafka.producer] INFO: Worker exited for broker 192.168.103.245:9092
+2016-09-12 15:30:16 [pykafka.producer] INFO: Blocking until all messages are sent
+2016-09-12 15:30:16 [pykafka.producer] DEBUG: Finalising <pykafka.producer.Producer at 0x10a146f10>
+2016-09-12 15:30:16 [scrapy] DEBUG: Scraped from <200 https://rate.taobao.com/user-rate-UMF8YvGkWvGIT.htm>
+None
+2016-09-12 15:30:16 [scrapy] INFO: Closing spider (finished)
+2016-09-12 15:30:16 [scrapy] INFO: Dumping Scrapy stats:
+{'downloader/request_bytes': 1100,
+ 'downloader/request_count': 4,
+ 'downloader/request_method_count/GET': 4,
+ 'downloader/response_bytes': 44837,
+ 'downloader/response_count': 4,
+ 'downloader/response_status_count/200': 4,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2016, 9, 12, 7, 30, 16, 174188),
+ 'item_scraped_count': 2,
+ 'log_count/DEBUG': 39,
+ 'log_count/INFO': 27,
+ 'request_depth_max': 1,
+ 'response_received_count': 4,
+ 'scheduler/dequeued': 4,
+ 'scheduler/dequeued/memory': 4,
+ 'scheduler/enqueued': 4,
+ 'scheduler/enqueued/memory': 4,
+ 'start_time': datetime.datetime(2016, 9, 12, 7, 30, 1, 84394)}
+2016-09-12 15:30:16 [scrapy] INFO: Spider closed (finished)
+2016-09-12 15:30:16 [pykafka.handlers] INFO: RequestHandler.stop: about to flush requests queue

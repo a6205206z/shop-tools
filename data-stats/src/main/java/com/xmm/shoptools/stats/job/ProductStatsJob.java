@@ -22,7 +22,7 @@ import java.util.List;
  */
 public class ProductStatsJob implements Job {
     private static final Logger logger = LoggerFactory.getLogger(ProductStatsJob.class);
-    private final String INSERT_SQL = "INSERT INTO r_items (id,date,shopid,numiid,total_sales,sold_total_count,total_rated_count,stock,i_favorite_num,i_share_num,i_pv,created)VALUES(?,?,?,?,?,?,?,?,?,?,?,now())\n";
+    private final String INSERT_SQL = "INSERT INTO r_items (id,date,shopid,numiid,total_sales,sold_total_count,total_rated_count,stock,i_favorite_num,i_share_num,i_pv,old_title,new_title,old_price,new_price,old_pic,new_pic,created)VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,now())\n";
 
     public void begin() {
         //load products
@@ -71,6 +71,21 @@ public class ProductStatsJob implements Job {
                 ps.setI_favorite_num(tp.getI_favorite_num() - yp.getI_favorite_num());
                 ps.setI_share_num(tp.getI_share_num() - yp.getI_share_num());
                 ps.setI_pv(tp.getI_pv() - yp.getI_pv());
+
+                if(!tp.getTitle().equals(yp.getTitle())){
+                    ps.setOld_title(yp.getTitle());
+                    ps.setNew_title(tp.getTitle());
+                }
+
+                if(!tp.getMarker_price().equals(yp.getMarker_price())){
+                    ps.setOld_price(yp.getMarker_price());
+                    ps.setNew_price(tp.getMarker_price());
+                }
+
+                if(!tp.getPic_url().equals(yp.getPic_url())){
+                    ps.setOld_pic(yp.getPic_url());
+                    ps.setNew_pic(tp.getPic_url());
+                }
             }
 
             result.add(ps);
@@ -92,7 +107,13 @@ public class ProductStatsJob implements Job {
                         ps.getStock(),
                         ps.getI_favorite_num(),
                         ps.getI_share_num(),
-                        ps.getI_pv()
+                        ps.getI_pv(),
+                        ps.getOld_title(),
+                        ps.getNew_title(),
+                        ps.getOld_price(),
+                        ps.getNew_price(),
+                        ps.getOld_pic(),
+                        ps.getNew_pic()
                 });
             } catch (SQLException e) {
                 logger.error(e.toString());

@@ -34,11 +34,11 @@ COOKIES_ENABLED = True
 COOKIES_DEBUG = True
 
 #dealy
-DOWNLOAD_DELAY = 3
+DOWNLOAD_DELAY = 1
 
 #retry
-RETRY_ENABLED = True
-RETRY_TIMES = 5
+#RETRY_ENABLED = True
+#RETRY_TIMES = 5
 
 #log
 #LOG_LEVEL = 'INFO'
@@ -63,7 +63,17 @@ USER_AGENTS = [
 ]
 
 PROXY_LIST = [
-    '120.193.146.97 843 HTTP',
+    '60.191.175.53 3128 HTTP',
+    '14.29.124.53 80 HTTP',
+    '58.247.125.205 80 HTTP',
+    '14.29.124.51 80 HTTP',
+    '14.29.124.52 80 HTTP',
+    '114.215.150.13 3128 HTTP',
+    '1.82.216.134 80 HTTP',
+    '115.28.101.22 3128 HTTP',
+    '113.79.24.172 9797 HTTP',
+    '219.238.96.248 3128 HTTP',
+    '219.238.96.247 3128 HTTP',
 ]
 
 ITEM_PIPELINES = {
@@ -73,7 +83,7 @@ ITEM_PIPELINES = {
 
 DOWNLOADER_MIDDLEWARES = {
     #'xmmspider.middlewares.RandomUserAgent': 1,
-    #'xmmspider.middlewares.ProxyMiddleware': 100,
+    'xmmspider.middlewares.ProxyMiddleware': 100,
     'scrapy.downloadermiddlewares.cookies.CookiesMiddleware': 700,
     'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware': 810,
 }

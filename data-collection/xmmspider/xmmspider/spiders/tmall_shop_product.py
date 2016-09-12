@@ -88,7 +88,10 @@ class TmallShopProductSpider(Spider):
             yield Request(sib_url,
                           callback=self.parse_sib,
                           errback=self.errback,
-                          headers={"Referer": response.url},
+                          headers={
+                          "Referer": response.url,
+                          "Host":"mdskip.taobao.com",
+                          },
                           meta={'cookiejar': 1,
                                 'item': item,
                                 },
