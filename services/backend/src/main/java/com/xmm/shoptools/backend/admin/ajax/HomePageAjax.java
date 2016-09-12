@@ -23,7 +23,8 @@ public class HomePageAjax extends BaseAction {
 	public @ResponseBody List<Menu> treeData(HttpServletRequest request) {
 		List<Menu> children = new ArrayList<Menu>();
 		children.add(new Menu("任务管理", InitConfig.path + "/job/index"));
-//		children.add(new Menu("角色管理", InitConfig.path + "/role/list"));
+		children.add(new Menu("抓取店铺管理", InitConfig.path + "/tshop/index"));
+		children.add(new Menu("爬虫配置", InitConfig.path + "/spider/cfg"));
 
 		List<Menu> parent = new ArrayList<Menu>();
 //		Menu menu2 = null;

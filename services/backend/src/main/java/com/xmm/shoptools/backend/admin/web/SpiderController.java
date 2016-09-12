@@ -15,15 +15,15 @@ import com.xmm.shoptools.backend.vo.ResUrl;
  */
 @Controller
 @Scope("prototype")
-@RequestMapping("/logfile")
-public class LogfileController extends BaseAction {
+@RequestMapping("/spider")
+public class SpiderController extends BaseAction {
 	
-	//日志文件详情查看后台页
-	@RequestMapping("/index")
-	public ModelAndView index(String logfile) {
-		ModelAndView mav = new ModelAndView("/admin/logfile");
-		String getLogs = HttpUtil.sendGet(ResUrl.REMOTE_IP+ResUrl.LOG_URL, "name="+logfile, "UTF-8");
-		mav.addObject("getLogs", getLogs);
+	//爬虫配置详情查看后台页
+	@RequestMapping("/cfg")
+	public ModelAndView index() {
+		ModelAndView mav = new ModelAndView("/admin/spidercfg");
+		String cfgs = HttpUtil.sendGet(ResUrl.REMOTE_IP+ResUrl.SPIDER_CFG_URL, "","UTF-8");
+		mav.addObject("cfgs", cfgs);
 		return mav;
 	}
 

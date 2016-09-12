@@ -62,11 +62,11 @@ public class TjobVO extends BaseVo {
 	public java.lang.String getStats() {
 		return this.stats;
 	}
-	
     @Override
     public String toString() {
-        return "Tjob [runid=" + runid + ", spiderName=" + spiderName + ", starttime=" + starttime
-               + ", finishtime=" + finishtime + ", logfile=" + logfile + ", stats=" + stats + "]";
+        return "TjobVO [runid=" + runid + ", spiderName=" + spiderName + ", starttime=" + starttime
+               + ", finishtime=" + finishtime + ", logfile=" + logfile + ", stats=" + stats
+               + ", completedStatus=" + completedStatus + "]";
     }
 	
 }

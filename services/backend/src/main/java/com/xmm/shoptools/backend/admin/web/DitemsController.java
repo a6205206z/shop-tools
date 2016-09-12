@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/ditems")
 public class DitemsController extends BaseAction {
 
-    //日志详情查看后台页
+    //商品详情查看后台页
     @RequestMapping("/index")
     public ModelAndView index(Long shopid,Long date) {
         ModelAndView mav = new ModelAndView("/admin/ditems");
