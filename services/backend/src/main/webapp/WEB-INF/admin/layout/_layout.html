@@ -2,8 +2,9 @@
 <#macro heading>
     <!--Header-part-->
     <div id="header">
-        <h1><a href="#">Matrix Admin</a></h1>
+        <h1><a href="#">Xingmima Admin</a></h1>
     </div>
+
     <!--top-Header-menu-->
     <div id="user-nav" class="navbar navbar-inverse">
         <ul class="nav">
@@ -98,7 +99,6 @@
     </div>
 </#macro>
 
-
 <#macro doLayout>
     <!DOCTYPE html>
     <html>
@@ -118,12 +118,13 @@
         <!--<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>-->
     </head>
     <body>
+
     <@heading />
     <@leftNav />
     <div id="content">
         <!--breadcrumbs-->
         <div id="content-header">
-            <div id="breadcrumb"> <a href="index" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a></div>
+            <div id="breadcrumb"> <a href="index" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>${page_name}</a></div>
         </div>
         <!--End-breadcrumbs-->
         <@content />
