@@ -1,0 +1,35 @@
+2016-09-13 09:51:12,986:DEBUG localhost-startStop-1 (LogFactory.java:135) - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2016-09-13 09:51:13,102:DEBUG localhost-startStop-1 (LogFactory.java:135) - Logging initialized using 'class org.apache.ibatis.logging.log4j2.Log4j2Impl' adapter.
+2016-09-13 09:51:13,104:DEBUG localhost-startStop-1 (SqlSessionFactoryBean.java:377) - Parsed configuration file: 'class path resource [spring/dao/mybatis.xml]'
+2016-09-13 09:51:13,484:DEBUG localhost-startStop-1 (SqlSessionFactoryBean.java:418) - Parsed mapper file: 'file [/Users/cean/workspace/Java/workspace/xmm-shop-tools/services/backend/target/classes/spring/dao/mapper/Ditems.xml]'
+2016-09-13 09:51:13,503:DEBUG localhost-startStop-1 (SqlSessionFactoryBean.java:418) - Parsed mapper file: 'file [/Users/cean/workspace/Java/workspace/xmm-shop-tools/services/backend/target/classes/spring/dao/mapper/Dshop.xml]'
+2016-09-13 09:51:13,514:DEBUG localhost-startStop-1 (SqlSessionFactoryBean.java:418) - Parsed mapper file: 'file [/Users/cean/workspace/Java/workspace/xmm-shop-tools/services/backend/target/classes/spring/dao/mapper/Tjob.xml]'
+2016-09-13 09:51:13,529:DEBUG localhost-startStop-1 (SqlSessionFactoryBean.java:418) - Parsed mapper file: 'file [/Users/cean/workspace/Java/workspace/xmm-shop-tools/services/backend/target/classes/spring/dao/mapper/Tshop.xml]'
+2016-09-13 09:51:20,392:DEBUG http-bio-8088-exec-10 (SqlSessionUtils.java:106) - Creating a new SqlSession
+2016-09-13 09:51:20,396:DEBUG http-bio-8088-exec-10 (SqlSessionUtils.java:142) - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@54678133] was not registered for synchronization because synchronization is not active
+2016-09-13 09:51:20,404:DEBUG http-bio-8088-exec-10 (SpringManagedTransaction.java:85) - JDBC Connection [jdbc:mysql://192.168.105.252:3306/xmm_shop_tools?useUnicode=true&characterEncoding=UTF-8&noAccessToProcedureBodies=true&autoReconnect=true&zeroDateTimeBehavior=convertToNull, UserName=ams@192.168.103.103, MySQL Connector Java] will not be managed by Spring
+2016-09-13 09:51:20,408:DEBUG http-bio-8088-exec-10 (BaseJdbcLogger.java:142) - ==>  Preparing: select count(*) from t_shop 
+2016-09-13 09:51:20,428:DEBUG http-bio-8088-exec-10 (BaseJdbcLogger.java:142) - ==> Parameters: 
+2016-09-13 09:51:20,441:DEBUG http-bio-8088-exec-10 (BaseJdbcLogger.java:142) - <==      Total: 1
+2016-09-13 09:51:20,442:DEBUG http-bio-8088-exec-10 (SqlSessionUtils.java:170) - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@54678133]
+2016-09-13 09:51:20,443:DEBUG http-bio-8088-exec-10 (SqlSessionUtils.java:106) - Creating a new SqlSession
+2016-09-13 09:51:20,443:DEBUG http-bio-8088-exec-10 (SqlSessionUtils.java:142) - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2a3899f2] was not registered for synchronization because synchronization is not active
+2016-09-13 09:51:20,446:DEBUG http-bio-8088-exec-10 (SpringManagedTransaction.java:85) - JDBC Connection [jdbc:mysql://192.168.105.252:3306/xmm_shop_tools?useUnicode=true&characterEncoding=UTF-8&noAccessToProcedureBodies=true&autoReconnect=true&zeroDateTimeBehavior=convertToNull, UserName=ams@192.168.103.103, MySQL Connector Java] will not be managed by Spring
+2016-09-13 09:51:20,447:DEBUG http-bio-8088-exec-10 (BaseJdbcLogger.java:142) - ==>  Preparing: select id , shopid , seller_id , security_id , nick , cid , store_url , category , type , location , service_number , store_date , status , last_times , created , updated from t_shop ORDER BY updated DESC limit ?,? 
+2016-09-13 09:51:20,447:DEBUG http-bio-8088-exec-10 (BaseJdbcLogger.java:142) - ==> Parameters: 0(Integer), 20(Integer)
+2016-09-13 09:51:20,451:DEBUG http-bio-8088-exec-10 (BaseJdbcLogger.java:142) - <==      Total: 4
+2016-09-13 09:51:20,452:DEBUG http-bio-8088-exec-10 (SqlSessionUtils.java:170) - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2a3899f2]
+2016-09-13 09:51:21,041:DEBUG http-bio-8088-exec-10 (SqlSessionUtils.java:106) - Creating a new SqlSession
+2016-09-13 09:51:21,042:DEBUG http-bio-8088-exec-10 (SqlSessionUtils.java:122) - Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@471eb39c]
+2016-09-13 09:51:21,043:DEBUG http-bio-8088-exec-10 (SpringManagedTransaction.java:85) - JDBC Connection [jdbc:mysql://192.168.105.252:3306/xmm_shop_tools?useUnicode=true&characterEncoding=UTF-8&noAccessToProcedureBodies=true&autoReconnect=true&zeroDateTimeBehavior=convertToNull, UserName=ams@192.168.103.103, MySQL Connector Java] will be managed by Spring
+2016-09-13 09:51:21,044:DEBUG http-bio-8088-exec-10 (BaseJdbcLogger.java:142) - ==>  Preparing: select count(*) from t_job 
+2016-09-13 09:51:21,044:DEBUG http-bio-8088-exec-10 (BaseJdbcLogger.java:142) - ==> Parameters: 
+2016-09-13 09:51:21,045:DEBUG http-bio-8088-exec-10 (BaseJdbcLogger.java:142) - <==      Total: 1
+2016-09-13 09:51:21,046:DEBUG http-bio-8088-exec-10 (SqlSessionUtils.java:165) - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@471eb39c]
+2016-09-13 09:51:21,046:DEBUG http-bio-8088-exec-10 (SqlSessionUtils.java:99) - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@471eb39c] from current transaction
+2016-09-13 09:51:21,046:DEBUG http-bio-8088-exec-10 (BaseJdbcLogger.java:142) - ==>  Preparing: select runid , spider_name , starttime , finishtime , logfile , stats from t_job ORDER BY starttime DESC limit ?,? 
+2016-09-13 09:51:21,047:DEBUG http-bio-8088-exec-10 (BaseJdbcLogger.java:142) - ==> Parameters: 0(Integer), 20(Integer)
+2016-09-13 09:51:21,060:DEBUG http-bio-8088-exec-10 (BaseJdbcLogger.java:142) - <==      Total: 20
+2016-09-13 09:51:21,060:DEBUG http-bio-8088-exec-10 (SqlSessionUtils.java:165) - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@471eb39c]
+2016-09-13 09:51:21,069:DEBUG http-bio-8088-exec-10 (SqlSessionUtils.java:250) - Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@471eb39c]
+2016-09-13 09:51:21,070:DEBUG http-bio-8088-exec-10 (SqlSessionUtils.java:278) - Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@471eb39c]
