@@ -1,12 +1,12 @@
-<#include "/admin/c.html" />
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>任务管理</title>
-</head>
-<body>
-	<table fit="true" id="job-datagrid">
+<#import "/admin/layout/_layout.html" as layout />
+
+<#macro content>
+   <div class="widget-box">
+          <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+            <h5>任务列表</h5>
+          </div>
+          <div class="widget-content nopadding">
+	<table class="table table-bordered data-table" fit="true" id="job-datagrid">
 		<thead>
 			<tr>
 				<th>抓取批次ID</th>
@@ -32,6 +32,10 @@
 		</#if>
 		</tbody>
 	</table>
+	</div>
+	</div>
+	
+</#macro>
+<#assign content = content in layout />
 
-</body>
-</html>
+<@layout.doLayout />
