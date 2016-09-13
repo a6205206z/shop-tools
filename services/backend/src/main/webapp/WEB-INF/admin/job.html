@@ -3,157 +3,35 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link id="themeStyle" rel="stylesheet" type="text/css" href="${path}/js/easyui/themes/default/easyui.css">
-<link rel="stylesheet" type="text/css" href="${path}/js/easyui/themes/icon.css">
-<link rel="stylesheet" type="text/css" href="${path}/js/easyui/themes/color.css">  
-<script type="text/javascript" src="${path}/js/easyui/jquery.min.js"></script>
-<script type="text/javascript" src="${path}/js/easyui/jquery.easyui.min.js"></script>
-	<!--国际化 ,easyui表单验证 -->
-<script type="text/javascript" src="${path}/js/easyui/locale/easyui-lang-zh_CN.js"></script>
-<!-- easyui datagrid组件扩展js -->
-<script type="text/javascript" src="${path}/js/common.js"></script>
 <title>任务管理</title>
-<script type="text/javascript">
-	$(function() {
-		var jobDatagrid = $("#job-datagrid");
-		var editjobDialog = $("#editjobDialog");
-		var editjobForm = $("#editjobForm");
-		
-		//JS操作方法
-		var cmdObj = {
-			refresh: function(){
-				jobDatagrid.datagrid("reload");
-			}
-		}
-		//表格数据填充
-		jobDatagrid.datagrid({
-			url : "${path}/ajax/job/list",
-			title : "任务列表",
-			fitColumns : true,
-			rownumbers : true,
-			singleSelect : true,
-			pagination : true,
-			toolbar:"#job-toolbar",
-			pageSize:20,
-			border:false,
-			columns : [[
-						{field : 'runid',title : '抓取批次ID',width : 50,formatter:runFormatter},
-			            {field : 'spiderName',title : '抓取名称',width : 50},
-			            {field : 'starttime',title : '开始时间',width : 50},
-			            {field : 'finishtime',title : '完成时间',width : 50},
-			            {field : 'logfile',title : '日志',width : 20,formatter:logfileFormatter},
-			            {field : 'completedStatus',title : '状态',width : 20,formatter:completedStatusFormatter}
-// 			            {field : 'op',title : '操作',width:20,formatter:operationFormatter}
-			          ]]
-			,
-			onLoadSuccess : function(data){
-// 				自动合并相同行
-				jobDatagrid.datagrid("autoMergeCells", ['runid']);
-			}
-		});
-	
-		// 5、对页面所有按钮，统一监听
-		$("a[data-cmd]").on("click", function() {
-			// 获取对应按钮的cmd信息 
-			var cmd = $(this).data("cmd");
-			if (cmd) {
-				// 调用命令对象的方法做事情
-				cmdObj[cmd]();
-			}
-		});
-		
-	});
-	
-   //格式化
-   function completedStatusFormatter(val, row){
-	   return val == '0' ? "<span style='color:green'>进行中</span>" : "<span style='color:blue'>已完成</span>";
-   }
-   //格式化
-   function operationFormatter(val, row){
-		//详情查看
-   }
-   //格式化
-   function logfileFormatter(val, row){
-	   return "<a href='javascript:void(0)' onclick=\"lookLogfile("+val+");\">日志查看</a>";
-   }
-   
-   //格式化
-   function runFormatter(val, row){
-	   return "<a href='javascript:void(0)' onclick=\"shopByRunid("+val+");\">"+val+"</a>";
-   }
-	//详情查看
-	function statsDetails(stats) {
-		console.debug('-------------'+stats);
-		var stats = eval(stats);
-		for(var key in stats){
-			console.log(key+"--"+stats[key]);
-		}
-		$("#editjobDialog").dialog("open");
-	}
-	
-	 //查看
-	function shopByRunid(runid){
-		var jq = top.jQuery;    
-        var url = '${path}/dshop/index?runid='+runid;
-        if (jq("#tt").tabs('exists', '查看抓取批次['+runid+']下的店铺')){    
-            jq("#tt").tabs('select', '查看抓取批次['+runid+']下的店铺');    
-        } else {  
-              var content = '<iframe scrolling="auto" frameborder="0"  src="'+url+'" style="width:100%;height:100%;"></iframe>';     
-               jq("#tt").tabs('add',{    
-                                  title:'查看抓取批次['+runid+']下的店铺',    
-                                  content:content,    
-                                  closable:true    
-                                });    
-         }    
-		
-	}
-	 //查看日志
-	function lookLogfile(logfile){
-		var jq = top.jQuery;    
-        var url = '${path}/logfile/index?logfile='+logfile;
-        if (jq("#tt").tabs('exists', '查看日志文件['+logfile+']')){    
-            jq("#tt").tabs('select', '查看日志文件['+logfile+']');    
-        } else {  
-              var content = '<iframe scrolling="auto" frameborder="0"  src="'+url+'" style="width:100%;height:100%;"></iframe>';     
-               jq("#tt").tabs('add',{    
-                                  title:'查看日志文件['+logfile+']',    
-                                  content:content,    
-                                  closable:true    
-                                });    
-         }    
-		
-	}
-	
-</script>
 </head>
 <body>
-	<table fit="true" id="job-datagrid"></table>
-
-	<div id="job-toolbar" style="padding:5px;height:auto">
-		<div style="margin-bottom:5px">
-			<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-reload" plain="true" data-cmd="refresh">刷新</a>
-		</div>
-	</div>
-	
-	
-	<!-- -->
-	<div id="editjobDialog" class="easyui-dialog" style="width: 380px; height: 310px; padding: 10px" data-options="title:'添加/编辑项目信息',buttons:'#search-btns',modal:true,closed:true" >
-		<form id="editjobForm" method="post">
-			<table align="center" style="margin-top: 15px;">
-				<thead>
-					<tr>
-						<th>Key</th>
-						<th>Value</th>
-					</tr>
-				</thead>
-				<tr>
-					<!-- 选中特殊权限 -->
-					<td></td>
-					<td></td>
-				</tr>
-			</table>
-		</form>
-	</div>
+	<table fit="true" id="job-datagrid">
+		<thead>
+			<tr>
+				<th>抓取批次ID</th>
+				<th>抓取名称</th>
+				<th>开始时间</th>
+				<th>完成时间</th>
+				<th>日志</th>
+				<th>状态</th>
+			</tr>
+		</thead>
+		<tbody>
+		<#if pr.rows?? && pr.rows?size gt 0> 
+		<#list pr.rows as jobs>
+			<tr>
+				<td>${jobs.runid}</td>
+				<td>${jobs.spiderName}</td>
+				<td>${jobs.starttime?datetime}</td>
+				<td>${jobs.finishtime?string("yyyy-MM-dd HH:mm:ss")}</td>
+				<td>${jobs.logfile}</td>
+				<td>${jobs.completedStatus}</td>
+			</tr>
+		</#list>
+		</#if>
+		</tbody>
+	</table>
 
 </body>
 </html>
