@@ -284,8 +284,8 @@
 		</dependency>
 
 	</dependencies>
-<<<<<<< HEAD
 	<build>
+		<finalName>shop</finalName>
 		<plugins>
 			<!-- mvn tomcat7:run -->
 			<plugin>
@@ -297,11 +297,8 @@
 					<systemProperties>
 						<com.sun.management.jmxremote.port>4000</com.sun.management.jmxremote.port>
 					</systemProperties>
-=======
-	
-	<build>
-		<finalName>shop</finalName>
-		<plugins>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
@@ -318,7 +315,6 @@
 							</includes>
 						</resource>
 					</webResources>
->>>>>>> 2bca0cfe9c25a9e7e2b260e0789f7d658d94684b
 				</configuration>
 			</plugin>
 		</plugins>
