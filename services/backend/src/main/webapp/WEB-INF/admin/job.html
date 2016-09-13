@@ -18,7 +18,7 @@
 		var jobDatagrid = $("#job-datagrid");
 		var editjobDialog = $("#editjobDialog");
 		var editjobForm = $("#editjobForm");
-		
+
 		//JS操作方法
 		var cmdObj = {
 			refresh: function(){
@@ -51,19 +51,19 @@
 				jobDatagrid.datagrid("autoMergeCells", ['runid']);
 			}
 		});
-	
+
 		// 5、对页面所有按钮，统一监听
 		$("a[data-cmd]").on("click", function() {
-			// 获取对应按钮的cmd信息 
+			// 获取对应按钮的cmd信息
 			var cmd = $(this).data("cmd");
 			if (cmd) {
 				// 调用命令对象的方法做事情
 				cmdObj[cmd]();
 			}
 		});
-		
+
 	});
-	
+
    //格式化
    function completedStatusFormatter(val, row){
 	   return val == '0' ? "<span style='color:green'>进行中</span>" : "<span style='color:blue'>已完成</span>";
@@ -76,7 +76,7 @@
    function logfileFormatter(val, row){
 	   return "<a href='javascript:void(0)' onclick=\"lookLogfile("+val+");\">日志查看</a>";
    }
-   
+
    //格式化
    function runFormatter(val, row){
 	   return "<a href='javascript:void(0)' onclick=\"shopByRunid("+val+");\">"+val+"</a>";
@@ -90,40 +90,40 @@
 		}
 		$("#editjobDialog").dialog("open");
 	}
-	
+
 	 //查看
 	function shopByRunid(runid){
-		var jq = top.jQuery;    
+		var jq = top.jQuery;
         var url = '${path}/dshop/index?runid='+runid;
-        if (jq("#tt").tabs('exists', '查看抓取批次['+runid+']下的店铺')){    
-            jq("#tt").tabs('select', '查看抓取批次['+runid+']下的店铺');    
-        } else {  
-              var content = '<iframe scrolling="auto" frameborder="0"  src="'+url+'" style="width:100%;height:100%;"></iframe>';     
-               jq("#tt").tabs('add',{    
-                                  title:'查看抓取批次['+runid+']下的店铺',    
-                                  content:content,    
-                                  closable:true    
-                                });    
-         }    
-		
+        if (jq("#tt").tabs('exists', '查看抓取批次['+runid+']下的店铺')){
+            jq("#tt").tabs('select', '查看抓取批次['+runid+']下的店铺');
+        } else {
+              var content = '<iframe scrolling="auto" frameborder="0"  src="'+url+'" style="width:100%;height:100%;"></iframe>';
+               jq("#tt").tabs('add',{
+                                  title:'查看抓取批次['+runid+']下的店铺',
+                                  content:content,
+                                  closable:true
+                                });
+         }
+
 	}
 	 //查看日志
 	function lookLogfile(logfile){
-		var jq = top.jQuery;    
+		var jq = top.jQuery;
         var url = '${path}/logfile/index?logfile='+logfile;
-        if (jq("#tt").tabs('exists', '查看日志文件['+logfile+']')){    
-            jq("#tt").tabs('select', '查看日志文件['+logfile+']');    
-        } else {  
-              var content = '<iframe scrolling="auto" frameborder="0"  src="'+url+'" style="width:100%;height:100%;"></iframe>';     
-               jq("#tt").tabs('add',{    
-                                  title:'查看日志文件['+logfile+']',    
-                                  content:content,    
-                                  closable:true    
-                                });    
-         }    
-		
+        if (jq("#tt").tabs('exists', '查看日志文件['+logfile+']')){
+            jq("#tt").tabs('select', '查看日志文件['+logfile+']');
+        } else {
+              var content = '<iframe scrolling="auto" frameborder="0"  src="'+url+'" style="width:100%;height:100%;"></iframe>';
+               jq("#tt").tabs('add',{
+                                  title:'查看日志文件['+logfile+']',
+                                  content:content,
+                                  closable:true
+                                });
+         }
+
 	}
-	
+
 </script>
 </head>
 <body>

@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class HomePage {
 	@RequestMapping(value = "index")
 	public ModelAndView index() {
+
 		return new ModelAndView("/admin/index");
 	}
 }
