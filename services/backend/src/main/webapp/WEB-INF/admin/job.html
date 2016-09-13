@@ -1,41 +1,42 @@
-<#import "/admin/layout/_layout.html" as layout />
-
-<#macro content>
-   <div class="widget-box">
-          <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
-            <h5>任务列表</h5>
-          </div>
-          <div class="widget-content nopadding">
-	<table class="table table-bordered data-table" fit="true" id="job-datagrid">
-		<thead>
-			<tr>
-				<th>抓取批次ID</th>
-				<th>抓取名称</th>
-				<th>开始时间</th>
-				<th>完成时间</th>
-				<th>日志</th>
-				<th>状态</th>
-			</tr>
-		</thead>
-		<tbody>
-		<#if pr.rows?? && pr.rows?size gt 0> 
-		<#list pr.rows as jobs>
-			<tr>
-				<td>${jobs.runid}</td>
-				<td>${jobs.spiderName}</td>
-				<td>${jobs.starttime?datetime}</td>
-				<td>${jobs.finishtime?string("yyyy-MM-dd HH:mm:ss")}</td>
-				<td>${jobs.logfile}</td>
-				<td>${jobs.completedStatus}</td>
-			</tr>
-		</#list>
-		</#if>
-		</tbody>
-	</table>
+<#import "/admin/layout/_layout.html" as layout /> <#macro content>
+<div class="container-fluid">
+	<hr>
+	<div class="row-fluid">
+		<div class="span12">
+			<div class="widget-box">
+				<div class="widget-title">
+					<span class="icon"><i class="icon-th"></i></span>
+					<h5>任务列表</h5>
+				</div>
+				<div class="widget-content nopadding">
+					<table class="table table-bordered data-table" fit="true"
+						id="job-datagrid">
+						<thead>
+							<tr>
+								<th>抓取批次ID</th>
+								<th>抓取名称</th>
+								<th>开始时间</th>
+								<th>完成时间</th>
+								<th>日志</th>
+								<th>状态</th>
+							</tr>
+						</thead>
+						<tbody>
+							<#if pr.rows?? && pr.rows?size gt 0> <#list pr.rows as jobs>
+							<tr>
+								<td>${jobs.runid}</td>
+								<td>${jobs.spiderName}</td>
+								<td>${jobs.starttime?datetime}</td>
+								<td>${jobs.finishtime?string("yyyy-MM-dd HH:mm:ss")}</td>
+								<td>${jobs.logfile}</td>
+								<td>${jobs.completedStatus}</td>
+							</tr>
+							</#list> </#if>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
 	</div>
-	</div>
-	
-</#macro>
-<#assign content = content in layout />
-
-<@layout.doLayout />
+</div>
+</#macro> <#assign content = content in layout /> <@layout.doLayout />

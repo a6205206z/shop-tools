@@ -23,6 +23,7 @@ public class TjobController extends BaseAction {
     @RequestMapping("/index")
     public ModelAndView index() {
         TjobQuery query = new TjobQuery();
+        query.setRows(100);
         ModelAndView mav = new ModelAndView("/admin/job");
         PageResult<TjobVO> pr = null;
         pr = tjobService.query(query);
