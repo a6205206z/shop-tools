@@ -1,26 +1,30 @@
 <#import "/admin/layout/_layout.html" as layout /> <#macro content>
-<link rel="stylesheet" href="${path}/css/common.css">
-<div class="container-fluid">
-	<hr>
-	<div class="row-fluid">
-		<div class="span12">
-			<div class="widget-box">
-				<div class="widget-title">
-					<span class="icon"><i class="icon-th"></i></span>
-					<h5>日志详情</h5>
-				</div>
-					<#if getLogs??>
-					<div id="logDiv">
-						<textarea style="width: 100%; height: 400px">${getLogs}</textarea>
-						<br /> <a style="float: right"
-							href="javascript:window.location.href=window.location.href;"
-							class="btn btn-primary btn6 mr10">刷新</a>
+	<div class="container-fluid">
+		<hr>
+		<div class="row-fluid">
+			<div class="span12">
+				<div class="widget-box">
+					<div class="widget-title">
+						<span class="icon"><i class="icon-th"></i></span>
+						<h5>任务列表</h5>
 					</div>
-					<#else>
-					<h1>该日志文件不存在!!</h1>
-					</#if>
+					<div class="widget-content nopadding">
+
+							<div class="chat-messages" id="chat-messages">
+								<#if getLogs??>
+									<textarea style="width: 98%;height: 90%">${getLogs}</textarea>
+									<#else>
+										<h1>该日志文件不存在!!</h1>
+								</#if>
+							</div>
+							<div class="chat-message well">
+								<a href="javascript:window.location.href=window.location.href;" class="btn btn-success">刷新</a>
+
+							</div>
+
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
 </#macro> <#assign content = content in layout /> <@layout.doLayout />
