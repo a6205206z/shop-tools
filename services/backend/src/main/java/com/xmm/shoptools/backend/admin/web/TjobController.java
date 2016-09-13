@@ -22,10 +22,10 @@ public class TjobController extends BaseAction {
 	//job后台页
     @RequestMapping("/index")
     public ModelAndView index() {
+        PageResult<TjobVO> pr = null;
         TjobQuery query = new TjobQuery();
         query.setRows(Integer.MAX_VALUE);
         ModelAndView mav = new ModelAndView("/admin/job");
-        PageResult<TjobVO> pr = null;
         pr = tjobService.query(query);
         mav.addObject("pr", pr);
         return mav;

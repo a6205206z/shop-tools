@@ -44,13 +44,29 @@
 							<#if pr?? && pr.rows?? && pr.rows?size &gt; 0> <#list pr.rows as ditems>
 							<tr>
 								<td>${ditems.date!}</td>
-								<td><a href="${layout.path}/ditems/index?shopid=${ditems.shopid!}&date=${ditems.date!}">${ditems.shopid!}</a></td>
+								<td>${ditems.shopid!}</td>
+								<td>${ditems.numiid!}</td>
 								<td>${ditems.title!}</td>
-								<td>${ditems.creditScore!}</td>
-								<td><img alt="暂无" src="${ditems.creditLevel!}"></td>
-								<td>${ditems.creditTotalNum!}</td>
-								<td>${ditems.creditGoodNum!}</td>
-								<td>${ditems.rating!}</td>
+								<td>${ditems.itemUrl!}</td>
+								<td>${ditems.picUrl!}</td>
+								<td>${ditems.rcid!}</td>
+								<td>${ditems.cid!}</td>
+								<td>${ditems.markerPrice!}</td>
+								<td>${ditems.price!}</td>
+								<td>${ditems.postFee!}</td>
+								<td>${ditems.soldTotalCount!}</td>
+								<td>${ditems.confirmGoodsCount!}</td>
+								<td>${ditems.totalRatedCount!}</td>
+								<td>${ditems.totalSales!}</td>
+								<td>${ditems.stock!}</td>
+								<td>${ditems.sellableQuantity!}</td>
+								<td>${ditems.skuStock!}</td>
+								<td>${ditems.brandName!}</td>
+								<td>${ditems.listTime! ?datetime}</td>
+								<td>${ditems.delistTime! ?datetime}</td>
+								<td>${ditems.addTime==null?string("?datetime","")}</td>
+								<td>${ditems.isDelisting!}</td>
+								<td>${ditems.rated!}</td>
 								<td>${ditems.updated! ?datetime}</td>
 							</tr>
 							</#list> </#if>
