@@ -35,7 +35,11 @@
 								<td>${dshops.creditTotalNum!}</td>
 								<td>${dshops.creditGoodNum!}</td>
 								<td>${dshops.rating!}</td>
-								<td>${dshops.updated! ?datetime}</td>
+								<td>
+								<#if dshops.updated ??>
+										${dshops.updated ?datetime}
+								</#if>
+								</td>
 							</tr>
 							</#list> </#if>
 						</tbody>
