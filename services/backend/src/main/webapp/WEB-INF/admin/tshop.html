@@ -1,240 +1,68 @@
-<#include "/admin/c.html" />
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<link id="themeStyle" rel="stylesheet" type="text/css" href="${path}/js/easyui/themes/default/easyui.css">
-<link rel="stylesheet" type="text/css" href="${path}/js/easyui/themes/icon.css">
-<link rel="stylesheet" type="text/css" href="${path}/js/easyui/themes/color.css">  
-<script type="text/javascript" src="${path}/js/easyui/jquery.min.js"></script>
-<script type="text/javascript" src="${path}/js/easyui/jquery.easyui.min.js"></script>
-<title>抓取店铺管理页</title>
-<script type="text/javascript">
-	$(function() {
-		var tshopDatagrid = $("#tshop-datagrid");
-		var edittshopDialog = $("#edittshopDialog");
-		var edittshopForm = $("#edittshopForm");
-		
-		//JS操作方法
-		var cmdObj = {
-			refresh: function(){
-				tshopDatagrid.datagrid("reload");
-			},
-			create:function(){
-				edittshopForm.form("reset");
-				$("#dotype").val('create');
-				edittshopDialog.dialog("open");
-			},
-			edit:function(){
-				$("#dotype").val('edit');
-				edittshopHadel();
-			},
-			del:function(){
-				var row = tshopDatagrid.datagrid("getSelected");
-				if(row){
-					$.messager.confirm('确认对话框', "您确定禁用“"+row.nick+"”店铺吗？", function(r){
-						if (r){
-							var id = row.id;
-							$.post("${path}/ajax/tshop/disable",{'id':id},function(data){
-								if(data.success){
-									$.messager.alert('友情提示',data.message, 'info',function(){
-										tshopDatagrid.datagrid("reload");
-									});
-								}else{
-									$.messager.alert('友情提示',data.message, 'error');
-								}
-							});
-						}
-					});
-				}else{
-					$.messager.alert('友情提示','您还未选择任何数据行!', 'info');
-				}
-			},
-			savetshop:function(){
-				/*参数检查*/
-				$.ajax({
-				     type: 'POST',
-				     url: "${path}/ajax/tshop/editTshops" ,
-				     data: edittshopForm.serialize(),
-				     cache:false,
-				     dataType:'json',  
-				     success: function(data){
-				    	 data = eval(data);
-						 if(data.success){
-							edittshopDialog.dialog("close");
-							$.messager.alert("温馨提示",data.message,"info",function(){
-								tshopDatagrid.datagrid("load");
-							});
-						 }else{
-							$.messager.alert("温馨提示",data.message,"info",function(){});
-						 }
-				     }
-				});
-			},
-			canceltshop:function(){
-				edittshopDialog.dialog("close");
-			}
-		}
-		//表格数据填充
-		tshopDatagrid.datagrid({
-			url : "${path}/ajax/tshop/list",
-			title : "店铺列表",
-			fitColumns : true,
-			rownumbers : true,
-			singleSelect : true,
-			pagination : true,
-			toolbar:"#tshop-toolbar",
-			pageSize:20,
-			border:false,
-			columns : [[
-						{field : 'shopid',title : '店铺ID',width : 40},
-			            {field : 'sellerId',title : '卖家会员ID',width : 50},
-			            {field : 'securityId',title : '加密后的会员ID',width : 40},
-			            {field : 'nick',title : '卖家昵称',width : 35},
-			            {field : 'cid',title : '店铺所属的类目编号',width : 35},
-			            {field : 'storeUrl',title : '店铺地址',width : 35},
-			            {field : 'category',title : '主营类目',width : 35},
-			            {field : 'type',title : '用户类型',width : 35},
-			            {field : 'location',title : '所在地区',width : 35},
-			            {field : 'serviceNumber',title : '客服电话',width : 35},
-			            {field : 'storeDate',title : '开店时间',width : 35},
-			            {field : 'status',title : '状态',width : 35,formatter:statusFormatter},
-			            {field : 'lastTimes',title : '最新抓取批次',width : 35},
-			            {field : 'created',title : '创建时间',width : 35},
-			            {field : 'updated',title : '更新时间',width : 35}
-			          ]],
-			onLoadSuccess :function(data){
-				$(this).datagrid('selectRow', 0);
-			}
-		});
-	
-		// 5、对页面所有按钮，统一监听
-		$("a[data-cmd]").on("click", function() {
-			// 获取对应按钮的cmd信息 
-			var cmd = $(this).data("cmd");
-			if (cmd) {
-				// 调用命令对象的方法做事情
-				cmdObj[cmd]();
-			}
-		});
-		
-	});
-	
-	//编辑店铺
-	function edittshopHadel() {
-		var rowData = $("#tshop-datagrid").datagrid("getSelected");
-		if (!rowData) {
-			$.messager.alert("温馨提示", "请选中一行数据", "info");
-			return;
-		}
-		$("#edittshopForm").form("reset");
-		$("#edittshopForm").form("load", rowData);
-		$("#edittshopDialog").dialog("open");
-	}
-	
-	 //格式化
-	   function statusFormatter(val, row){
-		   return val == '1' ? "<span style='color:red'>禁用</span>" : "<span style='color:green'>正常</span>";
-	   }
-</script>
-</head>
-<body>
-	<table fit="true" id="tshop-datagrid"></table>
-
-	<div id="tshop-toolbar" style="padding:5px;height:auto">
-		<div style="margin-bottom:5px">
-			<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true"  data-cmd="create">添加</a>
-			<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" data-cmd="edit">编辑</a>
-			<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" data-cmd="del">删除</a>
-			<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-reload" plain="true" data-cmd="refresh">刷新</a>
+<#import "/admin/layout/_layout.html" as layout /> <#macro content>
+<div class="container-fluid">
+	<hr>
+	<div class="row-fluid">
+		<div class="span12">
+			<div class="widget-box">
+				<div class="widget-title">
+					<span class="icon"><i class="icon-th"></i></span>
+					<h5>注册店铺管理页</h5>
+				</div>
+				<div class="widget-content nopadding">
+					<table class="table table-bordered data-table"
+						id="job-datagrid">
+						<thead>
+							<tr>
+								<th>店铺ID</th>
+								<th>卖家会员ID</th>
+								<th>加密后的会员ID</th>
+								<th>卖家昵称</th>
+								<th>店铺所属的类目编号</th>
+								<th>店铺地址</th>
+								<th>主营类目</th>
+								<th>用户类型</th>
+								<th>所在地区</th>
+								<th>客服电话</th>
+								<th>开店时间</th>
+								<th>状态</th>
+								<th>最新抓取批次</th>
+								<th>创建时间</th>
+								<th>更新时间</th>
+							</tr>
+						</thead>
+						<tbody>
+							<#if pr?? && pr.rows?? && pr.rows?size &gt; 0> <#list pr.rows as tshops>
+							<tr>
+								<td>${tshops.shopid!}</td>
+								<td>${tshops.sellerId!}</td>
+								<td>${tshops.securityId!}</td>
+								<td>${tshops.nick!}</td>
+								<td>${tshops.cid!}</td>
+								<td>${tshops.storeUrl!}</td>
+								<td>${tshops.category!}</td>
+								<td>${tshops.type!}</td>
+								<td>${tshops.location!}</td>
+								<td>${tshops.serviceNumber!}</td>
+								<td>${tshops.storeDate!}</td>
+								<td>${tshops.status!}</td>
+								<td>${tshops.lastTimes!}</td>
+								<td>
+									<#if tshops.created ??>
+										${tshops.created ?datetime}
+									</#if>
+								</td>
+								<td>
+									<#if tshops.updated ??>
+										${tshops.updated ?datetime}
+									</#if>
+								</td>
+							</tr>
+							</#list> </#if>
+						</tbody>
+					</table>
+				</div>
+			</div>
 		</div>
 	</div>
-	
-	<!-- 添加店铺-->
-	<div id="edittshopDialog" class="easyui-dialog" style="width: 380px; height: 450px; padding: 10px" data-options="title:'添加/编辑店铺信息',buttons:'#search-btns2',modal:true,closed:true" >
-		<form id="edittshopForm" method="post">
-			<input id="dotype" name="dotype" type="hidden">
-			<input id="id" name="id" type="hidden">
-			<table align="center" style="margin-top: 15px;">
-				<tr>
-					<td>店铺ID</td>
-					<td>
-						<input name="shopid" type="text" maxlength="64" style="width:247px"/>
-					</td>
-				</tr>
-				<tr>
-					<td>卖家会员ID</td>
-					<td>
-						<input name="sellerId" type="text" maxlength="64" style="width:247px"/>
-					</td>
-				</tr>
-				<tr>
-					<td>加密后的会员ID</td>
-					<td>
-						<input name="securityId" type="text" maxlength="64" style="width:247px"/>
-					</td>
-				</tr>
-				<tr>
-					<td>卖家昵称</td>
-					<td>
-						<input name="nick" type="text" maxlength="64" style="width:247px"/>
-					</td>
-				</tr>
-				<tr>
-					<td>店铺所属的类目编号</td>
-					<td>
-						<input name="cid" type="text" maxlength="64" style="width:247px"/>
-					</td>
-				</tr>
-				<tr>
-					<td>店铺地址</td>
-					<td>
-						<input name="storeUrl" type="text" maxlength="64" style="width:247px"/>
-					</td>
-				</tr>
-				<tr>
-					<td>主营类目</td>
-					<td>
-						<input name="category" type="text" maxlength="64" style="width:247px"/>
-					</td>
-				</tr>
-				<tr>
-					<td>用户类型</td>
-					<td>
-					<select name="type" style="width:250px;">
-						<option value="0">--------------请选择-------------</option>
-						<option value="B">B商家</option>
-						<option value="C">C商家</option>
-					</select> 
-					</td>
-				</tr>
-				<tr>
-					<td>所在地区</td>
-					<td>
-						<input name="location" type="text" maxlength="64" style="width:247px"/>
-					</td>
-				</tr>
-				<tr>
-					<td>客服电话</td>
-					<td>
-						<input name="serviceNumber" type="text" maxlength="64" style="width:247px"/>
-					</td>
-				</tr>
-				<tr>
-					<td>最新抓取批次</td>
-					<td>
-						<input name="lastTimes" type="text" maxlength="64" style="width:247px"/>
-					</td>
-				</tr>
-				<tr>
-					<div id="search-btns2">
-						<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok" data-cmd="savetshop">保存</a>
-						<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" data-cmd="canceltshop">取消</a>
-					</div>
-				</tr>
-			</table>
-		</form>
-	</div>
-
-</body>
-</html>
+</div>
+</#macro> <#assign content = content in layout /> <@layout.doLayout />
