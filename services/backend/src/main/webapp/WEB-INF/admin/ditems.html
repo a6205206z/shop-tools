@@ -17,7 +17,6 @@
 								<th>店铺ID</th>
 								<th>商品ID</th>
 								<th>商品标题</th>
-								<th>商品URL</th>
 								<th>图片链接地址</th>
 								<th>一级类目</th>
 								<th>二级类目</th>
@@ -30,7 +29,6 @@
 								<th>销售额</th>
 								<th>库存</th>
 								<th>可销售库存</th>
-								<th>sku库存明细</th>
 								<th>品牌</th>
 								<th>自动上架时间</th>
 								<th>自动下架时间</th>
@@ -46,9 +44,8 @@
 								<td>${ditems.date!}</td>
 								<td>${ditems.shopid!}</td>
 								<td>${ditems.numiid!}</td>
-								<td>${ditems.title!}</td>
-								<td>${ditems.itemUrl!}</td>
-								<td>${ditems.picUrl!}</td>
+								<td><a target="_blank" href="${ditems.itemUrl!}">${ditems.title!}</a></td>
+								<td><img src="${ditems.picUrl!}" width="30px" /></td>
 								<td>${ditems.rcid!}</td>
 								<td>${ditems.cid!}</td>
 								<td>${ditems.markerPrice!}</td>
@@ -60,7 +57,6 @@
 								<td>${ditems.totalSales!}</td>
 								<td>${ditems.stock!}</td>
 								<td>${ditems.sellableQuantity!}</td>
-								<td>${ditems.skuStock!}</td>
 								<td>${ditems.brandName!}</td>
 								<td>${ditems.listTime! ?datetime}</td>
 								<td>${ditems.delistTime! ?datetime}</td>

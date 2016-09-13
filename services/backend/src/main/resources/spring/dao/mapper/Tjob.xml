@@ -141,7 +141,7 @@
 		select
 		<include refid="commonColumns" />
 		from t_job
-		ORDER BY starttime DESC
+		ORDER BY runid DESC
 		limit #{begin},#{pageSize}
 	</select>
 	
