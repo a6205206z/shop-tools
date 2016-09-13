@@ -19,11 +19,11 @@ public class TjobController extends BaseAction {
     @Autowired
     private TjobService tjobService;
 
-	//后台页
+	//job后台页
     @RequestMapping("/index")
     public ModelAndView index() {
         TjobQuery query = new TjobQuery();
-        query.setRows(100);
+        query.setRows(Integer.MAX_VALUE);
         ModelAndView mav = new ModelAndView("/admin/job");
         PageResult<TjobVO> pr = null;
         pr = tjobService.query(query);
