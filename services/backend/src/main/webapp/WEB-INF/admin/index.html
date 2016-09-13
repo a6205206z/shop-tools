@@ -1,7 +1,24 @@
 <#import "/admin/layout/_layout.html" as layout />
 
 <#macro content>
+    <!--Action boxes-->
+    <div class="container-fluid">
+        <div class="quick-actions_homepage">
+            <ul class="quick-actions">
+                <li class="bg_lb span3"> <a href="${path}/job/index"> <i class="icon-check"></i>任务管理 </a> </li>
+                <li class="bg_lg span3"> <a href="charts.html"> <i class="icon-book"></i> 注册店铺管理</a> </li>
+                <li class="bg_ly "> <a href="widgets.html"> <i class="icon-cog"></i> 爬虫配置 </a> </li>
+                <li class="bg_lo"> <a href="#"> <i class="icon-calendar"></i> 定时任务</a> </li>
+                <!--<li class="bg_ls"> <a href="grid.html"> <i class="icon-fullscreen"></i> Full width</a> </li>-->
+                <!--<li class="bg_lo span3"> <a href="form-common.html"> <i class="icon-th-list"></i> Forms</a> </li>-->
+                <!--<li class="bg_ls"> <a href="buttons.html"> <i class="icon-tint"></i> Buttons</a> </li>-->
+                <!--<li class="bg_lb"> <a href="interface.html"> <i class="icon-pencil"></i>Elements</a> </li>-->
+                <!--<li class="bg_lg"> <a href="calendar.html"> <i class="icon-calendar"></i> Calendar</a> </li>-->
+                <!--<li class="bg_lr"> <a href="error404.html"> <i class="icon-info-sign"></i> Error</a> </li>-->
 
+            </ul>
+        </div>
+        <!--End-Action boxes-->
 </#macro>
 <#assign content = content in layout />
 

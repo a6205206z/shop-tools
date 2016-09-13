@@ -61,20 +61,20 @@
             <!--<li><a href="error500.html">Error 500</a></li>-->
             <!--</ul>-->
             <!--</li>-->
-            <!--<li class="content"> <span>Monthly Bandwidth Transfer</span>-->
-            <!--<div class="progress progress-mini progress-danger active progress-striped">-->
-            <!--<div style="width: 77%;" class="bar"></div>-->
-            <!--</div>-->
-            <!--<span class="percent">77%</span>-->
-            <!--<div class="stat">21419.94 / 14000 MB</div>-->
-            <!--</li>-->
-            <!--<li class="content"> <span>Disk Space Usage</span>-->
-            <!--<div class="progress progress-mini active progress-striped">-->
-            <!--<div style="width: 87%;" class="bar"></div>-->
-            <!--</div>-->
-            <!--<span class="percent">87%</span>-->
-            <!--<div class="stat">604.44 / 4000 MB</div>-->
-            <!--</li>-->
+            <li class="content"> <span>Kakfa状态</span>
+            <div class="progress progress-mini progress-danger active progress-striped">
+            <div style="width: 77%;" class="bar"></div>
+            </div>
+            <span class="percent">77%</span>
+            <div class="stat"></div>
+            </li>
+            <li class="content"> <span>数据库使用情况</span>
+            <div class="progress progress-mini active progress-striped">
+            <div style="width: 3%;" class="bar"></div>
+            </div>
+            <span class="percent">3%</span>
+            <div class="stat">604.44 / 2 T</div>
+            </li>
         </ul>
     </div>
 </#macro>
@@ -104,14 +104,16 @@
     <div id="content">
         <!--breadcrumbs-->
         <div id="content-header">
-            <div id="breadcrumb"> <a href="index" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>${page_name}</a></div>
+            <div id="breadcrumb"> <a href="${path}/home/index" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>${page_name}</a></div>
         </div>
         <!--End-breadcrumbs-->
         <@content />
     </div>
     <!--Footer-part-->
     <div class="row-fluid">
-        <div id="footer" class="span12"> 2013 &copy; Matrix Admin. Brought to you by <a href="http://themedesigner.in">Themedesigner.in</a> </div>
+        <div id="footer" class="span12">
+            ©2010～2016 All rights reserved 星密码 版权所有，并保留所有权利。
+        </div>
     </div>
     <!--end-Footer-part-->
     <script src="${path}/matrix/js/jquery.min.js"></script>
