@@ -23,8 +23,8 @@ public class DshopController extends BaseAction {
     @RequestMapping("/index")
     public ModelAndView index(DshopQuery query) {
         PageResult<DshopVO> pr = null;
-        query.setRows(Integer.MAX_VALUE);
         if(query!=null&&query.getRunid()!=null){
+            query.setRows(Integer.MAX_VALUE);
             pr = dshopService.query(query);
         }
         ModelAndView mav = new ModelAndView("/admin/dshop");

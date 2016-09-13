@@ -27,9 +27,8 @@
 						<tbody>
 							<#if pr?? && pr.rows?? && pr.rows?size &gt; 0> <#list pr.rows as dshops>
 							<tr>
-								<td>
 								<td>${dshops.date!}</td>
-								<td>${dshops.shopid!}</td>
+								<td><a href="${layout.path}/ditems/index?shopid=${dshops.shopid!}&date=${dshops.date!}">${dshops.shopid!}</a></td>
 								<td>${dshops.title!}</td>
 								<td>${dshops.creditScore!}</td>
 								<td><img alt="暂无" src="${dshops.creditLevel!}"></td>
