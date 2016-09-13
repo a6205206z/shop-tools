@@ -1,7 +1,5 @@
 package com.xmm.backend;
 
-import static org.junit.Assert.*;
-
 import java.util.List;
 
 import org.junit.Test;
@@ -29,17 +27,17 @@ public class TjobTest extends BaseJunit4Test {
     public void testName() throws Exception {
 //        Tjob tjob = tjobDao.get(1473091200);
         List<Tjob> rows = tjobDao.query(new TjobQuery());
-        for (Tjob tjob : rows) {
+//        for (Tjob tjob : rows) {
 //            System.err.println(tjob.getStats());
-            System.err.println(tjob.getLogfile());
-        }
+//            System.err.println(tjob.getLogfile());
+//        }
     }
     
     @Test
     public void testName2() throws Exception {
         
-        String get = HttpUtil.sendGet(ResUrl.LOG_IP+ResUrl.LOG_URL, "name=TaobaoShopProductSpider-1473264000.log", "UTF-8");
-        System.out.println("----------------get"+get);
+//        String get = HttpUtil.sendGet(ResUrl.LOG_IP+ResUrl.LOG_URL, "name=TaobaoShopProductSpider-1473264000.log", "UTF-8");
+//        System.out.println("----------------get"+get);
     }
 }
 

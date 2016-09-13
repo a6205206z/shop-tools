@@ -74,10 +74,10 @@ public class DshopVO extends BaseVo{
 	
     @Override
     public String toString() {
-        return "Dshop [date=" + date + ", shopid=" + shopid + ", title=" + title + ", creditScore="
-               + creditScore + ", creditLevel=" + creditLevel + ", creditTotalNum="
-               + creditTotalNum + ", creditGoodNum=" + creditGoodNum + ", rating=" + rating
-               + ", updated=" + updated + "]";
+        return "DshopVO [date=" + date + ", shopid=" + shopid + ", title=" + title
+               + ", creditScore=" + creditScore + ", creditLevel=" + creditLevel
+               + ", creditTotalNum=" + creditTotalNum + ", creditGoodNum=" + creditGoodNum
+               + ", rating=" + rating + ", updated=" + updated + "]";
     }
 	
 }

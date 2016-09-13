@@ -189,7 +189,7 @@ public class DitemsVO extends BaseVo {
 	
     @Override
     public String toString() {
-        return "Ditems [date=" + date + ", shopid=" + shopid + ", numiid=" + numiid + ", title="
+        return "DitemsVO [date=" + date + ", shopid=" + shopid + ", numiid=" + numiid + ", title="
                + title + ", itemUrl=" + itemUrl + ", picUrl=" + picUrl + ", rcid=" + rcid
                + ", cid=" + cid + ", markerPrice=" + markerPrice + ", price=" + price
                + ", postFee=" + postFee + ", soldTotalCount=" + soldTotalCount

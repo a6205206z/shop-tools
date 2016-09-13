@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/dshop")
 public class DshopController extends BaseAction {
 
-    //日志详情查看后台页
+    //店铺详情查看后台页
     @RequestMapping("/index")
     public ModelAndView index(Long runid) {
         ModelAndView mav = new ModelAndView("/admin/dshop");

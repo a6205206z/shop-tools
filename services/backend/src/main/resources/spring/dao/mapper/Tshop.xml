@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="Tshop">
+	<resultMap id="tshopResultMap" type="com.xmm.shoptools.backend.entity.Tshop">
+		<result column="id" property="id" />
+		<result column="shopid" property="shopid" />
+		<result column="seller_id" property="sellerId" />
+		<result column="security_id" property="securityId" />
+		<result column="nick" property="nick" />
+		<result column="cid" property="cid" />
+		<result column="store_url" property="storeUrl" />
+		<result column="category" property="category" />
+		<result column="type" property="type" />
+		<result column="location" property="location" />
+		<result column="service_number" property="serviceNumber" />
+		<result column="store_date" property="storeDate" />
+		<result column="status" property="status" />
+		<result column="last_times" property="lastTimes" />
+		<result column="created" property="created" />
+		<result column="updated" property="updated" />
+	</resultMap>
+
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="commonColumns">
+		 id ,
+		 shopid ,
+		 seller_id ,
+		 security_id ,
+		 nick ,
+		 cid ,
+		 store_url ,
+		 category ,
+		 type ,
+		 location ,
+		 service_number ,
+		 store_date ,
+		 status ,
+		 last_times ,
+		 created ,
+		 updated 
+	</sql>
+
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.xmm.shoptools.backend.entity.Tshop">
+		insert into t_shop (
+			id,
+			shopid ,
+			seller_id ,
+			security_id ,
+			nick ,
+			cid ,
+			store_url ,
+			category ,
+			type ,
+			location ,
+			service_number ,
+			store_date ,
+			status ,
+			last_times ,
+			created ,
+			updated 
+		)values(
+			#{id},
+			#{shopid},
+			#{sellerId},
+			#{securityId},
+			#{nick},
+			#{cid},
+			#{storeUrl},
+			#{category},
+			#{type},
+			#{location},
+			#{serviceNumber},
+			#{storeDate},
+			#{status},
+			#{lastTimes},
+			#{created},
+			#{updated}
+		)
+	</insert>
+
+	<update id="update" parameterType="com.xmm.shoptools.backend.entity.Tshop">
+		update t_shop
+		<set>
+			<if test="shopid != null">
+				shopid=#{shopid},
+			</if>
+			<if test="sellerId != null">
+				seller_id=#{sellerId},
+			</if>
+			<if test="securityId != null">
+				security_id=#{securityId},
+			</if>
+			<if test="nick != null">
+				nick=#{nick},
+			</if>
+			<if test="cid != null">
+				cid=#{cid},
+			</if>
+			<if test="storeUrl != null">
+				store_url=#{storeUrl},
+			</if>
+			<if test="category != null">
+				category=#{category},
+			</if>
+			<if test="type != null">
+				type=#{type},
+			</if>
+			<if test="location != null">
+				location=#{location},
+			</if>
+			<if test="serviceNumber != null">
+				service_number=#{serviceNumber},
+			</if>
+			<if test="storeDate != null">
+				store_date=#{storeDate},
+			</if>
+			<if test="status != null">
+				status=#{status},
+			</if>
+			<if test="lastTimes != null">
+				last_times=#{lastTimes},
+			</if>
+			<if test="created != null">
+				created=#{created},
+			</if>
+			<if test="updated != null">
+				updated=#{updated}
+			</if>
+		</set>
+		where id=#{id}
+	</update>
+
+	<update id="delete" parameterType="long">
+		delete from t_shop
+		where id=#{id}
+	</update>
+
+	<select id="select" resultMap="tshopResultMap"
+		parameterType="String">
+		select
+		<include refid="commonColumns" />
+		from t_shop where id=#{id}
+	</select>
+
+	<sql id="dynamicWhere">
+		<if test="id != null">
+			and id=#{id}
+		</if>
+		<if test="shopid != null">
+			and shopid=#{shopid}
+		</if>
+		<if test="sellerId != null">
+			and seller_id=#{sellerId}
+		</if>
+		<if test="securityId != null">
+			and security_id=#{securityId}
+		</if>
+		<if test="nick != null">
+			and nick=#{nick}
+		</if>
+		<if test="cid != null">
+			and cid=#{cid}
+		</if>
+		<if test="storeUrl != null">
+			and store_url=#{storeUrl}
+		</if>
+		<if test="category != null">
+			and category=#{category}
+		</if>
+		<if test="type != null">
+			and type=#{type}
+		</if>
+		<if test="location != null">
+			and location=#{location}
+		</if>
+		<if test="serviceNumber != null">
+			and service_number=#{serviceNumber}
+		</if>
+		<if test="storeDate != null">
+			and store_date=#{storeDate}
+		</if>
+		<if test="status != null">
+			and status=#{status}
+		</if>
+		<if test="lastTimes != null">
+			and last_times=#{lastTimes}
+		</if>
+		<if test="created != null">
+			and created=#{created}
+		</if>
+		<if test="updated != null">
+			and updated=#{updated}
+		</if>
+	</sql>
+
+	<select id="cntByMap" resultType="int">
+		select count(*) from t_shop where 1=1
+		<include refid="dynamicWhere" />
+	</select>
+
+	<select id="getByMap" resultType="long">
+		select id from t_shop where 1=1
+		<include refid="dynamicWhere" />
+		<if test="max_id != null">
+			and id &gt; #{max_id}
+		</if>
+		<if test="sortColumns != null">
+			ORDER BY ${sortColumns}
+		</if>
+		<if test="max_id != null">
+			limit #{size}
+		</if>
+		<if test="start != null">
+			limit #{start}, #{size}
+		</if>
+	</select>
+
+	<select id="getListByMap" resultMap="tshopResultMap">
+		select * from t_shop where 1=1
+		<include refid="dynamicWhere" />
+		<if test="max_id != null">
+			and id &gt; #{max_id}
+		</if>
+		<if test="sortColumns != null">
+			ORDER BY ${sortColumns}
+		</if>
+		<if test="max_id != null">
+			limit #{size}
+		</if>
+		<if test="start != null">
+			limit #{start}, #{size}
+		</if>
+	</select>
+	
+	<select id="query" resultMap="tshopResultMap" parameterType="com.xmm.shoptools.backend.vo.TshopQuery">
+		select
+		<include refid="commonColumns" />
+		from t_shop
+		ORDER BY updated DESC
+		limit #{begin},#{pageSize}
+	</select>
+	
+	<select id="count" parameterType="com.xmm.shoptools.backend.vo.TshopQuery" resultType="int">
+		select count(*) from t_shop
+	</select>
+</mapper>
