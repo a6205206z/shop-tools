@@ -13,28 +13,18 @@
 						id="job-datagrid">
 						<thead>
 							<tr>
-								<th>数据抓取日期</th>
-								<th>店铺ID</th>
-								<th>商品ID</th>
-								<th>商品标题</th>
-								<th>图片链接地址</th>
-								<th>一级类目</th>
-								<th>二级类目</th>
-								<th>市场价格</th>
-								<th>销售价格</th>
+								<th>批次</th>
+								<th>商品ID(店铺ID)</th>
+								<th>图片</th>
+								<th>类目</th>
+								<th>价格(市场价格)</th>
 								<th>邮费</th>
-								<th>近30天交易成功数</th>
-								<th>近30天确认收货数</th>
+								<th>成功数/收货数(30days)</th>
 								<th>累计评论数</th>
 								<th>销售额</th>
-								<th>库存</th>
-								<th>可销售库存</th>
-								<th>品牌</th>
+								<th>库存(可销)</th>
 								<th>自动上架时间</th>
-								<th>自动下架时间</th>
-								<th>商品创建时间</th>
 								<th>是否下架</th>
-								<th>商品动态评分(天猫)</th>
 								<th>更新时间</th>
 							</tr>
 						</thead>
@@ -42,27 +32,21 @@
 							<#if pr?? && pr.rows?? && pr.rows?size &gt; 0> <#list pr.rows as ditems>
 							<tr>
 								<td>${ditems.date!}</td>
-								<td>${ditems.shopid!}</td>
-								<td>${ditems.numiid!}</td>
-								<td><a target="_blank" href="${ditems.itemUrl!}">${ditems.title!}</a></td>
+								<td>
+									${ditems.numiid!}(${ditems.shopid!})
+									<br/>
+									<a target="_blank" href="${ditems.itemUrl!}">${ditems.title!}</a>
+								</td>
 								<td><img src="${ditems.picUrl!}" width="30px" /></td>
-								<td>${ditems.rcid!}</td>
-								<td>${ditems.cid!}</td>
-								<td>${ditems.markerPrice!}</td>
-								<td>${ditems.price!}</td>
+								<td>${ditems.rcid!} &gt; ${ditems.cid!}</td>
+								<td>${ditems.price!}(${ditems.markerPrice!})</td>
 								<td>${ditems.postFee!}</td>
-								<td>${ditems.soldTotalCount!}</td>
-								<td>${ditems.confirmGoodsCount!}</td>
+								<td>${ditems.soldTotalCount!}/${ditems.confirmGoodsCount!}</td>
 								<td>${ditems.totalRatedCount!}</td>
 								<td>${ditems.totalSales!}</td>
-								<td>${ditems.stock!}</td>
-								<td>${ditems.sellableQuantity!}</td>
-								<td>${ditems.brandName!}</td>
+								<td>${ditems.stock!}(${ditems.sellableQuantity!})</td>
 								<td>${ditems.listTime! ?datetime}</td>
-								<td>${ditems.delistTime! ?datetime}</td>
-								<td>${ditems.addTime==null?string("?datetime","")}</td>
 								<td>${ditems.isDelisting!}</td>
-								<td>${ditems.rated!}</td>
 								<td>${ditems.updated! ?datetime}</td>
 							</tr>
 							</#list> </#if>
