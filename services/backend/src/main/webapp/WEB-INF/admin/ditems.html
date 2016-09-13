@@ -45,9 +45,17 @@
 								<td>${ditems.totalRatedCount!}</td>
 								<td>${ditems.totalSales!}</td>
 								<td>${ditems.stock!}(${ditems.sellableQuantity!})</td>
-								<td>${ditems.listTime! ?datetime}</td>
+								<td>
+									<#if ditems.listTime ??>
+										${ditems.listTime ?datetime}
+									</#if>
+								</td>
 								<td>${ditems.isDelisting!}</td>
-								<td>${ditems.updated! ?datetime}</td>
+								<td>
+									<#if ditems.updated ??>
+										${ditems.updated ?datetime}
+									</#if>
+								</td>
 							</tr>
 							</#list> </#if>
 						</tbody>
