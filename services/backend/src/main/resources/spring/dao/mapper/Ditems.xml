@@ -346,6 +346,6 @@
 	</select>
 	
 	<select id="dateCount" resultType="java.util.HashMap">
-		select date,count(0) from d_items group by date order by date
+		select date,count(0) as value from d_items group by date order by date
 	</select>
 </mapper>

@@ -39,7 +39,7 @@ public class DitemsService{
         return pr;
     }
     
-    public List<Map<Long, Integer>> dateCount(){
+    public Map<Long, Integer> dateCount(){
         return ditemsDao.dateCount();
     }
 
