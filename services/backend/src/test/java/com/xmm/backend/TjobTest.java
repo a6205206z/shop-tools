@@ -26,7 +26,7 @@ public class TjobTest extends BaseJunit4Test {
     @Test
     public void testName() throws Exception {
 //        Tjob tjob = tjobDao.get(1473091200);
-        List<Tjob> rows = tjobDao.query(new TjobQuery());
+//        List<Tjob> rows = tjobDao.query(new TjobQuery());
 //        for (Tjob tjob : rows) {
 //            System.err.println(tjob.getStats());
 //            System.err.println(tjob.getLogfile());

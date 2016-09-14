@@ -1,13 +1,15 @@
 package com.xmm.shoptools.backend.admin.web;
 
-import com.xmm.shoptools.backend.service.DitemsService;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.Map;
+import com.xmm.shoptools.backend.service.DitemsService;
 
 @Controller
 @Scope("prototype")
@@ -18,17 +20,18 @@ public class HomePage {
 
 	@RequestMapping(value = "index")
 	public ModelAndView index() {
-		Map<Long,Integer> dateCount = ditemsService.dateCount();
+	    List<Map<Long,Integer>> dateCount = ditemsService.dateCount();
 		StringBuilder sb = new StringBuilder();
 		sb.append("[");
 
-//		for (Map.Entry<Long, Integer> entry : dateCount.entrySet()) {
-//			sb.append(String.format("[%d,%d],",entry.getKey(),entry.getValue()));
-//		}
+		 for (Map<Long, Integer> map : dateCount) {
+		     sb.append(String.format("[%d,%d],",map.get("date"),map.get("value")));   
+		 }
 
 		sb.append("]");
 
 		ModelAndView model = new ModelAndView("/admin/index");
+		model.addObject("dateCount", sb.toString());
 		return  model;
 	}
 }
