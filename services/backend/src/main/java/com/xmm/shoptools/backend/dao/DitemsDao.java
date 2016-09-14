@@ -1,5 +1,6 @@
 package com.xmm.shoptools.backend.dao;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
@@ -21,6 +22,10 @@ public class DitemsDao  extends BaseDaoImpl<Ditems>{
 
     public Integer count(DitemsQuery query) {
         return super.getSqlSession().selectOne("Ditems.count", query);
+    }
+
+    public List<Map<Long, Integer>> dateCount() {
+        return super.getSqlSession().selectList("Ditems.dateCount");
     }
 
 }

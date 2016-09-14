@@ -64,7 +64,7 @@ public class TshopService{
     }
     
     
-    private Tshop getTshop(String id) {
+    public Tshop getTshop(String id) {
         if(id!=null){
             return tshopDao.getWhitOutCache(id);
         }
