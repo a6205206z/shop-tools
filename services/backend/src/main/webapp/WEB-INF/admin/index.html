@@ -5,10 +5,11 @@
     <div class="container-fluid">
         <div class="quick-actions_homepage">
             <ul class="quick-actions">
-                <li class="bg_lb span3"> <a href="${layout.path}/job/index"> <i class="icon-check"></i>任务管理 </a> </li>
-                <li class="bg_lg span3"> <a href="${layout.path}/tshop/index"> <i class="icon-book"></i> 注册店铺管理</a> </li>
+                <li class="bg_lb"> <a href="${layout.path}/job/index"> <i class="icon-check"></i>任务管理 </a> </li>
+                <li class="bg_lg"> <a href="${layout.path}/tshop/index"> <i class="icon-book"></i> 注册店铺管理</a> </li>
                 <li class="bg_ly "> <a href="${layout.path}/spider/cfg"> <i class="icon-cog"></i> 爬虫配置 </a> </li>
                 <li class="bg_lo"> <a href="#"> <i class="icon-calendar"></i> 定时任务</a> </li>
+                <li class="bg_lo"> <a href="#"> <i class="icon-pencil"></i> 手动任务</a> </li>
                 <!--<li class="bg_ls"> <a href="grid.html"> <i class="icon-fullscreen"></i> Full width</a> </li>-->
                 <!--<li class="bg_lo span3"> <a href="form-common.html"> <i class="icon-th-list"></i> Forms</a> </li>-->
                 <!--<li class="bg_ls"> <a href="buttons.html"> <i class="icon-tint"></i> Buttons</a> </li>-->
@@ -19,7 +20,76 @@
             </ul>
         </div>
         <!--End-Action boxes-->
+        <!--Chart-box-->
+        <div class="row-fluid">
+            <div class="widget-box">
+                <div class="widget-title bg_lg"><span class="icon"><i class="icon-signal"></i></span>
+                    <h5>每日采集数据分析</h5>
+                </div>
+                <div class="widget-content" >
+                    <div class="row-fluid">
+                        <div class="span9">
+                            <div class="chart"></div>
+                        </div>
+                        <div class="span3">
+                            <ul class="site-stats">
+                                <li class="bg_lh"><i class="icon-user"></i> <strong>2540</strong> <small>Total Users</small></li>
+                                <li class="bg_lh"><i class="icon-plus"></i> <strong>120</strong> <small>New Users </small></li>
+                                <li class="bg_lh"><i class="icon-shopping-cart"></i> <strong>656</strong> <small>Total Shop</small></li>
+                                <li class="bg_lh"><i class="icon-tag"></i> <strong>9540</strong> <small>Total Orders</small></li>
+                                <li class="bg_lh"><i class="icon-repeat"></i> <strong>10</strong> <small>Pending Orders</small></li>
+                                <li class="bg_lh"><i class="icon-globe"></i> <strong>8540</strong> <small>Online Orders</small></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</#macro>
+<#macro script>
+    <script src="${layout.path}/matrix/js/jquery.flot.min.js"></script>
+    <script type="text/javascript">
+        // === Prepare the chart data ===/
+        var data = [[1, 2],[2, 1],[3, 2],[4, 1],[5, 2]];
+
+        // === Make chart === //
+        var plot = $.plot($(".chart"),
+                [ { data: data, label: "单品数", color: "#ee7951"}
+                    ], {
+                    series: {
+                        lines: { show: true },
+                        points: { show: true }
+                    },
+                    grid: { hoverable: true, clickable: true },
+                });
+
+        // === Point hover in chart === //
+        var previousPoint = null;
+        $(".chart").bind("plothover", function (event, pos, item) {
+
+            if (item) {
+                if (previousPoint != item.dataIndex) {
+                    previousPoint = item.dataIndex;
+
+                    $('#tooltip').fadeOut(200,function(){
+                        $(this).remove();
+                    });
+                    var x = item.datapoint[0].toFixed(2),
+                            y = item.datapoint[1].toFixed(2);
+
+                    maruti.flot_tooltip(item.pageX, item.pageY,item.series.label + " of " + x + " = " + y);
+                }
+
+            } else {
+                $('#tooltip').fadeOut(200,function(){
+                    $(this).remove();
+                });
+                previousPoint = null;
+            }
+        });
+    </script>
 </#macro>
 <#assign content = content in layout />
+<#assign script = script in layout />
 
 <@layout.doLayout />
