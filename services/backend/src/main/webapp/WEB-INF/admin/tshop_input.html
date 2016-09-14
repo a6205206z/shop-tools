@@ -1,0 +1,99 @@
+<#import "/admin/layout/_layout.html" as layout /> <#macro content>
+<div class="widget-box">
+	<div class="widget-title">
+		<span class="icon"> <i class="icon-align-justify"></i>
+		</span>
+		<h5>
+		<#if tshop?? && tshop.id ??>
+			编辑注册店铺
+		<#else>
+			新增注册店铺
+		</#if>
+		</h5>
+	</div>
+	<div class="widget-content nopadding">
+		<form action="${layout.path}/tshop/editTshops" method="post" class="form-horizontal">
+			<input name="id" value="<#if tshop??>${tshop.id!}</#if>" type="hidden">
+			<div class="control-group">
+				<label class="control-label">店铺ID :</label>
+				<div class="controls">
+					<input name="shopid" value="<#if tshop??>${tshop.shopid!}</#if>" type="text" class="span11" placeholder="店铺ID" />
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">卖家会员ID :</label>
+				<div class="controls">
+					<input name="sellerId" value="<#if tshop??>${tshop.sellerId!}</#if>" type="text" class="span11" placeholder="卖家会员ID" />
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">加密后的会员ID</label>
+				<div class="controls">
+					<input name="securityId" value="<#if tshop??>${tshop.securityId!}</#if>" type="text" class="span11" placeholder="加密后的会员ID" />
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">卖家昵称 :</label>
+				<div class="controls">
+					<input name="nick" value="<#if tshop??>${tshop.nick!}</#if>" type="text" class="span11" placeholder="卖家昵称" />
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">店铺所属的类目编号 :</label>
+				<div class="controls">
+					<input name="cid" value="<#if tshop??>${tshop.cid!}</#if>" type="text" class="span11" placeholder="店铺所属的类目编号" />
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">店铺地址 :</label>
+				<div class="controls">
+					<input name="storeUrl" value="<#if tshop??>${tshop.storeUrl!}</#if>" type="text" class="span11" placeholder="店铺地址" />
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">主营类目 :</label>
+				<div class="controls">
+					<input name="category" value="<#if tshop??>${tshop.category!}</#if>" type="text" class="span11" placeholder="主营类目" />
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">用户类型 :</label>
+				<div class="controls">
+					<select name="type" style="width:250px;">
+						<#if tshop?? && tshop.type??>
+							<option value="B" <#if tshop?? && tshop.type=="B"> selected="selected" </#if>>B商家</option>
+							<option value="C" <#if tshop?? && tshop.type=="C"> selected="selected" </#if>>C商家</option>
+						<#else>
+							<option value="0">----------------请选择---------------</option>
+							<option value="B">B商家</option>
+							<option value="C">C商家</option>
+						</#if>
+					</select> 
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">所在地区 :</label>
+				<div class="controls">
+					<input name="location" value="<#if tshop??>${tshop.location!}</#if>" type="text" class="span11" placeholder="所在地区" />
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">客服电话 :</label>
+				<div class="controls">
+					<input name="serviceNumber" value="<#if tshop??>${tshop.serviceNumber!}</#if>" type="text" class="span11" placeholder="客服电话" />
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">最新抓取批次:</label>
+				<div class="controls">
+					<input name="lastTimes" value="<#if tshop??>${tshop.lastTimes!}</#if>" type="text" class="span11" placeholder="最新抓取批次" />
+				</div>
+			</div>
+			<div class="form-actions">
+				<button type="submit" class="btn btn-success">Save</button>
+				<a class="btn btn-warning btn-big"  href="index.html">Back</a> </div>
+			</div>
+		</form>
+	</div>
+</div>
+</#macro> <#assign content = content in layout /> <@layout.doLayout />
