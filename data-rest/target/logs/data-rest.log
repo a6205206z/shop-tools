@@ -1,0 +1,96 @@
+2016-09-14 13:38:03.843  INFO 14048 --- [main] c.x.d.r.AppSpringBoot                    : Starting AppSpringBoot on tiaotiaohu with PID 14048 (D:\project\xmm-shop-tools\data-rest\target\data-rest.jar started by hemigxie in D:\project\xmm-shop-tools\data-rest\target)
+2016-09-14 13:38:03.847  INFO 14048 --- [main] c.x.d.r.AppSpringBoot                    : No active profile set, falling back to default profiles: default
+2016-09-14 13:38:03.885  INFO 14048 --- [main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@71809907: startup date [Wed Sep 14 13:38:03 GMT+08:00 2016]; root of context hierarchy
+2016-09-14 13:38:05.206  INFO 14048 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'mybatisConfig' of type [class com.xingmima.dpfx.rest.config.MybatisConfig$$EnhancerBySpringCGLIB$$ca3e14b3] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2016-09-14 13:38:05.242  INFO 14048 --- [main] o.s.j.d.DriverManagerDataSource          : Loaded JDBC driver: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+2016-09-14 13:38:05.256  INFO 14048 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'connectionProperties' of type [class java.util.Properties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2016-09-14 13:38:05.263  INFO 14048 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'dataSource' of type [class org.springframework.jdbc.datasource.DriverManagerDataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2016-09-14 13:38:05.330  INFO 14048 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'sqlSessionFactory' of type [class org.apache.ibatis.session.defaults.DefaultSqlSessionFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2016-09-14 13:38:05.373  INFO 14048 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'RShopDao' of type [class org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2016-09-14 13:38:05.403  INFO 14048 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [class org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$f73aab34] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2016-09-14 13:38:05.421  INFO 14048 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'redisCacheConfig' of type [class com.xingmima.dpfx.rest.config.RedisCacheConfig$$EnhancerBySpringCGLIB$$a3b093fd] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2016-09-14 13:38:05.438  INFO 14048 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'keyGenerator' of type [class com.xingmima.dpfx.rest.config.RedisCacheConfig$1] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2016-09-14 13:38:05.442  INFO 14048 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cache.annotation.ProxyCachingConfiguration' of type [class org.springframework.cache.annotation.ProxyCachingConfiguration$$EnhancerBySpringCGLIB$$404ce152] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2016-09-14 13:38:06.007  INFO 14048 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 80 (http)
+2016-09-14 13:38:06.021  INFO 14048 --- [main] o.a.c.c.StandardService                  : Starting service Tomcat
+2016-09-14 13:38:06.024  INFO 14048 --- [main] o.a.c.c.StandardEngine                   : Starting Servlet Engine: Apache Tomcat/8.0.36
+2016-09-14 13:38:06.104  INFO 14048 --- [localhost-startStop-1] o.a.c.c.C.[.[.[/dcm]                     : Initializing Spring embedded WebApplicationContext
+2016-09-14 13:38:06.106  INFO 14048 --- [localhost-startStop-1] o.s.w.c.ContextLoader                    : Root WebApplicationContext: initialization completed in 2225 ms
+2016-09-14 13:38:06.387  INFO 14048 --- [localhost-startStop-1] o.s.b.c.e.ServletRegistrationBean        : Mapping servlet: 'dispatcherServlet' to [/]
+2016-09-14 13:38:06.394  INFO 14048 --- [localhost-startStop-1] o.s.b.c.e.FilterRegistrationBean         : Mapping filter: 'characterEncodingFilter' to: [/*]
+2016-09-14 13:38:06.395  INFO 14048 --- [localhost-startStop-1] o.s.b.c.e.FilterRegistrationBean         : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2016-09-14 13:38:06.397  INFO 14048 --- [localhost-startStop-1] o.s.b.c.e.FilterRegistrationBean         : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2016-09-14 13:38:06.400  INFO 14048 --- [localhost-startStop-1] o.s.b.c.e.FilterRegistrationBean         : Mapping filter: 'requestContextFilter' to: [/*]
+2016-09-14 13:38:06.733  INFO 14048 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@71809907: startup date [Wed Sep 14 13:38:03 GMT+08:00 2016]; root of context hierarchy
+2016-09-14 13:38:06.813  INFO 14048 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/]}" onto public java.lang.String com.xingmima.dpfx.rest.controller.ShopController.test()
+2016-09-14 13:38:06.818  INFO 14048 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/shop/info/{shopid}/{date}]}" onto public com.xingmima.dpfx.rest.response.ResponseDataModel com.xingmima.dpfx.rest.controller.ShopController.getRShopByShop(java.lang.Long,java.lang.Integer)
+2016-09-14 13:38:06.824  INFO 14048 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2016-09-14 13:38:06.828  INFO 14048 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2016-09-14 13:38:06.863  INFO 14048 --- [main] o.s.w.s.h.SimpleUrlHandlerMapping        : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-09-14 13:38:06.866  INFO 14048 --- [main] o.s.w.s.h.SimpleUrlHandlerMapping        : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-09-14 13:38:06.910  INFO 14048 --- [main] o.s.w.s.h.SimpleUrlHandlerMapping        : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-09-14 13:38:07.112  INFO 14048 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2016-09-14 13:38:07.253  INFO 14048 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 80 (http)
+2016-09-14 13:38:07.259  INFO 14048 --- [main] c.x.d.r.AppSpringBoot                    : Started AppSpringBoot in 3.826 seconds (JVM running for 4.263)
+2016-09-14 13:38:14.853  INFO 14048 --- [http-nio-80-exec-1] o.a.c.c.C.[.[.[/dcm]                     : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2016-09-14 13:38:14.855  INFO 14048 --- [http-nio-80-exec-1] o.s.w.s.DispatcherServlet                : FrameworkServlet 'dispatcherServlet': initialization started
+2016-09-14 13:38:14.873  INFO 14048 --- [http-nio-80-exec-1] o.s.w.s.DispatcherServlet                : FrameworkServlet 'dispatcherServlet': initialization completed in 16 ms
+2016-09-14 13:38:14.978 ERROR 14048 --- [http-nio-80-exec-1] c.x.d.r.c.ShopController                 : error...
+2016-09-14 13:38:14.979  INFO 14048 --- [http-nio-80-exec-1] c.x.d.r.c.ShopController                 : info...
+2016-09-14 13:38:30.179 ERROR 14048 --- [http-nio-80-exec-2] c.x.d.r.c.ShopController                 : error...
+2016-09-14 13:38:30.181  INFO 14048 --- [http-nio-80-exec-2] c.x.d.r.c.ShopController                 : info...
+2016-09-14 13:38:30.191 ERROR 14048 --- [http-nio-80-exec-2] c.x.d.r.s.RShopService                   : error...
+2016-09-14 13:38:30.192  INFO 14048 --- [http-nio-80-exec-2] c.x.d.r.s.RShopService                   : info...
+2016-09-14 13:38:30.415  INFO 14048 --- [http-nio-80-exec-2] l.log4j2                                 : 1. Connection opened. {executed in 184ms} 
+2016-09-14 13:38:30.417  INFO 14048 --- [http-nio-80-exec-2] l.log4j2                                 : 1. Connection.new Connection returned 
+2016-09-14 13:38:30.418  INFO 14048 --- [http-nio-80-exec-2] l.log4j2                                 : 1. Connection.getAutoCommit() returned true
+2016-09-14 13:38:30.432  INFO 14048 --- [http-nio-80-exec-2] l.log4j2                                 : 1. PreparedStatement.new PreparedStatement returned 
+2016-09-14 13:38:30.433  INFO 14048 --- [http-nio-80-exec-2] l.log4j2                                 : 1. Connection.prepareStatement(SELECT `id`, `date`, `shopid`, `sale_goods_num`,`on_goods_num`, `off_goods_num`, `favorite_num`, `i_favorite_num`, `i_share_num`, `total_pv`, `total_wt_fans`, `created` FROM `r_shop` WHERE `date` = ? AND shopid = ?, 1003, 1007) returned net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy@6769415a
+2016-09-14 13:38:30.437  INFO 14048 --- [http-nio-80-exec-2] l.log4j2                                 : 1. PreparedStatement.setQueryTimeout(10000) returned 
+2016-09-14 13:38:30.440  INFO 14048 --- [http-nio-80-exec-2] l.log4j2                                 : 1. PreparedStatement.setInt(1, 1473177600) returned 
+2016-09-14 13:38:30.446  INFO 14048 --- [http-nio-80-exec-2] l.log4j2                                 : 1. PreparedStatement.setLong(2, 110918969) returned 
+2016-09-14 13:38:30.451  INFO 14048 --- [http-nio-80-exec-2] l.log4j2                                 : 1. SELECT `id`, `date`, `shopid`, `sale_goods_num`,`on_goods_num`, `off_goods_num`, `favorite_num`, 
+`i_favorite_num`, `i_share_num`, `total_pv`, `total_wt_fans`, `created` FROM `r_shop` WHERE 
+`date` = 1473177600 AND shopid = 110918969  {executed in 3 ms}
+2016-09-14 13:38:30.455  INFO 14048 --- [http-nio-80-exec-2] l.log4j2                                 : 1. PreparedStatement.execute() returned true
+2016-09-14 13:38:30.463  INFO 14048 --- [http-nio-80-exec-2] l.log4j2                                 : 1. ResultSet.new ResultSet returned 
+2016-09-14 13:38:30.464  INFO 14048 --- [http-nio-80-exec-2] l.log4j2                                 : 1. PreparedStatement.getResultSet() returned net.sf.log4jdbc.sql.jdbcapi.ResultSetSpy@f64fd4b
+2016-09-14 13:38:30.468  INFO 14048 --- [http-nio-80-exec-2] l.log4j2                                 : 1. ResultSet.getMetaData() returned com.mysql.jdbc.ResultSetMetaData@69d77b07 - Field level information: 
+	com.mysql.jdbc.Field@41f14dd3[catalog=xmm_shop_tools,tableName=r_shop,originalTableName=r_shop,columnName=id,originalColumnName=id,mysqlType=253(FIELD_TYPE_VAR_STRING),flags= PRIMARY_KEY BINARY, charsetIndex=83, charsetName=UTF-8]
+	com.mysql.jdbc.Field@634232d4[catalog=xmm_shop_tools,tableName=r_shop,originalTableName=r_shop,columnName=date,originalColumnName=date,mysqlType=8(FIELD_TYPE_LONGLONG),flags=, charsetIndex=63, charsetName=US-ASCII]
+	com.mysql.jdbc.Field@e283e93[catalog=xmm_shop_tools,tableName=r_shop,originalTableName=r_shop,columnName=shopid,originalColumnName=shopid,mysqlType=8(FIELD_TYPE_LONGLONG),flags=, charsetIndex=63, charsetName=US-ASCII]
+	com.mysql.jdbc.Field@5c757312[catalog=xmm_shop_tools,tableName=r_shop,originalTableName=r_shop,columnName=sale_goods_num,originalColumnName=sale_goods_num,mysqlType=3(FIELD_TYPE_LONG),flags=, charsetIndex=63, charsetName=US-ASCII]
+	com.mysql.jdbc.Field@1721329a[catalog=xmm_shop_tools,tableName=r_shop,originalTableName=r_shop,columnName=on_goods_num,originalColumnName=on_goods_num,mysqlType=3(FIELD_TYPE_LONG),flags=, charsetIndex=63, charsetName=US-ASCII]
+	com.mysql.jdbc.Field@65876638[catalog=xmm_shop_tools,tableName=r_shop,originalTableName=r_shop,columnName=off_goods_num,originalColumnName=off_goods_num,mysqlType=3(FIELD_TYPE_LONG),flags=, charsetIndex=63, charsetName=US-ASCII]
+	com.mysql.jdbc.Field@2a1400bd[catalog=xmm_shop_tools,tableName=r_shop,originalTableName=r_shop,columnName=favorite_num,originalColumnName=favorite_num,mysqlType=3(FIELD_TYPE_LONG),flags=, charsetIndex=63, charsetName=US-ASCII]
+	com.mysql.jdbc.Field@5d0e1b0e[catalog=xmm_shop_tools,tableName=r_shop,originalTableName=r_shop,columnName=i_favorite_num,originalColumnName=i_favorite_num,mysqlType=3(FIELD_TYPE_LONG),flags=, charsetIndex=63, charsetName=US-ASCII]
+	com.mysql.jdbc.Field@432547d7[catalog=xmm_shop_tools,tableName=r_shop,originalTableName=r_shop,columnName=i_share_num,originalColumnName=i_share_num,mysqlType=3(FIELD_TYPE_LONG),flags=, charsetIndex=63, charsetName=US-ASCII]
+	com.mysql.jdbc.Field@1d4d4f2d[catalog=xmm_shop_tools,tableName=r_shop,originalTableName=r_shop,columnName=total_pv,originalColumnName=total_pv,mysqlType=3(FIELD_TYPE_LONG),flags=, charsetIndex=63, charsetName=US-ASCII]
+	com.mysql.jdbc.Field@1756b5d1[catalog=xmm_shop_tools,tableName=r_shop,originalTableName=r_shop,columnName=total_wt_fans,originalColumnName=total_wt_fans,mysqlType=3(FIELD_TYPE_LONG),flags=, charsetIndex=63, charsetName=US-ASCII]
+	com.mysql.jdbc.Field@3aad0a5e[catalog=xmm_shop_tools,tableName=r_shop,originalTableName=r_shop,columnName=created,originalColumnName=created,mysqlType=12(FIELD_TYPE_DATETIME),flags= BINARY, charsetIndex=63, charsetName=US-ASCII]
+2016-09-14 13:38:30.495  INFO 14048 --- [http-nio-80-exec-2] l.log4j2                                 : 1. ResultSet.getType() returned 1003
+2016-09-14 13:38:30.499  INFO 14048 --- [http-nio-80-exec-2] l.log4j2                                 : 1. ResultSet.next() returned true
+2016-09-14 13:38:30.503  INFO 14048 --- [http-nio-80-exec-2] l.log4j2                                 : 1. ResultSet.getString(id) returned 5aa62b218a768a0cc98b3fd2abb304d7
+2016-09-14 13:38:30.506  INFO 14048 --- [http-nio-80-exec-2] l.log4j2                                 : 1. ResultSet.wasNull() returned false
+2016-09-14 13:38:30.508  INFO 14048 --- [http-nio-80-exec-2] l.log4j2                                 : 1. ResultSet.getLong(date) returned 1473177600
+2016-09-14 13:38:30.511  INFO 14048 --- [http-nio-80-exec-2] l.log4j2                                 : 1. ResultSet.wasNull() returned false
+2016-09-14 13:38:30.514  INFO 14048 --- [http-nio-80-exec-2] l.log4j2                                 : 1. ResultSet.getLong(shopid) returned 110918969
+2016-09-14 13:38:30.517  INFO 14048 --- [http-nio-80-exec-2] l.log4j2                                 : 1. ResultSet.wasNull() returned false
+2016-09-14 13:38:30.519  INFO 14048 --- [http-nio-80-exec-2] l.log4j2                                 : 1. ResultSet.getTimestamp(created) returned 2016-09-10 14:04:25.0
+2016-09-14 13:38:30.523  INFO 14048 --- [http-nio-80-exec-2] l.log4j2                                 : 1. ResultSet.wasNull() returned false
+2016-09-14 13:38:30.528  INFO 14048 --- [http-nio-80-exec-2] l.log4j2                                 : 
+|---------------------------------|-----------|----------|---------------|-------------|--------------|-------------|---------------|------------|---------|--------------|----------------------|
+|id                               |date       |shopid    |sale_goods_num |on_goods_num |off_goods_num |favorite_num |i_favorite_num |i_share_num |total_pv |total_wt_fans |created               |
+|---------------------------------|-----------|----------|---------------|-------------|--------------|-------------|---------------|------------|---------|--------------|----------------------|
+|5aa62b218a768a0cc98b3fd2abb304d7 |1473177600 |110918969 |[unread]       |[unread]     |[unread]      |[unread]     |[unread]       |[unread]    |[unread] |[unread]      |2016-09-10 14:04:25.0 |
+|---------------------------------|-----------|----------|---------------|-------------|--------------|-------------|---------------|------------|---------|--------------|----------------------|
+
+2016-09-14 13:38:30.537  INFO 14048 --- [http-nio-80-exec-2] l.log4j2                                 : 1. ResultSet.next() returned false
+2016-09-14 13:38:30.542  INFO 14048 --- [http-nio-80-exec-2] l.log4j2                                 : 1. ResultSet.close() returned void
+2016-09-14 13:38:30.543  INFO 14048 --- [http-nio-80-exec-2] l.log4j2                                 : 1. PreparedStatement.getConnection() returned net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@30128a9
+2016-09-14 13:38:30.548  INFO 14048 --- [http-nio-80-exec-2] l.log4j2                                 : 1. Connection.getMetaData() returned com.mysql.jdbc.JDBC4DatabaseMetaData@fbc6cfd
+2016-09-14 13:38:30.550  INFO 14048 --- [http-nio-80-exec-2] l.log4j2                                 : 1. PreparedStatement.getMoreResults() returned false
+2016-09-14 13:38:30.553  INFO 14048 --- [http-nio-80-exec-2] l.log4j2                                 : 1. PreparedStatement.getUpdateCount() returned -1
+2016-09-14 13:38:30.555  INFO 14048 --- [http-nio-80-exec-2] l.log4j2                                 : 1. PreparedStatement.close() returned 
+2016-09-14 13:38:30.560  INFO 14048 --- [http-nio-80-exec-2] l.log4j2                                 : 1. Connection closed. {executed in 1ms} 
+2016-09-14 13:38:30.562  INFO 14048 --- [http-nio-80-exec-2] l.log4j2                                 : 1. Connection.close() returned 
