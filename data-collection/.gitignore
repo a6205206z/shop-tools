@@ -11,3 +11,7 @@ logs
 *.idea*
 *.iml
 *.DS_Store
+*.pyc
+*/xmmspider/xmmspider/*.pyc
+*/xmmspider/xmmspider/spiders/*.pyc
+*/xmmspider/xmmspider/output/*
