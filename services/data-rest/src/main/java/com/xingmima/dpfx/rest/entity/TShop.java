@@ -3,6 +3,9 @@ package com.xingmima.dpfx.rest.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * 业务APP：店铺信息
+ */
 public class TShop extends BaseEntity {
     /**
      * 标识列

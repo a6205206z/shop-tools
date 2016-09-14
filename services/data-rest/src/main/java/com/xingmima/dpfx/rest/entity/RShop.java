@@ -3,6 +3,9 @@ package com.xingmima.dpfx.rest.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * 业务APP：按天统计店铺数据
+ */
 public class RShop extends BaseEntity{
     /**
      * 标识列（今天-昨天）

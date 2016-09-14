@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
+/**
+ * 业务APP：按天统计商品数据
+ */
 public class RItems extends BaseEntity{
     /**
      * 商品天报表数据（今天-昨天）
