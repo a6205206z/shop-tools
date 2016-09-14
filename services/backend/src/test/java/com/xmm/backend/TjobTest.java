@@ -1,9 +1,6 @@
 package com.xmm.backend;
 
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,13 +35,6 @@ public class TjobTest extends BaseJunit4Test {
     
     @Test
     public void testName2() throws Exception {
-       List<Map<Long, Integer>> dateCount = ditemsService.dateCount();
-       for (Map<Long, Integer> map : dateCount) {
-           Set<Entry<Long, Integer>> entrySet = map.entrySet();
-           for (Entry<Long, Integer> entry : entrySet) {
-               System.out.println(entry.getKey()+":"+entry.getValue());
-        }
-    }
 //        String get = HttpUtil.sendGet(ResUrl.LOG_IP+ResUrl.LOG_URL, "name=TaobaoShopProductSpider-1473264000.log", "UTF-8");
 //        System.out.println("----------------get"+get);
     }
