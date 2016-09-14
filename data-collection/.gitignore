@@ -1,3 +1,16 @@
+*.project
+*.settings
+*.classpath
+*.class
+target
+*.log
+*/log/*
+logs
+*.bak
+.idea
+*.idea*
+*.iml
+*.DS_Store
 *.pyc
 */xmmspider/xmmspider/*.pyc
 */xmmspider/xmmspider/spiders/*.pyc
