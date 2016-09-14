@@ -24,8 +24,8 @@ public class DitemsDao  extends BaseDaoImpl<Ditems>{
         return super.getSqlSession().selectOne("Ditems.count", query);
     }
 
-    public List<Map<Long, Integer>> dateCount() {
-        return super.getSqlSession().selectList("Ditems.dateCount");
+    public Map<Long,Integer> dateCount() {
+        return super.getSqlSession().selectMap("Ditems.dateCount","date");
     }
 
 }
