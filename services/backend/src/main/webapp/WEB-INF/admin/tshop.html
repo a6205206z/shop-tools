@@ -8,10 +8,10 @@
 					<span class="icon"><i class="icon-th"></i></span>
 					<h5>注册店铺管理页</h5>
 				<!-- 添加按钮begin -->
-				<li style="float:right; margin-top: 10px; margin-right: 11px" >
-				<i class="icon-plus-sign"></i>
-				<a style="text-decoration:underline;" href="${layout.path}/tshop/input">添加</a>
-				</li>
+					<p style="float:right; margin: 10px 10px 0px 0px">
+						<i class="icon-plus-sign"></i>
+						<a style="text-decoration:underline;" href="${layout.path}/tshop/input">添加</a>
+					</p>
 				<!-- 添加按钮end -->
 				</div>
 				<div class="widget-content nopadding">
@@ -21,18 +21,14 @@
 							<tr>
 								<th>店铺ID</th>
 								<th>卖家会员ID</th>
-								<th>加密后的会员ID</th>
 								<th>卖家昵称</th>
-								<th>店铺所属的类目编号</th>
+								<th>店铺类目编号</th>
 								<th>店铺地址</th>
 								<th>主营类目</th>
-								<th>用户类型</th>
+								<th>店铺类型</th>
 								<th>所在地区</th>
 								<th>客服电话</th>
-								<th>开店时间</th>
 								<th>状态</th>
-								<th>最新抓取批次</th>
-								<th>创建时间</th>
 								<th>更新时间</th>
 								<th>操作</th>
 							</tr>
@@ -42,36 +38,31 @@
 							<tr>
 								<td>${tshops.shopid!}</td>
 								<td>${tshops.sellerId!}</td>
-								<td>${tshops.securityId!}</td>
 								<td>${tshops.nick!}</td>
 								<td>${tshops.cid!}</td>
-								<td>${tshops.storeUrl!}</td>
+								<td><a target="_blank" href="${tshops.storeUrl!}">${tshops.storeUrl!}</a></td>
 								<td>${tshops.category!}</td>
-								<td>${tshops.type!}</td>
+								<td>${(tshops.type! == "C")?string("<p style='color:#FF5400'>淘宝</p>","<p style='color:#c40000'>天猫</p>")}</td>
 								<td>${tshops.location!}</td>
 								<td>${tshops.serviceNumber!}</td>
-								<td>${tshops.storeDate!}</td>
 								<td>
 								${(tshops.status! == "1")?string("<p style='color:red;'>禁用</p>","<p style='color:green;'>启用</p>")}
 								</td>
-								<td>${tshops.lastTimes!}</td>
-								<td>
-									<#if tshops.created ??>
-										${tshops.created ?datetime}
-									</#if>
-								</td>
+
 								<td>
 									<#if tshops.updated ??>
 										${tshops.updated ?datetime}
 									</#if>
 								</td>
 								<td>
-									<li><i class="icon-pencil"></i><a href="${layout.path}/tshop/input?id=${tshops.id!}">编辑</a></li>
+									<ul style="list-style: none;">
+										<li><i class="icon-pencil"></i><a href="${layout.path}/tshop/input?id=${tshops.id!}">编辑</a></li>
 									<#if tshops.status! == "0">
 										<li><i class="icon-remove-sign"></i><a href="${layout.path}/tshop/disable?id=${tshops.id!}">禁用</a></li>
 									<#else>
 										<li><i class="icon-remove-sign"></i><a href="${layout.path}/tshop/disable?id=${tshops.id!}">启用</a></li>
 									</#if>
+									</ul>
 								</td>
 							</tr>
 							</#list> </#if>
