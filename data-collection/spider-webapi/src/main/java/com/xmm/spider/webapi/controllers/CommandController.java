@@ -62,8 +62,8 @@ public class CommandController {
      */
     @Deprecated
     @RequestMapping(value = "/spider/crawl/start", method = RequestMethod.GET)
-    public String StartCrawl(String name) {
-        return Spider.load(spiderConfig).runCrawl(name);
+    public String StartCrawl(String name,String runid) {
+        return Spider.load(spiderConfig).runCrawl(name,runid);
     }
 
     /**

@@ -6,10 +6,11 @@
         <div class="quick-actions_homepage">
             <ul class="quick-actions">
                 <li class="bg_lb"> <a href="${layout.path}/job/index"> <i class="icon-check"></i>任务管理 </a> </li>
-                <li class="bg_lg"> <a href="${layout.path}/tshop/index"> <i class="icon-book"></i> 注册店铺管理</a> </li>
+                <li class="bg_lg"> <a href="${layout.path}/tshop/index"> <i class="icon-book"></i> 店铺管理</a> </li>
+                <li class="bg_lr"> <a href="${layout.path}/tshop/input"> <i class="icon-th-list"></i> 注册店铺</a> </li>
                 <li class="bg_ly "> <a href="${layout.path}/spider/cfg"> <i class="icon-cog"></i> 爬虫配置 </a> </li>
                 <li class="bg_lo"> <a href="#"> <i class="icon-calendar"></i> 定时任务</a> </li>
-                <li class="bg_lo"> <a href="#"> <i class="icon-pencil"></i> 手动任务</a> </li>
+                <li class="bg_lg"> <a href="#"> <i class="icon-pencil"></i> 手动任务</a> </li>
                 <!--<li class="bg_ls"> <a href="grid.html"> <i class="icon-fullscreen"></i> Full width</a> </li>-->
                 <!--<li class="bg_lo span3"> <a href="form-common.html"> <i class="icon-th-list"></i> Forms</a> </li>-->
                 <!--<li class="bg_ls"> <a href="buttons.html"> <i class="icon-tint"></i> Buttons</a> </li>-->
@@ -28,19 +29,10 @@
                 </div>
                 <div class="widget-content" >
                     <div class="row-fluid">
-                        <div class="span9">
+                        <div class="span12">
                             <div class="chart"></div>
                         </div>
-                        <div class="span3">
-                            <ul class="site-stats">
-                                <li class="bg_lh"><i class="icon-user"></i> <strong>2540</strong> <small>Total Users</small></li>
-                                <li class="bg_lh"><i class="icon-plus"></i> <strong>120</strong> <small>New Users </small></li>
-                                <li class="bg_lh"><i class="icon-shopping-cart"></i> <strong>656</strong> <small>Total Shop</small></li>
-                                <li class="bg_lh"><i class="icon-tag"></i> <strong>9540</strong> <small>Total Orders</small></li>
-                                <li class="bg_lh"><i class="icon-repeat"></i> <strong>10</strong> <small>Pending Orders</small></li>
-                                <li class="bg_lh"><i class="icon-globe"></i> <strong>8540</strong> <small>Online Orders</small></li>
-                            </ul>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -50,7 +42,7 @@
     <script src="${layout.path}/matrix/js/jquery.flot.min.js"></script>
     <script type="text/javascript">
         // === Prepare the chart data ===/
-        var data = [[1, 2],[2, 1],[3, 2],[4, 1],[5, 2]];
+        var data = ${dateCount};
 
         // === Make chart === //
         var plot = $.plot($(".chart"),

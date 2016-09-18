@@ -344,4 +344,8 @@
 	<select id="count" parameterType="com.xmm.shoptools.backend.vo.DitemsQuery" resultType="int">
 		select count(*) from d_items where shopid=#{shopid} and date=#{date}
 	</select>
+	
+	<select id="dateCount" resultType="java.util.HashMap">
+		select date,count(0) as value from d_items group by date order by date
+	</select>
 </mapper>

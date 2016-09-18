@@ -93,8 +93,7 @@ public class Spider {
      * @param name the name
      * @return the string
      */
-    public String runCrawl(String name) {
-        String runID = getTimeHourString();
+    public String runCrawl(String name,String runID) {
         exec(String.format("scrapy crawl %s --logfile=%s/%s-%s.log -a ri=%s", name, config.getLogPath(), name, runID, runID), false);
         return name + "-" + runID + ".log";
     }

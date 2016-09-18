@@ -7,8 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.xmm.shoptools.backend.dao.TjobDao;
 import com.xmm.shoptools.backend.entity.Tjob;
-import com.xmm.shoptools.backend.utils.HttpUtil;
-import com.xmm.shoptools.backend.vo.ResUrl;
+import com.xmm.shoptools.backend.service.DitemsService;
 import com.xmm.shoptools.backend.vo.TjobQuery;
 
 /**
@@ -22,11 +21,12 @@ import com.xmm.shoptools.backend.vo.TjobQuery;
  */
 public class TjobTest extends BaseJunit4Test {
     @Autowired TjobDao tjobDao;
+    @Autowired DitemsService ditemsService;
     
     @Test
     public void testName() throws Exception {
 //        Tjob tjob = tjobDao.get(1473091200);
-        List<Tjob> rows = tjobDao.query(new TjobQuery());
+//        List<Tjob> rows = tjobDao.query(new TjobQuery());
 //        for (Tjob tjob : rows) {
 //            System.err.println(tjob.getStats());
 //            System.err.println(tjob.getLogfile());
@@ -35,7 +35,6 @@ public class TjobTest extends BaseJunit4Test {
     
     @Test
     public void testName2() throws Exception {
-        
 //        String get = HttpUtil.sendGet(ResUrl.LOG_IP+ResUrl.LOG_URL, "name=TaobaoShopProductSpider-1473264000.log", "UTF-8");
 //        System.out.println("----------------get"+get);
     }

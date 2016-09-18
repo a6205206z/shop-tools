@@ -89,11 +89,12 @@ class TmallShopProductSpider(Spider):
                           callback=self.parse_sib,
                           errback=self.errback,
                           headers={
-                          "Referer": response.url,
-                          "Host":"mdskip.taobao.com",
+                              "Referer": response.url,
+                              "Host": "mdskip.taobao.com",
                           },
                           meta={'cookiejar': 1,
                                 'item': item,
+                                #'proxy':'enable',
                                 },
                           )
         else:
@@ -151,12 +152,13 @@ class TmallShopProductSpider(Spider):
         return 'sib_page' in item and 'counter_page' in item and 'comment_count' in item
 
     def errback(self, failure):
-        response = failure.value.response
-        item = response.meta['item']
-        if 'sib_page' not in item:
-            item['sib_page'] = "0"
-        if 'counter_page' not in item:
-            item['counter_page'] = "0"
-        if 'comment_count' not in item:
-            item['comment_count'] = "0"
-        return item
+        if response != None:
+            response = failure.value.response
+            item = response.meta['item']
+            if 'sib_page' not in item:
+                item['sib_page'] = "0"
+            if 'counter_page' not in item:
+                item['counter_page'] = "0"
+            if 'comment_count' not in item:
+                item['comment_count'] = "0"
+            return item

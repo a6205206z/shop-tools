@@ -1,0 +1,21 @@
+<#import "/admin/layout/_layout.html" as layout /> <#macro content>
+<div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="widget-box">
+          <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
+            <h5>Error</h5>
+          </div>
+          <div class="widget-content">
+            <div class="error_ex">
+<!--               <h1>403</h1> -->
+              <h5>${msg!}</h5>
+<!--               <h3>Opps, You're lost.</h3> -->
+<!--               <p>Access to this page is forbidden</p> -->
+              <a class="btn btn-warning btn-big"  onclick="javascript :history.back(-1);">Back</a> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</#macro> <#assign content = content in layout /> <@layout.doLayout />

@@ -1,5 +1,6 @@
 package com.xmm.shoptools.backend.service;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,6 +37,10 @@ public class DitemsService{
         pr.setRows(rowsVo);
 
         return pr;
+    }
+    
+    public List<Map<Long,Integer>> dateCount(){
+        return ditemsDao.dateCount();
     }
 
 }

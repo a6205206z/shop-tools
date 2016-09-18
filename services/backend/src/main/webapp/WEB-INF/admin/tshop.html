@@ -7,6 +7,12 @@
 				<div class="widget-title">
 					<span class="icon"><i class="icon-th"></i></span>
 					<h5>注册店铺管理页</h5>
+				<!-- 添加按钮begin -->
+				<li style="float:right; margin-top: 10px; margin-right: 11px" >
+				<i class="icon-plus-sign"></i>
+				<a style="text-decoration:underline;" href="${layout.path}/tshop/input">添加</a>
+				</li>
+				<!-- 添加按钮end -->
 				</div>
 				<div class="widget-content nopadding">
 					<table class="table table-bordered data-table"
@@ -28,6 +34,7 @@
 								<th>最新抓取批次</th>
 								<th>创建时间</th>
 								<th>更新时间</th>
+								<th>操作</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -44,7 +51,9 @@
 								<td>${tshops.location!}</td>
 								<td>${tshops.serviceNumber!}</td>
 								<td>${tshops.storeDate!}</td>
-								<td>${tshops.status!}</td>
+								<td>
+								${(tshops.status! == "1")?string("<p style='color:red;'>禁用</p>","<p style='color:green;'>正常</p>")}
+								</td>
 								<td>${tshops.lastTimes!}</td>
 								<td>
 									<#if tshops.created ??>
@@ -55,6 +64,10 @@
 									<#if tshops.updated ??>
 										${tshops.updated ?datetime}
 									</#if>
+								</td>
+								<td>
+									<li><i class="icon-pencil"></i><a href="${layout.path}/tshop/input?id=${tshops.id!}">编辑</a></li>
+									<li><i class="icon-remove-sign"></i><a href="${layout.path}/tshop/disable?id=${tshops.id!}">删除</a></li>
 								</td>
 							</tr>
 							</#list> </#if>
