@@ -1,0 +1,49 @@
+<#import "/admin/layout/_layout.html" as layout /> <#macro content>
+<div class="widget-box">
+	<div class="widget-title">
+		<span class="icon"> <i class="icon-align-justify"></i>
+		</span>
+		<h5>
+			编辑任务信息
+		</h5>
+	</div>
+	<div class="widget-content nopadding">
+		<form action="${layout.path}/spiderTask/startSpider" method="post" class="form-horizontal">
+			<div class="control-group">
+				<label class="control-label">爬虫列表:</label>
+				<div class="controls">
+					<select id="spiderName" name="spiderName" style="width:250px;">
+						<option selected="selected" value="0">-----------请选择----------</option>>
+					</select> 
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">时间戳 :</label>
+				<div class="controls">
+					<input name="runid" type="text" class="span3" />
+				</div>
+			</div>
+			<div class="form-actions">
+				<button type="submit" class="btn btn-success">Go</button>
+				<a class="btn btn-warning btn-big"  href="index.html">Back</a> </div>
+			</div>
+		</form>
+	</div>
+</#macro> 
+<#macro script>
+
+<#if spiders??>
+	<script>
+	$(document).ready(function(){
+		var sps =  new Array();
+		sps = ${spiders};
+ 		for(var i=0;i<sps.length;++i){
+ 			$("#spiderName").html($("#spiderName").html()+"<option value="+sps[i]+">"+sps[i]+"</option>");	
+ 		}
+	});
+	</script>
+</#if>
+</#macro>
+<#assign script = script in layout />
+<#assign content = content in layout /> 
+<@layout.doLayout />
