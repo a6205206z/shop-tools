@@ -5,8 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.xmm.shoptools.backend.admin.web.init.InitConfig;
 import com.xmm.shoptools.backend.utils.HttpUtil;
-import com.xmm.shoptools.backend.vo.ResUrl;
 
 /**
  * 
@@ -22,7 +22,7 @@ public class SpiderController extends BaseAction {
 	@RequestMapping("/cfg")
 	public ModelAndView index() {
 		ModelAndView mav = new ModelAndView("/admin/spidercfg");
-		String cfgs = HttpUtil.sendGet(ResUrl.REMOTE_IP+ResUrl.SPIDER_CFG_URL, "","UTF-8");
+		String cfgs = HttpUtil.sendGet(InitConfig.REMOTE_IP+InitConfig.SPIDER_CFG_URL, "","UTF-8");
 		mav.addObject("cfgs", cfgs);
 		return mav;
 	}

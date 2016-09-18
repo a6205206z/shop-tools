@@ -15,40 +15,59 @@ public class InitConfig {
 	// 主站域名
 	public static String master_site;
 
-	// 企业钉钉密钥KEY
-	// public static String oapi_host;
-	// public static String corp_id;
-	// public static String corp_secret;
-	// public static String sso_secret;
 
 	/**
 	 * 项目根路径
 	 */
 	public static String path = "/";
-//
+	
+	 //远程接口IP
+    public static String REMOTE_IP;
+    //日志文件接口URL
+    public static String LOG_URL;
+    //爬虫配置详情Url
+    public static String SPIDER_CFG_URL;
+    //获取爬虫名的Url
+    public static String SPIDER_LIST_URL;
+    //开启爬虫任务
+    public static String SPIDER_START_URL;
+	
 //	@Value("#{config['master_site']}")
 //	public void setMaster_site(String master_site) {
 //		InitConfig.master_site = master_site;
 //		log.error("master_site:" + master_site);
 //	}
+	
+	@Value("#{config['remote_ip']}")
+    public void setREMOTE_IP(String remote_ip) {
+	    InitConfig.REMOTE_IP = remote_ip;
+        log.error("REMOTE_IP:" + remote_ip);
+    }
+	
+	@Value("#{config['log_Url']}")
+    public void setLOG_URL(String log_Url) {
+	    InitConfig.LOG_URL = log_Url;
+        log.error("LOG_URL:" + log_Url);
+    }
+	
+	@Value("#{config['spider_cfg_Url']}")
+    public void setSPIDER_CFG_URL(String spider_cfg_Url) {
+	    InitConfig.SPIDER_CFG_URL = spider_cfg_Url;
+        log.error("SPIDER_CFG_URL:" + spider_cfg_Url);
+    }
+	
+	@Value("#{config['spider_list_Url']}")
+    public void setSPIDER_LIST_URL(String spider_list_Url) {
+	    InitConfig.SPIDER_LIST_URL = spider_list_Url;
+        log.error("SPIDER_LIST_URL:" + spider_list_Url);
+    }
+	
+	@Value("#{config['spider_start_Url']}")
+    public void setSPIDER_START_URL(String spider_start_Url) {
+	    InitConfig.SPIDER_START_URL = spider_start_Url;
+        log.error("SPIDER_START_URL:" + spider_start_Url);
+    }
+	
+	
 
-	// @Value("#{config['oapi_host']}")
-	// public void setOapi_host(String oapi_host) {
-	// InitConfig.oapi_host = oapi_host;
-	// }
-	//
-	// @Value("#{config['corp_id']}")
-	// public void setCorp_id(String corp_id) {
-	// InitConfig.corp_id = corp_id;
-	// }
-	//
-	// @Value("#{config['corp_secret']}")
-	// public void setCorp_secret(String corp_secret) {
-	// InitConfig.corp_secret = corp_secret;
-	// }
-	//
-	// @Value("#{config['sso_secret']}")
-	// public void setSso_secret(String sso_secret) {
-	// InitConfig.sso_secret = sso_secret;
-	// }
 }

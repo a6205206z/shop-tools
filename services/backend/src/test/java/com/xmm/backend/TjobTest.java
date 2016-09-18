@@ -1,14 +1,10 @@
 package com.xmm.backend;
 
-import java.util.List;
-
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.xmm.shoptools.backend.dao.TjobDao;
-import com.xmm.shoptools.backend.entity.Tjob;
 import com.xmm.shoptools.backend.service.DitemsService;
-import com.xmm.shoptools.backend.vo.TjobQuery;
 
 /**
  * xingmima.com Inc.
@@ -33,10 +29,5 @@ public class TjobTest extends BaseJunit4Test {
 //        }
     }
     
-    @Test
-    public void testName2() throws Exception {
-//        String get = HttpUtil.sendGet(ResUrl.LOG_IP+ResUrl.LOG_URL, "name=TaobaoShopProductSpider-1473264000.log", "UTF-8");
-//        System.out.println("----------------get"+get);
-    }
 }
 
