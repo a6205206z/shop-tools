@@ -105,7 +105,7 @@ public class TshopController extends BaseAction {
             boolean result = this.tshopService.disableTshop(id);
             if(result){
                 /*返回主页*/
-                return index();
+                return getRedirectView("/tshop/index");
             }else{
                 return error("该店铺状态为空！操作失败！！");
             }
