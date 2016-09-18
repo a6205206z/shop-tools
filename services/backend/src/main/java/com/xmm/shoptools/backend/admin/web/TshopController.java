@@ -107,7 +107,7 @@ public class TshopController extends BaseAction {
                 /*返回主页*/
                 return index();
             }else{
-                return error("该店铺已经是禁用状态！");
+                return error("该店铺状态为空！操作失败！！");
             }
         } catch (Exception e) {
             return error("操作失败！！异常信息:"+e.getMessage());

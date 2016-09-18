@@ -70,11 +70,16 @@ public class TshopService{
         }
         return null;
     }
-    /*正常状态的店铺才能禁用*/
+    /*启用和禁用*/
     public boolean disableTshop(String id) {
         Tshop tshop = this.getTshop(id);
         if(tshop!=null&&tshop.getStatus().equals("0")){
             tshop.setStatus("1");
+            tshop.setUpdated(new Date());
+            this.tshopDao.update(tshop);
+            return true;
+        }else if (tshop!=null&&tshop.getStatus().equals("1")) {
+            tshop.setStatus("0");
             tshop.setUpdated(new Date());
             this.tshopDao.update(tshop);
             return true;

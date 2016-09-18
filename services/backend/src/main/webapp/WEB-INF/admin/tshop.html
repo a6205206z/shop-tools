@@ -52,7 +52,7 @@
 								<td>${tshops.serviceNumber!}</td>
 								<td>${tshops.storeDate!}</td>
 								<td>
-								${(tshops.status! == "1")?string("<p style='color:red;'>禁用</p>","<p style='color:green;'>正常</p>")}
+								${(tshops.status! == "1")?string("<p style='color:red;'>禁用</p>","<p style='color:green;'>启用</p>")}
 								</td>
 								<td>${tshops.lastTimes!}</td>
 								<td>
@@ -67,7 +67,11 @@
 								</td>
 								<td>
 									<li><i class="icon-pencil"></i><a href="${layout.path}/tshop/input?id=${tshops.id!}">编辑</a></li>
-									<li><i class="icon-remove-sign"></i><a href="${layout.path}/tshop/disable?id=${tshops.id!}">删除</a></li>
+									<#if tshops.status! == "0">
+										<li><i class="icon-remove-sign"></i><a href="${layout.path}/tshop/disable?id=${tshops.id!}">禁用</a></li>
+									<#else>
+										<li><i class="icon-remove-sign"></i><a href="${layout.path}/tshop/disable?id=${tshops.id!}">启用</a></li>
+									</#if>
 								</td>
 							</tr>
 							</#list> </#if>
