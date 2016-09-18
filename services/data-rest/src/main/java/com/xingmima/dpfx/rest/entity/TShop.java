@@ -1,12 +1,8 @@
 package com.xingmima.dpfx.rest.entity;
 
-import java.io.Serializable;
 import java.util.Date;
 
-/**
- * 业务APP：店铺信息
- */
-public class TShop extends BaseEntity {
+public class TShop extends BaseEntity{
     /**
      * 标识列
      */
@@ -38,9 +34,19 @@ public class TShop extends BaseEntity {
     private Long cid;
 
     /**
+     * 内部类目ID
+     */
+    private String tCid;
+
+    /**
      * 店铺地址
      */
     private String storeUrl;
+
+    /**
+     * 店铺logo图标
+     */
+    private String logoUrl;
 
     /**
      * 主营类目
@@ -89,7 +95,6 @@ public class TShop extends BaseEntity {
 
     /**
      * 标识列
-     *
      * @return id 标识列
      */
     public String getId() {
@@ -98,7 +103,6 @@ public class TShop extends BaseEntity {
 
     /**
      * 标识列
-     *
      * @param id 标识列
      */
     public void setId(String id) {
@@ -107,7 +111,6 @@ public class TShop extends BaseEntity {
 
     /**
      * 店铺ID
-     *
      * @return shopid 店铺ID
      */
     public Long getShopid() {
@@ -116,7 +119,6 @@ public class TShop extends BaseEntity {
 
     /**
      * 店铺ID
-     *
      * @param shopid 店铺ID
      */
     public void setShopid(Long shopid) {
@@ -125,7 +127,6 @@ public class TShop extends BaseEntity {
 
     /**
      * 卖家会员ID
-     *
      * @return seller_id 卖家会员ID
      */
     public Long getSellerId() {
@@ -134,7 +135,6 @@ public class TShop extends BaseEntity {
 
     /**
      * 卖家会员ID
-     *
      * @param sellerId 卖家会员ID
      */
     public void setSellerId(Long sellerId) {
@@ -143,7 +143,6 @@ public class TShop extends BaseEntity {
 
     /**
      * 加密后的会员ID
-     *
      * @return security_id 加密后的会员ID
      */
     public String getSecurityId() {
@@ -152,7 +151,6 @@ public class TShop extends BaseEntity {
 
     /**
      * 加密后的会员ID
-     *
      * @param securityId 加密后的会员ID
      */
     public void setSecurityId(String securityId) {
@@ -161,7 +159,6 @@ public class TShop extends BaseEntity {
 
     /**
      * 卖家昵称:店铺主旺旺
-     *
      * @return nick 卖家昵称:店铺主旺旺
      */
     public String getNick() {
@@ -170,7 +167,6 @@ public class TShop extends BaseEntity {
 
     /**
      * 卖家昵称:店铺主旺旺
-     *
      * @param nick 卖家昵称:店铺主旺旺
      */
     public void setNick(String nick) {
@@ -179,7 +175,6 @@ public class TShop extends BaseEntity {
 
     /**
      * 店铺所属的类目编号
-     *
      * @return cid 店铺所属的类目编号
      */
     public Long getCid() {
@@ -188,7 +183,6 @@ public class TShop extends BaseEntity {
 
     /**
      * 店铺所属的类目编号
-     *
      * @param cid 店铺所属的类目编号
      */
     public void setCid(Long cid) {
@@ -196,8 +190,23 @@ public class TShop extends BaseEntity {
     }
 
     /**
+     * 内部类目ID
+     * @return t_cid 内部类目ID
+     */
+    public String gettCid() {
+        return tCid;
+    }
+
+    /**
+     * 内部类目ID
+     * @param tCid 内部类目ID
+     */
+    public void settCid(String tCid) {
+        this.tCid = tCid == null ? null : tCid.trim();
+    }
+
+    /**
      * 店铺地址
-     *
      * @return store_url 店铺地址
      */
     public String getStoreUrl() {
@@ -206,7 +215,6 @@ public class TShop extends BaseEntity {
 
     /**
      * 店铺地址
-     *
      * @param storeUrl 店铺地址
      */
     public void setStoreUrl(String storeUrl) {
@@ -214,8 +222,23 @@ public class TShop extends BaseEntity {
     }
 
     /**
+     * 店铺logo图标
+     * @return logo_url 店铺logo图标
+     */
+    public String getLogoUrl() {
+        return logoUrl;
+    }
+
+    /**
+     * 店铺logo图标
+     * @param logoUrl 店铺logo图标
+     */
+    public void setLogoUrl(String logoUrl) {
+        this.logoUrl = logoUrl == null ? null : logoUrl.trim();
+    }
+
+    /**
      * 主营类目
-     *
      * @return category 主营类目
      */
     public String getCategory() {
@@ -224,7 +247,6 @@ public class TShop extends BaseEntity {
 
     /**
      * 主营类目
-     *
      * @param category 主营类目
      */
     public void setCategory(String category) {
@@ -233,7 +255,6 @@ public class TShop extends BaseEntity {
 
     /**
      * 用户类型。可选值:B(B商家),C(C商家)
-     *
      * @return type 用户类型。可选值:B(B商家),C(C商家)
      */
     public String getType() {
@@ -242,7 +263,6 @@ public class TShop extends BaseEntity {
 
     /**
      * 用户类型。可选值:B(B商家),C(C商家)
-     *
      * @param type 用户类型。可选值:B(B商家),C(C商家)
      */
     public void setType(String type) {
@@ -251,7 +271,6 @@ public class TShop extends BaseEntity {
 
     /**
      * 所在地区，如：四川 成都
-     *
      * @return location 所在地区，如：四川 成都
      */
     public String getLocation() {
@@ -260,7 +279,6 @@ public class TShop extends BaseEntity {
 
     /**
      * 所在地区，如：四川 成都
-     *
      * @param location 所在地区，如：四川 成都
      */
     public void setLocation(String location) {
@@ -269,7 +287,6 @@ public class TShop extends BaseEntity {
 
     /**
      * 客服电话
-     *
      * @return service_number 客服电话
      */
     public String getServiceNumber() {
@@ -278,7 +295,6 @@ public class TShop extends BaseEntity {
 
     /**
      * 客服电话
-     *
      * @param serviceNumber 客服电话
      */
     public void setServiceNumber(String serviceNumber) {
@@ -287,7 +303,6 @@ public class TShop extends BaseEntity {
 
     /**
      * 开店时间
-     *
      * @return store_date 开店时间
      */
     public Date getStoreDate() {
@@ -296,7 +311,6 @@ public class TShop extends BaseEntity {
 
     /**
      * 开店时间
-     *
      * @param storeDate 开店时间
      */
     public void setStoreDate(Date storeDate) {
@@ -305,7 +319,6 @@ public class TShop extends BaseEntity {
 
     /**
      * 状态:0正常 1禁用
-     *
      * @return status 状态:0正常 1禁用
      */
     public String getStatus() {
@@ -314,7 +327,6 @@ public class TShop extends BaseEntity {
 
     /**
      * 状态:0正常 1禁用
-     *
      * @param status 状态:0正常 1禁用
      */
     public void setStatus(String status) {
@@ -323,7 +335,6 @@ public class TShop extends BaseEntity {
 
     /**
      * 最新抓取批次
-     *
      * @return last_times 最新抓取批次
      */
     public Integer getLastTimes() {
@@ -332,7 +343,6 @@ public class TShop extends BaseEntity {
 
     /**
      * 最新抓取批次
-     *
      * @param lastTimes 最新抓取批次
      */
     public void setLastTimes(Integer lastTimes) {
@@ -340,6 +350,7 @@ public class TShop extends BaseEntity {
     }
 
     /**
+     *
      * @return created
      */
     public Date getCreated() {
@@ -347,6 +358,7 @@ public class TShop extends BaseEntity {
     }
 
     /**
+     *
      * @param created
      */
     public void setCreated(Date created) {
@@ -355,7 +367,6 @@ public class TShop extends BaseEntity {
 
     /**
      * 修改时间。格式：yyyy-MM-dd HH:mm:ss
-     *
      * @return updated 修改时间。格式：yyyy-MM-dd HH:mm:ss
      */
     public Date getUpdated() {
@@ -364,7 +375,6 @@ public class TShop extends BaseEntity {
 
     /**
      * 修改时间。格式：yyyy-MM-dd HH:mm:ss
-     *
      * @param updated 修改时间。格式：yyyy-MM-dd HH:mm:ss
      */
     public void setUpdated(Date updated) {
@@ -383,7 +393,9 @@ public class TShop extends BaseEntity {
         sb.append(", securityId=").append(securityId);
         sb.append(", nick=").append(nick);
         sb.append(", cid=").append(cid);
+        sb.append(", tCid=").append(tCid);
         sb.append(", storeUrl=").append(storeUrl);
+        sb.append(", logoUrl=").append(logoUrl);
         sb.append(", category=").append(category);
         sb.append(", type=").append(type);
         sb.append(", location=").append(location);
