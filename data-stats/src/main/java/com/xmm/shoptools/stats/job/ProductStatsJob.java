@@ -27,8 +27,8 @@ public class ProductStatsJob implements Job {
     public void begin() {
         //load products
         ProductDataLoader loader = new ProductDataLoader();
-        List<Product> list_today = loader.LoadProducts(1);
-        List<Product> list_yesterday = loader.LoadProducts(2);
+        List<Product> list_today = loader.LoadProducts(0);
+        List<Product> list_yesterday = loader.LoadProducts(1);
         List<ProductStats> list_stats = stats(list_today, list_yesterday);
         save(list_stats);
     }
