@@ -33,8 +33,8 @@ public class ShopStatsJob implements Job {
     }
 
     public void statsShopData(Long shopId, String storeUrl) {
-        Integer date = Integer.parseInt(Helper.getTodayAsSecond());
-        Integer yesdate = Integer.parseInt(Helper.getTodayAsSecond(-1));
+        Integer date = Integer.parseInt(Helper.getTodayAsSecond(-1));
+        Integer yesdate = Integer.parseInt(Helper.getTodayAsSecond(-2));
 
         log.info("stats shop data==={},{},{},{}", date, yesdate, shopId, storeUrl);
 
