@@ -2,9 +2,6 @@ package com.xingmima.dpfx.rest.entity;
 
 import java.util.Date;
 
-/**
- * 业务APP：店铺信息
- */
 public class TShop extends BaseEntity{
     /**
      * 标识列
@@ -47,6 +44,11 @@ public class TShop extends BaseEntity{
     private String storeUrl;
 
     /**
+     * 店铺logo图标
+     */
+    private String logoUrl;
+
+    /**
      * 主营类目
      */
     private String category;
@@ -82,7 +84,7 @@ public class TShop extends BaseEntity{
     private Integer lastTimes;
 
     /**
-     * 
+     *
      */
     private Date created;
 
@@ -220,6 +222,22 @@ public class TShop extends BaseEntity{
     }
 
     /**
+     * 店铺logo图标
+     * @return logo_url 店铺logo图标
+     */
+    public String getLogoUrl() {
+        return logoUrl;
+    }
+
+    /**
+     * 店铺logo图标
+     * @param logoUrl 店铺logo图标
+     */
+    public void setLogoUrl(String logoUrl) {
+        this.logoUrl = logoUrl == null ? null : logoUrl.trim();
+    }
+
+    /**
      * 主营类目
      * @return category 主营类目
      */
@@ -332,16 +350,16 @@ public class TShop extends BaseEntity{
     }
 
     /**
-     * 
-     * @return created 
+     *
+     * @return created
      */
     public Date getCreated() {
         return created;
     }
 
     /**
-     * 
-     * @param created 
+     *
+     * @param created
      */
     public void setCreated(Date created) {
         this.created = created;
@@ -377,6 +395,7 @@ public class TShop extends BaseEntity{
         sb.append(", cid=").append(cid);
         sb.append(", tCid=").append(tCid);
         sb.append(", storeUrl=").append(storeUrl);
+        sb.append(", logoUrl=").append(logoUrl);
         sb.append(", category=").append(category);
         sb.append(", type=").append(type);
         sb.append(", location=").append(location);
