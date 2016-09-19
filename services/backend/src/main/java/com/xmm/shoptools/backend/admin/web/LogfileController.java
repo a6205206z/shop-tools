@@ -1,5 +1,9 @@
 package com.xmm.shoptools.backend.admin.web;
 
+import com.xmm.shoptools.backend.entity.Tspider;
+import com.xmm.shoptools.backend.service.TspiderService;
+import com.xmm.shoptools.backend.utils.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,13 +21,22 @@ import com.xmm.shoptools.backend.utils.HttpUtil;
 @Scope("prototype")
 @RequestMapping("/logfile")
 public class LogfileController extends BaseAction {
-	
+
+	@Autowired
+	TspiderService tspiderService;
+
 	//日志文件详情查看后台页
 	@RequestMapping("/index")
-	public ModelAndView index(String logfile,String node) {
+	public ModelAndView index(String logfile, String node) {
 		ModelAndView mav = new ModelAndView("/admin/logfile");
-		String getLogs = HttpUtil.sendGet(InitConfig.REMOTE_IP+InitConfig.LOG_URL, "name="+logfile, "UTF-8");
-		mav.addObject("getLogs", getLogs);
+
+		if (!StringUtils.isEmpty(node)) {
+			Tspider tspider = tspiderService.selectTspiderBynodeName(node);
+			if (tspider != null) {
+				String getLogs = HttpUtil.sendGet(String.format("http://%s/%s", tspider.getHost(), InitConfig.LOG_URL), "name=" + logfile, "UTF-8");
+				mav.addObject("getLogs", getLogs);
+			}
+		}
 		return mav;
 	}
 

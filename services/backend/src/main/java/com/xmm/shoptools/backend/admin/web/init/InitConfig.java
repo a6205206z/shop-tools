@@ -21,8 +21,7 @@ public class InitConfig {
 	 */
 	public static String path = "/";
 
-	 //远程接口IP
-    public static String REMOTE_IP;
+
     //日志文件接口URL
     public static String LOG_URL;
     //爬虫配置详情Url
@@ -31,37 +30,33 @@ public class InitConfig {
     public static String SPIDER_LIST_URL;
     //开启爬虫任务
     public static String SPIDER_START_URL;
-	
+
 //	@Value("#{config['master_site']}")
 //	public void setMaster_site(String master_site) {
 //		InitConfig.master_site = master_site;
 //		log.error("master_site:" + master_site);
 //	}
 
-	@Value("#{config['remote_ip']}")
-    public void setREMOTE_IP(String remote_ip) {
-	    InitConfig.REMOTE_IP = remote_ip;
-        log.error("REMOTE_IP:" + remote_ip);
-    }
-	
+
+
 	@Value("#{config['log_Url']}")
     public void setLOG_URL(String log_Url) {
 	    InitConfig.LOG_URL = log_Url;
         log.error("LOG_URL:" + log_Url);
     }
-	
+
 	@Value("#{config['spider_cfg_Url']}")
     public void setSPIDER_CFG_URL(String spider_cfg_Url) {
 	    InitConfig.SPIDER_CFG_URL = spider_cfg_Url;
         log.error("SPIDER_CFG_URL:" + spider_cfg_Url);
     }
-	
+
 	@Value("#{config['spider_list_Url']}")
     public void setSPIDER_LIST_URL(String spider_list_Url) {
 	    InitConfig.SPIDER_LIST_URL = spider_list_Url;
         log.error("SPIDER_LIST_URL:" + spider_list_Url);
     }
-	
+
 	@Value("#{config['spider_start_Url']}")
     public void setSPIDER_START_URL(String spider_start_Url) {
 	    InitConfig.SPIDER_START_URL = spider_start_Url;
