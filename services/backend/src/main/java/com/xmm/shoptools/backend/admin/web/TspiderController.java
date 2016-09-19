@@ -102,4 +102,27 @@ public class TspiderController extends BaseAction {
             return error("操作失败！！异常信息:"+e.getMessage());
         }
     }
+    
+    /**
+     * 删除
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = "/delete")
+    public ModelAndView delete(String id) {
+        try {
+            if (StringUtils.isEmpty(id)) {
+                return error("爬虫id为空，操作失败！！");
+            }
+            boolean result = this.tspiderService.deleteTspider(id);
+            if(result){
+                /*返回主页*/
+                return getRedirectView("/tspider/index");
+            }else{
+                return error("该爬虫不存在！操作失败！！");
+            }
+        } catch (Exception e) {
+            return error("操作失败！！异常信息:"+e.getMessage());
+        }
+    }
 }

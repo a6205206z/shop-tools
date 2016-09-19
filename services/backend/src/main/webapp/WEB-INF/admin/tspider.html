@@ -50,6 +50,7 @@
 								<td>
 									<ul style="list-style: none;">
 										<li><i class="icon-pencil"></i><a href="${layout.path}/tspider/input?id=${tspiders.id!}">编辑</a></li>
+										<li><i class="icon-remove-sign"></i><a href="${layout.path}/tspider/delete?id=${tspiders.id!}">删除</a></li>
 									<#if tspiders.enable! == true>
 										<li><i class="icon-remove-sign"></i><a href="${layout.path}/tspider/disable?id=${tspiders.id!}">禁用</a></li>
 									<#else>

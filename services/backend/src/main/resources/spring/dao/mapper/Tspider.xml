@@ -155,4 +155,23 @@
 	<select id="count" parameterType="com.xmm.shoptools.backend.vo.TspiderQuery" resultType="int">
 		select count(*) from t_spider
 	</select>
+	
+	<select id="selectTspiderBynodeName" resultMap="tspiderResultMap"
+		parameterType="map">
+		select
+		<include refid="commonColumns" />
+		from t_spider 
+		where nodeName=#{nodeName}
+	</select>
+	
+	<select id="selectAllTspider" resultMap="tspiderResultMap">
+		select
+		<include refid="commonColumns" />
+		from t_spider 
+	</select>
+	
+	<update id="deleteTspider" parameterType="Object">
+		delete from t_spider
+		where id=#{id}
+	</update>
 </mapper>

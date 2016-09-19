@@ -1,6 +1,8 @@
 package com.xmm.shoptools.backend.service;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -86,6 +88,28 @@ public class TspiderService{
             tspider.setEnable(true);
             tspider.setUpdated(new Date());
             this.tspiderDao.update(tspider);
+            return true;
+        }
+        return false;
+    }
+    
+    public Tspider selectTspiderBynodeName(String nodeName) {
+        if(!StringUtils.isEmpty(nodeName)){
+            Map<String, Object> map = new HashMap<String, Object>();
+            map.put("nodeName", nodeName);
+            return this.tspiderDao.getWhitOutCache(map , "selectTspiderBynodeName");
+        }
+        return null;
+    }
+    
+    public List<Tspider> selectAllTspider() {
+        return this.tspiderDao.selectAllTspider();
+    }
+
+    public boolean deleteTspider(String id) {
+        Tspider tspider = this.getTspider(id);
+        if(null!=tspider){
+            this.tspiderDao.delete("deleteTspider", id);
             return true;
         }
         return false;

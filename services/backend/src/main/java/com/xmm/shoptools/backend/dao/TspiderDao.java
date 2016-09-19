@@ -23,4 +23,8 @@ public class TspiderDao extends BaseDaoImpl<Tspider>{
         return super.getSqlSession().selectList("Tspider.query", query);
     }
 
+    public List<Tspider> selectAllTspider() {
+        return super.getSqlSession().selectList("Tspider.selectAllTspider");
+    }
+
 }
