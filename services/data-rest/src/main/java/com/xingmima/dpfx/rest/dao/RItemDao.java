@@ -57,6 +57,6 @@ public interface RItemDao {
      * @param shopid the shopid
      * @return the shop report
      */
-    @Select("SELECT shopid,sum(i_pv) as pv,sum(sold_total_count) as sell_qty FROM r_items WHERE (date between unix_timestamp(date_sub(curdate(),interval #{dayAgo}+6 day)) and unix_timestamp(date_sub(curdate(),interval #{dayAgo} day))) and shopid = #{shopid} GROUP BY shopid;")
+    @Select("SELECT shopid,sum(i_share_num) as share,sum(i_favorite_num) as favorite,sum(i_pv) as pv,sum(sold_total_count) as sell_qty FROM r_items WHERE (date between unix_timestamp(date_sub(curdate(),interval #{dayAgo}+6 day)) and unix_timestamp(date_sub(curdate(),interval #{dayAgo} day))) and shopid = #{shopid} GROUP BY shopid;")
     HashMap<String,Object> getShopReport(@Param("dayAgo") Integer dayAgo,@Param("shopid") Long shopid);
 }
