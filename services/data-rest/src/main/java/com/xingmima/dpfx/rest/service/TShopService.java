@@ -19,13 +19,18 @@ import java.util.regex.Pattern;
  *
  * @author cean
  * @version com.xingmima.dpfx.rest.service, v 0.1
- * @date 16/9/19.
+ * @date 16 /9/19.
  */
-
 @Service
 public class TShopService {
     private static Logger log = LoggerFactory.getLogger(TShopService.class);
 
+    /**
+     * Gets t shop list from taobao.
+     *
+     * @param key the key
+     * @return the t shop list from taobao
+     */
     public List<TShop> getTShopListFromTaobao(String key) {
         List<TShop> result = null;
 
