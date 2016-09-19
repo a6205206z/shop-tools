@@ -20,7 +20,7 @@ public class LogfileController extends BaseAction {
 	
 	//日志文件详情查看后台页
 	@RequestMapping("/index")
-	public ModelAndView index(String logfile) {
+	public ModelAndView index(String logfile,String node) {
 		ModelAndView mav = new ModelAndView("/admin/logfile");
 		String getLogs = HttpUtil.sendGet(InitConfig.REMOTE_IP+InitConfig.LOG_URL, "name="+logfile, "UTF-8");
 		mav.addObject("getLogs", getLogs);

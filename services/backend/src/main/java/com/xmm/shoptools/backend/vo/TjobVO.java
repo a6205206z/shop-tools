@@ -63,6 +63,7 @@ public class TjobVO extends BaseVo {
 	public java.lang.String getStats() {
 		return this.stats;
 	}
+	public String getSpiderNodeName() {return spiderNodeName;}
 	public void setSpiderNodeName(String spiderNodeName) {this.spiderNodeName = spiderNodeName;}
 
     @Override
