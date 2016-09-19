@@ -1,5 +1,7 @@
 package com.xmm.backend;
 
+import static org.junit.Assert.*;
+
 import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -8,12 +10,18 @@ import java.util.Calendar;
 import java.util.Date;
 
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.xmm.shoptools.backend.entity.Tspider;
+import com.xmm.shoptools.backend.service.TspiderService;
 
 /**
  * @author leidian
  * @version $Id: GeneralTest.java, v 0.1 2016年9月18日 下午1:17:53 leidian Exp $
  */
 public class GeneralTest extends BaseJunit4Test {
+    @Autowired
+    TspiderService tspiderService;
     
     @Test
     public void testName() throws Exception {
@@ -43,6 +51,12 @@ public class GeneralTest extends BaseJunit4Test {
 //        System.out.println("time----"+time);//1474128000
 //        Timestamp timestamp = new Timestamp(cal.getTimeInMillis());
 //        System.out.println("timestamp:-------"+timestamp);
+    }
+    
+    @Test
+    public void testName4() throws Exception {
+//        Tspider tspider = tspiderService.selectTspiderBynodeName("Local");
+//        System.out.println(tspider);
     }
     
 }
