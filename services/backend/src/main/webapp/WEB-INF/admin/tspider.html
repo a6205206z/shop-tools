@@ -1,0 +1,70 @@
+<#import "/admin/layout/_layout.html" as layout /> <#macro content>
+<div class="container-fluid">
+	<hr>
+	<div class="row-fluid">
+		<div class="span12">
+			<div class="widget-box">
+				<div class="widget-title">
+					<span class="icon"><i class="icon-th"></i></span>
+					<h5>爬虫管理页</h5>
+				<!-- 添加按钮begin -->
+					<p style="float:right; margin: 10px 10px 0px 0px">
+						<i class="icon-plus-sign"></i>
+						<a style="text-decoration:underline;" href="${layout.path}/tspider/input">添加</a>
+					</p>
+				<!-- 添加按钮end -->
+				</div>
+				<div class="widget-content nopadding">
+					<table class="table table-bordered data-table"
+						id="job-datagrid">
+						<thead>
+							<tr>
+								<th>节点名</th>
+								<th>主机地址</th>
+								<th>描述</th>
+								<th>是否启用</th>
+								<th>创建时间</th>
+								<th>更新时间</th>
+								<th>操作</th>
+							</tr>
+						</thead>
+						<tbody>
+							<#if pr?? && pr.rows?? && pr.rows?size &gt; 0> <#list pr.rows as tspiders>
+							<tr>
+								<td>${tspiders.nodeName!}</td>
+								<td>${tspiders.host!}</td>
+								<td>${tspiders.descrition!}</td>
+								<td>
+								${(tspiders.enable! == false)?string("<p style='color:red;'>禁用</p>","<p style='color:green;'>启用</p>")}
+								</td>
+								<td>
+								<#if tspiders.created ??>
+										${tspiders.created ?datetime}
+								</#if>
+								</td>
+								<td>
+								<#if tspiders.updated ??>
+										${tspiders.updated ?string("yyyy-MM-dd HH:mm:ss")}
+								</#if>
+								</td>
+								<td>
+									<ul style="list-style: none;">
+										<li><i class="icon-pencil"></i><a href="${layout.path}/tspider/input?id=${tspiders.id!}">编辑</a></li>
+										<li><i class="icon-remove-sign"></i><a href="${layout.path}/tspider/delete?id=${tspiders.id!}">删除</a></li>
+									<#if tspiders.enable! == true>
+										<li><i class="icon-remove-sign"></i><a href="${layout.path}/tspider/disable?id=${tspiders.id!}">禁用</a></li>
+									<#else>
+										<li><i class="icon-remove-sign"></i><a href="${layout.path}/tspider/disable?id=${tspiders.id!}">启用</a></li>
+									</#if>
+									</ul>
+								</td>
+							</tr>
+							</#list> </#if>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</#macro> <#assign content = content in layout /> <@layout.doLayout />

@@ -9,6 +9,8 @@
 #     http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 #     http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 
+NODE_NAME = 'local'
+
 BOT_NAME = 'xmmspider'
 
 SPIDER_MODULES = ['xmmspider.spiders']

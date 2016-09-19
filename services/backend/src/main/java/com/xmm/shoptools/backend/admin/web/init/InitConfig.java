@@ -20,7 +20,7 @@ public class InitConfig {
 	 * 项目根路径
 	 */
 	public static String path = "/";
-	
+
 	 //远程接口IP
     public static String REMOTE_IP;
     //日志文件接口URL
@@ -37,7 +37,7 @@ public class InitConfig {
 //		InitConfig.master_site = master_site;
 //		log.error("master_site:" + master_site);
 //	}
-	
+
 	@Value("#{config['remote_ip']}")
     public void setREMOTE_IP(String remote_ip) {
 	    InitConfig.REMOTE_IP = remote_ip;

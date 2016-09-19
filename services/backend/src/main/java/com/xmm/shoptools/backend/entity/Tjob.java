@@ -14,6 +14,7 @@ public class Tjob extends BaseModel {
 	private java.util.Date finishtime;
 	private java.lang.String logfile;
 	private java.lang.String stats;
+	private java.lang.String spiderNodeName;
 	//columns END
 	public void setRunid(java.lang.Integer value) {
 		this.runid = value;
@@ -55,10 +56,13 @@ public class Tjob extends BaseModel {
 	public java.lang.String getStats() {
 		return this.stats;
 	}
-	
-    @Override
+	public String getSpiderNodeName() {return spiderNodeName;}
+	public void setSpiderNodeName(String spiderNodeName) {this.spiderNodeName = spiderNodeName;}
+
+
+	@Override
     public String toString() {
-        return "Tjob [runid=" + runid + ", spiderName=" + spiderName + ", starttime=" + starttime
+        return "Tjob [runid=" + runid + ", spiderNodeName=" + spiderNodeName + ", spiderName=" + spiderName + ", starttime=" + starttime
                + ", finishtime=" + finishtime + ", logfile=" + logfile + ", stats=" + stats + "]";
     }
 	

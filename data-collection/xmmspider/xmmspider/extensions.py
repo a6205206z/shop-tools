@@ -14,14 +14,15 @@ logger = logging.getLogger(__name__)
 
 class TaobaoShopDataMySQLLoader(object):
 
-    def __init__(self, db_host, db_port, db_user, db_passwd, db_name):
+    def __init__(self,spider_node, db_host, db_port, db_user, db_passwd, db_name):
         self.access = TaobaoShopMySQLAccess(
-            db_host, db_port, db_user, db_passwd, db_name)
+            spider_node, db_host, db_port, db_user, db_passwd, db_name)
 
     @classmethod
     def from_crawler(cls, crawler):
 
         ext = cls(
+            spider_node=crawler.settings.get('NODE_NAME'),
             db_host=crawler.settings.get('DB_HOST'),
             db_user=crawler.settings.get('DB_USER'),
             db_passwd=crawler.settings.get('DB_PASSWD'),
@@ -44,15 +45,16 @@ class TaobaoShopDataMySQLLoader(object):
 
 class SpiderMonitor(object):
 
-    def __init__(self, db_host, db_port, db_user, db_passwd, db_name, stats):
+    def __init__(self, spider_node, db_host, db_port, db_user, db_passwd, db_name, stats):
         self.access = TaobaoShopMySQLAccess(
-            db_host, db_port, db_user, db_passwd, db_name)
+            spider_node, db_host, db_port, db_user, db_passwd, db_name)
         self.stats = stats
 
     @classmethod
     def from_crawler(cls, crawler):
 
         ext = cls(
+            spider_node=crawler.settings.get('NODE_NAME'),
             db_host=crawler.settings.get('DB_HOST'),
             db_user=crawler.settings.get('DB_USER'),
             db_passwd=crawler.settings.get('DB_PASSWD'),

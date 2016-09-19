@@ -14,6 +14,7 @@
 						<thead>
 							<tr>
 								<th>抓取批次ID</th>
+								<th>任务爬虫节点</th>
 								<th>抓取名称</th>
 								<th>开始时间</th>
 								<th>完成时间</th>
@@ -22,25 +23,29 @@
 							</tr>
 						</thead>
 						<tbody>
-							<#if pr?? && pr.rows?? && pr.rows?size &gt; 0> <#list pr.rows as jobs>
-							<tr>
-								<td>
-								<a style="text-decoration:underline;" href="${layout.path}/dshop/index?runid=${jobs.runid!}">${jobs.runid!}</a></td>
-								<td>${jobs.spiderName!}</td>
-								<td>
-								<#if jobs.starttime ??>
-										${jobs.starttime ?datetime}
-								</#if>
-								</td>
-								<td>
-								<#if jobs.finishtime ??>
-										${jobs.finishtime ?string("yyyy-MM-dd HH:mm:ss")}
-								</#if>
-								</td>
-								<td><a style="text-decoration:underline;" href="${layout.path}/logfile/index?logfile=${jobs.logfile?replace('\'','')}">${jobs.logfile?replace('\'','')}日志查看</a></td>
-								<td>${(jobs.completedStatus == 1)?string("<p style='color:blue;'>完成</p>","<p style='color:green;'>进行中</p>")}</td>
-							</tr>
-							</#list> </#if>
+							<#if pr?? && pr.rows?? && pr.rows?size &gt; 0>
+								<#list pr.rows as jobs>
+									<tr>
+										<td>
+											<a style="text-decoration:underline;" href="${layout.path}/dshop/index?runid=${jobs.runid!}">${jobs.runid!}</a>
+										</td>
+										<td>${jobs.spiderNodeName!}</td>
+										<td>${jobs.spiderName!}</td>
+										<td>
+										<#if jobs.starttime ??>
+												${jobs.starttime ?datetime}
+										</#if>
+										</td>
+										<td>
+										<#if jobs.finishtime ??>
+												${jobs.finishtime ?string("yyyy-MM-dd HH:mm:ss")}
+										</#if>
+										</td>
+										<td><a style="text-decoration:underline;" href="${layout.path}/logfile/index?logfile=${jobs.logfile?replace('\'','')}&node=${jobs.spiderNodeName}">${jobs.logfile?replace('\'','')}日志查看</a></td>
+										<td>${(jobs.completedStatus == 1)?string("<p style='color:blue;'>完成</p>","<p style='color:green;'>进行中</p>")}</td>
+									</tr>
+								</#list>
+							</#if>
 						</tbody>
 					</table>
 				</div>
