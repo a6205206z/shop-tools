@@ -21,13 +21,14 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
+
 /**
  * xingmima.com Inc.
  * Copyright (c) 2004-2016 All Rights Reserved.
  *
  * @author tiaotiaohu
  * @version RShopService, v 0.1
- * @date 2016/9/14 12:53
+ * @date 2016 /9/14 12:53
  */
 @Service
 public class RShopService {
@@ -38,7 +39,14 @@ public class RShopService {
     @Autowired
     private RItemDao ridao;
 
-    //@Cacheable(value = "shop:bydate", key = "#root.targetClass+#root.methodName+#root.args")
+    /**
+     * Gets r shop by shop.
+     *
+     * @param shopid the shopid
+     * @param date   the date
+     * @return the r shop by shop
+     */
+//@Cacheable(value = "shop:bydate", key = "#root.targetClass+#root.methodName+#root.args")
     @Cacheable(value = "shop:bydate")
     public RShop getRShopByShop(Long shopid, Integer date) {
         return rsdao.getRShopByShop(shopid, date);
@@ -47,9 +55,9 @@ public class RShopService {
     /**
      * 查询店铺时间段统计信息
      *
-     * @param shopid
-     * @param type
-     * @return
+     * @param shopid the shopid
+     * @param type   the type
+     * @return shop diff info
      */
     public QueryShopDTO getShopDiffInfo(Long shopid, String type) {
         /*默认昨天*/
@@ -178,6 +186,7 @@ public class RShopService {
      *
      * @param shopid the shopid
      * @param date   the date
+     * @return the shop pv diff
      */
     @Cacheable(value = "shop:pv")
     public List<HashMap<String, Object>> getShopPvDiff(Long shopid, Integer[] date) {
@@ -189,6 +198,7 @@ public class RShopService {
      *
      * @param shopid the shopid
      * @param date   the date
+     * @return the shop sales diff
      */
     @Cacheable(value = "shop:sales")
     public List<HashMap<String, Object>> getShopSalesDiff(Long shopid, Integer[] date) {
@@ -268,6 +278,27 @@ public class RShopService {
 
         testGetDateArray(date);
         return date;
+    }
+
+
+    /**
+     * 获取店铺体检7日报表.
+     *
+     * @param shopid the shopid
+     * @return the hash map
+     */
+    public HashMap<String, HashMap<String, Object>> getShopReportSevenDay(long shopid) {
+        HashMap<String, HashMap<String, Object>> report = null;
+        HashMap<String, Object> today = ridao.getShopReport(0, shopid);
+        HashMap<String, Object> sevenAgo = ridao.getShopReport(7, shopid);
+        if (today != null) {
+            report = new HashMap<String, HashMap<String, Object>>();
+            report.put("today", today);
+            if (sevenAgo != null) {
+                report.put("ago", sevenAgo);
+            }
+        }
+        return report;
     }
 
     /**
