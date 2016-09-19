@@ -23,7 +23,7 @@ import com.xingmima.dpfx.rest.entity.TShop;
  * @version ShopDao.java, v 0.1
  *
  */
-public interface ShopDao {
+public interface StoreManageDao {
     /**
      * 查询热门店铺top10
      *

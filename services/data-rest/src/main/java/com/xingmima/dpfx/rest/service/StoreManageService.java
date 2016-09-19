@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
-import com.xingmima.dpfx.rest.dao.ShopDao;
+import com.xingmima.dpfx.rest.dao.StoreManageDao;
 import com.xingmima.dpfx.rest.dto.TFollowDTO;
 import com.xingmima.dpfx.rest.dto.TopShopDTO;
 import com.xingmima.dpfx.rest.entity.TCategory;
@@ -30,11 +30,11 @@ import com.xingmima.dpfx.rest.util.Helper;
  *
  */
 @Service
-public class ShopService {
-    private static final Logger LOGGER =LoggerFactory.getLogger(ShopService.class);
+public class StoreManageService {
+    private static final Logger LOGGER =LoggerFactory.getLogger(StoreManageService.class);
     
     @Autowired
-    private ShopDao dao;
+    private StoreManageDao dao;
     
     /**
      *@description  获取top10店铺

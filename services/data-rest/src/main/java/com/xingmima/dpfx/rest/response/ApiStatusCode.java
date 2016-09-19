@@ -40,6 +40,7 @@ public enum ApiStatusCode {
     ACCOUNT_HAS_BINDING_SHOP("205004", "账户已绑定店铺"),
     ACCOUNT_FOLLOW_SHOP_LIMIT("205005", "账户关注店铺已达5个"),
     SHOP_HAS_BINDED("205006", "店铺已被绑定"),
+    CANNOT_FOLLOW_OWN_SHOP("205007", "不能关注自己的店铺"),
 
     /**
      * 成功状态码
