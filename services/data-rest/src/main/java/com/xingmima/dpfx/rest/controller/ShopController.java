@@ -1,30 +1,28 @@
 package com.xingmima.dpfx.rest.controller;
 
-import com.xingmima.dpfx.rest.dao.RShopDao;
-import com.xingmima.dpfx.rest.dto.RShopDTO;
-import com.xingmima.dpfx.rest.dto.TCategoryDTO;
-import com.xingmima.dpfx.rest.dto.TFollowDTO;
-import com.xingmima.dpfx.rest.dto.TopShopDTO;
-import com.xingmima.dpfx.rest.entity.TCategory;
-import com.xingmima.dpfx.rest.response.ApiStatusCode;
-import com.xingmima.dpfx.rest.response.ResponseDataModel;
-import com.xingmima.dpfx.rest.service.RShopService;
-import com.xingmima.dpfx.rest.service.ShopService;
-import com.xingmima.dpfx.rest.util.BeanDTOUtil;
-
 import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.xingmima.dpfx.rest.dto.RShopDTO;
+import com.xingmima.dpfx.rest.dto.TCategoryDTO;
+import com.xingmima.dpfx.rest.dto.TFollowDTO;
+import com.xingmima.dpfx.rest.dto.TopShopDTO;
+import com.xingmima.dpfx.rest.entity.TCategory;
+import com.xingmima.dpfx.rest.entity.TShop;
+import com.xingmima.dpfx.rest.response.ApiStatusCode;
+import com.xingmima.dpfx.rest.response.ResponseDataModel;
+import com.xingmima.dpfx.rest.service.RShopService;
+import com.xingmima.dpfx.rest.service.ShopService;
+import com.xingmima.dpfx.rest.service.TShopService;
+import com.xingmima.dpfx.rest.util.BeanDTOUtil;
 
 /**
  * xingmima.com Inc.
@@ -44,6 +42,9 @@ public class ShopController extends BaseController {
     
     @Autowired
     private ShopService shopService;
+    
+    @Autowired
+    private TShopService tShopService;
 
     @RequestMapping("/shop/info/{shopid}/{date}")
     @ResponseBody
@@ -128,15 +129,30 @@ public class ShopController extends BaseController {
     }
     
     /**
-     *@description  
+     *@description  绑定或关注店铺
      *@date 2016年9月19日 
      *@author Baoluo
      *@param nick
-     *@param type 1:绑定店铺  2:关注店铺
+     *@param type 0:绑定店铺 1:关注店铺
      *@return
      */
-    @RequestMapping("/shop/info/bindOrFollow/{nick}/{type}")
-    public ResponseDataModel bindOrFollowShop(String nick, int type) {
-        return null;
+    @RequestMapping("/shop/info/bindOrFollow/{uid}/{nick}/{isBinding}")
+    public ResponseDataModel bindOrFollowShop(@PathVariable String uid,@PathVariable String nick, @PathVariable int isBinding) {
+        TShop shop = shopService.getShopByNick(nick);
+        if(null == shop) {
+            List<TShop> shoplist = tShopService.getTShopListFromTaobao(nick);
+            if(null == shoplist || 0 == shoplist.size()) {
+                return error(ApiStatusCode.RESOURCE_NOT_EXIST);
+            }
+            TShop tmpShop = shoplist.get(0);
+            TShop dbShop = shopService.getShopByNick(tmpShop.getNick());
+            if(null == dbShop) {
+                shopService.insertShop(tmpShop);
+                shop = tmpShop;
+            } else {
+                shop = dbShop;
+            }
+        }
+        return success(shopService.bindingOrFollowShop(uid, shop.getShopid(), isBinding));
     }
 }
