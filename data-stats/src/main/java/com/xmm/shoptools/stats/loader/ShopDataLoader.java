@@ -28,7 +28,8 @@ public class ShopDataLoader {
     private static final String total_favorite = "SELECT MAX(`s_favorite`) FROM `d_item_num` WHERE `date` = ? AND shopid = ?";
     private static final String total_item_d = "SELECT SUM(`i_favorite_num`) AS i_favorite_num, SUM(`i_share_num`) AS i_share_num, SUM(`i_pv`) AS i_pv FROM `r_items` WHERE `date` = ? AND shopid = ?";
     private static final String total_fans = "SELECT `weitao_fans` FROM `d_fans` WHERE `date` = ? AND shopid = ?";
-    private static final String insert_sql = "INSERT INTO `r_shop` (`id`,`date`,`shopid`,`sale_goods_num`,`on_goods_num`,`off_goods_num`,`favorite_num`,`i_favorite_num`,`i_share_num`,`total_pv`,`total_wt_fans`,`created`) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
+    private static final String total_sales = "SELECT SUM(total_sales) AS total_sales,SUM(sold_total_count) AS sold_total_count FROM `d_items` WHERE `date` = ? AND shopid = ?";
+    private static final String insert_sql = "INSERT INTO `r_shop` (`id`,`date`,`shopid`,`sale_goods_num`,`on_goods_num`,`off_goods_num`,`favorite_num`,`i_favorite_num`,`i_share_num`,`total_pv`,`total_wt_fans`,`total_sales`,`sold_total_count`,`created`) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     private static final int MAX_LIMIT = 1000;
     private static final String all_shop = "SELECT `shopid`,`store_url` FROM `t_shop` WHERE STATUS = 0";
 
@@ -121,6 +122,22 @@ public class ShopDataLoader {
     }
 
     /**
+     * Gets stats item Sales.
+     *
+     * @param date   the date
+     * @param shopId the shop id
+     * @return the stats item
+     */
+    public Map getStatsItemSales(Integer date, Long shopId) {
+        try {
+            return Dbutils.map(total_sales, new Object[]{date, shopId});
+        } catch (SQLException e) {
+            log.error("", e);
+        }
+        return null;
+    }
+
+    /**
      * Cnt total fans long.
      *
      * @param date   the date
@@ -154,12 +171,14 @@ public class ShopDataLoader {
      * @param total_pv       the total pv
      * @param total_wt_fans  the total wt fans
      */
-    public void insert(String uuid, Integer date, Long shopid, Integer sale_goods_num, Integer on_goods_num, Integer off_goods_num, Long favorite_num, BigDecimal i_favorite_num, BigDecimal i_share_num, BigDecimal total_pv, Long total_wt_fans) {
+    public void insert(String uuid, Integer date, Long shopid, Integer sale_goods_num, Integer on_goods_num, Integer off_goods_num, Long favorite_num, BigDecimal i_favorite_num, BigDecimal i_share_num, BigDecimal total_pv, Long total_wt_fans, BigDecimal total_sales, BigDecimal sold_total_count) {
         try {
             Dbutils.update(insert_sql, new Object[]{
                     uuid, date, shopid,
                     sale_goods_num, on_goods_num, off_goods_num, favorite_num, i_favorite_num, i_share_num,
-                    total_pv, total_wt_fans, new Date()
+                    total_pv, total_wt_fans,
+                    total_sales, sold_total_count,
+                    new Date()
             });
         } catch (SQLException e) {
             log.error("", e);

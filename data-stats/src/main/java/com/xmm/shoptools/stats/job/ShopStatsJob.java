@@ -70,6 +70,15 @@ public class ShopStatsJob implements Job {
             return;
         }
 
+        //店铺销量累计报表数据
+        Map sales = loader.getStatsItemSales(date, shopId);
+        if (sales != null) {
+            log.debug("getStatsItemSales:{}", sales.toString());
+        } else {
+            log.error("stats item error! {},{} ", date, yesdate, shopId);
+            return;
+        }
+
         //店铺收藏总量
         Long favorite_num = loader.cntMaxFavorite(date, shopId);
         log.debug("favorite_num:{}", favorite_num.toString());
@@ -80,9 +89,9 @@ public class ShopStatsJob implements Job {
 
         this.loader.insert(Helper.getGuid32(), date, shopId, sale_goods_num, on_goods_num, off_goods_num
                 , favorite_num, (BigDecimal) map.get("i_favorite_num"), (BigDecimal) map.get("i_share_num"), (BigDecimal) map.get("i_pv")
-                , total_wt_fans);
+                , total_wt_fans, (BigDecimal) sales.get("total_sales"), (BigDecimal) sales.get("sold_total_count")
+        );
 
         log.info("stats success@{}#{}", shopId, date);
     }
-
 }
