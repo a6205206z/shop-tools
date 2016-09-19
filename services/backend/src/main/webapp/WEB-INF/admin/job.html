@@ -14,6 +14,7 @@
 						<thead>
 							<tr>
 								<th>抓取批次ID</th>
+								<th>任务爬虫节点</th>
 								<th>抓取名称</th>
 								<th>开始时间</th>
 								<th>完成时间</th>
@@ -25,7 +26,11 @@
 							<#if pr?? && pr.rows?? && pr.rows?size &gt; 0> <#list pr.rows as jobs>
 							<tr>
 								<td>
-								<a style="text-decoration:underline;" href="${layout.path}/dshop/index?runid=${jobs.runid!}">${jobs.runid!}</a></td>
+									<a style="text-decoration:underline;" href="${layout.path}/dshop/index?runid=${jobs.runid!}">${jobs.runid!}</a>
+								</td>
+								<td>
+									${jobs.spiderNodeName!}
+								</td>
 								<td>${jobs.spiderName!}</td>
 								<td>
 								<#if jobs.starttime ??>

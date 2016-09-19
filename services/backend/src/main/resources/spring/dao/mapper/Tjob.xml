@@ -5,6 +5,7 @@
 <mapper namespace="Tjob">
 	<resultMap id="tjobResultMap" type="com.xmm.shoptools.backend.entity.Tjob">
 		<result column="runid" property="runid" />
+		<result column="spider_node_name" property="spiderNodeName" />
 		<result column="spider_name" property="spiderName" />
 		<result column="starttime" property="starttime" />
 		<result column="finishtime" property="finishtime" />
@@ -15,6 +16,7 @@
 	<!-- 用于select查询公用抽取的列 -->
 	<sql id="commonColumns">
 		 runid ,
+		 spider_node_name ,
 		 spider_name ,
 		 starttime ,
 		 finishtime ,
@@ -25,6 +27,7 @@
 	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.xmm.shoptools.backend.entity.Tjob">
 		insert into t_job (
 			runid ,
+			spider_node_name ,
 			spider_name ,
 			starttime ,
 			finishtime ,
@@ -32,6 +35,7 @@
 			stats 
 		)values(
 			#{runid},
+			#{spiderNodeName},
 			#{spiderName},
 			#{starttime},
 			#{finishtime},
@@ -45,6 +49,9 @@
 		<set>
 			<if test="runid != null">
 				runid=#{runid},
+			</if>
+			<if test="spiderNodeName != null">
+				spider_node_name=#{spiderNodeName},
 			</if>
 			<if test="spiderName != null">
 				spider_name=#{spiderName},

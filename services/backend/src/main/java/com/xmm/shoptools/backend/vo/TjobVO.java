@@ -7,6 +7,7 @@ public class TjobVO extends BaseVo {
 
 	//columns START
 	private java.lang.Integer runid;
+	private java.lang.String spiderNodeName;
 	private java.lang.String spiderName;
 	private java.util.Date starttime;
 	private java.util.Date finishtime;
@@ -62,9 +63,11 @@ public class TjobVO extends BaseVo {
 	public java.lang.String getStats() {
 		return this.stats;
 	}
+	public void setSpiderNodeName(String spiderNodeName) {this.spiderNodeName = spiderNodeName;}
+
     @Override
     public String toString() {
-        return "TjobVO [runid=" + runid + ", spiderName=" + spiderName + ", starttime=" + starttime
+        return "TjobVO [runid=" + runid  + ", spiderNodeName=" + spiderNodeName + ", spiderName=" + spiderName + ", starttime=" + starttime
                + ", finishtime=" + finishtime + ", logfile=" + logfile + ", stats=" + stats
                + ", completedStatus=" + completedStatus + "]";
     }
