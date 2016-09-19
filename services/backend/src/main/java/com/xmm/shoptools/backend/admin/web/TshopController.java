@@ -77,12 +77,12 @@ public class TshopController extends BaseAction {
             if (StringUtils.isEmpty(dto.getId())) {
                 this.tshopService.addTshop(dto,shopid,sellerId);
                 /*返回主页*/
-                return index();
+                return getRedirectView("/tshop/index");
             } else {
                 //编辑
                 this.tshopService.editTshop(dto,shopid,sellerId);
                 /*返回主页*/
-                return index();
+                return getRedirectView("/tshop/index");
             }
         } catch (Exception e) {
             e.printStackTrace();

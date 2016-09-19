@@ -1,0 +1,42 @@
+<#import "/admin/layout/_layout.html" as layout /> <#macro content>
+<div class="widget-box">
+	<div class="widget-title">
+		<span class="icon"> <i class="icon-align-justify"></i>
+		</span>
+		<h5>
+		<#if tspider?? && tspider.id ??>
+			编辑爬虫
+		<#else>
+			新增爬虫
+		</#if>
+		</h5>
+	</div>
+	<div class="widget-content nopadding">
+		<form action="${layout.path}/tspider/editSpiders" method="post" class="form-horizontal">
+			<input name="id" value="<#if tspider??>${tspider.id!}</#if>" type="hidden">
+			<div class="control-group">
+				<label class="control-label">节点名 :</label>
+				<div class="controls">
+					<input name="nName" value="<#if tspider??>${tspider.nodeName!}</#if>" type="text" class="span11" placeholder="节点名" />
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">主机地址 :</label>
+				<div class="controls">
+					<input name="host" value="<#if tspider??>${tspider.host!}</#if>" type="text" class="span11" placeholder="主机地址" />
+				</div>
+			</div>
+			<div class="control-group">
+              <label class="control-label">描述</label>
+              <div class="controls">
+                <textarea class="span11" name="descrition" ><#if tspider??>${tspider.descrition!}</#if></textarea>
+              </div>
+            </div>
+			<div class="form-actions">
+				<button type="submit" class="btn btn-success">Save</button>
+				<a class="btn btn-warning btn-big"  href="index.html">Back</a> </div>
+			</div>
+		</form>
+	</div>
+</div>
+</#macro> <#assign content = content in layout /> <@layout.doLayout />
