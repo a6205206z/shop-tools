@@ -161,13 +161,14 @@
 		select
 		<include refid="commonColumns" />
 		from t_spider 
-		where nodeName=#{nodeName}
+		where nodeName=#{nodeName} and enable = '1'
 	</select>
 	
 	<select id="selectAllTspider" resultMap="tspiderResultMap">
 		select
 		<include refid="commonColumns" />
 		from t_spider 
+		where enable = '1'
 	</select>
 	
 	<update id="deleteTspider" parameterType="Object">
