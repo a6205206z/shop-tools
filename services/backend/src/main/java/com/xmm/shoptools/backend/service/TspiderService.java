@@ -93,6 +93,11 @@ public class TspiderService{
         return false;
     }
     
+    /**
+     * 通过节点名查找爬虫节点
+     * @param nodeName
+     * @return
+     */
     public Tspider selectTspiderBynodeName(String nodeName) {
         if(!StringUtils.isEmpty(nodeName)){
             Map<String, Object> map = new HashMap<String, Object>();
@@ -102,10 +107,19 @@ public class TspiderService{
         return null;
     }
     
+    /**
+     * 查询所有非禁用的爬虫节点
+     * @return
+     */
     public List<Tspider> selectAllTspider() {
         return this.tspiderDao.selectAllTspider();
     }
-
+    
+    /**
+     * 删除爬爬虫节点
+     * @param id
+     * @return
+     */
     public boolean deleteTspider(String id) {
         Tspider tspider = this.getTspider(id);
         if(null!=tspider){

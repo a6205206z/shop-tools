@@ -13,18 +13,20 @@
 					<div class="widget-content nopadding">
 					<div class="chat-users panel-right2">
 						<div class="panel-title">
-							<h5>爬虫列表</h5>
+							<h5>爬虫节点列表</h5>
 						</div>
 						<div class="panel-content nopadding">
 							<ul class="contact-list">
-								<li id="user-Alex" class="online"><a href=""><img alt="" src="${layout.path}/matrix/img/demo/av1.jpg" /> <span>本地爬虫</span></a></li>
+								<#list spiderList as spider>
+								<li id="user-Alex" class="online"><a href="cfg?node=${spider.nodeName}"><img alt="${spider.host}" src="${layout.path}/matrix/img/demo/spiderman.png" /> <span>${spider.nodeName}</span></a></li>
+								</#list>
 							</ul>
 						</div>
 					</div>
 					<div class="chat-content panel-left2">
 						<div class="chat-messages" id="chat-messages">
-							<#if cfgs??>
-								<textarea style="width: 98%;height: 90%">${cfgs}</textarea>
+							<#if cfg??>
+								<textarea style="width: 98%;height: 90%">${cfg}</textarea>
 								<#else>
 									<h1>该配置文件不存在!!</h1>
 							</#if>
