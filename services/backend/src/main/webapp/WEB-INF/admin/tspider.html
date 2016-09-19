@@ -31,7 +31,7 @@
 						<tbody>
 							<#if pr?? && pr.rows?? && pr.rows?size &gt; 0> <#list pr.rows as tspiders>
 							<tr>
-								<td>${tspiders.nodeName!}</td>
+								<td style="text-align: center;"><img alt="${spider.host}" width="25px" src="${layout.path}/matrix/img/demo/spiderman.png" /><br/>${tspiders.nodeName!}</td>
 								<td>${tspiders.host!}</td>
 								<td>${tspiders.descrition!}</td>
 								<td>
