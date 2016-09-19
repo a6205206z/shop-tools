@@ -1,16 +1,13 @@
 package com.xingmima.dpfx.rest.controller;
 
-import com.xingmima.dpfx.rest.dao.RShopDao;
+import com.xingmima.dpfx.rest.dto.QueryShopDTO;
 import com.xingmima.dpfx.rest.dto.RShopDTO;
-import com.xingmima.dpfx.rest.response.ApiStatusCode;
 import com.xingmima.dpfx.rest.response.ResponseDataModel;
 import com.xingmima.dpfx.rest.service.RShopService;
 import com.xingmima.dpfx.rest.util.BeanDTOUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -42,6 +39,14 @@ public class ShopController extends BaseController {
         BeanDTOUtil.copyObject(dao.getRShopByShop(shopid, date), back);
         //return error(ApiStatusCode.DB_DELETE_ERROR);
         return success(back);
+    }
+
+    @RequestMapping("/shop/staisinfo/{shopid}/{type}")
+    @ResponseBody
+    public ResponseDataModel getShopStatisticalInformation(@PathVariable Long shopid, @PathVariable String type) {
+        QueryShopDTO dto = dao.getShopDiffInfo(shopid, type);
+        //return error(ApiStatusCode.DB_DELETE_ERROR);
+        return success(dto);
     }
 
     @RequestMapping("/")
