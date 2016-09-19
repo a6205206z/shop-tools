@@ -22,12 +22,10 @@ public interface RItemDao {
      * @param shopid the shopid
      * @param date1  the date 1
      * @param date2  the date 2
-     * @param date3  the date 3
-     * @param date4  the date 4
      * @return shop sales diff
      */
-    @Select("SELECT 'd1' AS k, SUM(sold_total_count) AS sold_total_count ,SUM(total_sales) as total_sales FROM `r_items` WHERE `date` >= #{date1} AND `date` < #{date2} AND shopid = #{shopid} UNION SELECT 'd2' AS k, SUM(sold_total_count) AS sold_total_count ,SUM(total_sales) as total_sales FROM `r_items` WHERE `date` >= #{date3} AND `date` < #{date4} AND shopid = #{shopid} ")
-    List<HashMap<String, Object>> getShopSalesDiff(@Param("shopid") Long shopid, @Param("date1") Integer date1, @Param("date2") Integer date2, @Param("date3") Integer date3, @Param("date4") Integer date4);
+    @Select("SELECT 'd1' AS k, sold_total_count, total_sales FROM `r_shop` WHERE `date` = #{date1} AND shopid = #{shopid} UNION SELECT 'd2' AS k, sold_total_count, total_sales FROM `r_shop` WHERE `date` = #{date2} AND shopid = #{shopid}")
+    List<HashMap<String, Object>> getShopSalesDiff(@Param("shopid") Long shopid, @Param("date1") Integer date1, @Param("date2") Integer date2);
 
 
     /**
