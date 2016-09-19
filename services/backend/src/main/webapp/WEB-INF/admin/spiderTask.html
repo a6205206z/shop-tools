@@ -8,37 +8,59 @@
 		</h5>
 	</div>
 	<div class="widget-content nopadding">
-		<form action="${layout.path}/spiderTask/startSpider" method="post" class="form-horizontal">
-			<div class="control-group">
-				<label class="control-label">爬虫列表:</label>
-				<div class="controls">
-					<select id="spiderName" name="spiderName" style="width:250px;">
-						<option selected="selected" value="0">-----------请选择----------</option>>
-					</select> 
+
+		<div class="chat-users panel-right2">
+			<div class="panel-title">
+				<h5>爬虫节点列表</h5>
+			</div>
+			<div class="panel-content nopadding">
+				<ul class="contact-list">
+					<#list spiderList as spider>
+						<li id="user-Alex" class="online"><a href="index?node=${spider.nodeName}"><img alt="${spider.host}" src="${layout.path}/matrix/img/demo/spiderman.png" /> <span>${spider.nodeName}</span></a></li>
+					</#list>
+				</ul>
+			</div>
+		</div>
+		<div class="chat-content panel-left2">
+			<form action="${layout.path}/spiderTask/startSpider" method="post" class="form-horizontal">
+				<div class="control-group">
+					<label class="control-label">爬虫节点:</label>
+					<div class="controls">
+						<input id="node" type="text" class="span3" name="node" readonly="true" value="${selectNode}" />
+					</div>
 				</div>
-			</div>
-			<div class="control-group">
-				<label class="control-label">时间戳 :</label>
-				<div class="controls">
-					<input name="runid" type="text" class="span3" />
+				<div class="control-group">
+					<label class="control-label">爬虫列表:</label>
+					<div class="controls">
+						<select id="spiderName" name="spiderName" style="width:250px;">
+							<option selected="selected" value="0">-----------请选择----------</option>>
+						</select>
+					</div>
 				</div>
-			</div>
-			<div class="form-actions">
-				<button type="submit" class="btn btn-success">Go</button>
-				<a class="btn btn-warning btn-big"  href="index.html">Back</a> </div>
-			</div>
-		</form>
+				<div class="control-group">
+					<label class="control-label">时间戳 :</label>
+					<div class="controls">
+						<input name="runid" type="text" class="span3" />
+					</div>
+				</div>
+				<div class="form-actions">
+					<button type="submit" class="btn btn-success">Go</button>
+					<a class="btn btn-warning btn-big"  href="index.html">Back</a> </div>
+				</div>
+			</form>
+		</div>
 	</div>
+
 </#macro> 
 <#macro script>
 
-<#if spiders??>
+<#if spiderNames??>
 	<script>
 	$(document).ready(function(){
 		var sps =  new Array();
-		sps = ${spiders};
+		sps = ${spiderNames};
  		for(var i=0;i<sps.length;++i){
- 			$("#spiderName").html($("#spiderName").html()+"<option value="+sps[i]+">"+sps[i]+"</option>");	
+ 			$("#spiderName").html($("#spiderName").html()+"<option value="+sps[i]+">"+sps[i]+"</option>");
  		}
 	});
 	</script>

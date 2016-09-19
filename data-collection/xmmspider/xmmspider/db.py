@@ -50,7 +50,7 @@ class TaobaoShopMySQLAccess:
             cursor = conn.cursor()
             values = [runid, self.spider_node ,spider_name, logfile]
             cursor.execute(
-                'insert into t_job (runid,spider_node_name,starttime,spider_name,logfile)values(%s,"%s",now(),"%s","%s")', values)
+                'insert into t_job (runid,spider_node_name,starttime,spider_name,logfile)values(%s,%s,now(),%s,%s)', values)
             cursor.close()
             conn.commit()
         except MySQLdb.Error, e:
@@ -68,7 +68,7 @@ class TaobaoShopMySQLAccess:
             cursor = conn.cursor()
             values = [stats, runid, spider_name, self.spider_node]
             cursor.execute(
-                'update t_job set finishtime=now(),stats="%s" where runid=%s and spider_name="%s" and spider_node_name="%s"', values)
+                'update t_job set finishtime=now(),stats="%s" where runid=%s and spider_name=%s and spider_node_name=%s', values)
             conn.commit()
             cursor.close()
         except MySQLdb.Error, e:
