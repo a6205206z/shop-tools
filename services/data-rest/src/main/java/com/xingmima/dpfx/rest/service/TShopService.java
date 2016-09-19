@@ -3,6 +3,7 @@ package com.xingmima.dpfx.rest.service;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.xingmima.dpfx.rest.entity.TShop;
+import com.xingmima.dpfx.rest.util.Helper;
 import com.xingmima.dpfx.rest.util.HttpUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -67,7 +68,7 @@ public class TShopService {
                         JSONObject jitem = (JSONObject)item;
                         TShop ts = new TShop();
                         ts.setCreated(new Date());
-                        ts.setId(UUID.randomUUID().toString());
+                        ts.setId(Helper.getGuid32());
                         ts.setLastTimes(0);
                         ts.setLocation(jitem.getString("provcity"));
                         ts.setLogoUrl("https:"+jitem.getString("picUrl"));

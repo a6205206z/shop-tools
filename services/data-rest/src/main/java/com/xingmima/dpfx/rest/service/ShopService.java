@@ -36,7 +36,14 @@ public class ShopService {
     @Autowired
     private ShopDao dao;
     
-    @Cacheable(value = "shop:topShop")
+    /**
+     *@description  获取top10店铺
+     *@date 2016年9月19日 
+     *@author Baoluo
+     *@param cid
+     *@return
+     *@throws ParseException
+     */
     public List<TopShopDTO> getTopShops(Long cid) throws ParseException {
         LOGGER.info("Get in the method : getRShopByShop, param : {}", cid);
         int yesterDay = getYesterdayTime();
@@ -46,6 +53,12 @@ public class ShopService {
         return dtoList;
     }
     
+    /**
+     *@description  获取所有一级类目
+     *@date 2016年9月19日 
+     *@author Baoluo
+     *@return
+     */
     @Cacheable(value = "shop:allCategories")
     public List<TCategory> getAllCategories() {
         LOGGER.info("Get in the method : getAllCategories");
@@ -54,7 +67,14 @@ public class ShopService {
         return dtoList;
     }
     
-    @Cacheable(value = "shop:myFollows")
+    /**
+     *@description  获取所有我关注的店铺
+     *@date 2016年9月19日 
+     *@author Baoluo
+     *@param uid
+     *@return
+     *@throws ParseException
+     */
     public List<TFollowDTO> getMyFollows(String uid) throws ParseException {
         LOGGER.info("Get in the method : getMyFollows , uid : {}", uid);
         int yesterday = getYesterdayTime();
@@ -63,28 +83,93 @@ public class ShopService {
         return dtoList;
     }
     
+    /**
+     *@description  取消关注
+     *@date 2016年9月19日 
+     *@author Baoluo
+     *@param uid
+     *@param shopid
+     *@return
+     */
     public int cancleFollow(String uid, Long shopid) {
         return dao.cancleFollowShop(uid, shopid);
     }
     
+    /**
+     *@description  根据昵称获取店铺信息
+     *@date 2016年9月19日 
+     *@author Baoluo
+     *@param nick
+     *@return
+     */
     public TShop getShopByNick(String nick) {
         return dao.getShopByNick(nick);
     }
     
+    /**
+     *@description  添加店铺信息
+     *@date 2016年9月19日 
+     *@author Baoluo
+     *@param shop
+     *@return
+     */
     public int insertShop(TShop shop) {
         return dao.insertShopInfo(shop);
     }
     
+    /**
+     *@description  绑定或关注店铺
+     *@date 2016年9月19日 
+     *@author Baoluo
+     *@param uid
+     *@param shopid
+     *@param isBinding
+     *@return
+     */
     public int bindingOrFollowShop(String uid, Long shopid, int isBinding) {
+        TFollow dbFollow = dao.getBindOrFollow(uid, shopid, isBinding);
+        if(null != dbFollow) {
+            // 已经绑定或关注
+            return -1;
+        }
         TFollow follow = new TFollow();
         follow.setUid(uid);
         follow.setShopid(shopid);
         follow.setStatus(true);
-        follow.setIsBinding(isBinding == 0 ? true : false);
+        follow.setIsBinding(isBinding == 1 ? true : false);
         follow.setId(Helper.getGuid32());
         return dao.bindOrFollowShop(follow);
     }
     
+    /**
+     *@description  获取用户绑定的店铺
+     *@date 2016年9月19日 
+     *@author Baoluo
+     *@param uid
+     *@return
+     */
+    public TFollow getBindingShop(String uid) {
+        return dao.getBindingShop(uid);
+    }
+    
+    /**
+     *@description  获取店铺绑定信息
+     *@date 2016年9月19日 
+     *@author Baoluo
+     *@param shopid
+     *@return
+     */
+    public TFollow getShopBinding(Long shopid) {
+        return dao.getShopBinding(shopid);
+    }
+    
+    /**
+     *@description  获取当天前一天的时间戳
+     *@date 2016年9月19日 
+     *@author Baoluo
+     *@return
+     *@throws ParseException
+     */
     private int getYesterdayTime() throws ParseException {
         Date date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");

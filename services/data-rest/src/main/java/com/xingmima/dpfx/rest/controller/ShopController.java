@@ -16,6 +16,7 @@ import com.xingmima.dpfx.rest.dto.TCategoryDTO;
 import com.xingmima.dpfx.rest.dto.TFollowDTO;
 import com.xingmima.dpfx.rest.dto.TopShopDTO;
 import com.xingmima.dpfx.rest.entity.TCategory;
+import com.xingmima.dpfx.rest.entity.TFollow;
 import com.xingmima.dpfx.rest.entity.TShop;
 import com.xingmima.dpfx.rest.response.ApiStatusCode;
 import com.xingmima.dpfx.rest.response.ResponseDataModel;
@@ -133,26 +134,85 @@ public class ShopController extends BaseController {
      *@date 2016年9月19日 
      *@author Baoluo
      *@param nick
-     *@param type 0:绑定店铺 1:关注店铺
+     *@param type 1:绑定店铺 0:关注店铺
      *@return
      */
     @RequestMapping("/shop/info/bindOrFollow/{uid}/{nick}/{isBinding}")
+    @ResponseBody
     public ResponseDataModel bindOrFollowShop(@PathVariable String uid,@PathVariable String nick, @PathVariable int isBinding) {
+        if(1 == isBinding) {
+            // 判断账户是否已经绑定了店铺
+            TFollow dbFollow = shopService.getBindingShop(uid);
+            if(null != dbFollow) {
+                return error(ApiStatusCode.ACCOUNT_HAS_BINDING_SHOP);
+            }
+        } else {
+            // 判断账户关注店铺是否已经达到5个
+            try {
+                List<TFollowDTO> dbFollows = shopService.getMyFollows(uid);
+                if(null != dbFollows && dbFollows.size() == 5) {
+                    return error(ApiStatusCode.ACCOUNT_FOLLOW_SHOP_LIMIT);
+                }
+            } catch (ParseException e) {
+                return error(ApiStatusCode.BUSSINESS_EXCEPTION);
+            }
+        }
+        
+        // 查询根据昵称查询店铺信息(完全匹配)
         TShop shop = shopService.getShopByNick(nick);
         if(null == shop) {
+            // 店铺不存在，调用接口爬取店铺信息
             List<TShop> shoplist = tShopService.getTShopListFromTaobao(nick);
             if(null == shoplist || 0 == shoplist.size()) {
-                return error(ApiStatusCode.RESOURCE_NOT_EXIST);
+                // 未爬取到店铺信息，报错
+                return error(ApiStatusCode.SHOP_NOT_EXIST);
             }
+            
+            // 使用爬取到的第一个店铺作为用户需要的店铺并且根据昵称去查数据库检查该店铺信息是否存在
             TShop tmpShop = shoplist.get(0);
             TShop dbShop = shopService.getShopByNick(tmpShop.getNick());
             if(null == dbShop) {
+                // 店铺信息不存在数据库中，插入一条新记录
                 shopService.insertShop(tmpShop);
                 shop = tmpShop;
             } else {
+                // 店铺信息存在，使用数据库中的店铺信息
                 shop = dbShop;
             }
         }
-        return success(shopService.bindingOrFollowShop(uid, shop.getShopid(), isBinding));
+        
+        if(1 == isBinding) {
+            // 判断店铺是否被绑定
+            TFollow dbTFollow = shopService.getShopBinding(shop.getShopid());
+            if(null != dbTFollow) {
+                // 店铺已经被绑定
+                return error(ApiStatusCode.SHOP_HAS_BINDED);
+            }
+        }
+        
+        int result = shopService.bindingOrFollowShop(uid, shop.getShopid(), isBinding);
+        if(-1 == result) {
+            // 已经绑定或关注了该店铺
+            if (1 == isBinding) {
+                return error(ApiStatusCode.HAS_BINDED_SHOP);
+            }else {
+                return error(ApiStatusCode.HAS_FOLLOWED_SHOP);
+            }
+        }
+        
+        return success(result);
+    }
+    
+    /**
+     *@description  判断账户是否绑定了店铺
+     *@date 2016年9月19日 
+     *@author Baoluo
+     *@param uid
+     *@return
+     */
+    @RequestMapping("/shop/info/checkIsBindShop/{uid}")
+    public ResponseDataModel checkIsBindShop(@PathVariable String uid) {
+        TFollow follow = shopService.getBindingShop(uid);
+        return success(null != follow);
     }
 }
