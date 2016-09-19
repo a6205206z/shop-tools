@@ -31,7 +31,7 @@ public interface StoreManageDao {
      * @param shopid
      * @return
      */
-    @Select("SELECT ri.shopid, ts.store_url, ds.title, SUM(ri.total_sales) AS 'totalSales', SUM(ri.sold_total_count) AS 'soldTotalCount', SUM(ri.i_pv) AS 'iPv', SUM(ri.i_share_num) AS 'iShareNum', SUM(ri.i_favorite_num) AS 'iFavoriteNum' FROM r_items ri LEFT JOIN t_shop ts ON ri.shopid = ts.shopid LEFT JOIN d_shop ds ON ts.shopid = ds.shopid WHERE ri.date = #{date} AND ts.cid = #{cid} AND ds.date = #{date} GROUP BY ts.shopid ORDER BY SUM(ri.total_sales) DESC LIMIT 10")
+    @Select("SELECT ri.shopid, ts.store_url, ds.title, IFNULL(SUM(ri.sold_total_count),0) AS 'soldTotalCount', IFNULL(SUM(ri.i_pv),0) AS 'iPv', IFNULL(SUM(ri.i_share_num),0) AS 'iShareNum', IFNULL(SUM(ri.i_favorite_num),0) AS 'iFavoriteNum' FROM r_items ri LEFT JOIN t_shop ts ON ri.shopid = ts.shopid LEFT JOIN d_shop ds ON ts.shopid = ds.shopid WHERE ri.date = #{date} AND ts.cid = #{cid} AND ds.date = #{date} GROUP BY ts.shopid ORDER BY SUM(ri.total_sales) DESC LIMIT 10")
     List<TopShopDTO> getTopShops(@Param("cid") Long cid, @Param("date") Integer date);
     
     /**
@@ -40,7 +40,7 @@ public interface StoreManageDao {
      *@author Baoluo
      *@return
      */
-    @Select("SELECT id, pid, title, updated FROM t_category LIMIT 50")
+    @Select("SELECT id, pid, title, updated FROM t_category where pid = 0 LIMIT 50")
     @Options(useCache = true, timeout = 10000, flushCache = false)
     List<TCategory> getAllCategories();
     
@@ -52,7 +52,7 @@ public interface StoreManageDao {
      *@param uid
      *@return
      */
-    @Select("SELECT tf.id, tf.uid, tf.shopid, ts.logo_url as logoUrl, ds.title FROM t_follow tf LEFT JOIN t_shop ts ON ts.shopid = tf.shopid LEFT JOIN d_shop ds ON ds.shopid = ts.shopid WHERE ds.date = #{date} AND tf.is_binding = 1 AND tf.status = 0 AND uid = #{uid}")
+    @Select("SELECT tf.id, tf.uid, tf.shopid, ts.logo_url as logoUrl, ds.title FROM t_follow tf LEFT JOIN t_shop ts ON ts.shopid = tf.shopid LEFT JOIN d_shop ds ON ds.shopid = ts.shopid WHERE ds.date = #{date} AND tf.is_binding = 0 AND tf.status = 1 AND uid = #{uid}")
     List<TFollowDTO> getMyFollows(@Param("date") Integer date, @Param("uid") String uid);
     
     /**

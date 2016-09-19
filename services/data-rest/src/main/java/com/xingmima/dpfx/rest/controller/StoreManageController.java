@@ -7,10 +7,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.xingmima.dpfx.rest.dto.StoreDTO;
 import com.xingmima.dpfx.rest.dto.TCategoryDTO;
 import com.xingmima.dpfx.rest.dto.TFollowDTO;
 import com.xingmima.dpfx.rest.dto.TopShopDTO;
@@ -103,10 +106,10 @@ public class StoreManageController extends BaseController {
      *@param shopid
      *@return
      */
-    @RequestMapping("/cancleFollow/{uid}/{shopid}")
+    @RequestMapping(value = "/cancleFollow", method = RequestMethod.POST)
     @ResponseBody
-    public ResponseDataModel cancleFollow(@PathVariable String uid, @PathVariable Long shopid) {
-        int result = storeService.cancleFollow(uid, shopid);
+    public ResponseDataModel cancleFollow(@RequestBody StoreDTO dto) {
+        int result = storeService.cancleFollow(dto.getUid(), dto.getShopid());
         return success(result);
     }
     
@@ -116,12 +119,15 @@ public class StoreManageController extends BaseController {
      *@author Baoluo
      *@param uid
      *@param nick
-     *@param isBinding  1:绑定店铺  2:关注店铺
+     *@param isBinding  1:绑定店铺  0:关注店铺
      *@return
      */
-    @RequestMapping("/bindOrFollow/{uid}/{nick}/{isBinding}")
+    @RequestMapping(value = "/bindOrFollow", method = RequestMethod.POST)
     @ResponseBody
-    public ResponseDataModel bindOrFollowShop(@PathVariable String uid,@PathVariable String nick, @PathVariable int isBinding) {
+    public ResponseDataModel bindOrFollowShop(@RequestBody StoreDTO dto) {
+        int isBinding = dto.getIsBinding();
+        String uid = dto.getUid();
+        String nick = dto.getNick();
         if(1 == isBinding) {
             // 判断账户是否已经绑定了店铺
             TFollow dbFollow = storeService.getBindingShop(uid);
