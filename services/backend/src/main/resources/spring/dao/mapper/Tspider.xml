@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="Tspider">
+	<resultMap id="tspiderResultMap" type="com.xmm.shoptools.backend.entity.Tspider">
+		<result column="id" property="id" />
+		<result column="nodeName" property="nodeName" />
+		<result column="host" property="host" />
+		<result column="descrition" property="descrition" />
+		<result column="enable" property="enable" />
+		<result column="created" property="created" />
+		<result column="updated" property="updated" />
+	</resultMap>
+
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="commonColumns">
+		 id ,
+		 nodeName ,
+		 host ,
+		 descrition ,
+		 enable ,
+		 created ,
+		 updated
+	</sql>
+
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.xmm.shoptools.backend.entity.Tspider">
+		insert into t_spider (
+			id,
+			nodeName ,
+			host ,
+			descrition ,
+			enable ,
+		    created ,
+		    updated
+			
+		)values(
+			#{id},
+			#{nodeName},
+			#{host},
+			#{descrition},
+			#{enable},
+			#{created},
+			#{updated}
+		)
+	</insert>
+
+	<update id="update" parameterType="com.xmm.shoptools.backend.entity.Tspider">
+		update t_spider
+		<set>
+			<if test="nodeName != null">
+				nodeName=#{nodeName},
+			</if>
+			<if test="host != null">
+				host=#{host},
+			</if>
+			<if test="descrition != null">
+				descrition=#{descrition},
+			</if>
+			<if test="enable != null">
+				enable=#{enable},
+			</if>
+			<if test="created != null">
+				created=#{created},
+			</if>
+			<if test="updated != null">
+				updated=#{updated}
+			</if>
+		</set>
+		where id=#{id}
+	</update>
+
+	<update id="delete" parameterType="String">
+		delete from t_spider
+		where id=#{id}
+	</update>
+
+	<select id="select" resultMap="tspiderResultMap"
+		parameterType="String">
+		select
+		<include refid="commonColumns" />
+		from t_spider where id=#{id}
+	</select>
+
+	<sql id="dynamicWhere">
+		<if test="id != null">
+			and id=#{id}
+		</if>
+		<if test="nodeName != null">
+			and nodeName=#{nodeName}
+		</if>
+		<if test="host != null">
+			and host=#{host}
+		</if>
+		<if test="descrition != null">
+			and descrition=#{descrition}
+		</if>
+		<if test="enable != null">
+			and enable=#{enable}
+		</if>
+		<if test="created != null">
+			and created=#{created}
+		</if>
+		<if test="updated != null">
+			and updated=#{updated}
+		</if>
+	</sql>
+
+	<select id="cntByMap" resultType="int">
+		select count(*) from t_spider where 1=1
+		<include refid="dynamicWhere" />
+	</select>
+
+	<select id="getByMap" resultType="long">
+		select id from t_spider where 1=1
+		<include refid="dynamicWhere" />
+		<if test="max_id != null">
+			and id &gt; #{max_id}
+		</if>
+		<if test="sortColumns != null">
+			ORDER BY ${sortColumns}
+		</if>
+		<if test="max_id != null">
+			limit #{size}
+		</if>
+		<if test="start != null">
+			limit #{start}, #{size}
+		</if>
+	</select>
+
+	<select id="getListByMap" resultMap="tspiderResultMap">
+		select * from t_spider where 1=1
+		<include refid="dynamicWhere" />
+		<if test="max_id != null">
+			and id &gt; #{max_id}
+		</if>
+		<if test="sortColumns != null">
+			ORDER BY ${sortColumns}
+		</if>
+		<if test="max_id != null">
+			limit #{size}
+		</if>
+		<if test="start != null">
+			limit #{start}, #{size}
+		</if>
+	</select>
+	
+	<select id="query" resultMap="tspiderResultMap" parameterType="com.xmm.shoptools.backend.vo.TspiderQuery">
+		select
+		<include refid="commonColumns" />
+		from t_spider
+		limit #{begin},#{pageSize}
+	</select>
+	
+	<select id="count" parameterType="com.xmm.shoptools.backend.vo.TspiderQuery" resultType="int">
+		select count(*) from t_spider
+	</select>
+</mapper>

@@ -132,7 +132,7 @@
 		where id=#{id}
 	</update>
 
-	<update id="delete" parameterType="long">
+	<update id="delete" parameterType="String">
 		delete from t_shop
 		where id=#{id}
 	</update>
