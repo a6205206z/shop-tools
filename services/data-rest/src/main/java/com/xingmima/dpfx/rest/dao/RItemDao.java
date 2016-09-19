@@ -52,4 +52,13 @@ public interface RItemDao {
     @Select("SELECT c.*, a.ipv, a.ifavorite FROM (SELECT `numiid`, SUM(`i_pv`) ipv, SUM(`i_favorite_num`) ifavorite FROM `r_items` WHERE `date` >= #{date1} AND `date` < #{date2} AND shopid = #{shopid} GROUP BY `numiid` ORDER BY ipv DESC LIMIT 10) a LEFT JOIN (SELECT b.numiid, `title`,`item_url`,`pic_url` FROM `d_items` b WHERE b.`date` >= #{date1} AND b.`date` < #{date2} AND b.shopid = #{shopid} GROUP BY b.numiid) c ON a.numiid = c.numiid")
     List<HashMap<String, Object>> getShopHotFavorite(@Param("shopid") Long shopid, @Param("date1") Integer date1, @Param("date2") Integer date2);
 
+    /**
+     * 获取店铺报告.
+     *
+     * @param dayAgo the day ago
+     * @param shopid the shopid
+     * @return the shop report
+     */
+    @Select("SELECT shopid,sum(i_pv) as pv,sum(sold_total_count) as sell_qty FROM r_items WHERE (date between unix_timestamp(date_sub(curdate(),interval #{dayAgo}+6 day)) and unix_timestamp(date_sub(curdate(),interval #{dayAgo} day))) and shopid = #{shopid} GROUP BY shopid;")
+    HashMap<String,Object> getShopReport(@Param("dayAgo") Integer dayAgo,@Param("shopid") Long shopid);
 }
