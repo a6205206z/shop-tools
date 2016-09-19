@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
+import java.util.List;
+
 /**
  * xingmima.com Inc.
  * Copyright (c) 2004-2016 All Rights Reserved.
@@ -47,6 +50,13 @@ public class ShopController extends BaseController {
         QueryShopDTO dto = dao.getShopDiffInfo(shopid, type);
         //return error(ApiStatusCode.DB_DELETE_ERROR);
         return success(dto);
+    }
+
+    @RequestMapping("/shop/report/{shopid}")
+    @ResponseBody
+    public ResponseDataModel getShopReportSevenDay(@PathVariable Long shopid){
+        HashMap<String,HashMap<String,Object>> report = dao.getShopReportSevenDay(shopid);
+        return success(report);
     }
 
     @RequestMapping("/")

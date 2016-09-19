@@ -22,12 +22,10 @@ public interface RItemDao {
      * @param shopid the shopid
      * @param date1  the date 1
      * @param date2  the date 2
-     * @param date3  the date 3
-     * @param date4  the date 4
      * @return shop sales diff
      */
-    @Select("SELECT 'd1' AS k, SUM(sold_total_count) AS sold_total_count ,SUM(total_sales) as total_sales FROM `r_items` WHERE `date` >= #{date1} AND `date` < #{date2} AND shopid = #{shopid} UNION SELECT 'd2' AS k, SUM(sold_total_count) AS sold_total_count ,SUM(total_sales) as total_sales FROM `r_items` WHERE `date` >= #{date3} AND `date` < #{date4} AND shopid = #{shopid} ")
-    List<HashMap<String, Object>> getShopSalesDiff(@Param("shopid") Long shopid, @Param("date1") Integer date1, @Param("date2") Integer date2, @Param("date3") Integer date3, @Param("date4") Integer date4);
+    @Select("SELECT 'd1' AS k, sold_total_count, total_sales FROM `r_shop` WHERE `date` = #{date1} AND shopid = #{shopid} UNION SELECT 'd2' AS k, sold_total_count, total_sales FROM `r_shop` WHERE `date` = #{date2} AND shopid = #{shopid}")
+    List<HashMap<String, Object>> getShopSalesDiff(@Param("shopid") Long shopid, @Param("date1") Integer date1, @Param("date2") Integer date2);
 
 
     /**
@@ -52,4 +50,13 @@ public interface RItemDao {
     @Select("SELECT c.*, a.ipv, a.ifavorite FROM (SELECT `numiid`, SUM(`i_pv`) ipv, SUM(`i_favorite_num`) ifavorite FROM `r_items` WHERE `date` >= #{date1} AND `date` < #{date2} AND shopid = #{shopid} GROUP BY `numiid` ORDER BY ipv DESC LIMIT 10) a LEFT JOIN (SELECT b.numiid, `title`,`item_url`,`pic_url` FROM `d_items` b WHERE b.`date` >= #{date1} AND b.`date` < #{date2} AND b.shopid = #{shopid} GROUP BY b.numiid) c ON a.numiid = c.numiid")
     List<HashMap<String, Object>> getShopHotFavorite(@Param("shopid") Long shopid, @Param("date1") Integer date1, @Param("date2") Integer date2);
 
+    /**
+     * 获取店铺报告.
+     *
+     * @param dayAgo the day ago
+     * @param shopid the shopid
+     * @return the shop report
+     */
+    @Select("SELECT shopid,sum(i_share_num) as share,sum(i_favorite_num) as favorite,sum(i_pv) as pv,sum(sold_total_count) as sell_qty FROM r_items WHERE (date between unix_timestamp(date_sub(curdate(),interval #{dayAgo}+6 day)) and unix_timestamp(date_sub(curdate(),interval #{dayAgo} day))) and shopid = #{shopid} GROUP BY shopid;")
+    HashMap<String,Object> getShopReport(@Param("dayAgo") Integer dayAgo,@Param("shopid") Long shopid);
 }
