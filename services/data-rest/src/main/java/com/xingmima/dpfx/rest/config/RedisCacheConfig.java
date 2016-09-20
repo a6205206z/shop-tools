@@ -3,6 +3,7 @@ package com.xingmima.dpfx.rest.config;
 import com.xingmima.dpfx.rest.util.GenericJackson2JsonRedisSerializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,11 +11,13 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CachingConfigurerSupport;
 import org.springframework.cache.interceptor.KeyGenerator;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
+import redis.clients.jedis.JedisPoolConfig;
 
 import java.lang.reflect.Method;
 import java.util.concurrent.TimeUnit;
@@ -29,8 +32,20 @@ import java.util.concurrent.TimeUnit;
  */
 @Configuration
 @EnableCaching
+@PropertySource(value = {"classpath:redis.properties"})
 public class RedisCacheConfig extends CachingConfigurerSupport {
     private static Logger log = LoggerFactory.getLogger(RedisCacheConfig.class);
+    @Value("${redis.host:127.0.0.1}")
+    private String host;
+
+    @Value("${redis.port:6379}")
+    private Integer port;
+
+    @Value("${redis.password:test}")
+    private String password;
+
+    @Value("${redis.timeout:100000}")
+    private Integer timeout;
 
     /**
      * Redis connection factory jedis connection factory.
@@ -41,9 +56,12 @@ public class RedisCacheConfig extends CachingConfigurerSupport {
     public JedisConnectionFactory redisConnectionFactory() {
         JedisConnectionFactory redisConnectionFactory = new JedisConnectionFactory();
         // Defaults
-        redisConnectionFactory.setHostName("127.0.0.1");
-        redisConnectionFactory.setPort(6379);
-        redisConnectionFactory.setPassword("test");
+        redisConnectionFactory.setHostName(host);
+        redisConnectionFactory.setPort(port);
+        redisConnectionFactory.setPassword(password);
+        redisConnectionFactory.setTimeout(timeout);
+        //JedisPoolConfig config = new JedisPoolConfig();
+//        redisConnectionFactory.setPoolConfig();
         return redisConnectionFactory;
     }
 
