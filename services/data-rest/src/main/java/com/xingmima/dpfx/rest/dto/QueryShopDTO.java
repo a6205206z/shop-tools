@@ -13,6 +13,7 @@ import java.util.List;
  * @date 2016/9/19 16:52
  */
 public class QueryShopDTO extends BaseDTO {
+    private HashMap<String, Object> info = null;
     private JyDetailDTO shopPv = null;
     private JyDetailDTO salesNum = null;
     private JyDetailDTO salesMoney = null;
@@ -21,6 +22,14 @@ public class QueryShopDTO extends BaseDTO {
 
     private List<HashMap<String, Object>> hotgoods = new ArrayList<HashMap<String, Object>>();
     private List<HashMap<String, Object>> hotfav = new ArrayList<HashMap<String, Object>>();
+
+    public HashMap<String, Object> getInfo() {
+        return info;
+    }
+
+    public void setInfo(HashMap<String, Object> info) {
+        this.info = info;
+    }
 
     public JyDetailDTO getShopPv() {
         return shopPv;

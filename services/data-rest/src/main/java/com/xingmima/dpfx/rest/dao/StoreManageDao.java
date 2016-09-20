@@ -1,18 +1,13 @@
 package com.xingmima.dpfx.rest.dao;
 
-import java.util.List;
-
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Options;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
-
 import com.xingmima.dpfx.rest.dto.TFollowDTO;
 import com.xingmima.dpfx.rest.dto.TopShopDTO;
 import com.xingmima.dpfx.rest.entity.TCategory;
 import com.xingmima.dpfx.rest.entity.TFollow;
 import com.xingmima.dpfx.rest.entity.TShop;
+import org.apache.ibatis.annotations.*;
+
+import java.util.List;
 
 /**
  * Xingmima.com Inc.
