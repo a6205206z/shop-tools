@@ -47,7 +47,7 @@ class TmallShopProductItem(scrapy.Item):
 
 class TaobaoTejiaProductItem(scrapy.Item):
     run_id = scrapy.Field()
-    shop_id = scrapy.Field()
+    catalog = scrapy.Field()
     product_url = scrapy.Field()
     product_page = scrapy.Field()
     counter_page = scrapy.Field()

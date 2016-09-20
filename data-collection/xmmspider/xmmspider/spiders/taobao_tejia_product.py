@@ -54,8 +54,7 @@ class TaobaoTejiaProductSpider(Spider):
                 request = Request("https://item.taobao.com/item.htm?id=%s" % (itemId),
                                   callback=self.parse_product_item,
                                   meta={'cookiejar': 1,
-                                        'url': url["url"],
-                                        'catalog': url["catalog"],
+                                        'catalog': response.meta["catalog"],
                                         },
                                   )
                 yield request
@@ -63,7 +62,7 @@ class TaobaoTejiaProductSpider(Spider):
 
     def parse_product_item(self, response):
         item = TaobaoTejiaProductItem()
-        item["shop_id"] = 0
+        item["catalog"] = response.meta["catalog"]
         item["run_id"] = self.run_id
         item['product_url'] = response.url
         item['product_page'] = response.body_as_unicode()
