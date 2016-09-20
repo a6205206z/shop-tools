@@ -347,17 +347,35 @@ public class TaobaoParser extends DPFXJsonParserImpl {
     public void handleDbst(DItems item, String regex) {
         String dbst = RegexUtils.findText(this.resource, regex);
         if (!StringUtils.isEmpty(dbst)) {
-            Date listtime = new Date(Long.parseLong(RegexUtils.getInteger(dbst.trim())));
+            Long dt = Long.parseLong(RegexUtils.getInteger(dbst.trim()));
+            Long d = (System.currentTimeMillis() - dt) / 604800000L; //7天
             Calendar c = Calendar.getInstance();
-            c.setTime(listtime);
+            c.setTime(new Date(dt));
+            //最近上架时间
+            c.add(Calendar.DAY_OF_YEAR, d.intValue() * 7);
+            item.setListTime(c.getTime());
+            //最近下架时间
             c.add(Calendar.DAY_OF_YEAR, 7);
-            item.setListTime(listtime);
             item.setDelistTime(c.getTime());
         } else {
             log.info("item dbst is null:{}", this.producturl);
         }
     }
 
+    /**
+     * 重置店铺ID
+     *
+     * @param item
+     * @param regex
+     */
+    public void resetShopId(DItems item, String regex) {
+        String shopid = RegexUtils.findText(this.resource, regex);
+        if (!StringUtils.isEmpty(shopid)) {
+            item.setShopid(Long.parseLong(RegexUtils.getInteger(shopid.trim())));
+        } else {
+            log.info("item shopid is null:{}", this.producturl);
+        }
+    }
 
     /**
      * 卖光了，或商品下架

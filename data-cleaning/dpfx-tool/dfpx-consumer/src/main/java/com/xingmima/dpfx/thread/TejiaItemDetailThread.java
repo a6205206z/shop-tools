@@ -2,6 +2,7 @@ package com.xingmima.dpfx.thread;
 
 import com.xingmima.dpfx.dao.DItemsDao;
 import com.xingmima.dpfx.dao.DItemsNumDao;
+import com.xingmima.dpfx.dao.DTejiaItemsDao;
 import com.xingmima.dpfx.entity.DItemNum;
 import com.xingmima.dpfx.entity.DItems;
 import com.xingmima.dpfx.kafka.KafkaProperties;
@@ -17,25 +18,23 @@ import org.slf4j.LoggerFactory;
  * Copyright (c) 2004-2016 All Rights Reserved.
  *
  * @author tiaotiaohu
- * @version TaobaoItemDetailThread, v 0.1
+ * @version TejiaItemDetailThread, v 0.1
  * @date 2016/9/3 15:37
  */
-public class TaobaoItemDetailThread implements Runnable {
-    private static final Logger log = LoggerFactory.getLogger(TaobaoItemDetailThread.class);
+public class TejiaItemDetailThread implements Runnable {
+    private static final Logger log = LoggerFactory.getLogger(TejiaItemDetailThread.class);
     //消息流
     private KafkaStream stream;
-    private DItemsDao did;
-    private DItemsNumDao dind;
+    private DTejiaItemsDao dtdao;
 
-    public TaobaoItemDetailThread(KafkaStream stream) {
+    public TejiaItemDetailThread(KafkaStream stream) {
         this.stream = stream;
-        this.did = new DItemsDao();
-        this.dind = new DItemsNumDao();
+        this.dtdao = new DTejiaItemsDao();
     }
 
     @Override
     public void run() {
-        log.info("----------{}-----------@startup", KafkaProperties.TOPIC_ITEM_DETAIL);
+        log.info("----------{}-----------@startup", KafkaProperties.TOPIC_TEJIA_ITEM_DETAIL);
         ConsumerIterator<String, String> it = stream.iterator();
         while (it.hasNext()) {
             MessageAndMetadata<String, String> c = it.next();
@@ -43,15 +42,12 @@ public class TaobaoItemDetailThread implements Runnable {
             TaobaoItemDetail info = new TaobaoItemDetail(c.message()).call();
             if (null != info) {
                 try {
-                    DItems obj = info.handelItemInfo(false);
+                    DItems obj = info.handelItemInfo(true);
                     if (null != obj) {
-                        did.insert(obj);
-
-                        DItemNum diobj = info.handelItemNum(obj.getNumiid());
-                        dind.insert(diobj);
+                        dtdao.insert(obj);
                     }
                 } catch (Exception e) {
-                    log.error(KafkaProperties.TOPIC_ITEM_DETAIL + ":", e);
+                    log.error(KafkaProperties.TOPIC_TEJIA_ITEM_DETAIL + ":", e);
                 }
             } else {
                 log.error("null========================{}", c.message());
