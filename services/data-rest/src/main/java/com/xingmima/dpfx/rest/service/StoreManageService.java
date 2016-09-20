@@ -40,15 +40,15 @@ public class StoreManageService {
      *@description  获取top10店铺
      *@date 2016年9月19日 
      *@author Baoluo
-     *@param cid
+     *@param tCid
      *@return
      *@throws ParseException
      */
-    public List<TopShopDTO> getTopShops(Long cid) throws ParseException {
-        LOGGER.info("Get in the method : getRShopByShop, param : {}", cid);
+    public List<TopShopDTO> getTopShops(String tCid) throws ParseException {
+        LOGGER.info("Get in the method : getRShopByShop, param : {}", tCid);
         int yesterDay = getYesterdayTime();
         LOGGER.info("Get the Time: {}", yesterDay);
-        List<TopShopDTO> dtoList = dao.getTopShops(cid, yesterDay);
+        List<TopShopDTO> dtoList = dao.getTopShops(tCid, yesterDay);
         LOGGER.info("Get out the method : getRShopByShop, dto : {}", dtoList);
         return dtoList;
     }

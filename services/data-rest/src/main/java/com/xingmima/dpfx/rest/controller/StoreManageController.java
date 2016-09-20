@@ -51,14 +51,14 @@ public class StoreManageController extends BaseController {
      *@description  查询店铺Top榜
      *@date 2016年9月18日 
      *@author Baoluo
-     *@param cid
+     *@param tCid
      *@return
      */
-    @RequestMapping("/getTopStore/{cid}")
+    @RequestMapping("/getTopStore/{tCid}")
     @ResponseBody
-    public ResponseDataModel getTopStore(@PathVariable Long cid) {
+    public ResponseDataModel getTopStore(@PathVariable String tCid) {
         try {
-            List<TopShopDTO> dto = storeService.getTopShops(cid);
+            List<TopShopDTO> dto = storeService.getTopShops(tCid);
             return success(dto);
         } catch (ParseException e) {
             LOGGER.error("时间转换出错！", e);
