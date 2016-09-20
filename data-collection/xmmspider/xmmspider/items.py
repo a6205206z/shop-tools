@@ -44,3 +44,13 @@ class TmallShopProductItem(scrapy.Item):
     sib_page = scrapy.Field()
     comment_count = scrapy.Field()
     pass
+
+class TaobaoTejiaProductItem(scrapy.Item):
+    run_id = scrapy.Field()
+    shop_id = scrapy.Field()
+    product_url = scrapy.Field()
+    product_page = scrapy.Field()
+    counter_page = scrapy.Field()
+    sib_page = scrapy.Field()
+    comment_count = scrapy.Field()
+    pass

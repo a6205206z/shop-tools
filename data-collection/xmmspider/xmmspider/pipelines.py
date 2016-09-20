@@ -4,7 +4,7 @@ import os
 import time
 import urllib
 
-from xmmspider.items import TaobaoShopInfoItem, TaobaoShopProductItem, TmallShopInfoItem, TmallShopProductItem
+from xmmspider.items import TaobaoShopInfoItem, TaobaoShopProductItem, TmallShopInfoItem, TmallShopProductItem,TaobaoTejiaProductItem
 from pykafka import KafkaClient
 from xmmspider.helper import Helper
 
@@ -76,6 +76,13 @@ class PushDataToKafka(object):
 
         if isinstance(item, TmallShopProductItem):
             topic = self.client.topics['tmall.shop.product']
+            with topic.get_sync_producer() as producer:
+                producer.produce('{"runid":"%s","shopid":"%s","producturl":"%s","counter":"%s","sib":"%s","comment_count":"%s"}|%s' % (item["run_id"], item[
+                                 "shop_id"], urllib.quote(item["product_url"]), urllib.quote(Helper.encode_utf8(item["counter_page"])), urllib.quote(Helper.encode_utf8(item["sib_page"])), urllib.quote(Helper.encode_utf8(item["comment_count"])), Helper.encode_utf8(item["product_page"])))
+
+        #for taobao tejia
+        if isinstance(item, TaobaoTejiaProductItem):
+            topic = self.client.topics['taobao.tejia.product']
             with topic.get_sync_producer() as producer:
                 producer.produce('{"runid":"%s","shopid":"%s","producturl":"%s","counter":"%s","sib":"%s","comment_count":"%s"}|%s' % (item["run_id"], item[
                                  "shop_id"], urllib.quote(item["product_url"]), urllib.quote(Helper.encode_utf8(item["counter_page"])), urllib.quote(Helper.encode_utf8(item["sib_page"])), urllib.quote(Helper.encode_utf8(item["comment_count"])), Helper.encode_utf8(item["product_page"])))
