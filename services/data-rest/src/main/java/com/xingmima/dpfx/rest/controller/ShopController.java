@@ -1,10 +1,8 @@
 package com.xingmima.dpfx.rest.controller;
 
 import com.xingmima.dpfx.rest.dto.QueryShopDTO;
-import com.xingmima.dpfx.rest.dto.RShopDTO;
 import com.xingmima.dpfx.rest.response.ResponseDataModel;
 import com.xingmima.dpfx.rest.service.RShopService;
-import com.xingmima.dpfx.rest.util.BeanDTOUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +12,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
-import java.util.List;
 
 /**
  * xingmima.com Inc.
@@ -32,18 +29,6 @@ public class ShopController extends BaseController {
     @Autowired
     private RShopService dao;
 
-    @RequestMapping("/shop/info/{shopid}/{date}")
-    @ResponseBody
-    public ResponseDataModel getRShopByShop(@PathVariable Long shopid, @PathVariable Integer date) {
-        log.error("error...");
-        log.info("info...");
-        log.debug("debug...");
-        RShopDTO back = new RShopDTO();
-        BeanDTOUtil.copyObject(dao.getRShopByShop(shopid, date), back);
-        //return error(ApiStatusCode.DB_DELETE_ERROR);
-        return success(back);
-    }
-
     @RequestMapping("/shop/staisinfo/{shopid}/{type}")
     @ResponseBody
     public ResponseDataModel getShopStatisticalInformation(@PathVariable Long shopid, @PathVariable String type) {
@@ -54,8 +39,8 @@ public class ShopController extends BaseController {
 
     @RequestMapping("/shop/report/{shopid}")
     @ResponseBody
-    public ResponseDataModel getShopReportSevenDay(@PathVariable Long shopid){
-        HashMap<String,HashMap<String,Object>> report = dao.getShopReportSevenDay(shopid);
+    public ResponseDataModel getShopReportSevenDay(@PathVariable Long shopid) {
+        HashMap<String, HashMap<String, Object>> report = dao.getShopReportSevenDay(shopid);
         return success(report);
     }
 

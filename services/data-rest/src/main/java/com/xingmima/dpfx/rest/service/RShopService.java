@@ -3,9 +3,9 @@ package com.xingmima.dpfx.rest.service;
 import com.alibaba.fastjson.JSON;
 import com.xingmima.dpfx.rest.dao.RItemDao;
 import com.xingmima.dpfx.rest.dao.RShopDao;
+import com.xingmima.dpfx.rest.dao.TShopDao;
 import com.xingmima.dpfx.rest.dto.JyDetailDTO;
 import com.xingmima.dpfx.rest.dto.QueryShopDTO;
-import com.xingmima.dpfx.rest.entity.RShop;
 import com.xingmima.dpfx.rest.util.Helper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,19 +38,10 @@ public class RShopService {
     private RShopDao rsdao;
     @Autowired
     private RItemDao ridao;
+    @Autowired
+    private TShopDao tsdao;
 
-    /**
-     * Gets r shop by shop.
-     *
-     * @param shopid the shopid
-     * @param date   the date
-     * @return the r shop by shop
-     */
-//@Cacheable(value = "shop:bydate", key = "#root.targetClass+#root.methodName+#root.args")
-    @Cacheable(value = "shop:bydate")
-    public RShop getRShopByShop(Long shopid, Integer date) {
-        return rsdao.getRShopByShop(shopid, date);
-    }
+    //@Cacheable(value = "shop:bydate", key = "#root.targetClass+#root.methodName+#root.args")
 
     /**
      * 查询店铺时间段统计信息
@@ -59,53 +50,73 @@ public class RShopService {
      * @param type   the type
      * @return shop diff info
      */
+    @Cacheable(value = "shop:result")
     public QueryShopDTO getShopDiffInfo(Long shopid, String type) {
+        QueryShopDTO dto = new QueryShopDTO();
+
         /*默认昨天*/
         if (StringUtils.isEmpty(type)) {
             type = "0";
         }
-        Integer[] date = this.getDateArray(type);
+        try {
+            //店铺基础信息
+            dto.setInfo(this.getRShopInfo(shopid));
 
-        QueryShopDTO dto = new QueryShopDTO();
+            Integer[] date = this.getDateArray(type);
 
-        List<HashMap<String, Object>> list = this.getShopPvDiff(shopid, date);
-        if (null != list && !list.isEmpty()) {
-            JyDetailDTO tmp = this.getBigDecimalJyDetailDTO(list, "pv");
-            dto.setShopPv(tmp);
-            log.debug("setShopPv:" + JSON.toJSONString(tmp));
-        }
-        list = this.getShopSalesDiff(shopid, date);
-        if (null != list && !list.isEmpty()) {
-            JyDetailDTO tmp = this.getIntegerJyDetailDTO(list, "sold_total_count");
-            dto.setSalesNum(tmp);
-            log.debug("setSalesNum:" + JSON.toJSONString(tmp));
+            List<HashMap<String, Object>> list = this.getShopPvDiff(shopid, date);
+            if (null != list && !list.isEmpty()) {
+                JyDetailDTO tmp = this.getBigDecimalJyDetailDTO(list, "pv");
+                dto.setShopPv(tmp);
+                log.debug("setShopPv:" + JSON.toJSONString(tmp));
+            }
 
-            tmp = this.getBigDecimalJyDetailDTO(list, "total_sales");
-            dto.setSalesMoney(tmp);
-            log.debug("setSalesMoney:" + JSON.toJSONString(tmp));
-        }
+            list = this.getShopSalesDiff(shopid, date);
+            if (null != list && !list.isEmpty()) {
+                JyDetailDTO tmp = this.getIntegerJyDetailDTO(list, "sold_total_count");
+                dto.setSalesNum(tmp);
+                log.debug("setSalesNum:" + JSON.toJSONString(tmp));
 
-        list = this.getShopGoodsDiff(shopid, date);
-        if (null != list && !list.isEmpty()) {
-            JyDetailDTO tmp = this.getIntegerJyDetailDTO(list, "sale_goods_num");
-            dto.setGoodsNum(tmp);
-            log.debug("setGoodsNum:" + JSON.toJSONString(tmp));
+                tmp = this.getBigDecimalJyDetailDTO(list, "total_sales");
+                dto.setSalesMoney(tmp);
+                log.debug("setSalesMoney:" + JSON.toJSONString(tmp));
+            }
 
-            tmp = this.getIntegerJyDetailDTO(list, "favorite_num");
-            dto.setShopFav(tmp);
-            log.debug("setShopFav:" + JSON.toJSONString(tmp));
-        }
+            list = this.getShopGoodsDiff(shopid, date);
+            if (null != list && !list.isEmpty()) {
+                JyDetailDTO tmp = this.getIntegerJyDetailDTO(list, "sale_goods_num");
+                dto.setGoodsNum(tmp);
+                log.debug("setGoodsNum:" + JSON.toJSONString(tmp));
 
-        list = this.getShopHotSales(shopid, date);
-        if (null != list && !list.isEmpty()) {
-            log.debug("setHotgoods:" + JSON.toJSONString(list));
-            dto.setHotgoods(list);
-        }
+                tmp = this.getIntegerJyDetailDTO(list, "favorite_num");
+                dto.setShopFav(tmp);
+                log.debug("setShopFav:" + JSON.toJSONString(tmp));
+            }
 
-        list = this.getShopHotFavorite(shopid, date);
-        if (null != list && !list.isEmpty()) {
-            log.debug("setHotfav:" + JSON.toJSONString(list));
-            dto.setHotfav(list);
+            List<HashMap<String, Object>> hotgoods = null;
+            List<HashMap<String, Object>> hotfav = null;
+
+            if ("1".equals(type)) {
+                //加载时间段数据
+                hotgoods = this.getShopHotSales(shopid, date);
+                hotfav = this.getShopHotFavorite(shopid, date);
+            } else {
+                //加载整店数据
+                hotgoods = this.getShopHotSales(shopid);
+                hotfav = this.getShopHotFavorite(shopid);
+            }
+
+            if (null != hotgoods && !hotgoods.isEmpty()) {
+                log.debug("setHotgoods:" + JSON.toJSONString(hotgoods));
+                dto.setHotgoods(hotgoods);
+            }
+
+            if (null != hotfav && !hotfav.isEmpty()) {
+                log.debug("setHotfav:" + JSON.toJSONString(hotfav));
+                dto.setHotfav(hotfav);
+            }
+        } catch (Exception e) {
+            log.error("get shop diff info:", e);
         }
         return dto;
     }
@@ -118,8 +129,7 @@ public class RShopService {
      * @return
      */
     private JyDetailDTO getIntegerJyDetailDTO(List<HashMap<String, Object>> list, String key) {
-        JyDetailDTO tmp = new JyDetailDTO();
-
+        JyDetailDTO tmp = null;
         Integer d1 = null, d2 = null;
         for (HashMap<String, Object> map : list) {
             if (map.get("k").equals("d1")) {
@@ -129,6 +139,7 @@ public class RShopService {
             }
         }
         if (d1 != null) {
+            tmp = new JyDetailDTO();
             tmp.setVal(d1.toString());
             if (d2 == null) {
                 tmp.setFlag("normal");
@@ -149,7 +160,7 @@ public class RShopService {
      * @return
      */
     private JyDetailDTO getBigDecimalJyDetailDTO(List<HashMap<String, Object>> list, String key) {
-        JyDetailDTO tmp = new JyDetailDTO();
+        JyDetailDTO tmp = null;
 
         BigDecimal d1 = null, d2 = null;
         for (HashMap<String, Object> map : list) {
@@ -160,6 +171,7 @@ public class RShopService {
             }
         }
         if (d1 != null) {
+            tmp = new JyDetailDTO();
             tmp.setVal(d1.toString());
             if (d2 == null) {
                 tmp.setFlag("normal");
@@ -182,13 +194,33 @@ public class RShopService {
     }
 
     /**
+     * 查询店铺基础信息
+     *
+     * @param shopid the shopid
+     * @return the shop pv diff
+     */
+//    @Cacheable(value = "shop:info")
+    public HashMap<String, Object> getRShopInfo(Long shopid) {
+        //店铺基础信息
+        HashMap<String, Object> info = tsdao.getRShopInfo(shopid);
+        if (null != info) {
+            HashMap<String, Object> di = tsdao.getDShopInfo(shopid);
+            if (null != di) {
+                info.putAll(di);
+            }
+            log.debug("setInfo:" + JSON.toJSONString(info));
+        }
+        return info;
+    }
+
+    /**
      * 查询店铺PV
      *
      * @param shopid the shopid
      * @param date   the date
      * @return the shop pv diff
      */
-    @Cacheable(value = "shop:pv")
+//    @Cacheable(value = "shop:pv")
     public List<HashMap<String, Object>> getShopPvDiff(Long shopid, Integer[] date) {
         return rsdao.getShopPvDiff(shopid, date[1], date[0], date[3], date[2]);
     }
@@ -200,7 +232,7 @@ public class RShopService {
      * @param date   the date
      * @return the shop sales diff
      */
-    @Cacheable(value = "shop:sales")
+//    @Cacheable(value = "shop:sales")
     public List<HashMap<String, Object>> getShopSalesDiff(Long shopid, Integer[] date) {
         return ridao.getShopSalesDiff(shopid, Helper.getTodayAsSecondInt(-1), date[3]);
     }
@@ -212,7 +244,7 @@ public class RShopService {
      * @param date   the date
      * @return the shop goods diff
      */
-    @Cacheable(value = "shop:goods")
+//    @Cacheable(value = "shop:goods")
     public List<HashMap<String, Object>> getShopGoodsDiff(Long shopid, Integer[] date) {
         return rsdao.getShopGoodsDiff(shopid, date[1], date[3]);
     }
@@ -224,7 +256,7 @@ public class RShopService {
      * @param date   the date
      * @return the shop goods diff
      */
-    @Cacheable(value = "shop:hostsales")
+//    @Cacheable(value = "shop:date:hostsales")
     public List<HashMap<String, Object>> getShopHotSales(Long shopid, Integer[] date) {
         return ridao.getShopHotSales(shopid, date[1], date[0]);
     }
@@ -236,9 +268,31 @@ public class RShopService {
      * @param date   the date
      * @return the shop goods diff
      */
-    @Cacheable(value = "shop:hostfav")
+//    @Cacheable(value = "shop:date:hostfav")
     public List<HashMap<String, Object>> getShopHotFavorite(Long shopid, Integer[] date) {
         return ridao.getShopHotFavorite(shopid, date[1], date[0]);
+    }
+
+    /**
+     * 查询全店的热销宝贝
+     *
+     * @param shopid the shopid
+     * @return the shop goods diff
+     */
+//    @Cacheable(value = "shop:all:hostsales")
+    public List<HashMap<String, Object>> getShopHotSales(Long shopid) {
+        return ridao.getShopAllHotSales(shopid);
+    }
+
+    /**
+     * 查询全店的人气宝贝
+     *
+     * @param shopid the shopid
+     * @return the shop goods diff
+     */
+//    @Cacheable(value = "shop:all:hostfav")
+    public List<HashMap<String, Object>> getShopHotFavorite(Long shopid) {
+        return ridao.getShopAllHotFavorite(shopid);
     }
 
     /**
@@ -257,25 +311,26 @@ public class RShopService {
 //            date[2] = date[1];
 //            //上个前7天
 //            date[3] = Helper.getTodayAsSecondInt(-14);
-//        } else if ("2".equals(type)) {
+//        } else
+//
+        if ("1".equals(type)) {
             /*近30天对比*/
-        //今天
-//        date[0] = Helper.getTodayAsSecondInt(0);
-//        //前30天
-//        date[1] = Helper.getTodayAsSecondInt(-30);
-//        date[2] = date[1];
-//        //上个前30天
-//        date[3] = Helper.getTodayAsSecondInt(-60);
-//        } else { /*昨天日期对比*/
-//            //今天
-        date[0] = Helper.getTodayAsSecondInt(0);
-        //昨天
-        date[1] = Helper.getTodayAsSecondInt(-1);
-        date[2] = date[1];
-        //前天
-        date[3] = Helper.getTodayAsSecondInt(-2);
-//        }
-
+            //今天
+            date[0] = Helper.getTodayAsSecondInt(0);
+            //前30天
+            date[1] = Helper.getTodayAsSecondInt(-30);
+            date[2] = date[1];
+            //上个前30天
+            date[3] = Helper.getTodayAsSecondInt(-60);
+        } else { /*昨天日期对比*/
+            //今天
+            date[0] = Helper.getTodayAsSecondInt(0);
+            //昨天
+            date[1] = Helper.getTodayAsSecondInt(-1);
+            date[2] = date[1];
+            //前天
+            date[3] = Helper.getTodayAsSecondInt(-2);
+        }
         testGetDateArray(date);
         return date;
     }
