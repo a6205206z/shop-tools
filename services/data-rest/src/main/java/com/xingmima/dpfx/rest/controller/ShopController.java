@@ -1,6 +1,8 @@
 package com.xingmima.dpfx.rest.controller;
 
 import com.xingmima.dpfx.rest.dto.QueryShopDTO;
+import com.xingmima.dpfx.rest.dto.TopShopDTO;
+import com.xingmima.dpfx.rest.response.ApiStatusCode;
 import com.xingmima.dpfx.rest.response.ResponseDataModel;
 import com.xingmima.dpfx.rest.service.RShopService;
 import org.slf4j.Logger;
@@ -11,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.text.ParseException;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * xingmima.com Inc.
@@ -32,9 +36,13 @@ public class ShopController extends BaseController {
     @RequestMapping("/shop/staisinfo/{shopid}/{type}")
     @ResponseBody
     public ResponseDataModel getShopStatisticalInformation(@PathVariable Long shopid, @PathVariable String type) {
-        QueryShopDTO dto = dao.getShopDiffInfo(shopid, type);
-        //return error(ApiStatusCode.DB_DELETE_ERROR);
-        return success(dto);
+        try {
+            QueryShopDTO dto = dao.getShopDiffInfo(shopid, type);
+            return success(dto);
+        } catch (Exception e) {
+            log.error("店铺概况请求错误:", e);
+            return error(ApiStatusCode.BUSSINESS_EXCEPTION);
+        }
     }
 
     @RequestMapping("/shop/report/{shopid}")
@@ -46,6 +54,6 @@ public class ShopController extends BaseController {
 
     @RequestMapping("/")
     public String test() {
-        return "hello";
+        return "店参谋服务启动成功!";
     }
 }

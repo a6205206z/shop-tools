@@ -53,6 +53,9 @@ public class RShopService {
     @Cacheable(value = "shop:result")
     public QueryShopDTO getShopDiffInfo(Long shopid, String type) {
         QueryShopDTO dto = new QueryShopDTO();
+        if (null != shopid) {
+            return dto;
+        }
 
         /*默认昨天*/
         if (StringUtils.isEmpty(type)) {
@@ -116,7 +119,7 @@ public class RShopService {
                 dto.setHotfav(hotfav);
             }
         } catch (Exception e) {
-            log.error("get shop diff info:", e);
+            log.error("处理失败:", e);
         }
         return dto;
     }
