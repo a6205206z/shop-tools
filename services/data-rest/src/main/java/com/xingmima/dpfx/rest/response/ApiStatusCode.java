@@ -41,6 +41,7 @@ public enum ApiStatusCode {
     ACCOUNT_FOLLOW_SHOP_LIMIT("205005", "账户关注店铺已达5个"),
     SHOP_HAS_BINDED("205006", "店铺已被绑定"),
     CANNOT_FOLLOW_OWN_SHOP("205007", "不能关注自己的店铺"),
+    ACCOUNT_NOT_BIND_SHOP("205008", "该帐号未绑定淘宝店铺"),
 
     /**
      * 成功状态码
