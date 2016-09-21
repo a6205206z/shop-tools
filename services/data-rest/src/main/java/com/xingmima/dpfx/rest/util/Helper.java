@@ -38,16 +38,12 @@ public class Helper {
      */
     public static String getTodayAsSecond(int d) {
         String result = "0";
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         Calendar calendar = Calendar.getInstance();
-        try {
-            calendar.add(Calendar.DAY_OF_YEAR, d);
-            Date date = df.parse(df.format(calendar.getTime()));
-            calendar.setTime(date);
-            result = Long.toString(calendar.getTimeInMillis() / 1000);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        calendar.add(Calendar.DAY_OF_YEAR, d);
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        result = Long.toString(calendar.getTimeInMillis() / 1000);
         return result;
     }
 
