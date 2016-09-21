@@ -60,8 +60,13 @@ public class ShopController extends BaseController {
     @RequestMapping("/shop/report/{shopid}")
     @ResponseBody
     public ResponseDataModel getShopReportSevenDay(@PathVariable Long shopid) {
-        HashMap<String, HashMap<String, Object>> report = this.rShopService.getShopReportSevenDay(shopid);
-        return success(report);
+        try {
+            HashMap<String, HashMap<String, Object>> report = this.rShopService.getShopReportSevenDay(shopid);
+            return success(report);
+        } catch (Exception e) {
+            log.error("店铺体检数据出错:", e);
+            return error(ApiStatusCode.BUSSINESS_EXCEPTION);
+        }
     }
 
     @RequestMapping("/")

@@ -349,11 +349,34 @@ public class RShopService {
         HashMap<String, HashMap<String, Object>> report = null;
         HashMap<String, Object> today = ridao.getShopReport(0, shopid);
         HashMap<String, Object> sevenAgo = ridao.getShopReport(7, shopid);
+        HashMap<String, Object> result = new HashMap<String, Object>();
         if (today != null) {
-            report = new HashMap<String, HashMap<String, Object>>();
+            report = new HashMap<>();
             report.put("today", today);
             if (sevenAgo != null) {
+                BigDecimal today_pv = (BigDecimal)today.get("pv");
+                if(today_pv != null
+                    &&today_pv.doubleValue() > 0){
+                    BigDecimal today_sell = (BigDecimal)today.get("sell_qty");
+                    double convert_pre = today_sell.doubleValue() / today_pv.doubleValue();
+                    result.put("convert",convert_pre);
+                } else {
+                    result.put("convert",0);
+                }
+                BigDecimal seven_pv = (BigDecimal)today.get("pv");
+                if (seven_pv.doubleValue() > 0 || today_pv.doubleValue() >0) {
+                    double sell_qty_change = (((BigDecimal) today.get("sell_qty")).doubleValue()
+                            - ((BigDecimal) sevenAgo.get("sell_qty")).doubleValue())
+                            / (today_pv.doubleValue() + seven_pv.doubleValue());
+                    result.put("convertChange", sell_qty_change);
+                }else {
+                    result.put("convertChange", 0);
+                }
+
+
+
                 report.put("ago", sevenAgo);
+                report.put("result", result);
             }
         }
         return report;
