@@ -21,6 +21,11 @@ public class TopShopDTO extends BaseDTO {
     private String storeUrl;
     
     /**
+     * 店铺logo地址
+     */
+    private String logoUrl;
+    
+    /**
      * 店铺名称
      */
     private String title;
@@ -28,7 +33,7 @@ public class TopShopDTO extends BaseDTO {
     /**
      * 成交数量
      */
-    private Integer soldToldCount;
+    private Integer soldTotalCount;
     
     /**
      * 访问量
@@ -61,6 +66,14 @@ public class TopShopDTO extends BaseDTO {
         this.storeUrl = storeUrl;
     }
 
+    public String getLogoUrl() {
+        return logoUrl;
+    }
+
+    public void setLogoUrl(String logoUrl) {
+        this.logoUrl = logoUrl;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -69,12 +82,12 @@ public class TopShopDTO extends BaseDTO {
         this.title = title;
     }
 
-    public Integer getSoldToldCount() {
-        return soldToldCount;
+    public Integer getSoldTotalCount() {
+        return soldTotalCount;
     }
 
-    public void setSoldToldCount(Integer soldToldCount) {
-        this.soldToldCount = soldToldCount;
+    public void setSoldTotalCount(Integer soldTotalCount) {
+        this.soldTotalCount = soldTotalCount;
     }
 
     public Integer getiPv() {
@@ -103,16 +116,16 @@ public class TopShopDTO extends BaseDTO {
 
     /**
      *@desc
-     *@date 2016年9月18日
+     *@date 2016年9月21日
      *@author Baoluo
      *@parameter
      *@see java.lang.Object#toString()
      */
     @Override
     public String toString() {
-        return "TopShopDTO [shopid=" + shopid + ", storeUrl=" + storeUrl + ", title=" + title
-               + ", soldToldCount=" + soldToldCount + ", iPv=" + iPv + ", iShareNum=" + iShareNum
-               + ", iFavoriteNum=" + iFavoriteNum + "]";
+        return "TopShopDTO [shopid=" + shopid + ", storeUrl=" + storeUrl + ", logoUrl=" + logoUrl
+               + ", title=" + title + ", soldTotalCount=" + soldTotalCount + ", iPv=" + iPv
+               + ", iShareNum=" + iShareNum + ", iFavoriteNum=" + iFavoriteNum + "]";
     }
 }
 
