@@ -63,18 +63,18 @@ public class TimeTaskController extends BaseAction {
             if (StringUtils.isEmpty(jobTime)) {
                 return error("请选择定时时间!");
             }
-            String result = null;
+//            String result = null;
 
-            if(!StringUtils.isEmpty(node)) {
-                Tspider tspider = tspiderService.selectTspiderBynodeName(node);
-                if (tspider != null) {
-                    result = HttpUtil.sendGet(String.format("http://%s/%s", tspider.getHost(), InitConfig.SPIDER_START_URL),"name="+spiderName+"&runid="+runid,"UTF-8");
-                }
-            }
+//            if(!StringUtils.isEmpty(node)) {
+//                Tspider tspider = tspiderService.selectTspiderBynodeName(node);
+//                if (tspider != null) {
+//                    result = HttpUtil.sendGet(String.format("http://%s/%s", tspider.getHost(), InitConfig.SPIDER_START_URL),"name="+spiderName+"&runid="+runid,"UTF-8");
+//                }
+//            }
 
-            if(null==result){
-                return error("开启失败！");
-            }
+//            if(null==result){
+//                return error("开启失败！");
+//            }
             return getRedirectView("/job/index");
         } catch (Exception e) {
             e.printStackTrace();
