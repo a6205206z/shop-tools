@@ -30,6 +30,8 @@ public class InitConfig {
     public static String SPIDER_LIST_URL;
     //开启爬虫任务
     public static String SPIDER_START_URL;
+    //淘宝&天猫爬虫
+    public static String SPIDER_NAME;
 
 //	@Value("#{config['master_site']}")
 //	public void setMaster_site(String master_site) {
@@ -63,6 +65,10 @@ public class InitConfig {
         log.error("SPIDER_START_URL:" + spider_start_Url);
     }
 	
+	@Value("#{config['spider_name']}")
+    public void setSPIDER_NAME(String spider_name) {
+	    InitConfig.SPIDER_NAME = spider_name;
+	    log.error("SPIDER_NAME:" + spider_name);
+    }
 	
-
 }

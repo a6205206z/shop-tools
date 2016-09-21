@@ -148,11 +148,39 @@
 		select
 		<include refid="commonColumns" />
 		from t_job
+		<choose>
+		<when test="token =='0'.toString()">
+                where spider_name in
+		    <foreach collection="spider_name" index="index" item="item" open="(" separator="," close=")">  
+       			 #{item}  
+    		</foreach> 
+        </when>
+		<when test="token =='1'.toString()">
+             where spider_name not in
+		    <foreach collection="spider_name" index="index" item="item" open="(" separator="," close=")">  
+       			 #{item}  
+    		</foreach> 
+        </when>
+		</choose>
 		ORDER BY starttime DESC
 		limit #{begin},#{pageSize}
 	</select>
 	
 	<select id="count" parameterType="com.xmm.shoptools.backend.vo.TjobQuery" resultType="int">
 		select count(*) from t_job
+		<choose>
+		<when test="token =='0'.toString()">
+                where spider_name in
+		    <foreach collection="spider_name" index="index" item="item" open="(" separator="," close=")">  
+       			 #{item}  
+    		</foreach> 
+        </when>
+		<when test="token =='1'.toString()">
+             where spider_name not in
+		    <foreach collection="spider_name" index="index" item="item" open="(" separator="," close=")">  
+       			 #{item}  
+    		</foreach> 
+        </when>
+		</choose>
 	</select>
 </mapper>

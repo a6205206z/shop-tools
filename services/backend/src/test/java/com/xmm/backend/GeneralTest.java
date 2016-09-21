@@ -1,19 +1,16 @@
 package com.xmm.backend;
 
-import static org.junit.Assert.*;
-
-import java.sql.Timestamp;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
+import java.util.List;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.xmm.shoptools.backend.entity.Tspider;
+import com.xmm.shoptools.backend.admin.web.init.InitConfig;
+import com.xmm.shoptools.backend.service.TjobService;
 import com.xmm.shoptools.backend.service.TspiderService;
+import com.xmm.shoptools.backend.vo.PageResult;
+import com.xmm.shoptools.backend.vo.TjobQuery;
+import com.xmm.shoptools.backend.vo.TjobVO;
 
 /**
  * @author leidian
@@ -23,6 +20,8 @@ public class GeneralTest extends BaseJunit4Test {
     @Autowired
     TspiderService tspiderService;
     
+    @Autowired
+    private TjobService tjobService;
     @Test
     public void testName() throws Exception {
 //        String result = null;
@@ -55,8 +54,21 @@ public class GeneralTest extends BaseJunit4Test {
     
     @Test
     public void testName4() throws Exception {
-//        Tspider tspider = tspiderService.selectTspiderBynodeName("Local");
-//        System.out.println(tspider);
+//        TjobQuery query = new TjobQuery();
+//        query.setRows(Integer.MAX_VALUE);
+//        PageResult<TjobVO> pr = tjobService.query(query);
+//        List<TjobVO> rows = pr.getRows();
+////        String spider_name =  InitConfig.SPIDER_NAME;
+//        String[] splits = new String[]{"TaobaoShopSpider,TaobaoShopProductSpider,TmallShopSpider,TmallShopProductSpider"};
+//        for (TjobVO tjobVO : rows) {
+//            String sn = tjobVO.getSpiderName().replaceAll("\'", "");
+//            System.out.println(sn);
+//            for (String s : splits) {
+//                if(s.equals(sn)){
+//                    rows.remove(tjobVO);
+//                }
+//            }
+//        }
     }
     
 }
