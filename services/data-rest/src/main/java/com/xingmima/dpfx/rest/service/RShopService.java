@@ -53,7 +53,7 @@ public class RShopService {
     @Cacheable(value = "shop:result")
     public QueryShopDTO getShopDiffInfo(Long shopid, String type) {
         QueryShopDTO dto = new QueryShopDTO();
-        if (null != shopid) {
+        if (null == shopid) {
             return dto;
         }
 
