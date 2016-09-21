@@ -50,24 +50,29 @@ public class DItems {
     private Long cid;
 
     /**
+     * 上活动所发布类目
+     */
+    private String publishCategory;
+
+    /**
      * 市场价格:1.0~100
      */
     private String markerPrice;
 
     /**
-     * 销售价格，优惠后售价
+     * 销售价格
      */
     private BigDecimal price;
+
+    /**
+     * 优惠价格
+     */
+    private BigDecimal promoPrice;
 
     /**
      * 邮费
      */
     private BigDecimal postFee;
-
-    /**
-     * 促销优惠信息
-     */
-    private String promoInfo;
 
     /**
      * 近30天交易成功数
@@ -95,7 +100,7 @@ public class DItems {
     private Integer stock;
 
     /**
-     * 可销售库存
+     * 可销售库存****使用stock字段
      */
     private Integer sellableQuantity;
 
@@ -284,6 +289,22 @@ public class DItems {
     }
 
     /**
+     * 上活动所发布类目
+     * @return publish_category 上活动所发布类目
+     */
+    public String getPublishCategory() {
+        return publishCategory;
+    }
+
+    /**
+     * 上活动所发布类目
+     * @param publishCategory 上活动所发布类目
+     */
+    public void setPublishCategory(String publishCategory) {
+        this.publishCategory = publishCategory == null ? null : publishCategory.trim();
+    }
+
+    /**
      * 市场价格:1.0~100
      * @return marker_price 市场价格:1.0~100
      */
@@ -300,19 +321,35 @@ public class DItems {
     }
 
     /**
-     * 销售价格，优惠后售价
-     * @return price 销售价格，优惠后售价
+     * 销售价格
+     * @return price 销售价格
      */
     public BigDecimal getPrice() {
         return price;
     }
 
     /**
-     * 销售价格，优惠后售价
-     * @param price 销售价格，优惠后售价
+     * 销售价格
+     * @param price 销售价格
      */
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    /**
+     * 优惠价格
+     * @return promo_price 优惠价格
+     */
+    public BigDecimal getPromoPrice() {
+        return promoPrice;
+    }
+
+    /**
+     * 优惠价格
+     * @param promoPrice 优惠价格
+     */
+    public void setPromoPrice(BigDecimal promoPrice) {
+        this.promoPrice = promoPrice;
     }
 
     /**
@@ -412,16 +449,16 @@ public class DItems {
     }
 
     /**
-     * 可销售库存
-     * @return sellable_quantity 可销售库存
+     * 可销售库存****使用stock字段
+     * @return sellable_quantity 可销售库存****使用stock字段
      */
     public Integer getSellableQuantity() {
         return sellableQuantity;
     }
 
     /**
-     * 可销售库存
-     * @param sellableQuantity 可销售库存
+     * 可销售库存****使用stock字段
+     * @param sellableQuantity 可销售库存****使用stock字段
      */
     public void setSellableQuantity(Integer sellableQuantity) {
         this.sellableQuantity = sellableQuantity;
@@ -570,10 +607,11 @@ public class DItems {
         sb.append(", picUrl=").append(picUrl);
         sb.append(", rcid=").append(rcid);
         sb.append(", cid=").append(cid);
+        sb.append(", publishCategory=").append(publishCategory);
         sb.append(", markerPrice=").append(markerPrice);
         sb.append(", price=").append(price);
+        sb.append(", promoPrice=").append(promoPrice);
         sb.append(", postFee=").append(postFee);
-        sb.append(", promoInfo=").append(promoInfo);
         sb.append(", soldTotalCount=").append(soldTotalCount);
         sb.append(", confirmGoodsCount=").append(confirmGoodsCount);
         sb.append(", totalRatedCount=").append(totalRatedCount);
