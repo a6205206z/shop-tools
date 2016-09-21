@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -177,8 +178,9 @@ public class StoreManageService {
         Date today = sdf.parse(dateStr);
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(today);
+        LOGGER.info(calendar.toString());
         calendar.add(Calendar.DATE, -1);
-        Integer time = (int)(calendar.getTime().getTime()/1000);
+        Integer time = (int)(calendar.getTimeInMillis()/1000);
         return time;
     }
 }
