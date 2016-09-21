@@ -27,7 +27,11 @@
 								<#list pr.rows as jobs>
 									<tr>
 										<td>
+											<#if token ?? && token == "0">
 											<a style="text-decoration:underline;" href="${layout.path}/dshop/index?runid=${jobs.runid!}">${jobs.runid!}</a>
+											<#else>
+											<a style="text-decoration:underline;" href="#">${jobs.runid!}</a>
+											</#if>
 										</td>
 										<td>${jobs.spiderNodeName!}</td>
 										<td>${jobs.spiderName!}</td>

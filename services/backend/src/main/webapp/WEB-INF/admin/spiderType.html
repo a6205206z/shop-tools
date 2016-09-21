@@ -1,0 +1,14 @@
+<#import "/admin/layout/_layout.html" as layout />
+<#macro content>
+    <!--Action boxes-->
+    <div class="container-fluid">
+        <div class="quick-actions_homepage">
+            <ul class="quick-actions">
+                <li class="bg_lr span6"> <a href="${layout.path}/job/list?token=0"> <i class="icon-shopping-cart"></i>淘宝&天猫任务</a> </li>
+                <li class="bg_lo span6"> <a href="${layout.path}/job/list?token=1"> <i class="icon-star"></i>天天特价任务</a> </li>
+            </ul>
+        </div>
+        <!--End-Action boxes-->
+</#macro>
+<#assign content = content in layout />
+<@layout.doLayout />
