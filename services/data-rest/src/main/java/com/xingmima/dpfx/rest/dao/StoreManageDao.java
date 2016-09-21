@@ -26,7 +26,7 @@ public interface StoreManageDao {
      * @param shopid
      * @return
      */
-    @Select("SELECT ri.shopid, ts.store_url, ds.title, IFNULL(SUM(ri.sold_total_count),0) AS 'soldTotalCount', IFNULL(SUM(ri.i_pv),0) AS 'iPv', IFNULL(SUM(ri.i_share_num),0) AS 'iShareNum', IFNULL(SUM(ri.i_favorite_num),0) AS 'iFavoriteNum' FROM r_items ri LEFT JOIN t_shop ts ON ri.shopid = ts.shopid LEFT JOIN d_shop ds ON ts.shopid = ds.shopid WHERE ri.date = #{date} AND ts.t_cid = #{tCid} AND ds.date = #{date} GROUP BY ts.shopid ORDER BY SUM(ri.total_sales) DESC LIMIT 10")
+    @Select("SELECT ri.shopid, ts.store_url as storeUrl, ds.title, ts.logo_url as logoUrl, IFNULL(SUM(ri.sold_total_count),0) AS 'soldTotalCount', IFNULL(SUM(ri.i_pv),0) AS 'iPv', IFNULL(SUM(ri.i_share_num),0) AS 'iShareNum', IFNULL(SUM(ri.i_favorite_num),0) AS 'iFavoriteNum' FROM r_items ri LEFT JOIN t_shop ts ON ri.shopid = ts.shopid LEFT JOIN d_shop ds ON ts.shopid = ds.shopid WHERE ri.date = #{date} AND ts.t_cid = #{tCid} AND ds.date = #{date} GROUP BY ts.shopid ORDER BY SUM(ri.total_sales) DESC LIMIT 10")
     List<TopShopDTO> getTopShops(@Param("tCid") String tCid, @Param("date") Integer date);
     
     /**
