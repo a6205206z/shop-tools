@@ -38,9 +38,9 @@ public class ShopController extends BaseController {
     @Autowired
     private StoreManageService storeService;
 
-    @RequestMapping("/shop/staisinfo/{uid}/{type}")
+    @RequestMapping("/shop/staisinfo/{uid}")
     @ResponseBody
-    public ResponseDataModel getShopStatisticalInformation(@PathVariable String uid, @PathVariable String type) {
+    public ResponseDataModel getShopStatisticalInformation(@PathVariable String uid) {
         try {
             if (StringUtils.isEmpty(uid)) {
                 return error(ApiStatusCode.ACCOUNT_NOT_BIND_SHOP);
@@ -49,7 +49,19 @@ public class ShopController extends BaseController {
             if (login == null) {
                 return error(ApiStatusCode.ACCOUNT_NOT_BIND_SHOP);
             }
-            QueryShopDTO dto = this.rShopService.getShopDiffInfo(login.getShopid(), type);
+            QueryShopDTO dto = this.rShopService.getShopDiffInfo(login.getShopid(), "1");
+            return success(dto);
+        } catch (Exception e) {
+            log.error("店铺概况请求错误:", e);
+            return error(ApiStatusCode.BUSSINESS_EXCEPTION);
+        }
+    }
+
+    @RequestMapping("/shop/follow/{shopid}")
+    @ResponseBody
+    public ResponseDataModel getShopStatisticalInformation(@PathVariable Long shopid) {
+        try {
+            QueryShopDTO dto = this.rShopService.getShopDiffInfo(shopid, "0");
             return success(dto);
         } catch (Exception e) {
             log.error("店铺概况请求错误:", e);
